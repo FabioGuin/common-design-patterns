@@ -369,7 +369,7 @@ class DataProcessingService
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Connection Pool System](../../../esempi-completi/07-connection-pool-system/)** - Sistema di gestione connessioni con Object Pool Pattern
+- **[Connection Pool System](./esempio-completo/)** - Sistema di gestione connessioni con Object Pool Pattern
 
 L'esempio include:
 - Pool di connessioni database

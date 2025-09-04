@@ -279,7 +279,7 @@ class DocumentController extends Controller
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Document Template System](../../../esempi-completi/06-document-prototype-system/)** - Sistema di gestione documenti con clonazione di template
+- **[Document Template System](./esempio-completo/)** - Sistema di gestione documenti con clonazione di template
 
 L'esempio include:
 - Clonazione di documenti complessi

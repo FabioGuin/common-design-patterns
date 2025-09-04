@@ -210,7 +210,7 @@ $logger->log('User logged in');
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Logger Singleton Completo](../../../esempi-completi/01-singleton-logger/)** - Un sistema di logging completo con tutto quello che ti serve
+- **[Logger Singleton Completo](./esempio-completo/)** - Un sistema di logging completo con tutto quello che ti serve
 
 L'esempio include:
 - Logger service singleton funzionante

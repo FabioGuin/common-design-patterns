@@ -405,7 +405,7 @@ class PaymentController extends Controller
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Sistema di Pagamento Multi-Provider](../../../esempi-completi/04-abstract-factory-payment/)** - Sistema di pagamento completo con Abstract Factory per gestire diverse famiglie di servizi
+- **[Sistema di Pagamento Multi-Provider](./esempio-completo/)** - Sistema di pagamento completo con Abstract Factory per gestire diverse famiglie di servizi
 
 L'esempio include:
 - Factory per diversi provider di pagamento (Stripe, PayPal)

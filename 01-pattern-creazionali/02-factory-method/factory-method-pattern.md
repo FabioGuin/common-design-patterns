@@ -251,7 +251,7 @@ $emailFactory->sendNotification('Welcome!', 'user@example.com');
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Gestione Utenti con Factory](../../../esempi-completi/02-factory-user-management/)** - Sistema di gestione utenti con factory per diversi tipi di utenti e ruoli
+- **[Gestione Utenti con Factory](./esempio-completo/)** - Sistema di gestione utenti con factory per diversi tipi di utenti e ruoli
 
 L'esempio include:
 - Factory per creare utenti (Admin, User, Guest)

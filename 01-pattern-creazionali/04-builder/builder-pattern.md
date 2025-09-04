@@ -330,7 +330,7 @@ class UserController extends Controller
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[User Management Builder](../../../esempi-completi/05-user-builder-system/)** - Sistema completo di gestione utenti con Builder Pattern
+- **[User Management Builder](./esempio-completo/)** - Sistema completo di gestione utenti con Builder Pattern
 
 L'esempio include:
 - Builder per creazione utenti complessi

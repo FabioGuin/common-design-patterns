@@ -8,10 +8,14 @@ Questa cartella contiene progetti Laravel completi e funzionanti che mostrano co
 - Esempi reali di come integrare i pattern in Laravel
 - Riferimento per i tuoi progetti futuri
 
-## Gli esempi che hai a disposizione
+## Struttura degli esempi
 
-### Logger Singleton
-- **Cartella**: `01-singleton-logger/`
+Gli esempi sono ora organizzati seguendo la stessa struttura della documentazione: `[argomento][pattern]/esempio-completo/`
+
+### Pattern Creazionali
+
+#### Singleton Pattern
+- **Percorso**: `../01-pattern-creazionali/01-singleton/esempio-completo/`
 - **Pattern**: Singleton
 - **Cosa fa**: Un sistema di logging che usa una sola istanza per tutta l'app
 - **Cosa include**: 
@@ -20,8 +24,8 @@ Questa cartella contiene progetti Laravel completi e funzionanti che mostrano co
   - Integrazione con Laravel Service Container
   - API per gestire i log
 
-### Gestione Utenti con Factory
-- **Cartella**: `02-factory-user-management/`
+#### Factory Method Pattern
+- **Percorso**: `../01-pattern-creazionali/02-factory-method/esempio-completo/`
 - **Pattern**: Factory Method
 - **Cosa fa**: Sistema per creare diversi tipi di utenti usando le factory
 - **Cosa include**:
@@ -29,8 +33,8 @@ Questa cartella contiene progetti Laravel completi e funzionanti che mostrano co
   - Factory per le notifiche
   - Seeding automatico del database
 
-### Sistema di Pagamento Multi-Provider
-- **Cartella**: `04-abstract-factory-payment/`
+#### Abstract Factory Pattern
+- **Percorso**: `../01-pattern-creazionali/03-abstract-factory/esempio-completo/`
 - **Pattern**: Abstract Factory
 - **Cosa fa**: Sistema di pagamento che funziona con Stripe, PayPal e altri
 - **Cosa include**:
@@ -39,78 +43,49 @@ Questa cartella contiene progetti Laravel completi e funzionanti che mostrano co
   - Configurazione dinamica dei provider
   - API RESTful completa
 
-### Repository Pattern
-- **Cartella**: `03-repository-pattern/`
-- **Pattern**: Repository, Unit of Work
-- **Cosa fa**: Astrae l'accesso ai dati e gestisce le transazioni
+#### Builder Pattern
+- **Percorso**: `../01-pattern-creazionali/04-builder/esempio-completo/`
+- **Pattern**: Builder
+- **Cosa fa**: Sistema per costruire utenti complessi passo dopo passo
 - **Cosa include**:
-  - Interface e implementazioni dei repository
-  - Unit of Work per le transazioni
-  - Caching integrato
-  - Test con mock
-
-### Service Layer
-- **Cartella**: `04-service-layer/`
-- **Pattern**: Service Layer, DTO
-- **Cosa fa**: Separa la logica business dal resto dell'applicazione
-- **Cosa include**:
-  - Logica business separata
-  - Data Transfer Objects
+  - Builder per utenti con profili e ruoli
+  - Fluent interface per costruzione
   - Validazione integrata
-  - API RESTful
+  - Test completi
 
-### Sistema Chat con IA
-- **Cartella**: `05-ai-chat-system/`
-- **Pattern**: AI Gateway, AI Response Caching, AI Context Management
-- **Cosa fa**: Sistema di chat che integra l'intelligenza artificiale
+#### Prototype Pattern
+- **Percorso**: `../01-pattern-creazionali/05-prototype/esempio-completo/`
+- **Pattern**: Prototype
+- **Cosa fa**: Sistema per clonare documenti e template
 - **Cosa include**:
-  - Integrazione con OpenAI/Claude
-  - Cache delle risposte
-  - Gestione del contesto della conversazione
-  - Streaming delle risposte
+  - Clonazione profonda di oggetti complessi
+  - Gestione versioni
+  - Template system
+  - API per documenti
 
-### Event Sourcing
-- **Cartella**: `06-event-sourcing/`
-- **Pattern**: Event Sourcing, CQRS
-- **Cosa fa**: Salva tutti gli eventi invece dello stato finale
+#### Object Pool Pattern
+- **Percorso**: `../01-pattern-creazionali/06-object-pool/esempio-completo/`
+- **Pattern**: Object Pool
+- **Cosa fa**: Sistema di gestione connessioni database con pool
 - **Cosa include**:
-  - Event store
-  - Separazione Command/Query
-  - Ricostruzione delle proiezioni
-  - Audit trail completo
-
-### API Microservizi
-- **Cartella**: `07-microservices-api/`
-- **Pattern**: API Gateway, Circuit Breaker, Service Discovery
-- **Cosa fa**: Architettura a microservizi con Laravel
-- **Cosa include**:
-  - API Gateway
-  - Service mesh
-  - Circuit breaker pattern
-  - Distributed tracing
-
-### Implementazione CQRS
-- **Cartella**: `08-cqrs-implementation/`
-- **Pattern**: CQRS, Event Sourcing, Saga
-- **Cosa fa**: Separazione completa tra comandi e query
-- **Cosa include**:
-  - Separazione Command/Query
-  - Event store
-  - Orchestrazione Saga
-  - Ottimizzazione dei modelli di lettura
+  - Pool di connessioni PDO
+  - Gestione automatica del ciclo di vita
+  - Monitoraggio delle performance
+  - API RESTful per monitoraggio
 
 ## Come usare gli esempi
 
-1. **Scarica l'esempio** nella cartella che preferisci
-2. **Installa le dipendenze** con `composer install`
-3. **Configura l'ambiente** copiando `.env.example` in `.env`
-4. **Esegui le migrazioni** con `php artisan migrate`
-5. **Avvia il server** con `php artisan serve`
+1. **Naviga alla cartella del pattern** che ti interessa (es. `01-pattern-creazionali/01-singleton/`)
+2. **Entra nella cartella esempio-completo** per vedere il progetto
+3. **Installa le dipendenze** con `composer install`
+4. **Configura l'ambiente** copiando `.env.example` in `.env`
+5. **Esegui le migrazioni** con `php artisan migrate`
+6. **Avvia il server** con `php artisan serve`
 
 ## Struttura di ogni esempio
 
 ```
-esempio-completo/
+[argomento][pattern]/esempio-completo/
 ├── README.md                 # Documentazione specifica
 ├── app/                      # Codice applicazione
 ├── config/                   # Configurazioni
@@ -120,6 +95,13 @@ esempio-completo/
 ├── composer.json             # Dipendenze
 └── .env.example              # Configurazione ambiente
 ```
+
+## Vantaggi della nuova struttura
+
+- **Coerenza**: Gli esempi seguono la stessa struttura della documentazione
+- **Facilità di navigazione**: Trovi subito l'esempio del pattern che stai studiando
+- **Organizzazione logica**: Pattern raggruppati per categoria
+- **Scalabilità**: Facile aggiungere nuovi esempi nella categoria giusta
 
 ## Link utili
 - [Torna all'indice principale](../README.md)
