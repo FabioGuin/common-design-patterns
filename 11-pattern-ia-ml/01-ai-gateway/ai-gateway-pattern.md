@@ -242,7 +242,7 @@ class AIGatewayService
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Sistema Chat AI Completo](../../../esempi-completi/05-ai-chat-system/)** - Sistema completo di chat con fallback automatici
+- **[Sistema Chat AI Completo](./esempio-completo/)** - Sistema completo di chat con fallback automatici
 
 L'esempio include:
 - Integrazione con OpenAI e Anthropic

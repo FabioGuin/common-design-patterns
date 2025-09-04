@@ -33,7 +33,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - Livelli di log configurabili
 - Integrazione con Laravel Log facade
 
-**Link**: [Singleton Logger](esempi-completi/01-singleton-logger/README.md)
+**Link**: [Singleton Logger](01-pattern-creazionali/01-singleton/esempio-completo/README.md)
 
 ---
 
@@ -49,7 +49,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - Validazione automatica dei dati
 - Integrazione con Laravel Auth
 
-**Link**: [Factory User Management](esempi-completi/02-factory-user-management/README.md)
+**Link**: [Factory User Management](01-pattern-creazionali/02-factory-method/esempio-completo/README.md)
 
 ---
 
@@ -66,7 +66,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - API RESTful completa per gestione pagamenti
 - Test di compatibilità tra prodotti della stessa famiglia
 
-**Link**: [Abstract Factory Payment System](esempi-completi/04-abstract-factory-payment/README.md)
+**Link**: [Abstract Factory Payment System](01-pattern-creazionali/03-abstract-factory/esempio-completo/README.md)
 
 ---
 
@@ -115,7 +115,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - API REST completa per gestione utenti
 - Test completi con Pest
 
-**Link**: [User Builder System](esempi-completi/05-user-builder-system/README.md)
+**Link**: [User Builder System](01-pattern-creazionali/04-builder/esempio-completo/README.md)
 
 ---
 
@@ -132,7 +132,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - Sistema di versioning automatico
 - API REST per clonazione e gestione documenti
 
-**Link**: [Document Prototype System](esempi-completi/06-document-prototype-system/README.md)
+**Link**: [Document Prototype System](01-pattern-creazionali/05-prototype/esempio-completo/README.md)
 
 ---
 
@@ -149,7 +149,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - Statistiche dettagliate di utilizzo
 - PoolManager per gestire pool multipli
 
-**Link**: [Connection Pool System](esempi-completi/07-connection-pool-system/README.md)
+**Link**: [Connection Pool System](01-pattern-creazionali/06-object-pool/esempio-completo/README.md)
 
 ---
 
