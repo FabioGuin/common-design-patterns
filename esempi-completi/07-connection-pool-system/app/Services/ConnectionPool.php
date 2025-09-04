@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\DatabaseConnection;
+use PDO;
+use PDOException;
+use Exception;
 use Illuminate\Support\Facades\Log;
 
 class ConnectionPool
@@ -11,205 +13,207 @@ class ConnectionPool
     private array $inUse = [];
     private int $maxSize;
     private string $connectionName;
-    private int $created = 0;
-    private int $acquired = 0;
-    private int $released = 0;
-    private int $failed = 0;
+    private array $config;
+    private int $timeout;
+    private int $retryAttempts;
 
-    public function __construct(string $connectionName = 'mysql', int $maxSize = 10)
-    {
+    public function __construct(
+        string $connectionName = 'mysql',
+        int $maxSize = 10,
+        int $timeout = 30,
+        int $retryAttempts = 3
+    ) {
         $this->connectionName = $connectionName;
         $this->maxSize = $maxSize;
+        $this->timeout = $timeout;
+        $this->retryAttempts = $retryAttempts;
+        $this->config = config("database.connections.{$connectionName}");
+        
+        if (!$this->config) {
+            throw new Exception("Configurazione database '{$connectionName}' non trovata");
+        }
     }
 
-    public function acquire(string $acquiredBy = null): DatabaseConnection
+    public function acquire(): PDO
     {
+        // Prova a prendere una connessione disponibile
         if (!empty($this->available)) {
             $connection = array_pop($this->available);
-            $connection->acquire($acquiredBy);
             $this->inUse[] = $connection;
-            $this->acquired++;
             
-            Log::debug("Connection acquired from pool", [
-                'connection_name' => $this->connectionName,
-                'acquired_by' => $acquiredBy,
-                'available' => count($this->available),
-                'in_use' => count($this->inUse)
-            ]);
-            
-            return $connection;
-        }
-
-        if (count($this->inUse) < $this->maxSize) {
-            try {
-                $connection = new DatabaseConnection($this->connectionName);
-                $connection->acquire($acquiredBy);
-                $this->inUse[] = $connection;
-                $this->created++;
-                $this->acquired++;
-                
-                Log::info("New connection created for pool", [
-                    'connection_name' => $this->connectionName,
-                    'acquired_by' => $acquiredBy,
-                    'total_created' => $this->created
-                ]);
-                
+            // Verifica che la connessione sia ancora valida
+            if ($this->isConnectionValid($connection)) {
                 return $connection;
-            } catch (\Exception $e) {
-                $this->failed++;
-                Log::error("Failed to create new connection", [
-                    'connection_name' => $this->connectionName,
-                    'error' => $e->getMessage()
-                ]);
-                throw new \Exception("Connection pool esaurito: " . $e->getMessage());
+            } else {
+                // Rimuovi la connessione non valida
+                $this->removeFromInUse($connection);
             }
         }
 
-        $this->failed++;
-        throw new \Exception("Connection pool esaurito. Max size: {$this->maxSize}");
+        // Crea una nuova connessione se siamo sotto il limite
+        if (count($this->inUse) < $this->maxSize) {
+            $connection = $this->createConnection();
+            $this->inUse[] = $connection;
+            return $connection;
+        }
+
+        throw new Exception('Connection pool esaurito. Max size: ' . $this->maxSize);
     }
 
-    public function release(DatabaseConnection $connection): void
+    public function release(PDO $connection): void
     {
         $key = array_search($connection, $this->inUse, true);
         if ($key !== false) {
             unset($this->inUse[$key]);
-            $this->inUse = array_values($this->inUse); // Reindex array
+            $this->inUse = array_values($this->inUse); // Re-index array
             
-            $connection->release();
-            $this->available[] = $connection;
-            $this->released++;
+            // Reset della connessione
+            $this->resetConnection($connection);
             
-            Log::debug("Connection released to pool", [
-                'connection_name' => $this->connectionName,
-                'available' => count($this->available),
-                'in_use' => count($this->inUse)
-            ]);
+            // Verifica che la connessione sia ancora valida
+            if ($this->isConnectionValid($connection)) {
+                $this->available[] = $connection;
+            } else {
+                Log::warning('Connessione non valida rimossa dal pool');
+            }
+        }
+    }
+
+    private function createConnection(): PDO
+    {
+        $attempts = 0;
+        $lastException = null;
+
+        while ($attempts < $this->retryAttempts) {
+            try {
+                $dsn = $this->buildDsn();
+                
+                $pdo = new PDO(
+                    $dsn,
+                    $this->config['username'],
+                    $this->config['password'],
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_TIMEOUT => $this->timeout,
+                        PDO::ATTR_PERSISTENT => false, // Non persistente per il pool
+                    ]
+                );
+
+                Log::info("Nuova connessione creata per pool '{$this->connectionName}'");
+                return $pdo;
+
+            } catch (PDOException $e) {
+                $lastException = $e;
+                $attempts++;
+                
+                if ($attempts < $this->retryAttempts) {
+                    Log::warning("Tentativo {$attempts} fallito per connessione pool: " . $e->getMessage());
+                    usleep(100000); // 100ms di attesa
+                }
+            }
+        }
+
+        throw new Exception("Impossibile creare connessione dopo {$this->retryAttempts} tentativi: " . $lastException->getMessage());
+    }
+
+    private function buildDsn(): string
+    {
+        $host = $this->config['host'];
+        $port = $this->config['port'] ?? 3306;
+        $database = $this->config['database'];
+        $charset = $this->config['charset'] ?? 'utf8mb4';
+
+        return "mysql:host={$host};port={$port};dbname={$database};charset={$charset}";
+    }
+
+    private function resetConnection(PDO $connection): void
+    {
+        try {
+            // Chiudi eventuali transazioni aperte
+            if ($connection->inTransaction()) {
+                $connection->rollBack();
+            }
+            
+            // Reset di eventuali prepared statements
+            $connection->exec("SET SESSION sql_mode = ''");
+            
+            // Reset di eventuali variabili di sessione
+            $connection->exec("SET SESSION autocommit = 1");
+            
+        } catch (PDOException $e) {
+            Log::warning("Errore durante reset connessione: " . $e->getMessage());
+        }
+    }
+
+    private function isConnectionValid(PDO $connection): bool
+    {
+        try {
+            $connection->query('SELECT 1');
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    private function removeFromInUse(PDO $connection): void
+    {
+        $key = array_search($connection, $this->inUse, true);
+        if ($key !== false) {
+            unset($this->inUse[$key]);
+            $this->inUse = array_values($this->inUse);
         }
     }
 
     public function getStats(): array
     {
         return [
-            'connection_name' => $this->connectionName,
-            'max_size' => $this->maxSize,
             'available' => count($this->available),
             'in_use' => count($this->inUse),
             'total' => count($this->available) + count($this->inUse),
-            'created' => $this->created,
-            'acquired' => $this->acquired,
-            'released' => $this->released,
-            'failed' => $this->failed,
-            'utilization' => $this->getUtilization(),
+            'max_size' => $this->maxSize,
+            'connection_name' => $this->connectionName,
+            'utilization_percentage' => $this->maxSize > 0 ? round((count($this->inUse) / $this->maxSize) * 100, 2) : 0
         ];
     }
 
-    public function getUtilization(): float
+    public function getHealthStatus(): array
     {
-        $total = count($this->available) + count($this->inUse);
-        if ($total === 0) {
-            return 0.0;
-        }
+        $stats = $this->getStats();
         
-        return (count($this->inUse) / $total) * 100;
-    }
-
-    public function healthCheck(): array
-    {
-        $healthy = 0;
-        $unhealthy = 0;
-        $total = count($this->available) + count($this->inUse);
-
-        foreach ($this->available as $connection) {
-            if ($connection->ping()) {
-                $healthy++;
-            } else {
-                $unhealthy++;
-            }
+        $health = 'healthy';
+        if ($stats['utilization_percentage'] > 90) {
+            $health = 'warning';
         }
-
-        foreach ($this->inUse as $connection) {
-            if ($connection->ping()) {
-                $healthy++;
-            } else {
-                $unhealthy++;
-            }
+        if ($stats['utilization_percentage'] >= 100) {
+            $health = 'critical';
         }
 
         return [
-            'total_connections' => $total,
-            'healthy' => $healthy,
-            'unhealthy' => $unhealthy,
-            'health_percentage' => $total > 0 ? ($healthy / $total) * 100 : 0,
-            'status' => $unhealthy === 0 ? 'healthy' : ($healthy > $unhealthy ? 'degraded' : 'unhealthy')
+            'status' => $health,
+            'stats' => $stats,
+            'timestamp' => now()->toISOString()
         ];
-    }
-
-    public function cleanup(): int
-    {
-        $removed = 0;
-        
-        // Rimuovi connessioni non sane dalla piscina disponibile
-        foreach ($this->available as $key => $connection) {
-            if (!$connection->ping()) {
-                unset($this->available[$key]);
-                $removed++;
-            }
-        }
-        
-        $this->available = array_values($this->available); // Reindex array
-        
-        Log::info("Pool cleanup completed", [
-            'connection_name' => $this->connectionName,
-            'removed_connections' => $removed,
-            'remaining_available' => count($this->available)
-        ]);
-        
-        return $removed;
     }
 
     public function reset(): void
     {
-        // Reset di tutte le connessioni disponibili
+        // Chiudi tutte le connessioni
         foreach ($this->available as $connection) {
-            $connection->reset();
+            $connection = null;
+        }
+        foreach ($this->inUse as $connection) {
+            $connection = null;
         }
         
-        Log::info("Pool reset completed", [
-            'connection_name' => $this->connectionName,
-            'reset_connections' => count($this->available)
-        ]);
-    }
-
-    public function getConnectionName(): string
-    {
-        return $this->connectionName;
-    }
-
-    public function getMaxSize(): int
-    {
-        return $this->maxSize;
-    }
-
-    public function setMaxSize(int $maxSize): void
-    {
-        $this->maxSize = $maxSize;
+        $this->available = [];
+        $this->inUse = [];
         
-        Log::info("Pool max size updated", [
-            'connection_name' => $this->connectionName,
-            'new_max_size' => $maxSize
-        ]);
+        Log::info("Pool di connessioni '{$this->connectionName}' resettato");
     }
 
     public function __destruct()
     {
-        // Chiudi tutte le connessioni
-        foreach ($this->available as $connection) {
-            unset($connection);
-        }
-        
-        foreach ($this->inUse as $connection) {
-            unset($connection);
-        }
+        $this->reset();
     }
 }

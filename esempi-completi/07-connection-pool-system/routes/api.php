@@ -1,31 +1,32 @@
 <?php
 
 use App\Http\Controllers\PoolController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+/*
+|--------------------------------------------------------------------------
+| API Routes per Connection Pool
+|--------------------------------------------------------------------------
+|
+| Route per monitoraggio e gestione dei pool di connessioni
+|
+*/
 
-// Route per gestione pool
-Route::prefix('pools')->group(function () {
-    Route::get('/', [PoolController::class, 'index']);
-    Route::get('/{poolName}/stats', [PoolController::class, 'getStats']);
-    Route::post('/{poolName}/acquire', [PoolController::class, 'acquire']);
-    Route::post('/{poolName}/release', [PoolController::class, 'release']);
-    Route::get('/{poolName}/health', [PoolController::class, 'healthCheck']);
-    Route::post('/{poolName}/cleanup', [PoolController::class, 'cleanup']);
-    Route::post('/{poolName}/reset', [PoolController::class, 'reset']);
-    Route::post('/{poolName}/stress-test', [PoolController::class, 'stressTest']);
+Route::prefix('pool')->group(function () {
+    
+    // Statistiche
+    Route::get('/stats', [PoolController::class, 'getStats']);
+    Route::get('/stats/{poolName}', [PoolController::class, 'getPoolStats']);
+    Route::get('/global-stats', [PoolController::class, 'getGlobalStats']);
+    
+    // Stato di salute
+    Route::get('/health', [PoolController::class, 'getHealth']);
+    Route::get('/health/{poolName}', [PoolController::class, 'getPoolHealth']);
+    
+    // Gestione pool
+    Route::get('/list', [PoolController::class, 'getPoolList']);
+    Route::post('/create', [PoolController::class, 'createPool']);
+    Route::post('/reset/{poolName}', [PoolController::class, 'resetPool']);
+    Route::post('/reset-all', [PoolController::class, 'resetAllPools']);
+    
 });
-
-// Route per test specifici
-Route::prefix('test')->group(function () {
-    Route::post('/database-pool', [PoolController::class, 'testDatabasePool']);
-    Route::post('/file-pool', [PoolController::class, 'testFilePool']);
-    Route::post('/cache-pool', [PoolController::class, 'testCachePool']);
-});
-
-// Route per health check globale
-Route::get('/health', [PoolController::class, 'healthCheck']);

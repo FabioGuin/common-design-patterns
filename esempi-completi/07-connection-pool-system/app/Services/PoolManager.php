@@ -7,258 +7,143 @@ use Illuminate\Support\Facades\Log;
 class PoolManager
 {
     private array $pools = [];
-    private array $poolStats = [];
+    private static ?PoolManager $instance = null;
 
-    public function addPool(string $name, $pool): void
+    private function __construct()
     {
+        // Singleton pattern per gestire un solo manager
+    }
+
+    public static function getInstance(): PoolManager
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    public function createPool(
+        string $name,
+        string $connectionName = 'mysql',
+        int $maxSize = 10,
+        int $timeout = 30,
+        int $retryAttempts = 3
+    ): ConnectionPool {
+        if (isset($this->pools[$name])) {
+            throw new \Exception("Pool '{$name}' già esistente");
+        }
+
+        $pool = new ConnectionPool($connectionName, $maxSize, $timeout, $retryAttempts);
         $this->pools[$name] = $pool;
-        $this->poolStats[$name] = [
-            'created_at' => time(),
-            'last_used' => null,
-            'total_requests' => 0,
-            'successful_requests' => 0,
-            'failed_requests' => 0,
-        ];
         
-        Log::info("Pool added to manager", [
-            'pool_name' => $name,
-            'pool_type' => get_class($pool)
-        ]);
+        Log::info("Pool '{$name}' creato con connessione '{$connectionName}'");
+        
+        return $pool;
+    }
+
+    public function getPool(string $name): ConnectionPool
+    {
+        if (!isset($this->pools[$name])) {
+            throw new \Exception("Pool '{$name}' non trovato");
+        }
+
+        return $this->pools[$name];
     }
 
     public function removePool(string $name): void
     {
         if (isset($this->pools[$name])) {
+            $this->pools[$name]->reset();
             unset($this->pools[$name]);
-            unset($this->poolStats[$name]);
-            
-            Log::info("Pool removed from manager", [
-                'pool_name' => $name
-            ]);
+            Log::info("Pool '{$name}' rimosso");
         }
     }
 
-    public function acquire(string $poolName, string $acquiredBy = null)
+    public function getAllPools(): array
     {
-        if (!isset($this->pools[$poolName])) {
-            throw new \Exception("Pool '{$poolName}' not found");
-        }
-
-        $this->poolStats[$poolName]['total_requests']++;
-        $this->poolStats[$poolName]['last_used'] = time();
-
-        try {
-            $resource = $this->pools[$poolName]->acquire($acquiredBy);
-            $this->poolStats[$poolName]['successful_requests']++;
-            
-            Log::debug("Resource acquired from pool manager", [
-                'pool_name' => $poolName,
-                'acquired_by' => $acquiredBy
-            ]);
-            
-            return $resource;
-        } catch (\Exception $e) {
-            $this->poolStats[$poolName]['failed_requests']++;
-            
-            Log::error("Failed to acquire resource from pool", [
-                'pool_name' => $poolName,
-                'acquired_by' => $acquiredBy,
-                'error' => $e->getMessage()
-            ]);
-            
-            throw $e;
-        }
-    }
-
-    public function release(string $poolName, $resource): void
-    {
-        if (!isset($this->pools[$poolName])) {
-            throw new \Exception("Pool '{$poolName}' not found");
-        }
-
-        try {
-            $this->pools[$poolName]->release($resource);
-            
-            Log::debug("Resource released to pool manager", [
-                'pool_name' => $poolName
-            ]);
-        } catch (\Exception $e) {
-            Log::error("Failed to release resource to pool", [
-                'pool_name' => $poolName,
-                'error' => $e->getMessage()
-            ]);
-            
-            throw $e;
-        }
-    }
-
-    public function getPoolStats(string $poolName): array
-    {
-        if (!isset($this->pools[$poolName])) {
-            throw new \Exception("Pool '{$poolName}' not found");
-        }
-
-        $poolStats = $this->pools[$poolName]->getStats();
-        $managerStats = $this->poolStats[$poolName];
-        
-        return array_merge($poolStats, [
-            'manager_stats' => $managerStats,
-            'success_rate' => $this->getSuccessRate($poolName),
-            'uptime' => time() - $managerStats['created_at'],
-        ]);
+        return $this->pools;
     }
 
     public function getAllStats(): array
     {
         $stats = [];
-        
-        foreach (array_keys($this->pools) as $poolName) {
-            $stats[$poolName] = $this->getPoolStats($poolName);
+        foreach ($this->pools as $name => $pool) {
+            $stats[$name] = $pool->getStats();
         }
-        
         return $stats;
     }
 
-    public function getSuccessRate(string $poolName): float
+    public function getAllHealthStatus(): array
     {
-        if (!isset($this->poolStats[$poolName])) {
-            return 0.0;
-        }
-        
-        $stats = $this->poolStats[$poolName];
-        $total = $stats['total_requests'];
-        
-        if ($total === 0) {
-            return 0.0;
-        }
-        
-        return ($stats['successful_requests'] / $total) * 100;
-    }
-
-    public function healthCheck(string $poolName = null): array
-    {
-        if ($poolName) {
-            if (!isset($this->pools[$poolName])) {
-                throw new \Exception("Pool '{$poolName}' not found");
-            }
-            
-            return [
-                $poolName => $this->pools[$poolName]->healthCheck()
-            ];
-        }
-        
         $health = [];
         foreach ($this->pools as $name => $pool) {
-            $health[$name] = $pool->healthCheck();
+            $health[$name] = $pool->getHealthStatus();
         }
-        
         return $health;
     }
 
-    public function cleanup(string $poolName = null): array
+    public function resetAllPools(): void
     {
-        if ($poolName) {
-            if (!isset($this->pools[$poolName])) {
-                throw new \Exception("Pool '{$poolName}' not found");
-            }
-            
-            $removed = $this->pools[$poolName]->cleanup();
-            
-            Log::info("Pool cleanup completed", [
-                'pool_name' => $poolName,
-                'removed_resources' => $removed
-            ]);
-            
-            return [$poolName => $removed];
-        }
-        
-        $results = [];
         foreach ($this->pools as $name => $pool) {
-            $results[$name] = $pool->cleanup();
+            $pool->reset();
         }
-        
-        Log::info("All pools cleanup completed", [
-            'results' => $results
-        ]);
-        
-        return $results;
+        Log::info("Tutti i pool sono stati resettati");
     }
 
-    public function reset(string $poolName = null): void
+    public function getGlobalStats(): array
     {
-        if ($poolName) {
-            if (!isset($this->pools[$poolName])) {
-                throw new \Exception("Pool '{$poolName}' not found");
+        $totalAvailable = 0;
+        $totalInUse = 0;
+        $totalMaxSize = 0;
+        $poolCount = count($this->pools);
+
+        foreach ($this->pools as $pool) {
+            $stats = $pool->getStats();
+            $totalAvailable += $stats['available'];
+            $totalInUse += $stats['in_use'];
+            $totalMaxSize += $stats['max_size'];
+        }
+
+        return [
+            'total_pools' => $poolCount,
+            'total_available' => $totalAvailable,
+            'total_in_use' => $totalInUse,
+            'total_max_size' => $totalMaxSize,
+            'global_utilization_percentage' => $totalMaxSize > 0 ? round(($totalInUse / $totalMaxSize) * 100, 2) : 0,
+            'timestamp' => now()->toISOString()
+        ];
+    }
+
+    public function getGlobalHealthStatus(): array
+    {
+        $globalStats = $this->getGlobalStats();
+        $poolHealths = $this->getAllHealthStatus();
+        
+        $health = 'healthy';
+        $criticalPools = 0;
+        $warningPools = 0;
+        
+        foreach ($poolHealths as $poolHealth) {
+            if ($poolHealth['status'] === 'critical') {
+                $criticalPools++;
+            } elseif ($poolHealth['status'] === 'warning') {
+                $warningPools++;
             }
-            
-            $this->pools[$poolName]->reset();
-            
-            Log::info("Pool reset completed", [
-                'pool_name' => $poolName
-            ]);
-        } else {
-            foreach ($this->pools as $name => $pool) {
-                $pool->reset();
-            }
-            
-            Log::info("All pools reset completed");
-        }
-    }
-
-    public function getPoolNames(): array
-    {
-        return array_keys($this->pools);
-    }
-
-    public function hasPool(string $poolName): bool
-    {
-        return isset($this->pools[$poolName]);
-    }
-
-    public function getPool(string $poolName)
-    {
-        if (!isset($this->pools[$poolName])) {
-            throw new \Exception("Pool '{$poolName}' not found");
         }
         
-        return $this->pools[$poolName];
-    }
-
-    public function getTotalPools(): int
-    {
-        return count($this->pools);
-    }
-
-    public function getTotalResources(): int
-    {
-        $total = 0;
-        foreach ($this->pools as $pool) {
-            $stats = $pool->getStats();
-            $total += $stats['total'];
+        if ($criticalPools > 0) {
+            $health = 'critical';
+        } elseif ($warningPools > 0) {
+            $health = 'warning';
         }
         
-        return $total;
-    }
-
-    public function getTotalInUse(): int
-    {
-        $total = 0;
-        foreach ($this->pools as $pool) {
-            $stats = $pool->getStats();
-            $total += $stats['in_use'];
-        }
-        
-        return $total;
-    }
-
-    public function getTotalAvailable(): int
-    {
-        $total = 0;
-        foreach ($this->pools as $pool) {
-            $stats = $pool->getStats();
-            $total += $stats['available'];
-        }
-        
-        return $total;
+        return [
+            'status' => $health,
+            'global_stats' => $globalStats,
+            'pool_healths' => $poolHealths,
+            'critical_pools' => $criticalPools,
+            'warning_pools' => $warningPools,
+            'timestamp' => now()->toISOString()
+        ];
     }
 }
