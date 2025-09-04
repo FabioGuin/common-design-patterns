@@ -32,19 +32,19 @@ I pattern creazionali ti aiutano a creare oggetti in modo più intelligente. Inv
 - **File**: `04-builder/builder-pattern.md`
 - **Cosa fa**: Costruisce oggetti complessi passo dopo passo
 - **Dove lo usi in Laravel**: Query Builder, Eloquent, costruzione email
-- **Esempio Pratico**: [User Management Builder](../../esempi-completi/02-factory-user-management/)
+- **Esempio Pratico**: [User Builder System](../../esempi-completi/05-user-builder-system/)
 
 ### Prototype
 - **File**: `05-prototype/prototype-pattern.md`
 - **Cosa fa**: Crea oggetti clonando un modello esistente
 - **Dove lo usi in Laravel**: Sistema di template, clonazione documenti
-- **Esempio Pratico**: [Document Template System](../../esempi-completi/03-repository-pattern/)
+- **Esempio Pratico**: [Document Prototype System](../../esempi-completi/06-document-prototype-system/)
 
 ### Object Pool
 - **File**: `06-object-pool/object-pool-pattern.md`
 - **Cosa fa**: Riutilizza oggetti costosi invece di crearli ogni volta
 - **Dove lo usi in Laravel**: Pool di connessioni, cache pools
-- **Esempio Pratico**: [Connection Pool System](../../esempi-completi/03-repository-pattern/)
+- **Esempio Pratico**: [Connection Pool System](../../esempi-completi/07-connection-pool-system/)
 
 ## Link utili
 - [Torna all'indice principale](../../README.md)

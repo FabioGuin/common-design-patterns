@@ -9,10 +9,13 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 - [03. Abstract Factory Payment System](#03-abstract-factory-payment-system)
 - [04. Repository Pattern](#04-repository-pattern)
 - [04. Service Layer](#04-service-layer)
-- [05. AI Chat System](#05-ai-chat-system)
-- [06. Event Sourcing](#06-event-sourcing)
-- [07. Microservices API](#07-microservices-api)
-- [08. CQRS Implementation](#08-cqrs-implementation)
+- [05. User Builder System](#05-user-builder-system)
+- [06. Document Prototype System](#06-document-prototype-system)
+- [07. Connection Pool System](#07-connection-pool-system)
+- [08. AI Chat System](#08-ai-chat-system)
+- [09. Event Sourcing](#09-event-sourcing)
+- [10. Microservices API](#10-microservices-api)
+- [11. CQRS Implementation](#11-cqrs-implementation)
 
 ---
 
@@ -99,7 +102,58 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ---
 
-### 05. AI Chat System
+### 05. User Builder System
+
+**Pattern**: Builder  
+**Implementazione**: Sistema di costruzione utenti complessi  
+**Utilizzo**: User registration, Profile management, Role assignment
+
+**Caratteristiche**:
+- Costruzione step-by-step di utenti con profili e impostazioni
+- Validazione durante la costruzione
+- Gestione automatica di relazioni (profili, ruoli, impostazioni)
+- API REST completa per gestione utenti
+- Test completi con Pest
+
+**Link**: [User Builder System](esempi-completi/05-user-builder-system/README.md)
+
+---
+
+### 06. Document Prototype System
+
+**Pattern**: Prototype  
+**Implementazione**: Sistema di clonazione documenti e template  
+**Utilizzo**: Document management, Template system, Version control
+
+**Caratteristiche**:
+- Clonazione profonda di documenti complessi
+- Sistema di template riutilizzabili
+- Gestione di metadati e impostazioni
+- Sistema di versioning automatico
+- API REST per clonazione e gestione documenti
+
+**Link**: [Document Prototype System](esempi-completi/06-document-prototype-system/README.md)
+
+---
+
+### 07. Connection Pool System
+
+**Pattern**: Object Pool  
+**Implementazione**: Gestione pool di connessioni e risorse  
+**Utilizzo**: Database connections, File handling, Cache management
+
+**Caratteristiche**:
+- Pool di connessioni database, file e cache
+- Gestione automatica del ciclo di vita
+- Health check e monitoraggio
+- Statistiche dettagliate di utilizzo
+- PoolManager per gestire pool multipli
+
+**Link**: [Connection Pool System](esempi-completi/07-connection-pool-system/README.md)
+
+---
+
+### 08. AI Chat System
 
 **Pattern**: AI Gateway, Observer  
 **Implementazione**: Sistema chat con intelligenza artificiale  
@@ -115,7 +169,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ---
 
-### 06. Event Sourcing
+### 09. Event Sourcing
 
 **Pattern**: Event Sourcing, CQRS  
 **Implementazione**: Tracciamento eventi applicazione  
@@ -131,7 +185,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ---
 
-### 07. Microservices API
+### 10. Microservices API
 
 **Pattern**: API Gateway, Circuit Breaker  
 **Implementazione**: Architettura microservizi  
@@ -147,7 +201,7 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ---
 
-### 08. CQRS Implementation
+### 11. CQRS Implementation
 
 **Pattern**: CQRS, Event Sourcing  
 **Implementazione**: Separazione comandi e query  
