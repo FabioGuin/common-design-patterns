@@ -3,7 +3,7 @@
 
 ## Indice
 - [Abstract](#abstract)
-- [Problema che risolve](#problema-che-risolve)
+- [Contesto e Motivazione](#contesto-e-motivazione)
 - [Soluzione proposta](#soluzione-proposta)
 - [Quando usarlo](#quando-usarlo)
 - [Vantaggi e Svantaggi](#vantaggi-e-svantaggi)
@@ -15,7 +15,7 @@
 ## Abstract
 Il Singleton Pattern garantisce che una classe abbia una sola istanza e fornisce un punto di accesso globale a questa istanza. È particolarmente utile per gestire risorse condivise come connessioni al database, configurazioni dell'applicazione o servizi di logging.
 
-## Problema che risolve
+## Contesto e Motivazione
 - **Contesto tipico**: Quando hai bisogno di una sola istanza di una classe per tutta l'applicazione, come una connessione al database o un logger
 - **Sintomi di un design non ottimale**: 
   - Creazione di multiple istanze della stessa risorsa
