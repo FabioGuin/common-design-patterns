@@ -9,10 +9,13 @@ Il Factory Method ti permette di creare oggetti senza sapere esattamente quale t
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
+- [Schema visivo](#schema-visivo)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
 - [Esempi completi](#esempi-completi)
+- [Pattern correlati](#pattern-correlati)
+- [Risorse utili](#risorse-utili)
 
 ## Perché ti serve
 Immagina di dover creare diversi tipi di documenti (PDF, Word, Excel) nel tuo sistema. Senza Factory Method, finiresti con:
@@ -32,6 +35,21 @@ Il meccanismo è semplice:
 4. **ConcreteProduct**: Implementazione concreta dell'oggetto
 
 Il client usa solo il Creator, senza sapere quale ConcreteProduct viene effettivamente creato.
+
+## Schema visivo
+```
+Scenario 1 (PDF Creator):
+Client → PDFCreator → createDocument() → PDFDocument
+                        ↓
+                   Restituisce PDF
+
+Scenario 2 (Word Creator):
+Client → WordCreator → createDocument() → WordDocument
+                        ↓
+                   Restituisce Word
+```
+
+*Il diagramma mostra come lo stesso client può usare diversi creator per ottenere prodotti diversi, senza sapere quale tipo specifico viene creato.*
 
 ## Quando usarlo
 Usa il Factory Method quando:
@@ -198,3 +216,15 @@ L'esempio include:
 - Controller con dependency injection
 - Test unitari per i factory methods
 - API RESTful per gestire gli utenti
+
+## Pattern correlati
+- **Abstract Factory**: Se hai bisogno di creare famiglie di oggetti correlati
+- **Builder**: Per costruire oggetti complessi passo dopo passo
+- **Prototype**: Per clonare oggetti esistenti invece di crearli da zero
+- **Simple Factory**: Versione semplificata senza ereditarietà
+
+## Risorse utili
+- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four
+- [Refactoring.Guru - Factory Method](https://refactoring.guru/design-patterns/factory-method) - Spiegazione visuale con esempi
+- [Laravel Model Factories](https://laravel.com/docs/eloquent-factories) - Come Laravel usa le factory
+- [Factory Pattern in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP

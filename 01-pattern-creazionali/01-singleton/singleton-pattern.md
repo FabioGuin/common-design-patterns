@@ -9,10 +9,13 @@ Il Singleton ti assicura che una classe abbia sempre e solo una istanza. Quando 
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
+- [Schema visivo](#schema-visivo)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
 - [Esempi completi](#esempi-completi)
+- [Pattern correlati](#pattern-correlati)
+- [Risorse utili](#risorse-utili)
 
 ## Perché ti serve
 Immagina di avere un logger che deve scrivere su file. Se crei una nuova istanza del logger ogni volta che ne hai bisogno, finirai con:
@@ -30,6 +33,26 @@ Il trucco è semplice:
 3. La prima volta che chiami il metodo, crea l'istanza
 4. Le volte successive, ti restituisce sempre la stessa
 
+## Schema visivo
+```
+Prima chiamata:
+Client → getInstance() → Singleton
+                        ↓
+                   $instance = null
+                        ↓
+                   Crea nuova istanza
+                        ↓
+                   Restituisce istanza
+
+Chiamate successive:
+Client → getInstance() → Singleton
+                        ↓
+                   $instance ≠ null
+                        ↓
+                   Restituisce stessa istanza
+```
+
+*Il diagramma mostra la differenza tra la prima chiamata (crea l'istanza) e le chiamate successive (restituisce sempre la stessa).*
 
 ## Quando usarlo
 Usa il Singleton quando:
@@ -42,6 +65,8 @@ Usa il Singleton quando:
 - Lavori con applicazioni multi-threaded (può creare problemi)
 - Rende il codice difficile da testare
 - L'oggetto cambia stato troppo spesso
+- Stai usando il Singleton solo per evitare di passare parametri
+- Hai più di una responsabilità nella classe Singleton
 
 ## Pro e contro
 **I vantaggi:**
@@ -152,3 +177,15 @@ L'esempio include:
 - Service Provider personalizzato
 - Livelli di log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 - API per leggere e gestire i log
+
+## Pattern correlati
+- **Factory Method**: Se hai bisogno di creare istanze diverse ma sempre una per tipo
+- **Object Pool**: Per riutilizzare oggetti costosi invece di crearne sempre uno solo
+- **Service Locator**: Alternativa al Singleton per l'accesso globale, ma più flessibile
+- **Dependency Injection**: Approccio moderno che evita i problemi del Singleton
+
+## Risorse utili
+- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four
+- [Refactoring.Guru - Singleton](https://refactoring.guru/design-patterns/singleton) - Spiegazione visuale con esempi
+- [Laravel Service Container](https://laravel.com/docs/container) - Come Laravel gestisce le dipendenze
+- [Singleton Anti-Pattern](https://stackoverflow.com/questions/137975/what-is-so-bad-about-singletons) - Discussione sui problemi del Singleton
