@@ -16,6 +16,7 @@
 
 ### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+- [Troubleshooting](#troubleshooting)
 
 ### Implementazione Pratica
 - [Esempi di codice](#esempi-di-codice)
@@ -51,24 +52,24 @@ Il trucco è semplice:
 ## Schema visivo
 
 ```
-Prima chiamata:
+Flusso di creazione:
 Client → getInstance() → Singleton
                         ↓
-                   $instance = null
+                   $instance = null?
                         ↓
-                   Crea nuova istanza
+                   SÌ → Crea nuova istanza
                         ↓
                    Restituisce istanza
 
-Chiamate successive:
+Flusso di riutilizzo:
 Client → getInstance() → Singleton
                         ↓
-                   $instance ≠ null
+                   $instance = null?
                         ↓
-                   Restituisce stessa istanza
+                   NO → Restituisce istanza esistente
 ```
 
-*Il diagramma mostra la differenza tra la prima chiamata (crea l'istanza) e le chiamate successive (restituisce sempre la stessa).*
+*Il diagramma mostra come il Singleton controlla se l'istanza esiste già e la crea solo se necessario.*
 
 ## Quando usarlo
 
@@ -102,6 +103,56 @@ Usa il Singleton quando:
 - Problemi con applicazioni multi-threaded
 - Crea accoppiamento forte
 
+## Esempi di codice
+
+### Pseudocodice
+```
+// Struttura base del Singleton
+class Singleton {
+    private static instance = null
+    
+    private constructor() {
+        // Inizializzazione privata
+        // Solo questa classe può creare istanze
+    }
+    
+    public static getInstance() {
+        if (instance == null) {
+            instance = new Singleton()
+        }
+        return instance
+    }
+    
+    private clone() {
+        // Impedisce la clonazione
+    }
+    
+    private wakeup() {
+        // Impedisce la deserializzazione
+    }
+}
+
+// Utilizzo
+oggetto1 = Singleton.getInstance()
+oggetto2 = Singleton.getInstance()
+// oggetto1 e oggetto2 sono la stessa istanza
+```
+
+## Esempi completi
+
+Se vuoi vedere un esempio completo e funzionante, guarda:
+
+- **[Logger Singleton Completo](./esempio-completo/)** - Un sistema di logging completo con tutto quello che ti serve
+
+L'esempio include:
+- Logger service singleton funzionante
+- Salvataggio dei log su file
+- Integrazione con il Service Container di Laravel
+- Controller e routes per testare
+- Service Provider personalizzato
+- Livelli di log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+- API per leggere e gestire i log
+
 ## Pattern correlati
 
 - **Factory Method**: Se hai bisogno di creare istanze diverse ma sempre una per tipo
@@ -126,111 +177,57 @@ Usa il Singleton quando:
 - **Singleton thread-unsafe**: In applicazioni multi-threaded, implementa la sincronizzazione correttamente
 - **Singleton con troppe responsabilità**: Non mettere troppa logica in una classe Singleton
 
-## Esempi di codice
+## Troubleshooting
 
-### Esempio base
-```php
-<?php
+### Problemi comuni
+- **"Cannot instantiate class"**: Assicurati che il costruttore sia privato e che usi `getInstance()`
+- **"Multiple instances created"**: Verifica che `$instance` sia statico e controllato correttamente
+- **"State not shared"**: Controlla che stai usando sempre la stessa istanza tramite `getInstance()`
+- **"Memory leak"**: Se l'istanza non viene mai rilasciata, considera se il Singleton è davvero necessario
 
-class DatabaseConnection
-{
-    private static ?DatabaseConnection $instance = null;
-    private string $connectionString;
+### Debug e monitoring
+- **Log delle istanze**: Aggiungi logging per tracciare quando viene creata l'istanza
+- **Controllo stato**: Monitora lo stato dell'istanza per verificare che sia condivisa correttamente
+- **Memory usage**: Traccia l'uso di memoria per verificare che non ci siano leak
+- **Thread safety**: In ambienti multi-thread, monitora race conditions
 
-    // Costruttore privato per impedire istanziazione diretta
-    private function __construct(string $connectionString)
-    {
-        $this->connectionString = $connectionString;
-    }
-
-    // Metodo per ottenere l'istanza singleton
-    public static function getInstance(string $connectionString = null): DatabaseConnection
-    {
-        if (self::$instance === null) {
-            if ($connectionString === null) {
-                throw new InvalidArgumentException("Connection string required for first initialization");
-            }
-            self::$instance = new self($connectionString);
-        }
-        return self::$instance;
-    }
-
-    // Impedisce la clonazione e deserializzazione
-    private function __clone() {}
-    public function __wakeup() { throw new Exception("Cannot unserialize singleton"); }
-}
-
-// Utilizzo
-$db1 = DatabaseConnection::getInstance("mysql://localhost:3306/mydb");
-$db2 = DatabaseConnection::getInstance(); // Restituisce la stessa istanza
-var_dump($db1 === $db2); // true
-```
-
-### Esempio per Laravel
-```php
-<?php
-
-namespace App\Services;
-
-class LoggerService
-{
-    private static ?LoggerService $instance = null;
-    private array $logs = [];
-
-    private function __construct() {}
-
-    public static function getInstance(): LoggerService
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-    public function log(string $message): void
-    {
-        $this->logs[] = $message;
-    }
-
-    public function getLogs(): array
-    {
-        return $this->logs;
-    }
-
-    private function __clone() {}
-    public function __wakeup() { throw new \Exception("Cannot unserialize singleton"); }
-}
-
-// Come usarlo in Laravel
-$logger = LoggerService::getInstance();
-$logger->log('User logged in');
-```
-
-## Esempi completi
-
-Se vuoi vedere un esempio completo e funzionante, guarda:
-
-- **[Logger Singleton Completo](./esempio-completo/)** - Un sistema di logging completo con tutto quello che ti serve
-
-L'esempio include:
-- Logger service singleton funzionante
-- Salvataggio dei log su file
-- Integrazione con il Service Container di Laravel
-- Controller e routes per testare
-- Service Provider personalizzato
-- Livelli di log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-- API per leggere e gestire i log
+### Metriche utili
+- **Numero di chiamate a getInstance()**: Per capire quanto viene usato
+- **Tempo di creazione istanza**: Per verificare che il lazy loading funzioni
+- **Memoria utilizzata**: Per controllare che non ci siano leak
+- **Errori di istanziazione**: Per identificare usi scorretti del pattern
 
 ## Performance e considerazioni
 
-- **Impatto memoria**: Una sola istanza in memoria per tutta l'applicazione - molto efficiente
-- **Impatto CPU**: Lazy loading significa che l'oggetto si crea solo quando serve
-- **Scalabilità**: Può diventare un collo di bottiglia in applicazioni multi-threaded ad alto carico
-- **Colli di bottiglia**: Se l'istanza singleton ha operazioni costose, può rallentare tutta l'applicazione
+### Impatto sulle risorse
+- **Memoria**: Una sola istanza in memoria per tutta l'applicazione - molto efficiente (tipicamente 1-10KB)
+- **CPU**: Lazy loading significa che l'oggetto si crea solo quando serve - overhead minimo
+- **I/O**: Se il Singleton gestisce file o database, le operazioni I/O sono condivise e ottimizzate
+
+### Scalabilità
+- **Carico basso**: Perfetto, nessun overhead aggiuntivo
+- **Carico medio**: Funziona bene, ma può diventare un collo di bottiglia se l'istanza ha operazioni costose
+- **Carico alto**: Può limitare la scalabilità orizzontale se l'istanza ha stato condiviso
+
+### Colli di bottiglia
+- **Operazioni costose**: Se l'istanza singleton ha operazioni lente, rallenta tutta l'applicazione
+- **Thread contention**: In ambienti multi-thread, l'accesso concorrente può creare colli di bottiglia
+- **Memory pressure**: Se l'istanza cresce troppo, può causare problemi di memoria
+- **Testing**: Il singleton può rendere i test più lenti e complessi
 
 ## Risorse utili
 
+### Documentazione ufficiale
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru - Singleton](https://refactoring.guru/design-patterns/singleton) - Spiegazione visuale con esempi
+
+### Laravel specifico
 - [Laravel Service Container](https://laravel.com/docs/container) - Come Laravel gestisce le dipendenze
+- [Laravel Service Providers](https://laravel.com/docs/providers) - Per registrare servizi singleton
+
+### Esempi e tutorial
+- [Singleton Pattern in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP
 - [Singleton Anti-Pattern](https://stackoverflow.com/questions/137975/what-is-so-bad-about-singletons) - Discussione sui problemi del Singleton
+
+### Strumenti di supporto
+- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step

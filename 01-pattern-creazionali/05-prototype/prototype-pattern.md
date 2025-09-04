@@ -16,6 +16,7 @@
 
 ### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+- [Troubleshooting](#troubleshooting)
 
 ### Implementazione Pratica
 - [Esempi di codice](#esempi-di-codice)
@@ -27,279 +28,230 @@
 
 ## Cosa fa
 
-Il Prototype Pattern ti permette di creare nuovi oggetti clonando un prototipo esistente, invece di crearli da zero. È come avere uno stampo per i biscotti: una volta che hai il primo biscotto perfetto, puoi usarlo come modello per farne altri identici.
+Il Prototype Pattern ti permette di creare nuovi oggetti copiando un prototipo esistente, invece di creare l'oggetto da zero. Definisce un'interfaccia per clonare se stesso, permettendo di creare copie personalizzate.
+
+È come avere un timbro: invece di disegnare ogni volta lo stesso disegno, usi il timbro per creare copie identiche, e poi puoi personalizzare ogni copia come vuoi.
 
 ## Perché ti serve
 
-Immagina di dover creare 100 oggetti `EmailTemplate` con configurazioni complesse. Senza Prototype dovresti:
-```php
-// Creare ogni template da zero - molto lento!
-$template1 = new EmailTemplate('Welcome', 'Welcome to our site!', ['header' => 'blue', 'footer' => 'gray']);
-$template2 = new EmailTemplate('Welcome', 'Welcome to our site!', ['header' => 'blue', 'footer' => 'gray']);
-// ... ripetere 100 volte
-```
+Immagina di dover creare molti oggetti simili ma con piccole differenze (come configurazioni di utenti, template di documenti, o impostazioni di sistema). Senza Prototype Pattern, finiresti con:
 
-Con Prototype invece:
-```php
-// Crei il prototipo una volta
-$prototype = new EmailTemplate('Welcome', 'Welcome to our site!', ['header' => 'blue', 'footer' => 'gray']);
+- Codice che crea oggetti da zero ogni volta
+- Logica di inizializzazione duplicata
+- Difficoltà a creare varianti di oggetti esistenti
+- Violazione del principio DRY (Don't Repeat Yourself)
 
-// Poi cloni velocemente
-$templates = [];
-for ($i = 0; $i < 100; $i++) {
-    $templates[] = clone $prototype;
-}
-```
-
-Molto più veloce e efficiente!
+Il Prototype risolve questo: crei un prototipo una volta, e poi lo cloni tutte le volte che serve, personalizzando ogni copia.
 
 ## Come funziona
 
-1. **Prototype**: Un oggetto che implementa l'interfaccia `Cloneable` o usa `clone`
-2. **Cloning**: PHP ha il supporto nativo con `clone` e `__clone()`
-3. **Deep vs Shallow Copy**: Decidi se clonare anche gli oggetti interni
-4. **Registry**: (Opzionale) Un registro per gestire diversi prototipi
+Il meccanismo è elegante:
+1. **Prototype**: Interfaccia che definisce il metodo `clone()`
+2. **ConcretePrototype**: Implementazione concreta che implementa `clone()`
+3. **Client**: Usa il prototipo per creare copie
 
-Il pattern sfrutta la capacità di PHP di clonare oggetti, permettendo di creare copie identiche senza ricostruire tutto.
+Il client clona il prototipo e poi personalizza la copia secondo le sue necessità.
 
 ## Schema visivo
 
 ```
-Scenario 1 (clonazione semplice):
-Client → Prototype Object
-         ↓
-    Client → clone $prototype
-         ↓
-    PHP → __clone() method
-         ↓
-    Result → New Object (copia del prototipo)
+Flusso di clonazione:
+Client → Prototype → clone()
+                ↓
+           ConcretePrototype → new ConcretePrototype()
+                            → copy properties
+                            ↓
+                       Restituisce copia personalizzata
 
-Scenario 2 (clonazione con modifiche):
-Client → Prototype Object
-         ↓
-    Client → clone $prototype
-         ↓
-    Client → modify cloned object
-         ↓
-    Result → New Object (copia modificata)
+Gerarchia delle classi:
+Prototype (interfaccia)
+    ↓
+ConcretePrototype1 → clone() → ConcretePrototype1 (copia)
+ConcretePrototype2 → clone() → ConcretePrototype2 (copia)
+ConcretePrototype3 → clone() → ConcretePrototype3 (copia)
 ```
 
-*Il diagramma mostra come il Prototype permette di creare copie veloci di oggetti complessi, con o senza modifiche successive.*
+*Il diagramma mostra come ogni ConcretePrototype può clonare se stesso per creare copie personalizzate.*
 
 ## Quando usarlo
 
 Usa il Prototype Pattern quando:
+- Devi creare molti oggetti simili con piccole differenze
 - La creazione di un oggetto è costosa (database, file, network)
-- Hai oggetti con configurazioni complesse
-- Vuoi creare varianti di un oggetto base
-- Hai bisogno di copie identiche di oggetti
-- Vuoi evitare di ricostruire oggetti simili
-- Hai oggetti con molti parametri di configurazione
-- Vuoi creare template riutilizzabili
+- Vuoi evitare di creare gerarchie di classi complesse
+- Hai bisogno di creare oggetti in runtime
+- Vuoi personalizzare oggetti esistenti
+- Hai configurazioni complesse che vuoi riutilizzare
 
 **NON usarlo quando:**
-- Gli oggetti sono semplici da creare
-- Hai solo 2-3 istanze da creare
-- Gli oggetti sono molto diversi tra loro
+- Gli oggetti sono semplici e facili da creare
+- Non hai bisogno di copie personalizzate
 - La clonazione è più costosa della creazione
-- Gli oggetti hanno dipendenze complesse
+- L'overhead del pattern non è giustificato
+- Hai solo un tipo di oggetto da creare
 
 ## Pro e contro
 
 **I vantaggi:**
-- Creazione veloce di oggetti complessi
-- Evita di ricostruire configurazioni complesse
-- Permette di creare varianti facilmente
-- Sfrutta la capacità nativa di PHP
-- Riduce il carico computazionale
-- Facilita la creazione di template
+- Evita la creazione costosa di oggetti da zero
+- Permette la personalizzazione di copie esistenti
+- Riduce la complessità delle gerarchie di classi
+- Facilita la creazione di oggetti in runtime
+- Migliora le performance per oggetti costosi
 
 **Gli svantaggi:**
-- Può essere confuso con la clonazione profonda
-- Gestione della memoria per oggetti grandi
-- Difficile da debuggare se la clonazione non funziona bene
-- Può creare dipendenze inaspettate tra oggetti
-
-## Pattern correlati
-
-- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
-- **Builder**: Quando hai bisogno di costruire oggetti complessi passo dopo passo
-- **Registry**: Spesso usato insieme per gestire diversi prototipi
-- **Template Method**: Per definire lo scheletro dell'algoritmo di clonazione
-
-## Esempi di uso reale
-
-- **Laravel Eloquent**: Clonazione di modelli per creare copie
-- **Laravel Mail**: Clonazione di template email per personalizzazioni
-- **Laravel Forms**: Clonazione di form per creare varianti
-- **Laravel Jobs**: Clonazione di job per creare varianti simili
-- **Document Templates**: Sistemi di gestione documenti per creare copie di template
-- **Game Development**: Clonazione di oggetti di gioco (armi, personaggi, livelli)
-
-## Anti-pattern
-
-**Cosa NON fare:**
-- **Clonazione superficiale di oggetti complessi**: Usa sempre `__clone()` per oggetti con riferimenti
-- **Clonazione di oggetti con risorse**: Non clonare file handle, connessioni DB, etc.
-- **Clonazione senza reset ID**: Ricorda di resettare ID e timestamp per nuovi record
-- **Clonazione eccessiva**: Non clonare oggetti semplici che sono facili da creare
-- **Clonazione di oggetti con stato globale**: Evita di clonare oggetti che condividono stato
+- Può essere complesso implementare la clonazione corretta
+- Difficile gestire la clonazione profonda vs superficiale
+- Può creare confusione tra originale e copia
+- Difficile da testare se la clonazione è complessa
+- Può causare problemi di memoria se non gestita correttamente
 
 ## Esempi di codice
 
-### Esempio base
-```php
-<?php
-
-class EmailTemplate
-{
-    public function __construct(
-        public string $subject,
-        public string $body,
-        public array $styles,
-        public array $recipients = []
-    ) {}
-
-    public function __clone()
-    {
-        // Clonazione profonda degli array
-        $this->styles = array_map(fn($style) => is_object($style) ? clone $style : $style, $this->styles);
-        $this->recipients = array_map(fn($recipient) => is_object($recipient) ? clone $recipient : $recipient, $this->recipients);
-    }
-
-    public function addRecipient(string $email): self
-    {
-        $this->recipients[] = $email;
-        return $this;
-    }
-
-    public function setSubject(string $subject): self
-    {
-        $this->subject = $subject;
-        return $this;
-    }
-}
-
-// Uso
-$welcomeTemplate = new EmailTemplate(
-    'Welcome!',
-    'Welcome to our amazing service!',
-    ['header' => 'blue', 'footer' => 'gray']
-);
-
-// Clona il template base
-$newsletterTemplate = clone $welcomeTemplate;
-$newsletterTemplate->setSubject('Newsletter Weekly');
-
-$promoTemplate = clone $welcomeTemplate;
-$promoTemplate->setSubject('Special Offer!');
+### Pseudocodice
 ```
+// Interfaccia Prototype
+interface Prototype {
+    method clone() returns Prototype
+}
 
-### Esempio per Laravel
-```php
-<?php
-
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Document extends Model
-{
-    protected $fillable = [
-        'title', 'content', 'template_id', 'metadata', 'settings'
-    ];
-
-    protected $casts = [
-        'metadata' => 'array',
-        'settings' => 'array'
-    ];
-
-    public function __clone()
-    {
-        // Clonazione profonda degli array
-        $this->metadata = $this->metadata ? array_map(
-            fn($item) => is_array($item) ? $item : $item,
-            $this->metadata
-        ) : [];
-        
-        $this->settings = $this->settings ? array_map(
-            fn($item) => is_array($item) ? $item : $item,
-            $this->settings
-        ) : [];
+// Prototipo concreto
+class ConcretePrototype implements Prototype {
+    private property1
+    private property2
+    private property3
+    
+    constructor(property1, property2, property3) {
+        this.property1 = property1
+        this.property2 = property2
+        this.property3 = property3
     }
-
-    public static function createFromTemplate(Document $template, string $newTitle): self
-    {
-        $clone = clone $template;
-        $clone->title = $newTitle;
-        $clone->id = null; // Reset ID per nuovo record
-        $clone->created_at = null;
-        $clone->updated_at = null;
-        return $clone;
+    
+    method clone() returns Prototype {
+        // Clonazione profonda
+        return new ConcretePrototype(
+            this.property1,
+            this.property2,
+            this.property3
+        )
+    }
+    
+    method setProperty1(value) {
+        this.property1 = value
+    }
+    
+    method setProperty2(value) {
+        this.property2 = value
+    }
+    
+    method setProperty3(value) {
+        this.property3 = value
     }
 }
 
-// Uso nel Controller
-class DocumentController extends Controller
-{
-    public function duplicate(Document $document)
-    {
-        $newDocument = Document::createFromTemplate(
-            $document,
-            $document->title . ' (Copy)'
-        );
-        
-        $newDocument->save();
-        
-        return response()->json($newDocument);
-    }
+// Utilizzo
+prototype = new ConcretePrototype("A", "B", "C")
+copy1 = prototype.clone()
+copy1.setProperty1("X") // Personalizza la copia
 
-    public function createFromTemplate(Request $request)
-    {
-        $template = Document::findOrFail($request->template_id);
-        
-        $document = Document::createFromTemplate(
-            $template,
-            $request->title
-        );
-        
-        // Modifica alcuni campi specifici
-        if ($request->has('content')) {
-            $document->content = $request->content;
-        }
-        
-        $document->save();
-        
-        return response()->json($document);
-    }
-}
+copy2 = prototype.clone()
+copy2.setProperty2("Y") // Personalizza un'altra copia
+
+// prototype rimane invariato
+// copy1 e copy2 sono copie personalizzate
 ```
 
 ## Esempi completi
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Document Template System](./esempio-completo/)** - Sistema di gestione documenti con clonazione di template
+- **[Template System con Prototype](./esempio-completo/)** - Sistema completo per gestire template di documenti
 
 L'esempio include:
-- Clonazione di documenti complessi
-- Gestione di metadati e impostazioni
-- Integrazione con Eloquent ORM
-- Clonazione profonda di relazioni
-- Test completi con Pest
-- API RESTful per gestire i documenti
-- Sistema di template riutilizzabili
+- Prototype per creare template di documenti (PDF, Word, HTML)
+- Clonazione profonda e superficiale
+- Personalizzazione di template esistenti
+- Integrazione con Laravel Storage
+- Service Provider per registrare i prototipi
+- Controller con dependency injection
+- Test unitari per i prototipi
+- API RESTful per gestire i template
+
+## Pattern correlati
+
+- **Factory Method**: Se hai bisogno di creare oggetti diversi invece di copie
+- **Abstract Factory**: Se hai bisogno di creare famiglie di oggetti correlati
+- **Builder**: Per costruire oggetti complessi passo dopo passo
+- **Singleton**: Spesso usato insieme al Prototype per gestire i prototipi
+
+## Esempi di uso reale
+
+- **Laravel Model Factories**: Laravel usa il Prototype Pattern per creare istanze di modelli per i test
+- **Symfony Form Prototypes**: Symfony usa il Prototype Pattern per creare copie di form esistenti
+- **PHPUnit Test Doubles**: PHPUnit usa il Prototype Pattern per creare copie di mock e stub
+- **Document Generators**: Librerie come TCPDF usano il Prototype Pattern per creare copie di documenti
+- **Configuration Management**: Sistemi di configurazione usano il Prototype Pattern per creare copie di configurazioni
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Clonazione superficiale quando serve profonda**: Evita clonazioni superficiali quando gli oggetti hanno riferimenti
+- **Clonazione profonda quando serve superficiale**: Non fare clonazioni profonde se non necessario, spreca memoria
+- **Prototype senza interfacce**: Sempre definire interfacce astratte per i prototipi
+- **Prototype per oggetti semplici**: Non usare il Prototype Pattern per oggetti che si creano facilmente
+- **Prototype troppo complessi**: Evita prototipi che fanno troppo lavoro, violano il principio di responsabilità singola
+
+## Troubleshooting
+
+### Problemi comuni
+- **"Cannot clone object"**: Assicurati che la classe implementi l'interfaccia Prototype e il metodo clone()
+- **"Shallow copy issues"**: Verifica che la clonazione sia profonda se l'oggetto ha riferimenti
+- **"Memory leaks"**: Controlla che la clonazione non crei riferimenti circolari
+- **"Property not copied"**: Assicurati che tutte le proprietà siano copiate correttamente
+
+### Debug e monitoring
+- **Log delle clonazioni**: Aggiungi logging per tracciare quando vengono create le copie
+- **Controllo memoria**: Verifica che la clonazione non causi leak di memoria
+- **Performance clonazione**: Monitora il tempo di clonazione per identificare prototipi lenti
+- **Validazione copie**: Traccia che le copie siano corrette e complete
+
+### Metriche utili
+- **Numero di copie create**: Per capire l'utilizzo dei diversi prototipi
+- **Tempo di clonazione**: Per identificare prototipi che potrebbero essere ottimizzati
+- **Errori di clonazione**: Per identificare problemi con la clonazione
+- **Utilizzo memoria**: Per verificare che non ci siano leak di memoria
 
 ## Performance e considerazioni
 
-- **Impatto memoria**: Può essere alto se cloni oggetti molto grandi
-- **Impatto CPU**: Basso, la clonazione è veloce in PHP
-- **Scalabilità**: Ottimo per creare molte copie di oggetti complessi
-- **Colli di bottiglia**: Attenzione alla clonazione profonda di oggetti molto grandi
+### Impatto sulle risorse
+- **Memoria**: Overhead moderato per le classi prototipo e interfacce (tipicamente 10-25KB)
+- **CPU**: La clonazione è generalmente più veloce della creazione da zero (1-5ms vs 5-20ms)
+- **I/O**: Se i prototipi creano risorse esterne, l'I/O è gestito dai prototipi stessi
+
+### Scalabilità
+- **Carico basso**: Perfetto, overhead trascurabile
+- **Carico medio**: Funziona bene, l'overhead è compensato dalle performance
+- **Carico alto**: Può diventare un collo di bottiglia se la clonazione è complessa
+
+### Colli di bottiglia
+- **Clonazione profonda**: Se gli oggetti hanno molti riferimenti, la clonazione può essere lenta
+- **Memory allocation**: Creare molte copie può causare frammentazione
+- **Circular references**: Se non gestite correttamente, possono causare problemi di memoria
+- **Validation**: Se la validazione è complessa, può rallentare la clonazione
 
 ## Risorse utili
 
+### Documentazione ufficiale
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
-- [Refactoring.Guru](https://refactoring.guru/design-patterns/prototype) - Spiegazioni visuali
-- [Laravel Documentation](https://laravel.com/docs) - Framework specifico
-- [PHP Clone Documentation](https://www.php.net/manual/en/language.oop5.cloning.php) - Documentazione ufficiale PHP
+- [Refactoring.Guru - Prototype](https://refactoring.guru/design-patterns/prototype) - Spiegazione visuale con esempi
+
+### Laravel specifico
+- [Laravel Model Factories](https://laravel.com/docs/eloquent-factories) - Come Laravel usa il Prototype Pattern
+- [Laravel Service Container](https://laravel.com/docs/container) - Per gestire le dipendenze
+
+### Esempi e tutorial
+- [Prototype Pattern in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP
+- [Deep vs Shallow Copy in PHP](https://www.php.net/manual/en/language.oop5.cloning.php#language.oop5.cloning) - Spiegazione dettagliata della clonazione
+
+### Strumenti di supporto
+- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step

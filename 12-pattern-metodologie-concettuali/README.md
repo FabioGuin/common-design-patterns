@@ -13,6 +13,7 @@ Questo capitolo raccoglie le principali metodologie concettuali e principi di pr
 - [Principi di Sicurezza](#principi-di-sicurezza)
 - [Principi di Manutenibilità](#principi-di-manutenibilità)
 - [Principi di Team e Processo](#principi-di-team-e-processo)
+- [Strumenti di Supporto](#strumenti-di-supporto)
 
 ## Principi Fondamentali
 
@@ -266,6 +267,32 @@ I moduli di alto livello non dovrebbero dipendere da quelli di basso livello; en
 - Condivide la conoscenza
 - Riduce i bug
 - Mantiene gli standard
+
+## Strumenti di Supporto
+
+### Checklist di Implementazione Pattern
+**Definizione**: Strumento pratico per implementare pattern di design in modo sistematico e professionale.
+
+**Benefici**:
+- Guida step-by-step nell'implementazione
+- Assicura completezza nell'applicazione dei pattern
+- Riduce errori comuni di implementazione
+- Migliora la qualità del codice risultante
+
+**Struttura**:
+- **Analisi e Progettazione**: Identificazione del problema, valutazione alternative, definizione architettura
+- **Implementazione Base**: Struttura classi, gestione dipendenze, gestione errori
+- **Integrazione Laravel**: Service Container, Service Provider, configurazione
+- **Testing e Validazione**: Test unitari, integrazione, performance
+- **Documentazione e Manutenzione**: Documentazione codice, esempi, pianificazione
+
+**Utilizzo**:
+- Prima di implementare un nuovo pattern
+- Durante il refactoring di codice esistente
+- Durante la code review per verificare completezza
+- Prima del deploy per assicurare qualità
+
+**Link**: [Checklist di Implementazione Pattern](./checklist-implementazione-pattern.md)
 
 ## Conclusione
 

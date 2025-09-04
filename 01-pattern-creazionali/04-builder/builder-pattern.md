@@ -16,6 +16,7 @@
 
 ### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+- [Troubleshooting](#troubleshooting)
 
 ### Implementazione Pratica
 - [Esempi di codice](#esempi-di-codice)
@@ -27,330 +28,255 @@
 
 ## Cosa fa
 
-Il Builder Pattern ti permette di costruire oggetti complessi passo dopo passo, invece di creare tutto in una volta. È come avere un architetto che ti guida nella costruzione di una casa: prima le fondamenta, poi le pareti, poi il tetto, e così via.
+Il Builder Pattern ti permette di costruire oggetti complessi passo dopo passo, usando un processo di costruzione che può creare diverse rappresentazioni dello stesso oggetto.
+
+È come costruire una casa: invece di avere un costruttore che sa tutto e costruisce tutto in una volta, hai diversi specialisti (elettricista, idraulico, muratore) che lavorano in sequenza, ognuno con le sue competenze specifiche.
 
 ## Perché ti serve
 
-Immagina di dover creare un oggetto `User` con 15 campi diversi. Senza Builder dovresti fare:
-```php
-$user = new User('Mario', 'Rossi', 'mario@email.com', 'password123', 'Via Roma 1', 'Milano', '20100', 'Italia', '1234567890', '1985-05-15', 'M', 'Sviluppatore', 'Laravel', 'Senior', true);
-```
+Immagina di dover creare un'email complessa con allegati, template, destinatari multipli e configurazioni avanzate. Senza Builder Pattern, finiresti con:
 
-È illeggibile! Con Builder invece:
-```php
-$user = UserBuilder::create()
-    ->withName('Mario', 'Rossi')
-    ->withEmail('mario@email.com')
-    ->withPassword('password123')
-    ->withAddress('Via Roma 1', 'Milano', '20100', 'Italia')
-    ->withPhone('1234567890')
-    ->withBirthDate('1985-05-15')
-    ->withGender('M')
-    ->withJob('Sviluppatore', 'Laravel', 'Senior')
-    ->isActive()
-    ->build();
-```
+- Costruttori con troppi parametri (10+ parametri)
+- Logica di costruzione sparsa e duplicata
+- Difficoltà a creare varianti dello stesso oggetto
+- Violazione del principio "aperto per estensione, chiuso per modifica"
 
-Molto più chiaro e flessibile!
+Il Builder risolve questo: un builder sa come costruire l'oggetto passo dopo passo, e puoi avere diversi builder per diverse rappresentazioni.
 
 ## Come funziona
 
-1. **Builder**: Una classe che ha metodi per impostare ogni parte dell'oggetto
-2. **Director**: (Opzionale) Una classe che sa come usare il Builder per creare oggetti specifici
-3. **Product**: L'oggetto finale che viene costruito
-4. **Metodo build()**: Restituisce l'oggetto completo
+Il meccanismo è elegante:
+1. **Product**: L'oggetto complesso che vuoi costruire
+2. **Builder**: Interfaccia astratta per i passi di costruzione
+3. **ConcreteBuilder**: Implementazione specifica del builder
+4. **Director**: Opzionale, coordina il processo di costruzione
 
-Il Builder mantiene lo stato dell'oggetto in costruzione e alla fine lo restituisce completo.
+Il client usa il builder per costruire l'oggetto passo dopo passo, e alla fine ottiene l'oggetto completo.
 
 ## Schema visivo
 
 ```
-Scenario 1 (costruzione step-by-step):
-Client → Builder::create()
-         ↓
-    Builder → withName() → withEmail() → withAddress()
-         ↓
-    Builder → withPhone() → withJob() → isActive()
-         ↓
-    Builder → build() → User Object
+Flusso di costruzione:
+Client → Director → Builder → buildPartA()
+                        → buildPartB()
+                        → buildPartC()
+                        ↓
+                   Product (oggetto completo)
 
-Scenario 2 (costruzione parziale):
-Client → Builder::create()
-         ↓
-    Builder → withName() → withEmail()
-         ↓
-    Builder → build() → User Object (con solo nome ed email)
+Gerarchia delle classi:
+Builder (interfaccia)
+    ↓
+ConcreteBuilder1 → buildPartA() → Product1
+ConcreteBuilder2 → buildPartA() → Product2
+ConcreteBuilder3 → buildPartA() → Product3
+
+Director → setBuilder(Builder)
+         → construct() → builder.buildPartA()
+                      → builder.buildPartB()
+                      → builder.buildPartC()
 ```
 
-*Il diagramma mostra come il Builder permette di costruire oggetti in modo flessibile, con tutti i campi o solo alcuni.*
+*Il diagramma mostra come il Director coordina il Builder per costruire l'oggetto passo dopo passo, permettendo diverse rappresentazioni.*
 
 ## Quando usarlo
 
 Usa il Builder Pattern quando:
-- Hai oggetti con molti parametri (più di 4-5)
-- Alcuni parametri sono opzionali
-- Vuoi rendere il codice più leggibile
-- Hai bisogno di creare varianti dello stesso oggetto
-- Vuoi validare i parametri durante la costruzione
-- Hai oggetti con configurazioni complesse
-- Vuoi costruire oggetti in modo flessibile
+- Devi creare oggetti complessi con molti parametri
+- Hai bisogno di diverse rappresentazioni dello stesso oggetto
+- Vuoi costruire oggetti passo dopo passo
+- Hai logica di costruzione complessa che vuoi separare
+- Vuoi rendere il processo di costruzione più flessibile
+- Hai bisogno di validazione durante la costruzione
 
 **NON usarlo quando:**
-- L'oggetto ha solo 2-3 parametri semplici
-- Tutti i parametri sono sempre obbligatori
-- La costruzione è sempre la stessa
-- L'oggetto è molto semplice da creare
+- L'oggetto è semplice e ha pochi parametri
+- Non hai bisogno di diverse rappresentazioni
+- La logica di costruzione è banale
+- L'overhead del pattern non è giustificato
+- Hai solo una rappresentazione dell'oggetto
 
 ## Pro e contro
 
 **I vantaggi:**
-- Codice molto più leggibile e manutenibile
-- Parametri opzionali gestiti facilmente
-- Validazione durante la costruzione
-- Possibilità di creare varianti dell'oggetto
-- Metodi con nomi descrittivi
-- Costruzione flessibile e step-by-step
+- Costruisce oggetti complessi passo dopo passo
+- Permette diverse rappresentazioni dello stesso oggetto
+- Isola la logica di costruzione dal prodotto
+- Rispetta il principio Single Responsibility
+- Facilita la validazione durante la costruzione
 
 **Gli svantaggi:**
-- Più codice da scrivere
+- Aumenta la complessità del codice
+- Richiede molte classi e interfacce
 - Può essere eccessivo per oggetti semplici
-- Aggiunge complessità per casi semplici
-- Richiede più classi e metodi
-
-## Pattern correlati
-
-- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
-- **Abstract Factory**: Quando hai bisogno di creare famiglie di oggetti correlati
-- **Fluent Interface**: Il Builder spesso usa questo pattern per i metodi concatenati
-- **Template Method**: Per definire lo scheletro dell'algoritmo di costruzione
-
-## Esempi di uso reale
-
-- **Laravel Query Builder**: `DB::table('users')->where('active', 1)->orderBy('name')->get()`
-- **Laravel Mail**: `Mail::to($user)->subject('Welcome')->view('emails.welcome')->send()`
-- **Laravel Validation**: `Validator::make($data, $rules)->sometimes()->required()`
-- **HTTP Client Libraries**: Per costruire richieste HTTP complesse
-- **Configuration Builders**: Per creare configurazioni complesse
-
-## Anti-pattern
-
-**Cosa NON fare:**
-- **Builder per oggetti semplici**: Non usare Builder se hai solo 2-3 parametri
-- **Metodi non fluenti**: Evita di non restituire `$this` nei metodi del Builder
-- **Validazione nel build()**: Meglio validare durante la costruzione, non alla fine
-- **Builder immutabile**: Il Builder deve permettere di modificare lo stato
-- **Builder troppo complessi**: Evita Builder con troppi metodi e responsabilità
+- Difficile da estendere se la struttura cambia
+- Può creare oggetti in stato inconsistente
 
 ## Esempi di codice
 
-### Esempio base
-```php
-<?php
-
-class User
-{
-    public function __construct(
-        public string $firstName,
-        public string $lastName,
-        public string $email,
-        public ?string $phone = null,
-        public ?string $address = null,
-        public bool $isActive = true
-    ) {}
-}
-
-class UserBuilder
-{
-    private string $firstName;
-    private string $lastName;
-    private string $email;
-    private ?string $phone = null;
-    private ?string $address = null;
-    private bool $isActive = true;
-
-    public static function create(): self
-    {
-        return new self();
-    }
-
-    public function withName(string $firstName, string $lastName): self
-    {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        return $this;
-    }
-
-    public function withEmail(string $email): self
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    public function withPhone(string $phone): self
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    public function withAddress(string $address): self
-    {
-        $this->address = $address;
-        return $this;
-    }
-
-    public function isActive(bool $active = true): self
-    {
-        $this->isActive = $active;
-        return $this;
-    }
-
-    public function build(): User
-    {
-        return new User(
-            $this->firstName,
-            $this->lastName,
-            $this->email,
-            $this->phone,
-            $this->address,
-            $this->isActive
-        );
-    }
-}
-
-// Uso
-$user = UserBuilder::create()
-    ->withName('Mario', 'Rossi')
-    ->withEmail('mario@email.com')
-    ->withPhone('1234567890')
-    ->withAddress('Via Roma 1')
-    ->isActive()
-    ->build();
+### Pseudocodice
 ```
-
-### Esempio per Laravel
-```php
-<?php
-
-namespace App\Builders;
-
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-
-class UserBuilder
-{
-    private array $data = [];
-    private array $profile = [];
-    private array $settings = [];
-
-    public static function create(): self
-    {
-        return new self();
+// Prodotto complesso
+class Product {
+    private partA
+    private partB
+    private partC
+    
+    method setPartA(partA) {
+        this.partA = partA
     }
-
-    public function withBasicInfo(string $name, string $email): self
-    {
-        $this->data = array_merge($this->data, [
-            'name' => $name,
-            'email' => $email,
-        ]);
-        return $this;
+    
+    method setPartB(partB) {
+        this.partB = partB
     }
-
-    public function withPassword(string $password): self
-    {
-        $this->data['password'] = Hash::make($password);
-        return $this;
-    }
-
-    public function withProfile(array $profile): self
-    {
-        $this->profile = $profile;
-        return $this;
-    }
-
-    public function withSettings(array $settings): self
-    {
-        $this->settings = $settings;
-        return $this;
-    }
-
-    public function asAdmin(): self
-    {
-        $this->data['role'] = 'admin';
-        return $this;
-    }
-
-    public function withEmailVerified(): self
-    {
-        $this->data['email_verified_at'] = now();
-        return $this;
-    }
-
-    public function build(): User
-    {
-        $user = User::create($this->data);
-        
-        if (!empty($this->profile)) {
-            $user->profile()->create($this->profile);
-        }
-        
-        if (!empty($this->settings)) {
-            $user->settings()->create($this->settings);
-        }
-        
-        return $user;
+    
+    method setPartC(partC) {
+        this.partC = partC
     }
 }
 
-// Uso nel Controller
-class UserController extends Controller
-{
-    public function store(Request $request)
-    {
-        $user = UserBuilder::create()
-            ->withBasicInfo($request->name, $request->email)
-            ->withPassword($request->password)
-            ->withProfile([
-                'bio' => $request->bio,
-                'avatar' => $request->avatar,
-            ])
-            ->withSettings([
-                'notifications' => true,
-                'theme' => 'light',
-            ])
-            ->withEmailVerified()
-            ->build();
+// Builder astratto
+interface Builder {
+    method buildPartA()
+    method buildPartB()
+    method buildPartC()
+    method getResult() returns Product
+}
 
-        return response()->json($user);
+// Builder concreto
+class ConcreteBuilder implements Builder {
+    private product = new Product()
+    
+    method buildPartA() {
+        this.product.setPartA("Part A built")
+    }
+    
+    method buildPartB() {
+        this.product.setPartB("Part B built")
+    }
+    
+    method buildPartC() {
+        this.product.setPartC("Part C built")
+    }
+    
+    method getResult() returns Product {
+        return this.product
     }
 }
+
+// Director (opzionale)
+class Director {
+    private builder
+    
+    method setBuilder(builder) {
+        this.builder = builder
+    }
+    
+    method construct() {
+        this.builder.buildPartA()
+        this.builder.buildPartB()
+        this.builder.buildPartC()
+    }
+}
+
+// Utilizzo
+builder = new ConcreteBuilder()
+director = new Director()
+director.setBuilder(builder)
+director.construct()
+product = builder.getResult()
 ```
 
 ## Esempi completi
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[User Management Builder](./esempio-completo/)** - Sistema completo di gestione utenti con Builder Pattern
+- **[Email Builder Completo](./esempio-completo/)** - Sistema completo per costruire email complesse
 
 L'esempio include:
-- Builder per creazione utenti complessi
+- Builder per creare email con allegati, template, destinatari
+- Diversi tipi di email (marketing, notifiche, transazionali)
+- Integrazione con Laravel Mail
 - Validazione durante la costruzione
-- Integrazione con Eloquent ORM
-- Gestione di relazioni multiple
-- Test completi con Pest
-- API RESTful per gestire gli utenti
-- Gestione di ruoli e permessi
+- Service Provider per registrare i builder
+- Controller con dependency injection
+- Test unitari per i builder
+- API RESTful per gestire le email
+
+## Pattern correlati
+
+- **Factory Method**: Se hai bisogno di creare oggetti semplici invece di complessi
+- **Abstract Factory**: Se hai bisogno di creare famiglie di oggetti correlati
+- **Prototype**: Per clonare oggetti esistenti invece di costruirli da zero
+- **Composite**: Spesso usato insieme al Builder per costruire strutture gerarchiche
+
+## Esempi di uso reale
+
+- **Laravel Query Builder**: Laravel usa il Builder Pattern per costruire query SQL complesse
+- **Symfony Form Builder**: Symfony usa il Builder Pattern per costruire form complessi
+- **PHPUnit Test Builder**: PHPUnit usa il Builder Pattern per costruire test case complessi
+- **Document Generators**: Librerie come TCPDF usano il Builder Pattern per costruire documenti
+- **API Client Builders**: Librerie come Guzzle usano il Builder Pattern per costruire richieste HTTP
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Builder con troppi metodi**: Evita builder con troppi metodi di costruzione
+- **Builder che conosce tutto**: Non far conoscere al builder dettagli specifici del prodotto
+- **Builder senza interfacce**: Sempre definire interfacce astratte per i builder
+- **Builder per oggetti semplici**: Non usare il Builder Pattern per oggetti che si creano facilmente
+- **Builder troppo complessi**: Evita builder che fanno troppo lavoro, violano il principio di responsabilità singola
+
+## Troubleshooting
+
+### Problemi comuni
+- **"Cannot instantiate abstract class"**: Assicurati di implementare tutte le interfacce astratte del Builder
+- **"Product not built correctly"**: Verifica che tutti i passi di costruzione siano chiamati nell'ordine corretto
+- **"Builder method not found"**: Controlla che i metodi di costruzione siano definiti correttamente nell'interfaccia
+- **"Product in inconsistent state"**: Assicurati che la validazione sia fatta durante la costruzione
+
+### Debug e monitoring
+- **Log delle costruzioni**: Aggiungi logging per tracciare ogni passo di costruzione
+- **Controllo stato**: Verifica che il prodotto sia in stato consistente dopo ogni passo
+- **Performance builder**: Monitora il tempo di costruzione per identificare builder lenti
+- **Memory usage**: Traccia l'uso di memoria per verificare che non ci siano leak
+
+### Metriche utili
+- **Numero di prodotti costruiti**: Per capire l'utilizzo dei diversi builder
+- **Tempo di costruzione**: Per identificare builder che potrebbero essere ottimizzati
+- **Errori di costruzione**: Per identificare problemi con i passi di costruzione
+- **Utilizzo interfacce**: Per verificare che i client usino le interfacce astratte
 
 ## Performance e considerazioni
 
-- **Impatto memoria**: Leggero overhead per mantenere lo stato del Builder
-- **Impatto CPU**: Minimo, solo per la concatenazione dei metodi
-- **Scalabilità**: Ottimo, permette di creare oggetti complessi senza problemi
-- **Colli di bottiglia**: Nessuno, è un pattern molto efficiente
+### Impatto sulle risorse
+- **Memoria**: Overhead moderato per le classi builder e interfacce (tipicamente 15-30KB)
+- **CPU**: La costruzione passo dopo passo è leggermente più lenta del costruttore diretto (3-10ms overhead)
+- **I/O**: Se i prodotti creano risorse esterne, l'I/O è gestito dai prodotti stessi
+
+### Scalabilità
+- **Carico basso**: Funziona bene, overhead accettabile
+- **Carico medio**: L'overhead è compensato dalla flessibilità e organizzazione
+- **Carico alto**: Può diventare un collo di bottiglia se i builder sono complessi
+
+### Colli di bottiglia
+- **Builder complessi**: Se la logica di costruzione è troppo elaborata
+- **Troppi passi**: Gestire troppi passi di costruzione può diventare complesso
+- **Memory allocation**: Creare molti oggetti complessi può causare frammentazione
+- **Validation**: Se la validazione è complessa, può rallentare la costruzione
 
 ## Risorse utili
 
+### Documentazione ufficiale
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
-- [Refactoring.Guru](https://refactoring.guru/design-patterns/builder) - Spiegazioni visuali
-- [Laravel Documentation](https://laravel.com/docs) - Framework specifico
-- [Laravel Query Builder](https://laravel.com/docs/queries) - Esempio perfetto di Builder Pattern
+- [Refactoring.Guru - Builder](https://refactoring.guru/design-patterns/builder) - Spiegazione visuale con esempi
+
+### Laravel specifico
+- [Laravel Query Builder](https://laravel.com/docs/queries) - Come Laravel usa il Builder Pattern
+- [Laravel Service Container](https://laravel.com/docs/container) - Per gestire le dipendenze
+
+### Esempi e tutorial
+- [Builder Pattern in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP
+- [Builder Pattern vs Factory Pattern](https://www.tutorialspoint.com/design_pattern/builder_pattern.htm) - Confronto tra Builder e Factory
+
+### Strumenti di supporto
+- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step

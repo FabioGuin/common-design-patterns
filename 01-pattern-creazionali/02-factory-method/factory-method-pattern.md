@@ -16,6 +16,7 @@
 
 ### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+- [Troubleshooting](#troubleshooting)
 
 ### Implementazione Pratica
 - [Esempi di codice](#esempi-di-codice)
@@ -55,18 +56,22 @@ Il client usa solo il Creator, senza sapere quale ConcreteProduct viene effettiv
 ## Schema visivo
 
 ```
-Scenario 1 (PDF Creator):
-Client → PDFCreator → createDocument() → PDFDocument
-                        ↓
-                   Restituisce PDF
+Flusso di creazione:
+Client → Creator → createProduct()
+                ↓
+           ConcreteCreator → new ConcreteProduct()
+                ↓
+           Restituisce Product
 
-Scenario 2 (Word Creator):
-Client → WordCreator → createDocument() → WordDocument
-                        ↓
-                   Restituisce Word
+Gerarchia delle classi:
+AbstractCreator
+    ↓
+ConcreteCreator1 → createProduct() → ConcreteProduct1
+ConcreteCreator2 → createProduct() → ConcreteProduct2
+ConcreteCreator3 → createProduct() → ConcreteProduct3
 ```
 
-*Il diagramma mostra come lo stesso client può usare diversi creator per ottenere prodotti diversi, senza sapere quale tipo specifico viene creato.*
+*Il diagramma mostra come ogni ConcreteCreator crea il suo tipo specifico di prodotto, ma il client lavora solo con l'interfaccia astratta.*
 
 ## Quando usarlo
 
@@ -99,6 +104,74 @@ Usa il Factory Method quando:
 - Può essere eccessivo per creazioni semplici
 - Può creare gerarchie di classi complesse
 
+## Esempi di codice
+
+### Pseudocodice
+```
+// Interfaccia per i prodotti
+interface Product {
+    method create()
+}
+
+// Prodotti concreti
+class ConcreteProduct1 implements Product {
+    method create() {
+        return "Product 1 created"
+    }
+}
+
+class ConcreteProduct2 implements Product {
+    method create() {
+        return "Product 2 created"
+    }
+}
+
+// Creator astratto
+abstract class Creator {
+    abstract method createProduct() returns Product
+    
+    method generateProduct() returns string {
+        product = this.createProduct()
+        return product.create()
+    }
+}
+
+// Creator concreti
+class ConcreteCreator1 extends Creator {
+    method createProduct() returns Product {
+        return new ConcreteProduct1()
+    }
+}
+
+class ConcreteCreator2 extends Creator {
+    method createProduct() returns Product {
+        return new ConcreteProduct2()
+    }
+}
+
+// Utilizzo
+creator1 = new ConcreteCreator1()
+result1 = creator1.generateProduct() // "Product 1 created"
+
+creator2 = new ConcreteCreator2()
+result2 = creator2.generateProduct() // "Product 2 created"
+```
+
+## Esempi completi
+
+Se vuoi vedere un esempio completo e funzionante, guarda:
+
+- **[Gestione Utenti con Factory](./esempio-completo/)** - Sistema di gestione utenti con factory per diversi tipi di utenti e ruoli
+
+L'esempio include:
+- Factory per creare utenti (Admin, User, Guest)
+- Gestione ruoli e permessi
+- Integrazione con Eloquent ORM
+- Service Provider per registrare le factory
+- Controller con dependency injection
+- Test unitari per i factory methods
+- API RESTful per gestire gli utenti
+
 ## Pattern correlati
 
 - **Abstract Factory**: Se hai bisogno di creare famiglie di oggetti correlati
@@ -123,155 +196,57 @@ Usa il Factory Method quando:
 - **Factory per oggetti semplici**: Non usare factory per oggetti che si creano facilmente con `new`
 - **Factory troppo complesse**: Evita factory che fanno troppo lavoro, violano il principio di responsabilità singola
 
-## Esempi di codice
+## Troubleshooting
 
-### Esempio base
-```php
-<?php
+### Problemi comuni
+- **"Cannot instantiate abstract class"**: Assicurati di implementare tutti i metodi astratti del Creator
+- **"Wrong product type returned"**: Verifica che il ConcreteCreator restituisca il tipo corretto di Product
+- **"Factory method not found"**: Controlla che il metodo factory sia definito correttamente nella classe astratta
+- **"Product interface not implemented"**: Assicurati che i ConcreteProduct implementino l'interfaccia Product
 
-// Product
-interface Document
-{
-    public function create(): string;
-}
+### Debug e monitoring
+- **Log delle creazioni**: Aggiungi logging per tracciare quale tipo di prodotto viene creato
+- **Controllo tipi**: Verifica che i prodotti creati siano del tipo corretto
+- **Performance factory**: Monitora il tempo di creazione per identificare factory lente
+- **Memory usage**: Traccia l'uso di memoria per verificare che non ci siano leak
 
-// ConcreteProduct
-class PDFDocument implements Document
-{
-    public function create(): string
-    {
-        return "PDF document created";
-    }
-}
-
-class WordDocument implements Document
-{
-    public function create(): string
-    {
-        return "Word document created";
-    }
-}
-
-// Creator
-abstract class DocumentCreator
-{
-    abstract protected function createDocument(): Document;
-    
-    public function generateDocument(): string
-    {
-        $document = $this->createDocument();
-        return $document->create();
-    }
-}
-
-// ConcreteCreator
-class PDFCreator extends DocumentCreator
-{
-    protected function createDocument(): Document
-    {
-        return new PDFDocument();
-    }
-}
-
-class WordCreator extends DocumentCreator
-{
-    protected function createDocument(): Document
-    {
-        return new WordDocument();
-    }
-}
-
-// Utilizzo
-$pdfCreator = new PDFCreator();
-echo $pdfCreator->generateDocument(); // "PDF document created"
-```
-
-### Esempio per Laravel
-```php
-<?php
-
-namespace App\Services\Notification;
-
-interface NotificationChannel
-{
-    public function send(string $message, string $recipient): bool;
-}
-
-class EmailChannel implements NotificationChannel
-{
-    public function send(string $message, string $recipient): bool
-    {
-        // Logica invio email
-        return true;
-    }
-}
-
-class SMSChannel implements NotificationChannel
-{
-    public function send(string $message, string $recipient): bool
-    {
-        // Logica invio SMS
-        return true;
-    }
-}
-
-abstract class NotificationFactory
-{
-    abstract protected function createChannel(): NotificationChannel;
-    
-    public function sendNotification(string $message, string $recipient): bool
-    {
-        $channel = $this->createChannel();
-        return $channel->send($message, $recipient);
-    }
-}
-
-class EmailNotificationFactory extends NotificationFactory
-{
-    protected function createChannel(): NotificationChannel
-    {
-        return new EmailChannel();
-    }
-}
-
-class SMSNotificationFactory extends NotificationFactory
-{
-    protected function createChannel(): NotificationChannel
-    {
-        return new SMSChannel();
-    }
-}
-
-// Utilizzo in Controller
-$emailFactory = new EmailNotificationFactory();
-$emailFactory->sendNotification('Welcome!', 'user@example.com');
-```
-
-## Esempi completi
-
-Se vuoi vedere un esempio completo e funzionante, guarda:
-
-- **[Gestione Utenti con Factory](./esempio-completo/)** - Sistema di gestione utenti con factory per diversi tipi di utenti e ruoli
-
-L'esempio include:
-- Factory per creare utenti (Admin, User, Guest)
-- Gestione ruoli e permessi
-- Integrazione con Eloquent ORM
-- Service Provider per registrare le factory
-- Controller con dependency injection
-- Test unitari per i factory methods
-- API RESTful per gestire gli utenti
+### Metriche utili
+- **Numero di prodotti creati per tipo**: Per capire l'utilizzo dei diversi factory
+- **Tempo di creazione**: Per identificare factory che potrebbero essere ottimizzate
+- **Errori di creazione**: Per identificare problemi con i factory method
+- **Utilizzo interfacce**: Per verificare che i client usino le interfacce astratte
 
 ## Performance e considerazioni
 
-- **Impatto memoria**: Leggero overhead per le classi factory, ma compensato dalla flessibilità
-- **Impatto CPU**: La creazione tramite factory è leggermente più lenta del `new` diretto
-- **Scalabilità**: Ottimo per sistemi che devono creare molti tipi diversi di oggetti
-- **Colli di bottiglia**: Raramente un problema, a meno che non crei migliaia di oggetti al secondo
+### Impatto sulle risorse
+- **Memoria**: Leggero overhead per le classi factory e interfacce (tipicamente 5-15KB)
+- **CPU**: La creazione tramite factory è leggermente più lenta del `new` diretto (1-5ms overhead)
+- **I/O**: Se i prodotti creano risorse esterne, l'I/O è gestito dai prodotti stessi
+
+### Scalabilità
+- **Carico basso**: Perfetto, overhead trascurabile
+- **Carico medio**: Funziona bene, l'overhead è compensato dalla flessibilità
+- **Carico alto**: Può diventare un collo di bottiglia se i factory sono complessi
+
+### Colli di bottiglia
+- **Factory complesse**: Se la logica di creazione è troppo elaborata
+- **Troppi tipi di prodotti**: Gestire centinaia di ConcreteCreator può diventare complesso
+- **Memory allocation**: Creare molti oggetti diversi può causare frammentazione
+- **Reflection**: Se usi reflection per la creazione dinamica, può essere lento
 
 ## Risorse utili
 
+### Documentazione ufficiale
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru - Factory Method](https://refactoring.guru/design-patterns/factory-method) - Spiegazione visuale con esempi
+
+### Laravel specifico
 - [Laravel Model Factories](https://laravel.com/docs/eloquent-factories) - Come Laravel usa le factory
+- [Laravel Service Container](https://laravel.com/docs/container) - Per gestire le dipendenze
+
+### Esempi e tutorial
 - [Factory Pattern in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP
+- [Factory Pattern vs Abstract Factory](https://www.tutorialspoint.com/design_pattern/factory_pattern.htm) - Confronto tra pattern factory
+
+### Strumenti di supporto
+- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step
