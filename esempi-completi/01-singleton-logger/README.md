@@ -1,13 +1,13 @@
-# Esempio Completo: Singleton Logger
+# Logger Singleton Completo
 
-## Descrizione
-Implementazione completa di un sistema di logging personalizzato che utilizza il Singleton Pattern in Laravel. Questo esempio dimostra come creare un logger che mantiene una sola istanza per tutta l'applicazione, gestisce diversi livelli di log e persiste i dati su file.
+## Cosa fa
+Un sistema di logging personalizzato che usa il Singleton Pattern in Laravel. Il logger mantiene una sola istanza per tutta l'app, gestisce diversi livelli di log e salva tutto su file.
 
-## Obiettivo
-- Dimostrare l'implementazione pratica del Singleton Pattern
-- Creare un sistema di logging funzionante e completo
-- Integrare il pattern con il Service Container di Laravel
-- Fornire API RESTful per la gestione dei logs
+## Perché è utile
+- Mostra come implementare il Singleton Pattern nella pratica
+- Ti dà un sistema di logging funzionante e completo
+- Si integra perfettamente con il Service Container di Laravel
+- Include API RESTful per gestire i log
 
 ## Struttura del Progetto
 
@@ -31,45 +31,45 @@ Implementazione completa di un sistema di logging personalizzato che utilizza il
 └── .env.example               # Configurazione ambiente
 ```
 
-## Caratteristiche Implementate
+## Cosa include
 
 ### Singleton Pattern
-- **Una sola istanza** del logger per tutta l'applicazione
-- **Lazy initialization** - creazione on-demand
-- **Thread-safe** per ambienti multi-threaded
-- **Prevenzione clonazione** e deserializzazione
+- Una sola istanza del logger per tutta l'app
+- Si crea solo quando serve (lazy initialization)
+- Funziona anche in ambienti multi-threaded
+- Non può essere clonato o deserializzato
 
-### Gestione Logs
-- **5 livelli di log**: DEBUG, INFO, WARNING, ERROR, CRITICAL
-- **Persistenza su file** con Storage di Laravel
-- **Context support** per metadati aggiuntivi
-- **Timestamp automatico** per ogni entry
+### Gestione dei Log
+- 5 livelli di log: DEBUG, INFO, WARNING, ERROR, CRITICAL
+- Salvataggio su file usando Storage di Laravel
+- Supporto per metadati aggiuntivi (context)
+- Timestamp automatico per ogni log
 
-### Integrazione Laravel
-- **Service Provider** per registrazione nel container
-- **Service Container** integration
-- **Storage facade** per gestione file
-- **API RESTful** per consultazione logs
+### Integrazione con Laravel
+- Service Provider per registrarlo nel container
+- Integrazione con il Service Container
+- Usa Storage facade per gestire i file
+- API RESTful per consultare i log
 
-### API Endpoints
-- `GET /logs` - Lista tutti i logs
-- `GET /logs/level/{level}` - Logs per livello specifico
+### Endpoint API
+- `GET /logs` - Lista tutti i log
+- `GET /logs/level/{level}` - Log per livello specifico
 - `POST /logs` - Crea nuovo log
-- `DELETE /logs` - Cancella tutti i logs
-- `GET /logs/stats` - Statistiche logs
+- `DELETE /logs` - Cancella tutti i log
+- `GET /logs/stats` - Statistiche dei log
 
-## Installazione e Utilizzo
+## Come installarlo e usarlo
 
-### 1. Configurazione Ambiente
+### 1. Configura l'ambiente
 ```bash
 # Copia il file di configurazione
 cp .env.example .env
 
-# Installa dipendenze (se necessario)
+# Installa le dipendenze (se necessario)
 composer install
 ```
 
-### 2. Registrazione Service Provider
+### 2. Registra il Service Provider
 Aggiungi in `config/app.php`:
 ```php
 'providers' => [
@@ -78,35 +78,35 @@ Aggiungi in `config/app.php`:
 ],
 ```
 
-### 3. Utilizzo Base
+### 3. Usalo nel tuo codice
 ```php
 use App\Services\Logger\LoggerService;
 
-// Ottenere l'istanza singleton
+// Ottieni l'istanza singleton
 $logger = LoggerService::getInstance();
 
-// Logging con diversi livelli
-$logger->debug('Debug message', ['user_id' => 123]);
-$logger->info('User logged in', ['ip' => '192.168.1.1']);
-$logger->warning('High memory usage', ['memory' => '512MB']);
-$logger->error('Database connection failed', ['error' => 'Connection timeout']);
-$logger->critical('System failure', ['component' => 'database']);
+// Log con diversi livelli
+$logger->debug('Messaggio di debug', ['user_id' => 123]);
+$logger->info('Utente loggato', ['ip' => '192.168.1.1']);
+$logger->warning('Uso memoria alto', ['memory' => '512MB']);
+$logger->error('Connessione database fallita', ['error' => 'Connection timeout']);
+$logger->critical('Errore di sistema', ['component' => 'database']);
 ```
 
-### 4. Testing API
+### 4. Testa le API
 ```bash
 # Avvia il server
 php artisan serve
 
-# Test endpoints
+# Testa gli endpoint
 curl http://localhost:8000/logs
 curl http://localhost:8000/logs/level/error
-curl -X POST http://localhost:8000/logs -d '{"level":"info","message":"Test message"}'
+curl -X POST http://localhost:8000/logs -d '{"level":"info","message":"Messaggio di test"}'
 ```
 
-## Esempi di Utilizzo
+## Esempi pratici
 
-### Logger Service
+### Nel Controller
 ```php
 <?php
 
@@ -146,7 +146,7 @@ class UserController extends Controller
 }
 ```
 
-### Middleware Integration
+### Nel Middleware
 ```php
 <?php
 
@@ -180,9 +180,9 @@ class RequestLoggingMiddleware
 }
 ```
 
-## Pattern Implementation Details
+## Dettagli dell'implementazione
 
-### Singleton Implementation
+### Come funziona il Singleton
 ```php
 class LoggerService
 {
@@ -206,7 +206,7 @@ class LoggerService
 }
 ```
 
-### Service Container Integration
+### Integrazione con il Service Container
 ```php
 class LoggerServiceProvider extends ServiceProvider
 {
@@ -219,27 +219,27 @@ class LoggerServiceProvider extends ServiceProvider
 }
 ```
 
-## Vantaggi del Pattern
+## Vantaggi del pattern
 
-1. **Risparmio Memoria**: Una sola istanza per tutta l'applicazione
-2. **Consistenza**: Stesso logger in tutta l'applicazione
+1. **Risparmio memoria**: Una sola istanza per tutta l'app
+2. **Consistenza**: Stesso logger ovunque nell'app
 3. **Facilità d'uso**: Accesso globale controllato
 4. **Integrazione**: Perfetta integrazione con Laravel
-5. **Testabilità**: Possibilità di mock per i test
+5. **Testabilità**: Puoi fare mock per i test
 
-## Considerazioni
+## Cose da considerare
 
-- **Thread Safety**: In ambienti multi-threaded, considerare sincronizzazione
-- **Testing**: Usare dependency injection per i test
-- **Memory**: I logs in memoria crescono nel tempo
-- **Performance**: Scrittura su file può essere costosa
+- **Thread Safety**: In ambienti multi-threaded, considera la sincronizzazione
+- **Testing**: Usa dependency injection per i test
+- **Memoria**: I log in memoria crescono nel tempo
+- **Performance**: Scrivere su file può essere costoso
 
-## Link Utili
+## Link utili
 
-- [Singleton Pattern Documentation](../../01-pattern-creazionali/01-singleton/singleton-pattern.md)
+- [Documentazione Singleton Pattern](../../01-pattern-creazionali/01-singleton/singleton-pattern.md)
 - [Laravel Service Container](https://laravel.com/docs/container)
 - [Laravel Storage](https://laravel.com/docs/filesystem)
 
 ---
 
-*Questo esempio dimostra l'implementazione pratica del Singleton Pattern in un contesto Laravel reale, fornendo un sistema di logging completo e funzionante.*
+*Questo esempio ti mostra come implementare il Singleton Pattern in un progetto Laravel reale, con un sistema di logging completo e funzionante.*

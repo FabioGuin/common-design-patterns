@@ -6,7 +6,8 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 - [01. Singleton Logger](#01-singleton-logger)
 - [02. Factory User Management](#02-factory-user-management)
-- [03. Repository Pattern](#03-repository-pattern)
+- [03. Abstract Factory Payment System](#03-abstract-factory-payment-system)
+- [04. Repository Pattern](#04-repository-pattern)
 - [04. Service Layer](#04-service-layer)
 - [05. AI Chat System](#05-ai-chat-system)
 - [06. Event Sourcing](#06-event-sourcing)
@@ -49,7 +50,24 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ---
 
-### 03. Repository Pattern
+### 03. Abstract Factory Payment System
+
+**Pattern**: Abstract Factory  
+**Implementazione**: Sistema di pagamento multi-provider  
+**Utilizzo**: Payment processing, Multi-gateway support, Provider switching
+
+**Caratteristiche**:
+- Famiglie di prodotti correlati (Stripe, PayPal)
+- Gateway, Validator e Logger compatibili per ogni provider
+- Configurazione dinamica del provider
+- API RESTful completa per gestione pagamenti
+- Test di compatibilità tra prodotti della stessa famiglia
+
+**Link**: [Abstract Factory Payment System](esempi-completi/04-abstract-factory-payment/README.md)
+
+---
+
+### 04. Repository Pattern
 
 **Pattern**: Repository  
 **Implementazione**: Astrazione accesso dati  
