@@ -14,11 +14,13 @@ I pattern creazionali ti aiutano a creare oggetti in modo più intelligente. Inv
 - **File**: `01-singleton/singleton-pattern.md`
 - **Cosa fa**: Assicura che una classe abbia una sola istanza
 - **Dove lo usi in Laravel**: Service Container, connessioni database, cache
+- **Esempio Pratico**: [Logger Singleton](../../esempi-completi/01-singleton-logger/)
 
 ### Factory Method
-- **File**: `02-factory-method/`
+- **File**: `02-factory-method/factory-method-pattern.md`
 - **Cosa fa**: Delega la creazione di oggetti alle sottoclassi
 - **Dove lo usi in Laravel**: Model factories, Service providers
+- **Esempio Pratico**: [User Management Factory](../../esempi-completi/02-factory-user-management/)
 
 ### Abstract Factory
 - **File**: `03-abstract-factory/abstract-factory-pattern.md`
@@ -27,19 +29,22 @@ I pattern creazionali ti aiutano a creare oggetti in modo più intelligente. Inv
 - **Esempio Pratico**: [Sistema di Pagamento](../../esempi-completi/04-abstract-factory-payment/)
 
 ### Builder
-- **File**: `04-builder/`
+- **File**: `04-builder/builder-pattern.md`
 - **Cosa fa**: Costruisce oggetti complessi passo dopo passo
 - **Dove lo usi in Laravel**: Query Builder, Eloquent, costruzione email
+- **Esempio Pratico**: [User Management Builder](../../esempi-completi/02-factory-user-management/)
 
 ### Prototype
-- **File**: `05-prototype/`
+- **File**: `05-prototype/prototype-pattern.md`
 - **Cosa fa**: Crea oggetti clonando un modello esistente
 - **Dove lo usi in Laravel**: Sistema di template, clonazione documenti
+- **Esempio Pratico**: [Document Template System](../../esempi-completi/03-repository-pattern/)
 
 ### Object Pool
-- **File**: `06-object-pool/`
+- **File**: `06-object-pool/object-pool-pattern.md`
 - **Cosa fa**: Riutilizza oggetti costosi invece di crearli ogni volta
 - **Dove lo usi in Laravel**: Pool di connessioni, cache pools
+- **Esempio Pratico**: [Connection Pool System](../../esempi-completi/03-repository-pattern/)
 
 ## Link utili
 - [Torna all'indice principale](../../README.md)
