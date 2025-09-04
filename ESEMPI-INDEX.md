@@ -219,11 +219,10 @@ Questo documento contiene l'indice di tutti gli esempi pratici implementati nel 
 
 ## Come Utilizzare gli Esempi
 
-1. **Naviga** all'esempio di interesse
+1. **Naviga** all'esempio di interesse nella cartella specifica del pattern
 2. **Leggi** la documentazione per comprendere l'implementazione
-3. **Scarica** o clona il codice di esempio
-4. **Segui** le istruzioni di setup nel README specifico
-5. **Testa** l'implementazione nel tuo ambiente
+3. **Segui** le istruzioni di setup nel README specifico
+4. **Testa** l'implementazione nel tuo ambiente
 
 ## Struttura degli Esempi
 

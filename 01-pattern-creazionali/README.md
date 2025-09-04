@@ -48,4 +48,4 @@ I pattern creazionali ti aiutano a creare oggetti in modo più intelligente. Inv
 
 ## Link utili
 - [Torna all'indice principale](../../README.md)
-- [Vedi gli esempi completi](../esempi-completi/)
+- [Vedi l'indice degli esempi](../../ESEMPI-INDEX.md)
