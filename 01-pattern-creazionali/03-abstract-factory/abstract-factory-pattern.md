@@ -13,6 +13,9 @@ L'Abstract Factory ti permette di creare famiglie di oggetti che vanno insieme, 
 - [Esempi di codice](#esempi-di-codice)
 - [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
+- [Esempi di uso reale](#esempi-di-uso-reale)
+- [Anti-pattern](#anti-pattern)
+- [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Perché ti serve
@@ -376,6 +379,25 @@ L'esempio include:
 - **Builder**: Per costruire oggetti complessi passo dopo passo
 - **Prototype**: Per clonare oggetti esistenti
 - **Simple Factory**: Versione semplificata senza famiglie di prodotti
+
+## Esempi di uso reale
+- **Payment Gateway Systems**: Sistemi come Stripe, PayPal e Square usano Abstract Factory per creare famiglie di servizi compatibili
+- **UI Framework**: Framework come Bootstrap e Material-UI usano Abstract Factory per creare componenti coerenti (bottoni, input, card)
+- **Database Abstraction**: ORM come Doctrine usano Abstract Factory per creare famiglie di driver (MySQL, PostgreSQL, SQLite)
+- **Cloud Providers**: Servizi AWS, Azure e Google Cloud usano Abstract Factory per creare famiglie di servizi compatibili
+
+## Anti-pattern
+**Cosa NON fare:**
+- **Factory troppo complesse**: Evita factory che creano troppi tipi di oggetti diversi, diventa difficile da mantenere
+- **Prodotti non correlati**: Non mettere in una famiglia prodotti che non hanno nulla a che fare tra loro
+- **Factory senza coerenza**: Assicurati che tutti i prodotti di una famiglia seguano lo stesso stile e convenzioni
+- **Factory per oggetti semplici**: Non usare Abstract Factory per oggetti che si creano facilmente con `new`
+
+## Performance e considerazioni
+- **Impatto memoria**: Overhead significativo per tutte le interfacce e classi necessarie
+- **Impatto CPU**: La creazione tramite Abstract Factory è più lenta del `new` diretto
+- **Scalabilità**: Ottimo per sistemi che devono gestire molte famiglie di prodotti diverse
+- **Colli di bottiglia**: Può diventare complesso da debuggare e mantenere con molte famiglie
 
 ## Risorse utili
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four

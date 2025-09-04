@@ -15,6 +15,9 @@ Il Factory Method ti permette di creare oggetti senza sapere esattamente quale t
 - [Esempi di codice](#esempi-di-codice)
 - [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
+- [Esempi di uso reale](#esempi-di-uso-reale)
+- [Anti-pattern](#anti-pattern)
+- [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Perché ti serve
@@ -222,6 +225,25 @@ L'esempio include:
 - **Builder**: Per costruire oggetti complessi passo dopo passo
 - **Prototype**: Per clonare oggetti esistenti invece di crearli da zero
 - **Simple Factory**: Versione semplificata senza ereditarietà
+
+## Esempi di uso reale
+- **Laravel Model Factories**: Laravel usa il Factory Method per creare istanze di modelli per i test e il seeding
+- **Symfony Form Factory**: Symfony usa factory per creare diversi tipi di form fields (text, email, password)
+- **PHPUnit Test Doubles**: PHPUnit usa factory per creare mock, stub e fake objects
+- **Document Generators**: Librerie come TCPDF e FPDF usano factory per creare diversi tipi di documenti
+
+## Anti-pattern
+**Cosa NON fare:**
+- **Factory con troppi parametri**: Evita factory che richiedono molti parametri, rendono il codice difficile da usare
+- **Factory che conosce tutto**: Non far conoscere alla factory dettagli specifici delle classi concrete
+- **Factory senza interfacce**: Sempre definire interfacce astratte per i prodotti e le factory
+- **Factory per oggetti semplici**: Non usare factory per oggetti che si creano facilmente con `new`
+
+## Performance e considerazioni
+- **Impatto memoria**: Leggero overhead per le classi factory, ma compensato dalla flessibilità
+- **Impatto CPU**: La creazione tramite factory è leggermente più lenta del `new` diretto
+- **Scalabilità**: Ottimo per sistemi che devono creare molti tipi diversi di oggetti
+- **Colli di bottiglia**: Raramente un problema, a meno che non crei migliaia di oggetti al secondo
 
 ## Risorse utili
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four

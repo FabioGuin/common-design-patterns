@@ -15,6 +15,9 @@ Il Singleton ti assicura che una classe abbia sempre e solo una istanza. Quando 
 - [Esempi di codice](#esempi-di-codice)
 - [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
+- [Esempi di uso reale](#esempi-di-uso-reale)
+- [Anti-pattern](#anti-pattern)
+- [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Perché ti serve
@@ -183,6 +186,25 @@ L'esempio include:
 - **Object Pool**: Per riutilizzare oggetti costosi invece di crearne sempre uno solo
 - **Service Locator**: Alternativa al Singleton per l'accesso globale, ma più flessibile
 - **Dependency Injection**: Approccio moderno che evita i problemi del Singleton
+
+## Esempi di uso reale
+- **Laravel Service Container**: Laravel usa il Singleton per gestire le istanze dei servizi nel container di dipendenze
+- **Database Connection**: La maggior parte degli ORM (Eloquent, Doctrine) usa il Singleton per le connessioni al database
+- **Logger Systems**: Sistemi di logging come Monolog usano il Singleton per garantire un solo logger per applicazione
+- **Configuration Managers**: Gestori di configurazione che leggono file .env o config per evitare letture multiple
+
+## Anti-pattern
+**Cosa NON fare:**
+- **Singleton per tutto**: Non usare il Singleton per ogni classe solo perché è comodo
+- **Singleton con stato mutabile**: Evita Singleton che cambiano stato frequentemente, rendono il codice imprevedibile
+- **Singleton come Service Locator**: Non usare il Singleton per accedere a servizi casuali, viola il principio di responsabilità
+- **Singleton thread-unsafe**: In applicazioni multi-threaded, implementa la sincronizzazione correttamente
+
+## Performance e considerazioni
+- **Impatto memoria**: Una sola istanza in memoria per tutta l'applicazione - molto efficiente
+- **Impatto CPU**: Lazy loading significa che l'oggetto si crea solo quando serve
+- **Scalabilità**: Può diventare un collo di bottiglia in applicazioni multi-threaded ad alto carico
+- **Colli di bottiglia**: Se l'istanza singleton ha operazioni costose, può rallentare tutta l'applicazione
 
 ## Risorse utili
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four
