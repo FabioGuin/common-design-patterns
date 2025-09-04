@@ -41,5 +41,5 @@ I pattern creazionali forniscono vari meccanismi per creare oggetti, aumentando 
 - **Utilizzo Laravel**: Connection pooling, Cache pools
 
 ## 🔗 Link Utili
-- [Indice Principale](../../index.md)
+- [Indice Principale](../../README.md)
 - [Esempi Completi](../../esempi-completi/)

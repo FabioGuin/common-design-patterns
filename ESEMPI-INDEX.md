@@ -1,0 +1,168 @@
+# Esempi Completi Implementati
+
+Questo documento contiene l'indice di tutti gli esempi pratici implementati nel progetto, con link diretti alle implementazioni funzionanti.
+
+## Indice
+
+- [01. Singleton Logger](#01-singleton-logger)
+- [02. Factory User Management](#02-factory-user-management)
+- [03. Repository Pattern](#03-repository-pattern)
+- [04. Service Layer](#04-service-layer)
+- [05. AI Chat System](#05-ai-chat-system)
+- [06. Event Sourcing](#06-event-sourcing)
+- [07. Microservices API](#07-microservices-api)
+- [08. CQRS Implementation](#08-cqrs-implementation)
+
+---
+
+## Esempi Implementati
+
+### 01. Singleton Logger
+
+**Pattern**: Singleton  
+**Implementazione**: Sistema di logging centralizzato  
+**Utilizzo**: Gestione log applicazione, Debug, Monitoring
+
+**Caratteristiche**:
+- Logger centralizzato con configurazione unificata
+- Supporto per multiple destinazioni (file, database, console)
+- Livelli di log configurabili
+- Integrazione con Laravel Log facade
+
+**Link**: [Singleton Logger](esempi-completi/01-singleton-logger/README.md)
+
+---
+
+### 02. Factory User Management
+
+**Pattern**: Factory Method  
+**Implementazione**: Creazione utenti con ruoli diversi  
+**Utilizzo**: User registration, Role management, Testing
+
+**Caratteristiche**:
+- Factory per creazione utenti con ruoli specifici
+- Supporto per Admin, User, Guest
+- Validazione automatica dei dati
+- Integrazione con Laravel Auth
+
+**Link**: [Factory User Management](esempi-completi/02-factory-user-management/README.md)
+
+---
+
+### 03. Repository Pattern
+
+**Pattern**: Repository  
+**Implementazione**: Astrazione accesso dati  
+**Utilizzo**: Data layer abstraction, Testing, Multiple data sources
+
+**Caratteristiche**:
+- Astrazione completa del data layer
+- Supporto per multiple fonti dati
+- Interfacce per testing
+- Query building avanzato
+
+**Link**: In sviluppo
+
+---
+
+### 04. Service Layer
+
+**Pattern**: Service Layer  
+**Implementazione**: Logica business centralizzata  
+**Utilizzo**: Business logic separation, API endpoints, Complex operations
+
+**Caratteristiche**:
+- Separazione logica business da controller
+- Operazioni complesse incapsulate
+- Transazioni gestite automaticamente
+- API endpoints puliti
+
+**Link**: In sviluppo
+
+---
+
+### 05. AI Chat System
+
+**Pattern**: AI Gateway, Observer  
+**Implementazione**: Sistema chat con intelligenza artificiale  
+**Utilizzo**: Customer support, Automated responses, AI integration
+
+**Caratteristiche**:
+- Integrazione con provider AI multipli
+- Gestione conversazioni persistenti
+- Fallback automatico tra provider
+- Rate limiting e cost optimization
+
+**Link**: In sviluppo
+
+---
+
+### 06. Event Sourcing
+
+**Pattern**: Event Sourcing, CQRS  
+**Implementazione**: Tracciamento eventi applicazione  
+**Utilizzo**: Audit trail, State reconstruction, Event history
+
+**Caratteristiche**:
+- Store eventi immutabile
+- Ricostruzione stato da eventi
+- Proiezioni per query ottimizzate
+- Audit trail completo
+
+**Link**: In sviluppo
+
+---
+
+### 07. Microservices API
+
+**Pattern**: API Gateway, Circuit Breaker  
+**Implementazione**: Architettura microservizi  
+**Utilizzo**: Scalabilità, Independent deployment, Service communication
+
+**Caratteristiche**:
+- Gateway centralizzato per API
+- Circuit breaker per resilienza
+- Service discovery
+- Load balancing automatico
+
+**Link**: In sviluppo
+
+---
+
+### 08. CQRS Implementation
+
+**Pattern**: CQRS, Event Sourcing  
+**Implementazione**: Separazione comandi e query  
+**Utilizzo**: Performance optimization, Complex domains, Event sourcing
+
+**Caratteristiche**:
+- Separazione completa read/write
+- Proiezioni ottimizzate per query
+- Event store per comandi
+- Sincronizzazione asincrona
+
+**Link**: In sviluppo
+
+---
+
+## Come Utilizzare gli Esempi
+
+1. **Naviga** all'esempio di interesse
+2. **Leggi** la documentazione per comprendere l'implementazione
+3. **Scarica** o clona il codice di esempio
+4. **Segui** le istruzioni di setup nel README specifico
+5. **Testa** l'implementazione nel tuo ambiente
+
+## Struttura degli Esempi
+
+Ogni esempio include:
+- **README.md**: Documentazione completa
+- **composer.json**: Dipendenze Laravel
+- **app/**: Codice sorgente dell'implementazione
+- **database/**: Migration e seeder
+- **routes/**: Endpoint di test
+- **tests/**: Test unitari e di integrazione
+
+---
+
+*Questi esempi dimostrano l'applicazione pratica dei pattern di design in progetti Laravel reali. Ogni implementazione è funzionante e può essere utilizzata come base per i tuoi progetti.*

@@ -112,6 +112,6 @@ esempio-completo/
 ```
 
 ## 🔗 Link Utili
-- [Indice Principale](../index.md)
+- [Indice Principale](../README.md)
 - [Pattern Creazionali](../01-pattern-creazionali/)
 - [Pattern Laravel-Specifici](../05-pattern-laravel-specifici/)
