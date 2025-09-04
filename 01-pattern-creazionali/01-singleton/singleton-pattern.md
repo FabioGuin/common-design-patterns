@@ -1,35 +1,47 @@
 # Singleton Pattern
 
-## Cosa fa
-Il Singleton ti assicura che una classe abbia sempre e solo una istanza. Quando chiami il metodo per ottenere l'istanza, ricevi sempre la stessa, anche se la chiami da parti diverse del codice.
-
-È perfetto per cose come connessioni al database, configurazioni dell'app o servizi di logging che devono essere condivisi in tutta l'applicazione.
-
 ## Indice
+
+### Comprensione Base
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
 - [Schema visivo](#schema-visivo)
+
+### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Esempi di codice](#esempi-di-codice)
-- [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
+
+### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+
+### Implementazione Pratica
+- [Esempi di codice](#esempi-di-codice)
+- [Esempi completi](#esempi-completi)
+
+### Considerazioni Tecniche
 - [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
+## Cosa fa
+
+Il Singleton ti assicura che una classe abbia sempre e solo una istanza. Quando chiami il metodo per ottenere l'istanza, ricevi sempre la stessa, anche se la chiami da parti diverse del codice.
+
+È perfetto per cose come connessioni al database, configurazioni dell'app o servizi di logging che devono essere condivisi in tutta l'applicazione.
+
 ## Perché ti serve
+
 Immagina di avere un logger che deve scrivere su file. Se crei una nuova istanza del logger ogni volta che ne hai bisogno, finirai con:
 - File di log sparsi ovunque
 - Perdita di messaggi
-- Spreco di memoria
 - Confusione totale
 
 Il Singleton risolve questo problema: una sola istanza, un solo posto dove scrivere, tutto sotto controllo.
 
 ## Come funziona
+
 Il trucco è semplice:
 1. Il costruttore è privato, così nessuno può fare `new Singleton()`
 2. C'è un metodo statico che ti restituisce l'istanza
@@ -37,6 +49,7 @@ Il trucco è semplice:
 4. Le volte successive, ti restituisce sempre la stessa
 
 ## Schema visivo
+
 ```
 Prima chiamata:
 Client → getInstance() → Singleton
@@ -58,10 +71,13 @@ Client → getInstance() → Singleton
 *Il diagramma mostra la differenza tra la prima chiamata (crea l'istanza) e le chiamate successive (restituisce sempre la stessa).*
 
 ## Quando usarlo
+
 Usa il Singleton quando:
 - Hai bisogno di una sola istanza per tutta l'app (database, logger, cache)
 - L'oggetto è costoso da creare e vuoi riutilizzarlo
 - Devi coordinare l'accesso a una risorsa condivisa
+- Vuoi garantire un punto di accesso globale a una risorsa
+- Hai bisogno di controllare rigorosamente il numero di istanze
 
 **NON usarlo quando:**
 - Hai bisogno di più istanze della stessa classe
@@ -69,9 +85,9 @@ Usa il Singleton quando:
 - Rende il codice difficile da testare
 - L'oggetto cambia stato troppo spesso
 - Stai usando il Singleton solo per evitare di passare parametri
-- Hai più di una responsabilità nella classe Singleton
 
 ## Pro e contro
+
 **I vantaggi:**
 - Una sola istanza garantita
 - Accesso controllato da qualsiasi parte del codice
@@ -85,6 +101,30 @@ Usa il Singleton quando:
 - Viola il principio di responsabilità singola
 - Problemi con applicazioni multi-threaded
 - Crea accoppiamento forte
+
+## Pattern correlati
+
+- **Factory Method**: Se hai bisogno di creare istanze diverse ma sempre una per tipo
+- **Object Pool**: Per riutilizzare oggetti costosi invece di crearne sempre uno solo
+- **Service Locator**: Alternativa al Singleton per l'accesso globale, ma più flessibile
+- **Dependency Injection**: Approccio moderno che evita i problemi del Singleton
+
+## Esempi di uso reale
+
+- **Laravel Service Container**: Laravel usa il Singleton per gestire le istanze dei servizi nel container di dipendenze
+- **Database Connection**: La maggior parte degli ORM (Eloquent, Doctrine) usa il Singleton per le connessioni al database
+- **Logger Systems**: Sistemi di logging come Monolog usano il Singleton per garantire un solo logger per applicazione
+- **Configuration Managers**: Gestori di configurazione che leggono file .env o config per evitare letture multiple
+- **Cache Systems**: Sistemi di cache come Redis o Memcached spesso usano il Singleton per la connessione
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Singleton per tutto**: Non usare il Singleton per ogni classe solo perché è comodo
+- **Singleton con stato mutabile**: Evita Singleton che cambiano stato frequentemente, rendono il codice imprevedibile
+- **Singleton come Service Locator**: Non usare il Singleton per accedere a servizi casuali, viola il principio di responsabilità
+- **Singleton thread-unsafe**: In applicazioni multi-threaded, implementa la sincronizzazione correttamente
+- **Singleton con troppe responsabilità**: Non mettere troppa logica in una classe Singleton
 
 ## Esempi di codice
 
@@ -181,33 +221,16 @@ L'esempio include:
 - Livelli di log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 - API per leggere e gestire i log
 
-## Pattern correlati
-- **Factory Method**: Se hai bisogno di creare istanze diverse ma sempre una per tipo
-- **Object Pool**: Per riutilizzare oggetti costosi invece di crearne sempre uno solo
-- **Service Locator**: Alternativa al Singleton per l'accesso globale, ma più flessibile
-- **Dependency Injection**: Approccio moderno che evita i problemi del Singleton
-
-## Esempi di uso reale
-- **Laravel Service Container**: Laravel usa il Singleton per gestire le istanze dei servizi nel container di dipendenze
-- **Database Connection**: La maggior parte degli ORM (Eloquent, Doctrine) usa il Singleton per le connessioni al database
-- **Logger Systems**: Sistemi di logging come Monolog usano il Singleton per garantire un solo logger per applicazione
-- **Configuration Managers**: Gestori di configurazione che leggono file .env o config per evitare letture multiple
-
-## Anti-pattern
-**Cosa NON fare:**
-- **Singleton per tutto**: Non usare il Singleton per ogni classe solo perché è comodo
-- **Singleton con stato mutabile**: Evita Singleton che cambiano stato frequentemente, rendono il codice imprevedibile
-- **Singleton come Service Locator**: Non usare il Singleton per accedere a servizi casuali, viola il principio di responsabilità
-- **Singleton thread-unsafe**: In applicazioni multi-threaded, implementa la sincronizzazione correttamente
-
 ## Performance e considerazioni
+
 - **Impatto memoria**: Una sola istanza in memoria per tutta l'applicazione - molto efficiente
 - **Impatto CPU**: Lazy loading significa che l'oggetto si crea solo quando serve
 - **Scalabilità**: Può diventare un collo di bottiglia in applicazioni multi-threaded ad alto carico
 - **Colli di bottiglia**: Se l'istanza singleton ha operazioni costose, può rallentare tutta l'applicazione
 
 ## Risorse utili
-- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four
+
+- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru - Singleton](https://refactoring.guru/design-patterns/singleton) - Spiegazione visuale con esempi
 - [Laravel Service Container](https://laravel.com/docs/container) - Come Laravel gestisce le dipendenze
 - [Singleton Anti-Pattern](https://stackoverflow.com/questions/137975/what-is-so-bad-about-singletons) - Discussione sui problemi del Singleton

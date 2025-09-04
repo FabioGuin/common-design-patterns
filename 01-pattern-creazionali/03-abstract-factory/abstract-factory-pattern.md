@@ -1,24 +1,36 @@
 # Abstract Factory Pattern
 
-## Cosa fa
-L'Abstract Factory ti permette di creare famiglie di oggetti che vanno insieme, senza sapere esattamente quali classi specifiche stai creando. È come avere un'azienda che produce set completi: se scegli il set "cucina", ottieni forno, frigorifero e lavastoviglie della stessa marca che funzionano perfettamente insieme.
-
 ## Indice
+
+### Comprensione Base
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
 - [Schema visivo](#schema-visivo)
+
+### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Esempi di codice](#esempi-di-codice)
-- [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
+
+### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+
+### Implementazione Pratica
+- [Esempi di codice](#esempi-di-codice)
+- [Esempi completi](#esempi-completi)
+
+### Considerazioni Tecniche
 - [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
+## Cosa fa
+
+L'Abstract Factory ti permette di creare famiglie di oggetti che vanno insieme, senza sapere esattamente quali classi specifiche stai creando. È come avere un'azienda che produce set completi: se scegli il set "cucina", ottieni forno, frigorifero e lavastoviglie della stessa marca che funzionano perfettamente insieme.
+
 ## Perché ti serve
+
 Immagina di dover creare un sistema di pagamento che funziona con Stripe, PayPal e Square. Senza Abstract Factory, finiresti con:
 
 - Oggetti incompatibili tra loro (Stripe gateway con PayPal validator)
@@ -29,6 +41,7 @@ Immagina di dover creare un sistema di pagamento che funziona con Stripe, PayPal
 L'Abstract Factory risolve questo: una factory per Stripe crea gateway, validator e logger tutti compatibili tra loro.
 
 ## Come funziona
+
 Il meccanismo è strutturato:
 1. **AbstractFactory**: Definisce i metodi per creare ogni tipo di prodotto
 2. **ConcreteFactory**: Implementa la creazione di una famiglia specifica
@@ -39,6 +52,7 @@ Il meccanismo è strutturato:
 Il client chiede alla factory di creare tutti gli oggetti di cui ha bisogno, e la factory garantisce che siano tutti compatibili.
 
 ## Schema visivo
+
 ```
 Scenario 1 (Stripe Factory):
 Client → StripeFactory → createGateway() → StripeGateway
@@ -58,20 +72,24 @@ Client → PayPalFactory → createGateway() → PayPalGateway
 *Il diagramma mostra come ogni factory crea una famiglia completa di oggetti che funzionano insieme perfettamente.*
 
 ## Quando usarlo
+
 Usa l'Abstract Factory quando:
 - Hai sistemi di pagamento con diversi provider (Stripe, PayPal, Square)
 - Gestisci interfacce utente con diversi temi (Dark, Light, High Contrast)
 - Lavori con database diversi (MySQL, PostgreSQL, SQLite)
-- Hai sistemi di notifica multi-canale (Email, SMS, Push, Slack)
+- Hai sistemi di notifiche multi-canale (Email, SMS, Push, Slack)
 - Gestisci diversi ambienti (Development, Staging, Production)
+- Vuoi garantire la coerenza tra oggetti correlati
 
 **NON usarlo quando:**
 - Hai solo un tipo di prodotto
 - I prodotti non sono correlati tra loro
 - La complessità aggiuntiva non è giustificata
 - Per creazioni semplici e isolate
+- Hai bisogno di oggetti molto diversi tra loro
 
 ## Pro e contro
+
 **I vantaggi:**
 - Garantisce compatibilità tra prodotti correlati
 - Facilita il cambio dell'intera famiglia di prodotti
@@ -85,6 +103,30 @@ Usa l'Abstract Factory quando:
 - Può essere eccessivo per famiglie semplici
 - Difficile da estendere con nuovi tipi di prodotti
 - Può creare gerarchie complesse
+
+## Pattern correlati
+
+- **Factory Method**: Per creare singoli oggetti invece di famiglie
+- **Builder**: Per costruire oggetti complessi passo dopo passo
+- **Prototype**: Per clonare oggetti esistenti
+- **Simple Factory**: Versione semplificata senza famiglie di prodotti
+
+## Esempi di uso reale
+
+- **Payment Gateway Systems**: Sistemi come Stripe, PayPal e Square usano Abstract Factory per creare famiglie di servizi compatibili
+- **UI Framework**: Framework come Bootstrap e Material-UI usano Abstract Factory per creare componenti coerenti (bottoni, input, card)
+- **Database Abstraction**: ORM come Doctrine usano Abstract Factory per creare famiglie di driver (MySQL, PostgreSQL, SQLite)
+- **Cloud Providers**: Servizi AWS, Azure e Google Cloud usano Abstract Factory per creare famiglie di servizi compatibili
+- **Cross-Platform Apps**: Applicazioni che devono funzionare su iOS, Android e Web usano Abstract Factory per creare componenti nativi
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Factory troppo complesse**: Evita factory che creano troppi tipi di oggetti diversi, diventa difficile da mantenere
+- **Prodotti non correlati**: Non mettere in una famiglia prodotti che non hanno nulla a che fare tra loro
+- **Factory senza coerenza**: Assicurati che tutti i prodotti di una famiglia seguano lo stesso stile e convenzioni
+- **Factory per oggetti semplici**: Non usare Abstract Factory per oggetti che si creano facilmente con `new`
+- **Factory con troppe responsabilità**: Evita factory che fanno troppo lavoro oltre alla creazione
 
 ## Esempi di codice
 
@@ -374,34 +416,16 @@ L'esempio include:
 - Test unitari per ogni famiglia di prodotti
 - API RESTful per gestione pagamenti
 
-## Pattern correlati
-- **Factory Method**: Per creare singoli oggetti invece di famiglie
-- **Builder**: Per costruire oggetti complessi passo dopo passo
-- **Prototype**: Per clonare oggetti esistenti
-- **Simple Factory**: Versione semplificata senza famiglie di prodotti
-
-## Esempi di uso reale
-- **Payment Gateway Systems**: Sistemi come Stripe, PayPal e Square usano Abstract Factory per creare famiglie di servizi compatibili
-- **UI Framework**: Framework come Bootstrap e Material-UI usano Abstract Factory per creare componenti coerenti (bottoni, input, card)
-- **Database Abstraction**: ORM come Doctrine usano Abstract Factory per creare famiglie di driver (MySQL, PostgreSQL, SQLite)
-- **Cloud Providers**: Servizi AWS, Azure e Google Cloud usano Abstract Factory per creare famiglie di servizi compatibili
-
-## Anti-pattern
-**Cosa NON fare:**
-- **Factory troppo complesse**: Evita factory che creano troppi tipi di oggetti diversi, diventa difficile da mantenere
-- **Prodotti non correlati**: Non mettere in una famiglia prodotti che non hanno nulla a che fare tra loro
-- **Factory senza coerenza**: Assicurati che tutti i prodotti di una famiglia seguano lo stesso stile e convenzioni
-- **Factory per oggetti semplici**: Non usare Abstract Factory per oggetti che si creano facilmente con `new`
-
 ## Performance e considerazioni
+
 - **Impatto memoria**: Overhead significativo per tutte le interfacce e classi necessarie
 - **Impatto CPU**: La creazione tramite Abstract Factory è più lenta del `new` diretto
 - **Scalabilità**: Ottimo per sistemi che devono gestire molte famiglie di prodotti diverse
 - **Colli di bottiglia**: Può diventare complesso da debuggare e mantenere con molte famiglie
 
 ## Risorse utili
-- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale dei Gang of Four
+
+- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru - Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) - Spiegazione visuale con esempi
 - [Laravel Service Container](https://laravel.com/docs/container) - Come Laravel gestisce le dipendenze
 - [Abstract Factory in PHP](https://www.php.net/manual/en/language.oop5.patterns.php) - Documentazione ufficiale PHP
-

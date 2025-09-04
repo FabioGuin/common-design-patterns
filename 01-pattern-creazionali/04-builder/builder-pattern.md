@@ -1,24 +1,36 @@
 # Builder Pattern
 
 ## Indice
+
+### Comprensione Base
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
 - [Schema visivo](#schema-visivo)
+
+### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Esempi di codice](#esempi-di-codice)
-- [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
+
+### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+
+### Implementazione Pratica
+- [Esempi di codice](#esempi-di-codice)
+- [Esempi completi](#esempi-completi)
+
+### Considerazioni Tecniche
 - [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
+
 Il Builder Pattern ti permette di costruire oggetti complessi passo dopo passo, invece di creare tutto in una volta. È come avere un architetto che ti guida nella costruzione di una casa: prima le fondamenta, poi le pareti, poi il tetto, e così via.
 
 ## Perché ti serve
+
 Immagina di dover creare un oggetto `User` con 15 campi diversi. Senza Builder dovresti fare:
 ```php
 $user = new User('Mario', 'Rossi', 'mario@email.com', 'password123', 'Via Roma 1', 'Milano', '20100', 'Italia', '1234567890', '1985-05-15', 'M', 'Sviluppatore', 'Laravel', 'Senior', true);
@@ -42,6 +54,7 @@ $user = UserBuilder::create()
 Molto più chiaro e flessibile!
 
 ## Come funziona
+
 1. **Builder**: Una classe che ha metodi per impostare ogni parte dell'oggetto
 2. **Director**: (Opzionale) Una classe che sa come usare il Builder per creare oggetti specifici
 3. **Product**: L'oggetto finale che viene costruito
@@ -50,6 +63,7 @@ Molto più chiaro e flessibile!
 Il Builder mantiene lo stato dell'oggetto in costruzione e alla fine lo restituisce completo.
 
 ## Schema visivo
+
 ```
 Scenario 1 (costruzione step-by-step):
 Client → Builder::create()
@@ -71,30 +85,61 @@ Client → Builder::create()
 *Il diagramma mostra come il Builder permette di costruire oggetti in modo flessibile, con tutti i campi o solo alcuni.*
 
 ## Quando usarlo
+
 Usa il Builder Pattern quando:
 - Hai oggetti con molti parametri (più di 4-5)
 - Alcuni parametri sono opzionali
 - Vuoi rendere il codice più leggibile
 - Hai bisogno di creare varianti dello stesso oggetto
 - Vuoi validare i parametri durante la costruzione
+- Hai oggetti con configurazioni complesse
+- Vuoi costruire oggetti in modo flessibile
 
 **NON usarlo quando:**
 - L'oggetto ha solo 2-3 parametri semplici
 - Tutti i parametri sono sempre obbligatori
 - La costruzione è sempre la stessa
+- L'oggetto è molto semplice da creare
 
 ## Pro e contro
+
 **I vantaggi:**
 - Codice molto più leggibile e manutenibile
 - Parametri opzionali gestiti facilmente
 - Validazione durante la costruzione
 - Possibilità di creare varianti dell'oggetto
 - Metodi con nomi descrittivi
+- Costruzione flessibile e step-by-step
 
 **Gli svantaggi:**
 - Più codice da scrivere
 - Può essere eccessivo per oggetti semplici
 - Aggiunge complessità per casi semplici
+- Richiede più classi e metodi
+
+## Pattern correlati
+
+- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
+- **Abstract Factory**: Quando hai bisogno di creare famiglie di oggetti correlati
+- **Fluent Interface**: Il Builder spesso usa questo pattern per i metodi concatenati
+- **Template Method**: Per definire lo scheletro dell'algoritmo di costruzione
+
+## Esempi di uso reale
+
+- **Laravel Query Builder**: `DB::table('users')->where('active', 1)->orderBy('name')->get()`
+- **Laravel Mail**: `Mail::to($user)->subject('Welcome')->view('emails.welcome')->send()`
+- **Laravel Validation**: `Validator::make($data, $rules)->sometimes()->required()`
+- **HTTP Client Libraries**: Per costruire richieste HTTP complesse
+- **Configuration Builders**: Per creare configurazioni complesse
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Builder per oggetti semplici**: Non usare Builder se hai solo 2-3 parametri
+- **Metodi non fluenti**: Evita di non restituire `$this` nei metodi del Builder
+- **Validazione nel build()**: Meglio validare durante la costruzione, non alla fine
+- **Builder immutabile**: Il Builder deve permettere di modificare lo stato
+- **Builder troppo complessi**: Evita Builder con troppi metodi e responsabilità
 
 ## Esempi di codice
 
@@ -285,7 +330,7 @@ class UserController extends Controller
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[User Management Builder](../../../esempi-completi/02-factory-user-management/)** - Sistema completo di gestione utenti con Builder Pattern
+- **[User Management Builder](../../../esempi-completi/05-user-builder-system/)** - Sistema completo di gestione utenti con Builder Pattern
 
 L'esempio include:
 - Builder per creazione utenti complessi
@@ -293,31 +338,18 @@ L'esempio include:
 - Integrazione con Eloquent ORM
 - Gestione di relazioni multiple
 - Test completi con Pest
-
-## Pattern correlati
-- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
-- **Abstract Factory**: Quando hai bisogno di creare famiglie di oggetti correlati
-- **Fluent Interface**: Il Builder spesso usa questo pattern per i metodi concatenati
-
-## Esempi di uso reale
-- **Laravel Query Builder**: `DB::table('users')->where('active', 1)->orderBy('name')->get()`
-- **Laravel Mail**: `Mail::to($user)->subject('Welcome')->view('emails.welcome')->send()`
-- **Laravel Validation**: `Validator::make($data, $rules)->sometimes()->required()`
-
-## Anti-pattern
-**Cosa NON fare:**
-- **Builder per oggetti semplici**: Non usare Builder se hai solo 2-3 parametri
-- **Metodi non fluenti**: Evita di non restituire `$this` nei metodi del Builder
-- **Validazione nel build()**: Meglio validare durante la costruzione, non alla fine
-- **Builder immutabile**: Il Builder deve permettere di modificare lo stato
+- API RESTful per gestire gli utenti
+- Gestione di ruoli e permessi
 
 ## Performance e considerazioni
+
 - **Impatto memoria**: Leggero overhead per mantenere lo stato del Builder
 - **Impatto CPU**: Minimo, solo per la concatenazione dei metodi
 - **Scalabilità**: Ottimo, permette di creare oggetti complessi senza problemi
 - **Colli di bottiglia**: Nessuno, è un pattern molto efficiente
 
 ## Risorse utili
+
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru](https://refactoring.guru/design-patterns/builder) - Spiegazioni visuali
 - [Laravel Documentation](https://laravel.com/docs) - Framework specifico

@@ -1,24 +1,36 @@
 # Object Pool Pattern
 
 ## Indice
+
+### Comprensione Base
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
 - [Schema visivo](#schema-visivo)
+
+### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Esempi di codice](#esempi-di-codice)
-- [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
+
+### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+
+### Implementazione Pratica
+- [Esempi di codice](#esempi-di-codice)
+- [Esempi completi](#esempi-completi)
+
+### Considerazioni Tecniche
 - [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
+
 L'Object Pool Pattern mantiene una "piscina" di oggetti pronti all'uso, invece di crearli e distruggerli ogni volta. È come avere un parcheggio di auto: invece di comprare una nuova auto ogni volta che devi andare da qualche parte, prendi una delle auto già disponibili, la usi, e la rimetti al parcheggio per il prossimo.
 
 ## Perché ti serve
+
 Immagina di dover creare 1000 connessioni di database per processare delle richieste. Senza Object Pool:
 ```php
 // Creare e distruggere ogni volta - molto costoso!
@@ -45,6 +57,7 @@ for ($i = 0; $i < 1000; $i++) {
 Molto più efficiente!
 
 ## Come funziona
+
 1. **Pool**: Una collezione di oggetti pre-creati e pronti all'uso
 2. **Acquire**: Prendi un oggetto dalla piscina
 3. **Use**: Usa l'oggetto per quello che devi fare
@@ -54,6 +67,7 @@ Molto più efficiente!
 Il pool mantiene gli oggetti vivi e li riutilizza, evitando il costo di creazione e distruzione.
 
 ## Schema visivo
+
 ```
 Scenario 1 (oggetto disponibile):
 Client → Pool::acquire()
@@ -83,26 +97,32 @@ Client → Pool::acquire()
 *Il diagramma mostra come il pool gestisce gli oggetti disponibili e crea nuovi oggetti quando necessario.*
 
 ## Quando usarlo
+
 Usa l'Object Pool Pattern quando:
 - La creazione di un oggetto è costosa (database, file, network)
 - Hai bisogno di molti oggetti temporanei
 - Vuoi limitare il numero di oggetti attivi
 - Gli oggetti sono pesanti in memoria
 - Hai picchi di utilizzo seguiti da periodi di inattività
+- Vuoi controllare le risorse del sistema
+- Hai oggetti che richiedono inizializzazione complessa
 
 **NON usarlo quando:**
 - Gli oggetti sono semplici da creare
 - Hai bisogno di oggetti con stato unico
 - Il pool diventa troppo complesso da gestire
 - Gli oggetti hanno dipendenze complesse
+- Hai solo pochi oggetti da gestire
 
 ## Pro e contro
+
 **I vantaggi:**
 - Riduce il costo di creazione e distruzione
 - Limita l'uso di memoria
 - Migliora le performance per oggetti costosi
 - Controlla il numero di oggetti attivi
 - Riutilizzo efficiente delle risorse
+- Gestione controllata delle risorse
 
 **Gli svantaggi:**
 - Aggiunge complessità al codice
@@ -110,6 +130,33 @@ Usa l'Object Pool Pattern quando:
 - Difficile da debuggare
 - Può creare race conditions in ambienti multi-thread
 - Gestione dello stato degli oggetti
+- Può creare deadlock se non gestito correttamente
+
+## Pattern correlati
+
+- **Singleton**: Spesso usato insieme per gestire il pool come istanza unica
+- **Factory Method**: Per creare nuovi oggetti quando il pool è vuoto
+- **Prototype**: Per clonare oggetti esistenti nel pool
+- **Flyweight**: Per condividere oggetti immutabili
+
+## Esempi di uso reale
+
+- **Laravel Database**: Il connection pool è gestito automaticamente da Laravel
+- **Laravel Queue**: Pool di worker per processare job
+- **Laravel Cache**: Pool di connessioni Redis/Memcached
+- **Laravel Mail**: Pool di connessioni SMTP
+- **HTTP Client Libraries**: Pool di connessioni HTTP per migliorare le performance
+- **Game Development**: Pool di oggetti di gioco (proiettili, effetti, nemici)
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Pool infinito**: Non creare pool senza limiti di dimensione
+- **Dimenticare il release**: Sempre rilasciare gli oggetti dopo l'uso
+- **Pool per oggetti semplici**: Non usare pool per oggetti facili da creare
+- **Stato condiviso**: Non condividere stato tra oggetti del pool
+- **Pool senza reset**: Sempre pulire gli oggetti prima di rimetterli nel pool
+- **Pool thread-unsafe**: In ambienti multi-thread, implementa la sincronizzazione
 
 ## Esempi di codice
 
@@ -322,7 +369,7 @@ class DataProcessingService
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Connection Pool System](../../../esempi-completi/03-repository-pattern/)** - Sistema di gestione connessioni con Object Pool Pattern
+- **[Connection Pool System](../../../esempi-completi/07-connection-pool-system/)** - Sistema di gestione connessioni con Object Pool Pattern
 
 L'esempio include:
 - Pool di connessioni database
@@ -330,32 +377,18 @@ L'esempio include:
 - Monitoraggio delle performance
 - Integrazione con Laravel
 - Test completi con Pest
-
-## Pattern correlati
-- **Singleton**: Spesso usato insieme per gestire il pool come istanza unica
-- **Factory Method**: Per creare nuovi oggetti quando il pool è vuoto
-- **Prototype**: Per clonare oggetti esistenti nel pool
-
-## Esempi di uso reale
-- **Laravel Database**: Il connection pool è gestito automaticamente da Laravel
-- **Laravel Queue**: Pool di worker per processare job
-- **Laravel Cache**: Pool di connessioni Redis/Memcached
-- **Laravel Mail**: Pool di connessioni SMTP
-
-## Anti-pattern
-**Cosa NON fare:**
-- **Pool infinito**: Non creare pool senza limiti di dimensione
-- **Dimenticare il release**: Sempre rilasciare gli oggetti dopo l'uso
-- **Pool per oggetti semplici**: Non usare pool per oggetti facili da creare
-- **Stato condiviso**: Non condividere stato tra oggetti del pool
+- API RESTful per monitorare il pool
+- Gestione degli errori e recovery
 
 ## Performance e considerazioni
+
 - **Impatto memoria**: Può essere alto se mantieni molti oggetti nel pool
 - **Impatto CPU**: Basso, evita la creazione costante di oggetti
 - **Scalabilità**: Ottimo per gestire picchi di utilizzo
 - **Colli di bottiglia**: Attenzione ai limiti del pool e ai deadlock
 
 ## Risorse utili
+
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru](https://refactoring.guru/design-patterns/object-pool) - Spiegazioni visuali
 - [Laravel Documentation](https://laravel.com/docs) - Framework specifico

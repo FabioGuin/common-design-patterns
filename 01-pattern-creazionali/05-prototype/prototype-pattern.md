@@ -1,24 +1,36 @@
 # Prototype Pattern
 
 ## Indice
+
+### Comprensione Base
 - [Cosa fa](#cosa-fa)
 - [Perché ti serve](#perché-ti-serve)
 - [Come funziona](#come-funziona)
 - [Schema visivo](#schema-visivo)
+
+### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Esempi di codice](#esempi-di-codice)
-- [Esempi completi](#esempi-completi)
 - [Pattern correlati](#pattern-correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
+
+### Cosa Evitare
 - [Anti-pattern](#anti-pattern)
+
+### Implementazione Pratica
+- [Esempi di codice](#esempi-di-codice)
+- [Esempi completi](#esempi-completi)
+
+### Considerazioni Tecniche
 - [Performance e considerazioni](#performance-e-considerazioni)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
+
 Il Prototype Pattern ti permette di creare nuovi oggetti clonando un prototipo esistente, invece di crearli da zero. È come avere uno stampo per i biscotti: una volta che hai il primo biscotto perfetto, puoi usarlo come modello per farne altri identici.
 
 ## Perché ti serve
+
 Immagina di dover creare 100 oggetti `EmailTemplate` con configurazioni complesse. Senza Prototype dovresti:
 ```php
 // Creare ogni template da zero - molto lento!
@@ -42,6 +54,7 @@ for ($i = 0; $i < 100; $i++) {
 Molto più veloce e efficiente!
 
 ## Come funziona
+
 1. **Prototype**: Un oggetto che implementa l'interfaccia `Cloneable` o usa `clone`
 2. **Cloning**: PHP ha il supporto nativo con `clone` e `__clone()`
 3. **Deep vs Shallow Copy**: Decidi se clonare anche gli oggetti interni
@@ -50,6 +63,7 @@ Molto più veloce e efficiente!
 Il pattern sfrutta la capacità di PHP di clonare oggetti, permettendo di creare copie identiche senza ricostruire tutto.
 
 ## Schema visivo
+
 ```
 Scenario 1 (clonazione semplice):
 Client → Prototype Object
@@ -73,32 +87,63 @@ Client → Prototype Object
 *Il diagramma mostra come il Prototype permette di creare copie veloci di oggetti complessi, con o senza modifiche successive.*
 
 ## Quando usarlo
+
 Usa il Prototype Pattern quando:
 - La creazione di un oggetto è costosa (database, file, network)
 - Hai oggetti con configurazioni complesse
 - Vuoi creare varianti di un oggetto base
 - Hai bisogno di copie identiche di oggetti
 - Vuoi evitare di ricostruire oggetti simili
+- Hai oggetti con molti parametri di configurazione
+- Vuoi creare template riutilizzabili
 
 **NON usarlo quando:**
 - Gli oggetti sono semplici da creare
 - Hai solo 2-3 istanze da creare
 - Gli oggetti sono molto diversi tra loro
 - La clonazione è più costosa della creazione
+- Gli oggetti hanno dipendenze complesse
 
 ## Pro e contro
+
 **I vantaggi:**
 - Creazione veloce di oggetti complessi
 - Evita di ricostruire configurazioni complesse
 - Permette di creare varianti facilmente
 - Sfrutta la capacità nativa di PHP
 - Riduce il carico computazionale
+- Facilita la creazione di template
 
 **Gli svantaggi:**
 - Può essere confuso con la clonazione profonda
 - Gestione della memoria per oggetti grandi
 - Difficile da debuggare se la clonazione non funziona bene
 - Può creare dipendenze inaspettate tra oggetti
+
+## Pattern correlati
+
+- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
+- **Builder**: Quando hai bisogno di costruire oggetti complessi passo dopo passo
+- **Registry**: Spesso usato insieme per gestire diversi prototipi
+- **Template Method**: Per definire lo scheletro dell'algoritmo di clonazione
+
+## Esempi di uso reale
+
+- **Laravel Eloquent**: Clonazione di modelli per creare copie
+- **Laravel Mail**: Clonazione di template email per personalizzazioni
+- **Laravel Forms**: Clonazione di form per creare varianti
+- **Laravel Jobs**: Clonazione di job per creare varianti simili
+- **Document Templates**: Sistemi di gestione documenti per creare copie di template
+- **Game Development**: Clonazione di oggetti di gioco (armi, personaggi, livelli)
+
+## Anti-pattern
+
+**Cosa NON fare:**
+- **Clonazione superficiale di oggetti complessi**: Usa sempre `__clone()` per oggetti con riferimenti
+- **Clonazione di oggetti con risorse**: Non clonare file handle, connessioni DB, etc.
+- **Clonazione senza reset ID**: Ricorda di resettare ID e timestamp per nuovi record
+- **Clonazione eccessiva**: Non clonare oggetti semplici che sono facili da creare
+- **Clonazione di oggetti con stato globale**: Evita di clonare oggetti che condividono stato
 
 ## Esempi di codice
 
@@ -234,7 +279,7 @@ class DocumentController extends Controller
 
 Se vuoi vedere un esempio completo e funzionante, guarda:
 
-- **[Document Template System](../../../esempi-completi/03-repository-pattern/)** - Sistema di gestione documenti con clonazione di template
+- **[Document Template System](../../../esempi-completi/06-document-prototype-system/)** - Sistema di gestione documenti con clonazione di template
 
 L'esempio include:
 - Clonazione di documenti complessi
@@ -242,32 +287,18 @@ L'esempio include:
 - Integrazione con Eloquent ORM
 - Clonazione profonda di relazioni
 - Test completi con Pest
-
-## Pattern correlati
-- **Factory Method**: Quando hai bisogno di creare famiglie di oggetti simili
-- **Builder**: Quando hai bisogno di costruire oggetti complessi passo dopo passo
-- **Registry**: Spesso usato insieme per gestire diversi prototipi
-
-## Esempi di uso reale
-- **Laravel Eloquent**: Clonazione di modelli per creare copie
-- **Laravel Mail**: Clonazione di template email per personalizzazioni
-- **Laravel Forms**: Clonazione di form per creare varianti
-- **Laravel Jobs**: Clonazione di job per creare varianti simili
-
-## Anti-pattern
-**Cosa NON fare:**
-- **Clonazione superficiale di oggetti complessi**: Usa sempre `__clone()` per oggetti con riferimenti
-- **Clonazione di oggetti con risorse**: Non clonare file handle, connessioni DB, etc.
-- **Clonazione senza reset ID**: Ricorda di resettare ID e timestamp per nuovi record
-- **Clonazione eccessiva**: Non clonare oggetti semplici che sono facili da creare
+- API RESTful per gestire i documenti
+- Sistema di template riutilizzabili
 
 ## Performance e considerazioni
+
 - **Impatto memoria**: Può essere alto se cloni oggetti molto grandi
 - **Impatto CPU**: Basso, la clonazione è veloce in PHP
 - **Scalabilità**: Ottimo per creare molte copie di oggetti complessi
 - **Colli di bottiglia**: Attenzione alla clonazione profonda di oggetti molto grandi
 
 ## Risorse utili
+
 - [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
 - [Refactoring.Guru](https://refactoring.guru/design-patterns/prototype) - Spiegazioni visuali
 - [Laravel Documentation](https://laravel.com/docs) - Framework specifico
