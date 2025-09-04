@@ -689,52 +689,52 @@
 - **KISS (Keep It Simple, Stupid)**: Mantenere il codice semplice
 - **YAGNI (You Aren't Gonna Need It)**: Non aggiungere funzionalità non necessarie
 - **SOLID**: Cinque principi fondamentali per la progettazione OOP
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-fondamentali)
+- **Dettagli**: [Principi Fondamentali](12-pattern-metodologie-concettuali/README.md#principi-fondamentali)
 
 #### 12.2 Principi di Design
 - **GRASP**: Nove principi per assegnare responsabilità agli oggetti
 - **FURPS+**: Framework per valutare la qualità del software
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-design)
+- **Dettagli**: [Principi di Design](12-pattern-metodologie-concettuali/README.md#principi-di-design)
 
 #### 12.3 Principi di Architettura
 - **Separation of Concerns**: Separare responsabilità diverse
 - **Law of Demeter**: Principio del minimo contatto
 - **Principle of Least Astonishment**: Comportamento prevedibile
 - **Fail Fast**: Rilevare errori immediatamente
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-architettura)
+- **Dettagli**: [Principi di Architettura](12-pattern-metodologie-concettuali/README.md#principi-di-architettura)
 
 #### 12.4 Principi di Qualità
 - **Clean Code Principles**: Scrivere codice pulito e leggibile
 - **Convention over Configuration**: Usare convenzioni predefinite
 - **Don't Make Me Think**: Interfaccia intuitiva
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-qualità)
+- **Dettagli**: [Principi di Qualità](12-pattern-metodologie-concettuali/README.md#principi-di-qualità)
 
 #### 12.5 Principi di Performance
 - **Premature Optimization is the Root of All Evil**: Non ottimizzare prematuramente
 - **Profile Before Optimizing**: Misurare prima di ottimizzare
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-performance)
+- **Dettagli**: [Principi di Performance](12-pattern-metodologie-concettuali/README.md#principi-di-performance)
 
 #### 12.6 Principi di Testing
 - **Test-Driven Development (TDD)**: Scrivere test prima del codice
 - **Behavior-Driven Development (BDD)**: Focus sul comportamento
 - **Arrange-Act-Assert (AAA)**: Struttura standard dei test
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-testing)
+- **Dettagli**: [Principi di Testing](12-pattern-metodologie-concettuali/README.md#principi-di-testing)
 
 #### 12.7 Principi di Sicurezza
 - **Principle of Least Privilege**: Concedere solo i permessi necessari
 - **Defense in Depth**: Multiple layer di sicurezza
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-sicurezza)
+- **Dettagli**: [Principi di Sicurezza](12-pattern-metodologie-concettuali/README.md#principi-di-sicurezza)
 
 #### 12.8 Principi di Manutenibilità
 - **Code Smells**: Riconoscere segnali di problemi
 - **Technical Debt**: Gestire il debito tecnico
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-manutenibilità)
+- **Dettagli**: [Principi di Manutenibilità](12-pattern-metodologie-concettuali/README.md#principi-di-manutenibilità)
 
 #### 12.9 Principi di Team e Processo
 - **Agile Principles**: Metodologia di sviluppo iterativo
 - **Continuous Integration/Continuous Deployment (CI/CD)**: Automatizzazione
 - **Code Review**: Revisione del codice
-- **Dettagli**: [Metodologie Concettuali](12-pattern-metodologie-concettuali/README.md#principi-di-team-e-processo)
+- **Dettagli**: [Principi di Team e Processo](12-pattern-metodologie-concettuali/README.md#principi-di-team-e-processo)
 
 ---
 
