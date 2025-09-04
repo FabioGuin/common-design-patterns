@@ -1,0 +1,22 @@
+{
+    "name": "ai-model-abstraction-example",
+    "description": "Esempio completo del pattern AI Model Abstraction per Laravel",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "predis/predis": "^2.0",
+        "illuminate/support": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
