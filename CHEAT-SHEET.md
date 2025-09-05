@@ -582,85 +582,85 @@
 
 ---
 
-## 12. Metodologie Concettuali di Programmazione
+## 0. Principi e Metodologie Fondamentali
 
-### 12.1 Principi Fondamentali
+### 0.1 Principi Fondamentali
 - **Implementazione**: DRY, KISS, YAGNI, SOLID, Clean Code, Separation of Concerns, Law of Demeter, Fail Fast
 - **Utilizzo**: Base per tutti i pattern, Qualità del codice
 - **Esempi pratici**: Code refactoring, Design principles, Best practices
-- **Dettagli**: [Principi Fondamentali](12-pattern-metodologie-concettuali/README.md#principi-fondamentali)
+- **Dettagli**: [Principi Fondamentali](00-fondamentali/README.md#principi-fondamentali)
 
-### 12.2 Metodologie di Sviluppo
+### 0.2 Metodologie di Sviluppo
 - **Implementazione**: TDD, BDD, ATDD, Refactoring, Code Review, Pair Programming, Mob Programming
 - **Utilizzo**: Processo di sviluppo, Qualità del codice
 - **Esempi pratici**: Test-driven development, Code reviews, Collaborative programming
-- **Dettagli**: [Metodologie di Sviluppo](12-pattern-metodologie-concettuali/README.md#metodologie-di-sviluppo)
+- **Dettagli**: [Metodologie di Sviluppo](00-fondamentali/README.md#metodologie-di-sviluppo)
 
-### 12.3 Metodologie Agili
+### 0.3 Metodologie Agili
 - **Implementazione**: Scrum, Kanban, Extreme Programming, Lean Development, Crystal, Feature-Driven Development
 - **Utilizzo**: Gestione progetto, Processo di sviluppo
 - **Esempi pratici**: Sprint planning, Daily standups, Retrospectives
-- **Dettagli**: [Metodologie Agili](12-pattern-metodologie-concettuali/README.md#metodologie-agili)
+- **Dettagli**: [Metodologie Agili](00-fondamentali/README.md#metodologie-agili)
 
-### 12.4 Metodologie di Architettura
+### 0.4 Metodologie di Architettura
 - **Implementazione**: DDD, Microservices, Event-Driven, Hexagonal, Clean Architecture, CQRS, Event Sourcing
 - **Utilizzo**: Progettazione architetturale, Scalabilità
 - **Esempi pratici**: Domain modeling, Service design, Event-driven systems
-- **Dettagli**: [Metodologie di Architettura](12-pattern-metodologie-concettuali/README.md#metodologie-di-architettura)
+- **Dettagli**: [Metodologie di Architettura](00-fondamentali/README.md#metodologie-di-architettura)
 
-### 12.5 Metodologie di Qualità
+### 0.5 Metodologie di Qualità
 - **Implementazione**: Code Quality, Technical Debt, Code Smells, Performance Testing, Security Testing
 - **Utilizzo**: Mantenimento qualità, Identificazione problemi
 - **Esempi pratici**: Code metrics, Quality gates, Performance monitoring
-- **Dettagli**: [Metodologie di Qualità](12-pattern-metodologie-concettuali/README.md#metodologie-di-qualità)
+- **Dettagli**: [Metodologie di Qualità](00-fondamentali/README.md#metodologie-di-qualità)
 
-### 12.6 Metodologie di Processo
+### 0.6 Metodologie di Processo
 - **Implementazione**: DevOps, CI/CD, GitOps, Infrastructure as Code, Monitoring
 - **Utilizzo**: Automatizzazione, Deployment, Monitoring
 - **Esempi pratici**: Automated pipelines, Infrastructure management, System monitoring
-- **Dettagli**: [Metodologie di Processo](12-pattern-metodologie-concettuali/README.md#metodologie-di-processo)
+- **Dettagli**: [Metodologie di Processo](00-fondamentali/README.md#metodologie-di-processo)
 
-### 12.7 Metodologie di Team
+### 0.7 Metodologie di Team
 - **Implementazione**: Agile Principles, Team Dynamics, Knowledge Sharing, Mentoring, Retrospectives
 - **Utilizzo**: Gestione team, Collaborazione
 - **Esempi pratici**: Team building, Knowledge transfer, Mentoring programs
-- **Dettagli**: [Metodologie di Team](12-pattern-metodologie-concettuali/README.md#metodologie-di-team)
+- **Dettagli**: [Metodologie di Team](00-fondamentali/README.md#metodologie-di-team)
 
-### 12.8 Metodologie di Progettazione
+### 0.8 Metodologie di Progettazione
 - **Implementazione**: User-Centered Design, Design Thinking, API Design, Database Design, UI/UX Design
 - **Utilizzo**: Progettazione user experience, API design
 - **Esempi pratici**: User research, API documentation, Database schema design
-- **Dettagli**: [Metodologie di Progettazione](12-pattern-metodologie-concettuali/README.md#metodologie-di-progettazione)
+- **Dettagli**: [Metodologie di Progettazione](00-fondamentali/README.md#metodologie-di-progettazione)
 
-### 12.9 Metodologie di Sicurezza
+### 0.9 Metodologie di Sicurezza
 - **Implementazione**: Security by Design, Threat Modeling, Secure Coding, Privacy by Design
 - **Utilizzo**: Sicurezza applicativa, Privacy protection
 - **Esempi pratici**: Security audits, Threat analysis, Privacy compliance
-- **Dettagli**: [Metodologie di Sicurezza](12-pattern-metodologie-concettuali/README.md#metodologie-di-sicurezza)
+- **Dettagli**: [Metodologie di Sicurezza](00-fondamentali/README.md#metodologie-di-sicurezza)
 
-### 12.10 Metodologie di Performance
+### 0.10 Metodologie di Performance
 - **Implementazione**: Performance Optimization, Caching Strategies, Database Optimization, Scalability
 - **Utilizzo**: Ottimizzazione performance, Scalabilità
 - **Esempi pratici**: Performance profiling, Caching strategies, Database tuning
-- **Dettagli**: [Metodologie di Performance](12-pattern-metodologie-concettuali/README.md#metodologie-di-performance)
+- **Dettagli**: [Metodologie di Performance](00-fondamentali/README.md#metodologie-di-performance)
 
-### 12.11 Metodologie di Testing
+### 0.11 Metodologie di Testing
 - **Implementazione**: Unit Testing, Integration Testing, End-to-End Testing, Property-Based Testing, Mutation Testing
 - **Utilizzo**: Verifica correttezza, Quality assurance
 - **Esempi pratici**: Test automation, Test coverage, Quality metrics
-- **Dettagli**: [Metodologie di Testing](12-pattern-metodologie-concettuali/README.md#metodologie-di-testing)
+- **Dettagli**: [Metodologie di Testing](00-fondamentali/README.md#metodologie-di-testing)
 
-### 12.12 Metodologie di Documentazione
+### 0.12 Metodologie di Documentazione
 - **Implementazione**: Documentation-Driven Development, Living Documentation, API Documentation, Code Documentation
 - **Utilizzo**: Documentazione sistema, Knowledge sharing
 - **Esempi pratici**: API docs, Code comments, Living documentation
-- **Dettagli**: [Metodologie di Documentazione](12-pattern-metodologie-concettuali/README.md#metodologie-di-documentazione)
+- **Dettagli**: [Metodologie di Documentazione](00-fondamentali/README.md#metodologie-di-documentazione)
 
-### 12.13 Metodologie di Gestione
+### 0.13 Metodologie di Gestione
 - **Implementazione**: Project Management, Risk Management, Change Management, Quality Management, Time Management
 - **Utilizzo**: Gestione progetto, Risk mitigation
 - **Esempi pratici**: Project planning, Risk assessment, Change control
-- **Dettagli**: [Metodologie di Gestione](12-pattern-metodologie-concettuali/README.md#metodologie-di-gestione)
+- **Dettagli**: [Metodologie di Gestione](00-fondamentali/README.md#metodologie-di-gestione)
 
 ---
 

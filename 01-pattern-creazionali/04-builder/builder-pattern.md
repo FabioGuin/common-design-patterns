@@ -213,10 +213,10 @@ L'esempio include:
 
 ### Principi e Metodologie
 
-- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
-- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
-- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
-- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
+- **[DRY Pattern](../00-fondamentali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../00-fondamentali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../00-fondamentali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../00-fondamentali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 
@@ -288,4 +288,4 @@ L'esempio include:
 - [Builder Pattern vs Factory Pattern](https://www.tutorialspoint.com/design_pattern/builder_pattern.htm) - Confronto tra Builder e Factory
 
 ### Strumenti di supporto
-- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step
+- [Checklist di Implementazione](../00-fondamentali/checklist-implementazione-pattern.md) - Guida step-by-step

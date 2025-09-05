@@ -278,10 +278,10 @@ L'esempio include:
 
 ### Principi e Metodologie
 
-- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
-- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
-- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
-- **[Microservices](../12-pattern-metodologie-concettuali/26-microservices/microservices.md)** - Architettura a microservizi
+- **[SOLID Principles](../00-fondamentali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../00-fondamentali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../00-fondamentali/09-tdd/tdd.md)** - Test-Driven Development
+- **[Microservices](../00-fondamentali/26-microservices/microservices.md)** - Architettura a microservizi
 
 ## Esempi di uso reale
 
@@ -349,4 +349,4 @@ L'esempio include:
 - [API Rate Limiting](https://microservices.io/patterns/reliability/rate-limiting.html) - Pattern di resilienza
 
 ### Strumenti di supporto
-- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step
+- [Checklist di Implementazione](../00-fondamentali/checklist-implementazione-pattern.md) - Guida step-by-step

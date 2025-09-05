@@ -190,10 +190,10 @@ L'esempio include:
 
 ### Principi e Metodologie
 
-- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
-- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
-- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
-- **[Event-Driven Architecture](../12-pattern-metodologie-concettuali/15-event-driven-architecture/event-driven-architecture.md)** - Architettura basata su eventi
+- **[SOLID Principles](../00-fondamentali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../00-fondamentali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../00-fondamentali/09-tdd/tdd.md)** - Test-Driven Development
+- **[Event-Driven Architecture](../00-fondamentali/15-event-driven-architecture/event-driven-architecture.md)** - Architettura basata su eventi
 
 ## Esempi di uso reale
 
@@ -259,4 +259,4 @@ L'esempio include:
 - [Event Sourcing Tutorial](https://eventstore.com/learn/event-sourcing/) - Tutorial completo
 
 ### Strumenti di supporto
-- [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step
+- [Checklist di Implementazione](../00-fondamentali/checklist-implementazione-pattern.md) - Guida step-by-step

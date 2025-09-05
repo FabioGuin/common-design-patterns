@@ -4,7 +4,7 @@
 
 ### Per Principianti
 - [**Cheat Sheet**](CHEAT-SHEET.md) - Panoramica rapida di tutti i pattern
-- [**Principi Fondamentali**](12-pattern-metodologie-concettuali/README.md) - DRY, KISS, SOLID e altri principi base
+- [**Principi Fondamentali**](00-fondamentali/README.md) - DRY, KISS, SOLID e altri principi base
 - [**Pattern Creazionali**](01-pattern-creazionali/README.md) - Come creare oggetti in modo intelligente
 
 ### Per Sviluppatori Intermedi
@@ -22,12 +22,15 @@
 - [**Pattern IA e ML**](11-pattern-ia-ml/) - Come integrare intelligenza artificiale
 
 ### Per Architetti e Team Lead
-- [**Metodologie Concettuali**](12-pattern-metodologie-concettuali/README.md) - Principi e metodologie di programmazione
+- [**Principi Fondamentali**](00-fondamentali/README.md) - Principi e metodologie di programmazione
 
 ## Riferimento Rapido
 - [**Cheat Sheet**](CHEAT-SHEET.md) - Panoramica rapida di tutti i pattern con implementazioni e utilizzi
 
 ## Indice Generale
+
+### Principi Fondamentali
+- [0. Principi e Metodologie Fondamentali](00-fondamentali/README.md) - DRY, KISS, SOLID, Clean Code e altre metodologie base
 
 ### Pattern Fondamentali
 - [1. Pattern Creazionali (Creational Patterns)](01-pattern-creazionali/README.md)
@@ -139,21 +142,6 @@
   - [11.6 AI Rate Limiting](11-pattern-ia-ml/06-ai-rate-limiting/ai-rate-limiting-pattern.md)
   - [11.7 AI Batch Processing](11-pattern-ia-ml/07-ai-batch-processing/ai-batch-processing-pattern.md)
 
-### Metodologie Concettuali
-- [12. Metodologie Concettuali di Programmazione](12-pattern-metodologie-concettuali/README.md)
-  - [12.1 Principi Fondamentali](12-pattern-metodologie-concettuali/README.md#principi-fondamentali) - DRY, KISS, YAGNI, SOLID, Clean Code, Separation of Concerns, Law of Demeter, Fail Fast
-  - [12.2 Metodologie di Sviluppo](12-pattern-metodologie-concettuali/README.md#metodologie-di-sviluppo) - TDD, BDD, ATDD, Refactoring, Code Review, Pair Programming, Mob Programming
-  - [12.3 Metodologie Agili](12-pattern-metodologie-concettuali/README.md#metodologie-agili) - Scrum, Kanban, Extreme Programming, Lean Development, Crystal, Feature-Driven Development
-  - [12.4 Metodologie di Architettura](12-pattern-metodologie-concettuali/README.md#metodologie-di-architettura) - DDD, Microservices, Event-Driven, Hexagonal, Clean Architecture, CQRS, Event Sourcing
-  - [12.5 Metodologie di Qualità](12-pattern-metodologie-concettuali/README.md#metodologie-di-qualità) - Code Quality, Technical Debt, Code Smells, Performance Testing, Security Testing
-  - [12.6 Metodologie di Processo](12-pattern-metodologie-concettuali/README.md#metodologie-di-processo) - DevOps, CI/CD, GitOps, Infrastructure as Code, Monitoring
-  - [12.7 Metodologie di Team](12-pattern-metodologie-concettuali/README.md#metodologie-di-team) - Agile Principles, Team Dynamics, Knowledge Sharing, Mentoring, Retrospectives
-  - [12.8 Metodologie di Progettazione](12-pattern-metodologie-concettuali/README.md#metodologie-di-progettazione) - User-Centered Design, Design Thinking, API Design, Database Design, UI/UX Design
-  - [12.9 Metodologie di Sicurezza](12-pattern-metodologie-concettuali/README.md#metodologie-di-sicurezza) - Security by Design, Threat Modeling, Secure Coding, Privacy by Design
-  - [12.10 Metodologie di Performance](12-pattern-metodologie-concettuali/README.md#metodologie-di-performance) - Performance Optimization, Caching Strategies, Database Optimization, Scalability
-  - [12.11 Metodologie di Testing](12-pattern-metodologie-concettuali/README.md#metodologie-di-testing) - Unit Testing, Integration Testing, End-to-End Testing, Property-Based Testing, Mutation Testing
-  - [12.12 Metodologie di Documentazione](12-pattern-metodologie-concettuali/README.md#metodologie-di-documentazione) - Documentation-Driven Development, Living Documentation, API Documentation, Code Documentation
-  - [12.13 Metodologie di Gestione](12-pattern-metodologie-concettuali/README.md#metodologie-di-gestione) - Project Management, Risk Management, Change Management, Quality Management, Time Management
 
 ---
 
