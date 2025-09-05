@@ -1,0 +1,279 @@
+# Memento Pattern
+
+## Cosa fa
+
+Il Memento Pattern cattura e esternalizza lo stato interno di un oggetto in modo che l'oggetto possa essere ripristinato a questo stato in seguito, senza violare l'incapsulamento. È come creare "snapshot" dello stato di un oggetto per poterlo ripristinare dopo.
+
+## Perché ti serve
+
+Immagina di avere un editor di testo con funzionalità di undo/redo. Ogni volta che l'utente fa un'azione, vuoi poterla annullare. Con il Memento Pattern puoi:
+
+- **Salvare** lo stato di un oggetto in un momento specifico
+- **Ripristinare** l'oggetto a uno stato precedente
+- **Implementare** undo/redo facilmente
+- **Mantenere** l'incapsulamento dell'oggetto
+
+## Come funziona
+
+Il pattern ha tre componenti principali:
+
+1. **Originator**: L'oggetto di cui vuoi salvare lo stato
+2. **Memento**: Contiene lo stato salvato dell'Originator
+3. **Caretaker**: Gestisce i Memento e decide quando salvare/ripristinare
+
+## Schema visivo
+
+```
+Originator → Memento ← Caretaker
+     ↓         ↑
+  save()   restore()
+```
+
+## Quando usarlo
+
+- **Undo/Redo** operations
+- **Checkpoint/Rollback** systems
+- **Game save states**
+- **Database transactions**
+- **Configuration snapshots**
+- **Backup systems**
+
+## Pro e contro
+
+### Pro
+- **Encapsulation**: Non viola l'incapsulamento dell'oggetto
+- **State management**: Facile gestire stati multipli
+- **Undo/Redo**: Implementazione naturale
+- **Flexibility**: Puoi salvare solo le parti necessarie
+
+### Contro
+- **Memory usage**: Può usare molta memoria per stati complessi
+- **Performance**: Salvare/ripristinare può essere costoso
+- **Complexity**: Può diventare complesso con oggetti grandi
+- **Versioning**: Gestire versioni multiple può essere difficile
+
+## Esempi di codice
+
+### Memento
+```php
+class TextMemento
+{
+    private string $content;
+    private int $cursorPosition;
+    private DateTime $timestamp;
+    
+    public function __construct(string $content, int $cursorPosition)
+    {
+        $this->content = $content;
+        $this->cursorPosition = $cursorPosition;
+        $this->timestamp = new DateTime();
+    }
+    
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+    
+    public function getCursorPosition(): int
+    {
+        return $this->cursorPosition;
+    }
+    
+    public function getTimestamp(): DateTime
+    {
+        return $this->timestamp;
+    }
+}
+```
+
+### Originator
+```php
+class TextEditor
+{
+    private string $content = '';
+    private int $cursorPosition = 0;
+    
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+        $this->cursorPosition = strlen($content);
+    }
+    
+    public function insertText(string $text, int $position): void
+    {
+        $this->content = substr_replace($this->content, $text, $position, 0);
+        $this->cursorPosition = $position + strlen($text);
+    }
+    
+    public function deleteText(int $start, int $length): void
+    {
+        $this->content = substr_replace($this->content, '', $start, $length);
+        $this->cursorPosition = $start;
+    }
+    
+    public function createMemento(): TextMemento
+    {
+        return new TextMemento($this->content, $this->cursorPosition);
+    }
+    
+    public function restoreFromMemento(TextMemento $memento): void
+    {
+        $this->content = $memento->getContent();
+        $this->cursorPosition = $memento->getCursorPosition();
+    }
+    
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+    
+    public function getCursorPosition(): int
+    {
+        return $this->cursorPosition;
+    }
+}
+```
+
+### Caretaker
+```php
+class TextEditorHistory
+{
+    private array $history = [];
+    private int $currentIndex = -1;
+    
+    public function saveState(TextEditor $editor): void
+    {
+        // Rimuovi stati futuri se siamo nel mezzo della history
+        $this->history = array_slice($this->history, 0, $this->currentIndex + 1);
+        
+        // Aggiungi il nuovo stato
+        $this->history[] = $editor->createMemento();
+        $this->currentIndex++;
+    }
+    
+    public function undo(TextEditor $editor): bool
+    {
+        if ($this->currentIndex > 0) {
+            $this->currentIndex--;
+            $editor->restoreFromMemento($this->history[$this->currentIndex]);
+            return true;
+        }
+        return false;
+    }
+    
+    public function redo(TextEditor $editor): bool
+    {
+        if ($this->currentIndex < count($this->history) - 1) {
+            $this->currentIndex++;
+            $editor->restoreFromMemento($this->history[$this->currentIndex]);
+            return true;
+        }
+        return false;
+    }
+    
+    public function canUndo(): bool
+    {
+        return $this->currentIndex > 0;
+    }
+    
+    public function canRedo(): bool
+    {
+        return $this->currentIndex < count($this->history) - 1;
+    }
+}
+```
+
+### Uso
+```php
+$editor = new TextEditor();
+$history = new TextEditorHistory();
+
+// Salva stato iniziale
+$history->saveState($editor);
+
+// Modifica il testo
+$editor->insertText("Hello", 0);
+$history->saveState($editor);
+
+$editor->insertText(" World", 5);
+$history->saveState($editor);
+
+// Undo
+$history->undo($editor); // Rimuove " World"
+
+// Redo
+$history->redo($editor); // Aggiunge di nuovo " World"
+```
+
+## Esempi completi
+
+Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel che mostra:
+- Sistema di undo/redo per documenti
+- Checkpoint per database
+- Backup automatico di configurazioni
+- Sistema di versioning per file
+
+## Correlati
+
+- **Command Pattern**: Spesso usato insieme per undo/redo
+- **State Pattern**: Per gestire stati complessi
+- **Prototype Pattern**: Per clonare oggetti
+
+## Esempi di uso reale
+
+- **Laravel Eloquent**: Per rollback di transazioni
+- **Laravel Backup**: Per backup di database
+- **Text editors**: Undo/redo
+- **Game engines**: Save states
+- **Configuration management**
+- **Version control systems**
+
+## Anti-pattern
+
+❌ **Memento troppo grande**: Un memento che salva troppi dati
+```php
+// SBAGLIATO
+class GodMemento
+{
+    private array $entireDatabase;
+    private array $allUserSessions;
+    private array $allCacheData;
+    // Troppo pesante!
+}
+```
+
+✅ **Memento focalizzato**: Un memento che salva solo i dati necessari
+```php
+// GIUSTO
+class TextMemento
+{
+    private string $content;
+    private int $cursorPosition;
+    // Solo i dati essenziali
+}
+```
+
+## Troubleshooting
+
+**Problema**: Memory leak con molti memento
+**Soluzione**: Implementa un limite alla history o usa memento più leggeri
+
+**Problema**: Performance lenta nel salvare/ripristinare
+**Soluzione**: Salva solo i dati che sono cambiati (delta)
+
+**Problema**: Memento non funziona
+**Soluzione**: Verifica che l'originator implementi correttamente i metodi
+
+## Performance e considerazioni
+
+- **Memory usage**: I memento occupano memoria
+- **Serialization**: Considera la serializzazione per il persistence
+- **Delta storage**: Salva solo le differenze per risparmiare memoria
+- **Cleanup**: Implementa una strategia di pulizia per memento vecchi
+
+## Risorse utili
+
+- [Laravel Eloquent](https://laravel.com/docs/eloquent)
+- [Laravel Backup](https://laravel.com/docs/backup)
+- [Memento Pattern su Refactoring.Guru](https://refactoring.guru/design-patterns/memento)
+- [Design Patterns in PHP](https://designpatternsphp.readthedocs.io/)
