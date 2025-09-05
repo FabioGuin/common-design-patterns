@@ -132,7 +132,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/WriteBehindService.php'; use App\Services\WriteBehindService; \$s = new WriteBehindService(); echo 'Pattern ID: ' . \$s->getId();"
@@ -147,7 +146,6 @@ php -r "require_once 'app/Services/WriteBehindService.php'; use App\Services\Wri
 - `resources/views/write-behind/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/WriteBehindTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

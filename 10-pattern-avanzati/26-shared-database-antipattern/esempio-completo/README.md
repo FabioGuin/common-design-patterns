@@ -35,7 +35,6 @@ esempio-completo/
 │   └── web.php
 ├── tests/Feature/
 │   └── SharedDatabaseTest.php
-└── test-standalone.php
 ```
 
 ## Caratteristiche dell'Esempio
@@ -67,7 +66,6 @@ esempio-completo/
 
 ### 1. **Test Standalone**
 ```bash
-php test-standalone.php
 ```
 
 ### 2. **Test Laravel**

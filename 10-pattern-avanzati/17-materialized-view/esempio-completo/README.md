@@ -131,7 +131,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/MaterializedViewService.php'; use App\Services\MaterializedViewService; \$s = new MaterializedViewService(); echo 'Pattern ID: ' . \$s->getId();"
@@ -149,7 +148,6 @@ php -r "require_once 'app/Services/MaterializedViewService.php'; use App\Service
 - `resources/views/materialized-view/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/MaterializedViewTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

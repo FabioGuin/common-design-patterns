@@ -232,7 +232,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/ServiceRegistry.php'; use App\Services\ServiceRegistry; \$s = new ServiceRegistry(); echo 'Pattern ID: ' . \$s->getId();"
@@ -258,7 +257,6 @@ php -r "require_once 'app/Services/ServiceRegistry.php'; use App\Services\Servic
 - `resources/views/service-discovery/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/ServiceDiscoveryTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

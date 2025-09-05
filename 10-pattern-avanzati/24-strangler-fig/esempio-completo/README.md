@@ -135,7 +135,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/StranglerFigService.php'; use App\Services\StranglerFigService; \$s = new StranglerFigService(); echo 'Pattern ID: ' . \$s->getId();"
@@ -150,7 +149,6 @@ php -r "require_once 'app/Services/StranglerFigService.php'; use App\Services\St
 - `resources/views/strangler-fig/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/StranglerFigTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

@@ -147,7 +147,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Domain/OrderService.php'; use App\Domain\OrderService; echo 'Pattern ID: ' . uniqid();"
@@ -167,7 +166,6 @@ php -r "require_once 'app/Domain/OrderService.php'; use App\Domain\OrderService;
 - `resources/views/hexagonal-architecture/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/HexagonalArchitectureTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

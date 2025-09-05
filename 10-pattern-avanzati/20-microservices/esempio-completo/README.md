@@ -176,7 +176,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/UserService.php'; use App\Services\UserService; \$s = new UserService(); echo 'Pattern ID: ' . \$s->getId();"
@@ -198,7 +197,6 @@ php -r "require_once 'app/Services/UserService.php'; use App\Services\UserServic
 - `resources/views/microservices/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/MicroservicesTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 
 ## Personalizzazione
 

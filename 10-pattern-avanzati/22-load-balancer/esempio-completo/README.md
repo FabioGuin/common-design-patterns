@@ -156,7 +156,6 @@ Se vuoi testare solo il pattern senza Laravel:
 
 ```bash
 # Test completo del pattern
-php test-standalone.php
 
 # Test rapido inline
 php -r "require_once 'app/Services/LoadBalancerService.php'; use App\Services\LoadBalancerService; \$s = new LoadBalancerService(); echo 'Pattern ID: ' . \$s->getId();"
@@ -171,7 +170,6 @@ php -r "require_once 'app/Services/LoadBalancerService.php'; use App\Services\Lo
 - `resources/views/load-balancer/example.blade.php` - Vista interattiva per il browser
 - `tests/Feature/LoadBalancerTest.php` - Test PHPUnit completi
 - `routes/web.php` - Route da integrare nel tuo progetto
-- `test-standalone.php` - Test standalone per verificare il pattern senza Laravel
 - `nginx.conf` - Configurazione Nginx per load balancing reale
 
 ## Personalizzazione
