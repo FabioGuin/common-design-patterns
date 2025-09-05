@@ -2,7 +2,12 @@
     "name": "laravel/cqrs-example",
     "type": "project",
     "description": "CQRS Pattern Example for Laravel",
-    "keywords": ["laravel", "cqrs", "pattern", "example"],
+    "keywords": [
+        "laravel",
+        "cqrs",
+        "pattern",
+        "example"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",
