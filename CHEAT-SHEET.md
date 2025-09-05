@@ -480,59 +480,71 @@
 - **Esempi pratici**: Authentication, Rate limiting, Request transformation
 - **Dettagli**: [API Gateway Pattern](10-pattern-avanzati/21-api-gateway/)
 
-### 10.22 Backend for Frontend (BFF)
-- **Implementazione**: Client-specific APIs, Data aggregation
-- **Utilizzo**: Client optimization, API customization
-- **Esempi pratici**: Mobile APIs, Web APIs, Admin APIs
-- **Dettagli**: [Backend for Frontend Pattern](10-pattern-avanzati/22-backend-for-frontend/)
+### 10.22 Load Balancer Pattern
+- **Implementazione**: Request distribution, Health checking
+- **Utilizzo**: Load distribution, High availability
+- **Esempi pratici**: Server load balancing, Traffic distribution, Failover
+- **Dettagli**: [Load Balancer Pattern](10-pattern-avanzati/22-load-balancer/)
 
-### 10.23 Strangler Fig Pattern
+### 10.23 Service Discovery Pattern
+- **Implementazione**: Service registry, Dynamic service lookup
+- **Utilizzo**: Service location, Dynamic service management
+- **Esempi pratici**: Microservices discovery, Service mesh, Dynamic routing
+- **Dettagli**: [Service Discovery Pattern](10-pattern-avanzati/23-service-discovery/)
+
+### 10.24 Strangler Fig Pattern
 - **Implementazione**: Gradual migration, Legacy system replacement
 - **Utilizzo**: System modernization, Risk reduction
 - **Esempi pratici**: Legacy system migration, Technology updates
-- **Dettagli**: [Strangler Fig Pattern](10-pattern-avanzati/23-strangler-fig/)
+- **Dettagli**: [Strangler Fig Pattern](10-pattern-avanzati/24-strangler-fig/)
 
-### 10.24 Database per Service
+### 10.25 Database per Service
 - **Implementazione**: Service data isolation, Independent schemas
 - **Utilizzo**: Service independence, Data ownership
 - **Esempi pratici**: Microservices architecture, Service boundaries
-- **Dettagli**: [Database per Service Pattern](10-pattern-avanzati/24-database-per-service/)
+- **Dettagli**: [Database per Service Pattern](10-pattern-avanzati/25-database-per-service/)
 
-### 10.25 Shared Database Anti-Pattern
+### 10.26 Shared Database Anti-Pattern
 - **Implementazione**: Common database, Shared schema
 - **Utilizzo**: (Anti-pattern) Quick development, Simple architecture
 - **Esempi pratici**: Monolithic applications, Tight coupling
-- **Dettagli**: [Shared Database Anti-Pattern](10-pattern-avanzati/25-shared-database-antipattern/)
+- **Dettagli**: [Shared Database Anti-Pattern](10-pattern-avanzati/26-shared-database-antipattern/)
 
-### 10.26 Saga Orchestration
+### 10.27 Saga Orchestration
 - **Implementazione**: Centralized workflow management
 - **Utilizzo**: Complex business processes, Transaction coordination
 - **Esempi pratici**: Order processing, Multi-step approvals, Workflow engines
-- **Dettagli**: [Saga Orchestration Pattern](10-pattern-avanzati/26-saga-orchestration/)
+- **Dettagli**: [Saga Orchestration Pattern](10-pattern-avanzati/27-saga-orchestration/)
 
-### 10.27 Saga Choreography
+### 10.28 Saga Choreography
 - **Implementazione**: Decentralized workflow management
 - **Utilizzo**: Loose coupling, Event-driven processes
 - **Esempi pratici**: Event-driven workflows, Decoupled services
-- **Dettagli**: [Saga Choreography Pattern](10-pattern-avanzati/27-saga-choreography/)
+- **Dettagli**: [Saga Choreography Pattern](10-pattern-avanzati/28-saga-choreography/)
 
-### 10.28 Outbox Pattern
+### 10.29 Outbox Pattern
 - **Implementazione**: Reliable event publishing, Transactional messaging
 - **Utilizzo**: Event consistency, Reliable messaging
 - **Esempi pratici**: Event publishing, Message queues, Event sourcing
-- **Dettagli**: [Outbox Pattern](10-pattern-avanzati/28-outbox-pattern/)
+- **Dettagli**: [Outbox Pattern](10-pattern-avanzati/29-outbox-pattern/)
 
-### 10.29 Inbox Pattern
+### 10.30 Inbox Pattern
 - **Implementazione**: Idempotent message processing, Duplicate handling
 - **Utilizzo**: Message reliability, Idempotency
 - **Esempi pratici**: Event processing, Message handling, Duplicate prevention
-- **Dettagli**: [Inbox Pattern](10-pattern-avanzati/29-inbox-pattern/)
+- **Dettagli**: [Inbox Pattern](10-pattern-avanzati/30-inbox-pattern/)
 
-### 10.30 Event-Driven Architecture
+### 10.31 Event-Driven Architecture
 - **Implementazione**: Event publishing, Event handling
 - **Utilizzo**: Loose coupling, Scalability, Responsiveness
 - **Esempi pratici**: Real-time systems, Microservices, Reactive systems
-- **Dettagli**: [Event-Driven Architecture Pattern](10-pattern-avanzati/30-event-driven-architecture/)
+- **Dettagli**: [Event-Driven Architecture Pattern](10-pattern-avanzati/31-event-driven-architecture/)
+
+### 10.32 Backend for Frontend (BFF)
+- **Implementazione**: Client-specific APIs, Data aggregation
+- **Utilizzo**: Client optimization, API customization
+- **Esempi pratici**: Mobile APIs, Web APIs, Admin APIs
+- **Dettagli**: [Backend for Frontend Pattern](10-pattern-avanzati/32-backend-for-frontend/)
 
 ---
 

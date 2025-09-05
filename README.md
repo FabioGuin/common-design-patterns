@@ -135,15 +135,17 @@
   - [10.19 Hexagonal Architecture (Ports and Adapters)](10-pattern-avanzati/19-hexagonal-architecture/) - Isola business logic
   - [10.20 Microservices Patterns](10-pattern-avanzati/20-microservices/) - Pattern per architettura microservizi
   - [10.21 API Gateway Pattern](10-pattern-avanzati/21-api-gateway/) - Punto di ingresso unificato per API
-  - [10.22 Backend for Frontend (BFF)](10-pattern-avanzati/22-backend-for-frontend/) - API specifiche per client
-  - [10.23 Strangler Fig Pattern](10-pattern-avanzati/23-strangler-fig/) - Migra gradualmente sistemi legacy
-  - [10.24 Database per Service](10-pattern-avanzati/24-database-per-service/) - Isola dati per microservizi
-  - [10.25 Shared Database Anti-Pattern](10-pattern-avanzati/25-shared-database-antipattern/) - Evita database condivisi
-  - [10.26 Saga Orchestration](10-pattern-avanzati/26-saga-orchestration/) - Orchestrazione centralizzata di transazioni
-  - [10.27 Saga Choreography](10-pattern-avanzati/27-saga-choreography/) - Orchestrazione distribuita di transazioni
-  - [10.28 Outbox Pattern](10-pattern-avanzati/28-outbox-pattern/) - Garantisce delivery di eventi
-  - [10.29 Inbox Pattern](10-pattern-avanzati/29-inbox-pattern/) - Gestisce idempotenza dei messaggi
-  - [10.30 Event-Driven Architecture](10-pattern-avanzati/30-event-driven-architecture/) - Architettura basata su eventi
+  - [10.22 Load Balancer Pattern](10-pattern-avanzati/22-load-balancer/) - Distribuisce carico tra servizi
+  - [10.23 Service Discovery Pattern](10-pattern-avanzati/23-service-discovery/) - Trova servizi dinamicamente
+  - [10.24 Strangler Fig Pattern](10-pattern-avanzati/24-strangler-fig/) - Migra gradualmente sistemi legacy
+  - [10.25 Database per Service](10-pattern-avanzati/25-database-per-service/) - Isola dati per microservizi
+  - [10.26 Shared Database Anti-Pattern](10-pattern-avanzati/26-shared-database-antipattern/) - Evita database condivisi
+  - [10.27 Saga Orchestration](10-pattern-avanzati/27-saga-orchestration/) - Orchestrazione centralizzata di transazioni
+  - [10.28 Saga Choreography](10-pattern-avanzati/28-saga-choreography/) - Orchestrazione distribuita di transazioni
+  - [10.29 Outbox Pattern](10-pattern-avanzati/29-outbox-pattern/) - Garantisce delivery di eventi
+  - [10.30 Inbox Pattern](10-pattern-avanzati/30-inbox-pattern/) - Gestisce idempotenza dei messaggi
+  - [10.31 Event-Driven Architecture](10-pattern-avanzati/31-event-driven-architecture/) - Architettura basata su eventi
+  - [10.32 Backend for Frontend (BFF)](10-pattern-avanzati/32-backend-for-frontend/) - API specifiche per client
 
 ### Pattern IA e Machine Learning
 - [11. Pattern IA e Machine Learning](11-pattern-ia-ml/) - Come integrare intelligenza artificiale

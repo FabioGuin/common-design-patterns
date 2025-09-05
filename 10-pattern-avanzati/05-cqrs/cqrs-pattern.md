@@ -193,7 +193,7 @@ L'esempio include:
 - **[SOLID Principles](../00-fondamentali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
 - **[Clean Code](../00-fondamentali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
 - **[TDD](../00-fondamentali/09-tdd/tdd.md)** - Test-Driven Development
-- **[Event-Driven Architecture](../00-fondamentali/15-event-driven-architecture/event-driven-architecture.md)** - Architettura basata su eventi
+- **[Event Sourcing](./06-event-sourcing/event-sourcing-pattern.md)** - Architettura basata su eventi
 
 ## Esempi di uso reale
 
