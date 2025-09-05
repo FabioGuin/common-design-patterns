@@ -7,6 +7,11 @@
 - [**Esempi Pratici**](ESEMPI-INDEX.md) - Codice funzionante che puoi copiare e usare
 - [**Tutti i Pattern**](#table-of-contents) - Lista completa di tutto quello che c'è
 
+## Per Sviluppatori
+
+- [**Template Pattern**](TEMPLATE-PATTERN.md) - Template per documenti pattern
+- [**Template Esempi**](TEMPLATE-ESEMPIO-COMPLETO.md) - Template per esempi completi semplificati
+
 ## Table of Contents
 
 ### Pattern Fondamentali

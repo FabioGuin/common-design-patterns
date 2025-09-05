@@ -4,118 +4,98 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Services\UserFactory\AdminUserFactory;
-use App\Services\UserFactory\RegularUserFactory;
-use App\Services\UserFactory\GuestUserFactory;
-use App\Models\User;
+use App\Services\UserFactory;
 
 class UserController extends Controller
 {
-    public function __construct(
-        private AdminUserFactory $adminFactory,
-        private RegularUserFactory $userFactory,
-        private GuestUserFactory $guestFactory
-    ) {}
-
     /**
-     * Crea un utente admin
+     * Endpoint principale per testare il Factory Method
      */
-    public function createAdmin(Request $request): JsonResponse
+    public function index(Request $request)
     {
-        try {
-            $user = $this->adminFactory->createUser($request->all());
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'Admin user created successfully',
-                'user' => $user->load('role')
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
-        }
+        $supportedRoles = UserFactory::getSupportedRoles();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Factory Method Pattern Demo',
+            'data' => [
+                'supported_roles' => $supportedRoles,
+                'pattern_description' => 'Factory Method crea oggetti senza specificare le loro classi concrete'
+            ]
+        ]);
     }
 
     /**
-     * Crea un utente normale
+     * Endpoint di test per dimostrare la creazione di utenti
      */
-    public function createUser(Request $request): JsonResponse
+    public function test()
     {
+        $users = [];
+        $roles = UserFactory::getSupportedRoles();
+        
+        foreach ($roles as $role) {
+            $users[] = UserFactory::createUser(
+                $role,
+                ucfirst($role) . ' User',
+                strtolower($role) . '@example.com'
+            )->toArray();
+        }
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Factory Method Test Completed',
+            'data' => [
+                'users_created' => count($users),
+                'users' => $users,
+                'pattern_benefits' => [
+                    'Encapsulation' => 'Logica di creazione incapsulata',
+                    'Flexibility' => 'Facile aggiungere nuovi tipi',
+                    'Consistency' => 'Creazione consistente per ogni tipo',
+                    'Maintainability' => 'Codice più mantenibile'
+                ]
+            ]
+        ]);
+    }
+
+    /**
+     * Endpoint per creare un utente specifico
+     */
+    public function createUser(Request $request)
+    {
+        $request->validate([
+            'role' => 'required|string|in:' . implode(',', UserFactory::getSupportedRoles()),
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255'
+        ]);
+
         try {
-            $user = $this->userFactory->createUser($request->all());
-            
+            $user = UserFactory::createUser(
+                $request->input('role'),
+                $request->input('name'),
+                $request->input('email')
+            );
+
             return response()->json([
                 'success' => true,
                 'message' => 'User created successfully',
-                'user' => $user->load('role')
-            ], 201);
+                'data' => $user->toArray()
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => $e->getMessage()
+                'message' => 'Error creating user: ' . $e->getMessage(),
+                'data' => null
             ], 400);
         }
     }
 
     /**
-     * Crea un utente guest
+     * Endpoint per mostrare la vista di esempio
      */
-    public function createGuest(Request $request): JsonResponse
+    public function show()
     {
-        try {
-            $user = $this->guestFactory->createUser($request->all());
-            
-            return response()->json([
-                'success' => true,
-                'message' => 'Guest user created successfully',
-                'user' => $user->load('role')
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
-        }
-    }
-
-    /**
-     * Lista tutti gli utenti
-     */
-    public function index(): JsonResponse
-    {
-        $users = User::with('role')->get();
+        $supportedRoles = UserFactory::getSupportedRoles();
         
-        return response()->json([
-            'success' => true,
-            'users' => $users
-        ]);
-    }
-
-    /**
-     * Mostra un utente specifico
-     */
-    public function show(User $user): JsonResponse
-    {
-        return response()->json([
-            'success' => true,
-            'user' => $user->load('role')
-        ]);
-    }
-
-    /**
-     * Verifica i permessi di un utente
-     */
-    public function checkPermissions(User $user, string $permission): JsonResponse
-    {
-        $hasPermission = $user->hasPermission($permission);
-        
-        return response()->json([
-            'success' => true,
-            'user_id' => $user->id,
-            'permission' => $permission,
-            'has_permission' => $hasPermission
-        ]);
+        return view('factory-method.example', compact('supportedRoles'));
     }
 }

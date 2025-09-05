@@ -1,114 +1,120 @@
-# User Builder System - Esempio Completo
+# Builder Pattern - Esempio per Integrazione Laravel
 
 ## Cosa fa questo esempio
-Questo esempio dimostra l'implementazione del **Builder Pattern** per creare utenti complessi in Laravel. Il sistema permette di costruire utenti con profili, impostazioni e ruoli in modo flessibile e leggibile.
+Questo esempio dimostra il pattern Builder in Laravel attraverso un sistema di costruzione di email personalizzate. L'esempio include:
 
-## Caratteristiche principali
-- **UserBuilder**: Costruzione step-by-step di utenti complessi
-- **Validazione**: Controllo dei dati durante la costruzione
-- **Relazioni**: Gestione automatica di profili e impostazioni
-- **Ruoli**: Sistema di ruoli flessibile
-- **Test**: Test completi con Pest
-- **API**: Endpoint REST per dimostrare l'uso
+- **Un'interfaccia Builder** che definisce i passi per costruire oggetti complessi
+- **Un Director** che orchestra il processo di costruzione
+- **Builder concreti** che implementano la costruzione di diversi tipi di email
+- **Un Controller** che testa il pattern via browser e API
+- **Una vista interattiva** che permette di costruire email personalizzate
+- **Test completi** che verificano il corretto funzionamento del pattern
 
-## Struttura del progetto
-```
-app/
-├── Builders/
-│   └── UserBuilder.php          # Builder principale
-├── Models/
-│   ├── User.php                 # Modello User
-│   ├── Profile.php              # Modello Profile
-│   └── Setting.php              # Modello Setting
-├── Http/
-│   └── Controllers/
-│       └── UserController.php   # Controller per API
-└── Services/
-    └── UserService.php          # Service per logica business
+## Come funziona l'esempio
+Il Builder creato gestisce:
+- **Costruzione step-by-step** di email complesse
+- **Flessibilità** nella configurazione di ogni componente
+- **Riutilizzo** della logica di costruzione per diversi tipi
+- **Validazione** e controllo della costruzione
 
-database/
-├── migrations/
-│   ├── create_users_table.php
-│   ├── create_profiles_table.php
-│   └── create_settings_table.php
-└── seeders/
-    └── UserSeeder.php
+Quando testi l'esempio, vedrai che:
+1. Puoi costruire email complesse passo dopo passo
+2. Ogni builder ha configurazioni specifiche per il tipo di email
+3. Il director orchestra la costruzione in modo consistente
+4. È facile aggiungere nuovi tipi di email
 
-tests/
-└── Feature/
-    └── UserBuilderTest.php      # Test completi
+## Caratteristiche tecniche
+- Interfaccia Builder per definire i passi di costruzione
+- Director per orchestrare il processo
+- Builder concreti per ogni tipo di oggetto
+- Controller per testare il pattern via browser e API
+- Vista interattiva per dimostrare la costruzione
+- Test PHPUnit completi
 
-routes/
-└── api.php                      # Route API
-```
+## Prerequisiti
+- **Progetto Laravel 11+** già installato e funzionante
+- **PHP 8.2+** (requisito di Laravel 11)
 
-## Come usarlo
+## Integrazione nel tuo progetto Laravel
 
-### 1. Installazione
+### 1. Copia i file (sostituisci `/path/to/your/laravel` con il percorso del tuo progetto)
+
 ```bash
-composer install
-php artisan migrate
-php artisan db:seed
+# Vai nella directory del tuo progetto Laravel
+cd /path/to/your/laravel
+
+# Copia i file necessari
+cp /path/to/this/example/app/Models/Email.php app/Models/
+cp /path/to/this/example/app/Services/EmailBuilder.php app/Services/
+cp /path/to/this/example/app/Http/Controllers/EmailController.php app/Http/Controllers/
+mkdir -p resources/views/builder
+cp /path/to/this/example/resources/views/builder/example.blade.php resources/views/builder/
+cp /path/to/this/example/tests/Feature/EmailBuilderTest.php tests/Feature/
 ```
 
-### 2. Esempi di uso
+### 2. Aggiungi le route
 
-#### Builder base
+Aggiungi queste righe al tuo `routes/web.php`:
+
 ```php
-$user = UserBuilder::create()
-    ->withBasicInfo('Mario', 'Rossi', 'mario@email.com')
-    ->withPassword('password123')
-    ->withProfile([
-        'bio' => 'Sviluppatore Laravel',
-        'avatar' => 'avatar.jpg'
-    ])
-    ->withSettings([
-        'notifications' => true,
-        'theme' => 'dark'
-    ])
-    ->asAdmin()
-    ->withEmailVerified()
-    ->build();
+use App\Http\Controllers\EmailController;
+
+// Route per il pattern Builder
+Route::get('/builder', [EmailController::class, 'show']);
+Route::get('/builder/test', [EmailController::class, 'test']);
+Route::post('/builder/create', [EmailController::class, 'createEmail']);
+
+// Route API
+Route::prefix('api/builder')->group(function () {
+    Route::get('/', [EmailController::class, 'index']);
+    Route::post('/create', [EmailController::class, 'createEmail']);
+    Route::get('/test', [EmailController::class, 'test']);
+});
 ```
 
-#### Builder per utenti semplici
-```php
-$user = UserBuilder::create()
-    ->withBasicInfo('Giulia', 'Bianchi', 'giulia@email.com')
-    ->withPassword('password123')
-    ->build();
-```
+### 3. Testa l'integrazione
 
-#### Builder per utenti con ruoli specifici
-```php
-$user = UserBuilder::create()
-    ->withBasicInfo('Luca', 'Verdi', 'luca@email.com')
-    ->withPassword('password123')
-    ->withRole('editor')
-    ->withProfile(['bio' => 'Editor esperto'])
-    ->build();
-```
-
-### 3. API Endpoints
-- `POST /api/users` - Crea nuovo utente
-- `GET /api/users` - Lista utenti
-- `GET /api/users/{id}` - Dettaglio utente
-- `PUT /api/users/{id}` - Aggiorna utente
-- `DELETE /api/users/{id}` - Elimina utente
-
-### 4. Test
 ```bash
-php artisan test
+# Avvia il server Laravel
+php artisan serve
+
+# Visita la pagina di test
+open http://localhost:8000/builder
+
+# Testa via API
+curl http://localhost:8000/api/builder/test
+
+# Esegui i test
+php artisan test tests/Feature/EmailBuilderTest.php
 ```
 
-## Vantaggi del Builder Pattern
-- **Leggibilità**: Codice molto più chiaro e comprensibile
-- **Flessibilità**: Costruisci utenti con solo i campi necessari
-- **Validazione**: Controllo dei dati durante la costruzione
-- **Manutenibilità**: Facile aggiungere nuovi campi o validazioni
-- **Riutilizzabilità**: Stesso builder per diversi tipi di utenti
+### 4. Verifica che tutto funzioni
 
-## Pattern correlati
-- **Factory Method**: Per creare diversi tipi di builder
-- **Fluent Interface**: I metodi concatenati del builder
-- **Validation**: Controllo dei dati durante la costruzione
+1. **Browser**: Vai su `http://localhost:8000/builder` e testa la costruzione di email
+2. **API**: Esegui `curl http://localhost:8000/api/builder/test`
+3. **Test**: Esegui `php artisan test tests/Feature/EmailBuilderTest.php`
+
+Se tutto funziona, l'integrazione è completata! 🎉
+
+## File inclusi
+
+- `app/Models/Email.php` - Modello per email
+- `app/Services/EmailBuilder.php` - Builder per costruire email
+- `app/Http/Controllers/EmailController.php` - Controller per testare il pattern
+- `resources/views/builder/example.blade.php` - Vista interattiva per il browser
+- `tests/Feature/EmailBuilderTest.php` - Test PHPUnit completi
+- `routes/web.php` - Route da integrare nel tuo progetto
+
+## Personalizzazione
+
+### Configurazione
+Modifica i builder in `app/Services/EmailBuilder.php` per personalizzare i tipi di email.
+
+### Estensione
+Aggiungi nuovi tipi di email creando nuovi builder concreti che implementano `EmailBuilderInterface`.
+
+## Note importanti
+- Il Builder costruisce oggetti complessi passo dopo passo
+- Il Director orchestra il processo di costruzione
+- È facile estendere il sistema aggiungendo nuovi builder
+- I file sono pronti per essere copiati in un progetto Laravel esistente

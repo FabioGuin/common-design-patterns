@@ -1,168 +1,116 @@
-# Connection Pool System
+# Object Pool Pattern - Esempio per Integrazione Laravel
 
-## Cosa fa
+## Cosa fa questo esempio
+Questo esempio dimostra il pattern Object Pool in Laravel attraverso un sistema di gestione di connessioni database. L'esempio include:
 
-Sistema completo di gestione connessioni database usando l'Object Pool Pattern. Gestisce automaticamente un pool di connessioni PDO, ottimizzando le performance e controllando l'uso delle risorse.
+- **Un Object Pool** che gestisce un pool di oggetti riutilizzabili
+- **Oggetti Poolable** che possono essere riutilizzati
+- **Un Controller** che testa il pattern via browser e API
+- **Una vista interattiva** che permette di testare il pool
+- **Test completi** che verificano il corretto funzionamento del pattern
 
-## Perché è utile
+## Come funziona l'esempio
+L'Object Pool creato gestisce:
+- **Riutilizzo di oggetti** costosi da creare (connessioni DB)
+- **Gestione del ciclo di vita** degli oggetti
+- **Performance** migliorata evitando creazioni multiple
+- **Controllo delle risorse** limitate
 
-- **Performance**: Evita il costo di creare/distruggere connessioni
-- **Controllo risorse**: Limita il numero di connessioni attive
-- **Gestione automatica**: Rilascia automaticamente le connessioni
-- **Monitoraggio**: Statistiche in tempo reale del pool
-- **Recovery**: Gestione automatica degli errori
+Quando testi l'esempio, vedrai che:
+1. Gli oggetti vengono riutilizzati dal pool
+2. Il pool gestisce automaticamente il ciclo di vita
+3. Le performance sono migliori rispetto alla creazione continua
+4. Le risorse sono controllate e limitate
 
-## Struttura del progetto
+## Caratteristiche tecniche
+- Object Pool per gestire oggetti riutilizzabili
+- Interfaccia Poolable per oggetti che possono essere riutilizzati
+- Controller per testare il pattern via browser e API
+- Vista interattiva per dimostrare il pool
+- Test PHPUnit completi
 
+## Prerequisiti
+- **Progetto Laravel 11+** già installato e funzionante
+- **PHP 8.2+** (requisito di Laravel 11)
+
+## Integrazione nel tuo progetto Laravel
+
+### 1. Copia i file (sostituisci `/path/to/your/laravel` con il percorso del tuo progetto)
+
+```bash
+# Vai nella directory del tuo progetto Laravel
+cd /path/to/your/laravel
+
+# Copia i file necessari
+cp /path/to/this/example/app/Models/DatabaseConnection.php app/Models/
+cp /path/to/this/example/app/Http/Controllers/ConnectionController.php app/Http/Controllers/
+mkdir -p resources/views/object-pool
+cp /path/to/this/example/resources/views/object-pool/example.blade.php resources/views/object-pool/
+cp /path/to/this/example/tests/Feature/ConnectionPoolTest.php tests/Feature/
 ```
-07-connection-pool-system/
-├── app/
-│   ├── Services/
-│   │   ├── ConnectionPool.php          # Pool principale
-│   │   ├── PoolManager.php             # Gestione del pool
-│   │   └── DatabaseService.php         # Servizio di esempio
-│   ├── Http/
-│   │   └── Controllers/
-│   │       └── PoolController.php      # API per monitoraggio
-│   └── Providers/
-│       └── PoolServiceProvider.php     # Registrazione servizi
-├── routes/
-│   ├── web.php                         # Route web
-│   └── api.php                         # Route API
-├── tests/
-│   └── Feature/
-│       └── ConnectionPoolTest.php      # Test completi
-├── composer.json                       # Dipendenze
-└── README.md                          # Questo file
-```
 
-## Installazione
+### 2. Aggiungi le route
 
-1. **Copia i file** nella tua applicazione Laravel
-2. **Registra il service provider** in `config/app.php`:
-   ```php
-   'providers' => [
-       // ...
-       App\Providers\PoolServiceProvider::class,
-   ],
-   ```
-3. **Configura il database** in `.env`
-4. **Installa le dipendenze**:
-   ```bash
-   composer install
-   ```
-5. **Esegui i test**:
-   ```bash
-   php artisan test tests/Feature/ConnectionPoolTest.php
-   ```
-6. **Test rapido**:
-   ```bash
-   php test-example.php
-   ```
-
-## Uso base
+Aggiungi queste righe al tuo `routes/web.php`:
 
 ```php
-use App\Services\ConnectionPool;
+use App\Http\Controllers\ConnectionController;
 
-// Crea il pool
-$pool = new ConnectionPool('mysql', 5);
+// Route per il pattern Object Pool
+Route::get('/object-pool', [ConnectionController::class, 'show']);
+Route::get('/object-pool/test', [ConnectionController::class, 'test']);
+Route::post('/object-pool/acquire', [ConnectionController::class, 'acquireConnection']);
 
-// Usa una connessione
-$connection = $pool->acquire();
-$stmt = $connection->prepare("SELECT * FROM users");
-$stmt->execute();
-$users = $stmt->fetchAll();
-$pool->release($connection);
+// Route API
+Route::prefix('api/object-pool')->group(function () {
+    Route::get('/', [ConnectionController::class, 'index']);
+    Route::post('/acquire', [ConnectionController::class, 'acquireConnection']);
+    Route::get('/test', [ConnectionController::class, 'test']);
+});
 ```
 
-## API di monitoraggio
+### 3. Testa l'integrazione
 
-- `GET /api/pool/stats` - Statistiche del pool
-- `GET /api/pool/health` - Stato di salute del pool
-- `POST /api/pool/reset` - Reset del pool
+```bash
+# Avvia il server Laravel
+php artisan serve
 
-## Test
+# Visita la pagina di test
+open http://localhost:8000/object-pool
 
-Il progetto include test completi con Pest che verificano:
-- Creazione e gestione del pool
-- Acquire e release delle connessioni
-- Gestione degli errori
-- Performance e limiti
-- Integrazione con Laravel
+# Testa via API
+curl http://localhost:8000/api/object-pool/test
 
-## Esempi di utilizzo
-
-### Processamento batch
-```php
-$service = new DatabaseService();
-$results = $service->processUsers([1, 2, 3, 4, 5]);
+# Esegui i test
+php artisan test tests/Feature/ConnectionPoolTest.php
 ```
 
-### Monitoraggio in tempo reale
-```php
-$stats = $pool->getStats();
-echo "Connessioni disponibili: " . $stats['available'];
-echo "Connessioni in uso: " . $stats['in_use'];
-```
+### 4. Verifica che tutto funzioni
 
-## Configurazione avanzata
+1. **Browser**: Vai su `http://localhost:8000/object-pool` e testa il pool
+2. **API**: Esegui `curl http://localhost:8000/api/object-pool/test`
+3. **Test**: Esegui `php artisan test tests/Feature/ConnectionPoolTest.php`
 
-Puoi configurare:
-- Dimensione massima del pool
-- Timeout delle connessioni
-- Retry automatico
-- Logging dettagliato
-- Metriche di performance
+Se tutto funziona, l'integrazione è completata! 🎉
 
-## Esempi di utilizzo avanzato
+## File inclusi
 
-### Pool multipli per diversi scopi
-```php
-$poolManager = PoolManager::getInstance();
+- `app/Models/DatabaseConnection.php` - Modello per connessioni con Object Pool
+- `app/Http/Controllers/ConnectionController.php` - Controller per testare il pattern
+- `resources/views/object-pool/example.blade.php` - Vista interattiva per il browser
+- `tests/Feature/ConnectionPoolTest.php` - Test PHPUnit completi
+- `routes/web.php` - Route da integrare nel tuo progetto
 
-// Pool per operazioni di lettura
-$readPool = $poolManager->createPool('read-only', 'mysql_read', 5);
+## Personalizzazione
 
-// Pool per operazioni di scrittura
-$writePool = $poolManager->createPool('write-only', 'mysql_write', 3);
+### Configurazione
+Modifica il pool in `app/Models/DatabaseConnection.php` per personalizzare la gestione degli oggetti.
 
-// Pool per operazioni batch
-$batchPool = $poolManager->createPool('batch', 'mysql', 10);
-```
+### Estensione
+Aggiungi nuovi tipi di oggetti poolable implementando l'interfaccia `PoolableInterface`.
 
-### Monitoraggio in tempo reale
-```php
-// Statistiche globali
-$globalStats = $poolManager->getGlobalStats();
-echo "Utilizzo globale: " . $globalStats['global_utilization_percentage'] . "%";
-
-// Stato di salute
-$health = $poolManager->getGlobalHealthStatus();
-if ($health['status'] === 'critical') {
-    // Invia alert
-}
-```
-
-### Gestione automatica degli errori
-```php
-$service = new DatabaseService('default');
-
-try {
-    $users = $service->processUsers([1, 2, 3, 4, 5]);
-    echo "Processati: " . $users['successful'] . " utenti";
-} catch (Exception $e) {
-    // Il pool gestisce automaticamente il recovery
-    Log::error("Errore processamento: " . $e->getMessage());
-}
-```
-
-## API Endpoints
-
-- `GET /api/pool/stats` - Statistiche di tutti i pool
-- `GET /api/pool/stats/{name}` - Statistiche di un pool specifico
-- `GET /api/pool/health` - Stato di salute globale
-- `GET /api/pool/health/{name}` - Stato di salute di un pool
-- `POST /api/pool/create` - Crea un nuovo pool
-- `POST /api/pool/reset/{name}` - Reset di un pool
-- `POST /api/pool/reset-all` - Reset di tutti i pool
+## Note importanti
+- L'Object Pool riutilizza oggetti costosi da creare
+- Migliora le performance evitando creazioni multiple
+- Gestisce automaticamente il ciclo di vita degli oggetti
+- I file sono pronti per essere copiati in un progetto Laravel esistente

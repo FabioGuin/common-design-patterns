@@ -2,78 +2,56 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-
-class User extends Authenticatable
+class User
 {
-    use HasFactory, Notifiable;
+    public string $name;
+    public string $email;
+    public string $role;
+    public array $permissions;
+    public bool $isActive;
+    public ?string $department;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'email_verified_at',
-        'is_active',
-        'permissions',
-        'admin_notes',
-        'preferences',
-        'guest_session_id',
-        'last_login_at',
-        'role_id'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'last_login_at' => 'datetime',
-        'is_active' => 'boolean',
-        'permissions' => 'array',
-        'preferences' => 'array'
-    ];
-
-    /**
-     * Relazione con il ruolo
-     */
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
+    public function __construct(
+        string $name,
+        string $email,
+        string $role,
+        array $permissions = [],
+        bool $isActive = true,
+        ?string $department = null
+    ) {
+        $this->name = $name;
+        $this->email = $email;
+        $this->role = $role;
+        $this->permissions = $permissions;
+        $this->isActive = $isActive;
+        $this->department = $department;
     }
 
-    /**
-     * Verifica se l'utente ha un permesso specifico
-     */
+    public function toArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'role' => $this->role,
+            'permissions' => $this->permissions,
+            'is_active' => $this->isActive,
+            'department' => $this->department,
+            'created_at' => now()->toDateTimeString()
+        ];
+    }
+
     public function hasPermission(string $permission): bool
     {
-        return in_array($permission, $this->permissions ?? []);
+        return in_array($permission, $this->permissions);
     }
 
-    /**
-     * Verifica se l'utente è admin
-     */
-    public function isAdmin(): bool
+    public function canAccess(string $resource): bool
     {
-        return $this->role?->name === 'admin';
-    }
-
-    /**
-     * Verifica se l'utente è guest
-     */
-    public function isGuest(): bool
-    {
-        return $this->role?->name === 'guest';
-    }
-
-    /**
-     * Restituisce il tipo di utente
-     */
-    public function getUserType(): string
-    {
-        return $this->role?->name ?? 'unknown';
+        return match($this->role) {
+            'admin' => true,
+            'regular' => !in_array($resource, ['admin-panel', 'user-management']),
+            'guest' => in_array($resource, ['public-content', 'login']),
+            default => false
+        };
     }
 }

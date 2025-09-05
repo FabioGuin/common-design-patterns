@@ -1,358 +1,127 @@
 <?php
 
-use App\Services\ConnectionPool;
-use App\Services\PoolManager;
-use App\Services\DatabaseService;
-use PDO;
-use PDOException;
+namespace Tests\Feature;
 
-beforeEach(function () {
-    // Pulisci tutti i pool prima di ogni test
-    $poolManager = PoolManager::getInstance();
-    $pools = $poolManager->getAllPools();
-    foreach ($pools as $name => $pool) {
-        $poolManager->removePool($name);
+use Tests\TestCase;
+use App\Models\ConnectionPool;
+use App\Models\DatabaseConnection;
+
+class ConnectionPoolTest extends TestCase
+{
+    public function test_pool_acquires_connection()
+    {
+        $pool = new ConnectionPool(2);
+        $connection = $pool->acquire();
+        
+        $this->assertInstanceOf(DatabaseConnection::class, $connection);
+        $this->assertTrue($connection->isInUse());
     }
-});
 
-describe('ConnectionPool', function () {
-    
-    test('può creare un pool di connessioni', function () {
-    $pool = new ConnectionPool('mysql', 5);
-    
-        expect($pool)->toBeInstanceOf(ConnectionPool::class);
-        expect($pool->getStats())->toHaveKey('max_size');
-        expect($pool->getStats()['max_size'])->toBe(5);
-    });
-    
-    test('può acquisire e rilasciare connessioni', function () {
-    $pool = new ConnectionPool('mysql', 3);
-    
-    // Acquisisci una connessione
-        $connection = $pool->acquire();
-        expect($connection)->toBeInstanceOf(PDO::class);
-    
-    $stats = $pool->getStats();
-    expect($stats['in_use'])->toBe(1);
-    expect($stats['available'])->toBe(0);
-    
-    // Rilascia la connessione
-    $pool->release($connection);
-    
-    $stats = $pool->getStats();
-    expect($stats['in_use'])->toBe(0);
-    expect($stats['available'])->toBe(1);
-});
+    public function test_pool_respects_max_size()
+    {
+        $pool = new ConnectionPool(2);
+        
+        $conn1 = $pool->acquire();
+        $conn2 = $pool->acquire();
+        $conn3 = $pool->acquire(); // Dovrebbe essere null
+        
+        $this->assertNotNull($conn1);
+        $this->assertNotNull($conn2);
+        $this->assertNull($conn3);
+    }
 
-    test('può gestire multiple connessioni', function () {
-        $pool = new ConnectionPool('mysql', 3);
-        
-        $connections = [];
-        
-        // Acquisisci 3 connessioni
-        for ($i = 0; $i < 3; $i++) {
-            $connections[] = $pool->acquire();
-        }
-    
-    $stats = $pool->getStats();
-        expect($stats['in_use'])->toBe(3);
-        expect($stats['available'])->toBe(0);
-        
-        // Rilascia tutte le connessioni
-        foreach ($connections as $connection) {
-            $pool->release($connection);
-        }
-        
-        $stats = $pool->getStats();
-        expect($stats['in_use'])->toBe(0);
-        expect($stats['available'])->toBe(3);
-    });
-    
-    test('lancia eccezione quando il pool è esaurito', function () {
-        $pool = new ConnectionPool('mysql', 2);
-        
-        // Acquisisci 2 connessioni (limite massimo)
-        $connection1 = $pool->acquire();
-        $connection2 = $pool->acquire();
-        
-        // Tentativo di acquisire una terza connessione dovrebbe fallire
-        expect(fn() => $pool->acquire())->toThrow(Exception::class, 'Connection pool esaurito');
-    });
-    
-    test('può eseguire query con le connessioni', function () {
-        $pool = new ConnectionPool('mysql', 2);
-        
+    public function test_pool_releases_connection()
+    {
+        $pool = new ConnectionPool(2);
         $connection = $pool->acquire();
         
-        try {
-            $stmt = $connection->prepare('SELECT 1 as test_value');
-            $stmt->execute();
-            $result = $stmt->fetch();
-            
-            expect($result['test_value'])->toBe(1);
-        } finally {
-            $pool->release($connection);
-        }
-    });
-    
-    test('può resettare il pool', function () {
-        $pool = new ConnectionPool('mysql', 3);
+        $this->assertTrue($connection->isInUse());
         
-        // Acquisisci alcune connessioni
-        $connection1 = $pool->acquire();
-        $connection2 = $pool->acquire();
+        $pool->release($connection);
         
-        $stats = $pool->getStats();
-        expect($stats['in_use'])->toBe(2);
-        
-        // Reset del pool
-        $pool->reset();
-        
-        $stats = $pool->getStats();
-        expect($stats['in_use'])->toBe(0);
-        expect($stats['available'])->toBe(0);
-    });
-    
-    test('fornisce statistiche corrette', function () {
-    $pool = new ConnectionPool('mysql', 5);
-    
-    $stats = $pool->getStats();
-        
-        expect($stats)->toHaveKeys([
-            'available',
-            'in_use',
-            'total',
-            'max_size',
-            'connection_name',
-            'utilization_percentage'
-        ]);
-    
-    expect($stats['max_size'])->toBe(5);
-        expect($stats['connection_name'])->toBe('mysql');
-        expect($stats['utilization_percentage'])->toBe(0.0);
-    });
-    
-    test('fornisce stato di salute corretto', function () {
-        $pool = new ConnectionPool('mysql', 5);
-        
-        $health = $pool->getHealthStatus();
-        
-        expect($health)->toHaveKeys([
-            'status',
-            'stats',
-            'timestamp'
-        ]);
-        
-        expect($health['status'])->toBe('healthy');
-    });
-    
-});
+        $this->assertFalse($connection->isInUse());
+    }
 
-describe('PoolManager', function () {
-    
-    test('può creare e gestire pool multipli', function () {
-        $poolManager = PoolManager::getInstance();
+    public function test_pool_reuses_released_connection()
+    {
+        $pool = new ConnectionPool(1);
         
-        // Crea due pool
-        $pool1 = $poolManager->createPool('pool1', 'mysql', 3);
-        $pool2 = $poolManager->createPool('pool2', 'mysql', 5);
+        $conn1 = $pool->acquire();
+        $this->assertNotNull($conn1);
         
-        expect($pool1)->toBeInstanceOf(ConnectionPool::class);
-        expect($pool2)->toBeInstanceOf(ConnectionPool::class);
+        $pool->release($conn1);
         
-        // Verifica che i pool siano diversi
-        expect($pool1)->not->toBe($pool2);
-        
-        // Verifica le statistiche
-        $stats = $poolManager->getAllStats();
-        expect($stats)->toHaveKeys(['pool1', 'pool2']);
-        expect($stats['pool1']['max_size'])->toBe(3);
-        expect($stats['pool2']['max_size'])->toBe(5);
-    });
-    
-    test('può recuperare un pool esistente', function () {
-        $poolManager = PoolManager::getInstance();
-        
-        $poolManager->createPool('test-pool', 'mysql', 3);
-        $pool = $poolManager->getPool('test-pool');
-        
-        expect($pool)->toBeInstanceOf(ConnectionPool::class);
-        expect($pool->getStats()['max_size'])->toBe(3);
-    });
-    
-    test('lancia eccezione per pool inesistente', function () {
-        $poolManager = PoolManager::getInstance();
-        
-        expect(fn() => $poolManager->getPool('pool-inesistente'))
-            ->toThrow(Exception::class, 'Pool \'pool-inesistente\' non trovato');
-    });
-    
-    test('può rimuovere un pool', function () {
-        $poolManager = PoolManager::getInstance();
-        
-        $poolManager->createPool('temp-pool', 'mysql', 3);
-        expect($poolManager->getAllPools())->toHaveKey('temp-pool');
-        
-        $poolManager->removePool('temp-pool');
-        expect($poolManager->getAllPools())->not->toHaveKey('temp-pool');
-    });
-    
-    test('può resettare tutti i pool', function () {
-        $poolManager = PoolManager::getInstance();
-        
-        $pool1 = $poolManager->createPool('pool1', 'mysql', 3);
-        $pool2 = $poolManager->createPool('pool2', 'mysql', 5);
-        
-        // Acquisisci connessioni
-        $pool1->acquire();
-        $pool2->acquire();
-        
-        // Reset tutti i pool
-        $poolManager->resetAllPools();
-        
-        $stats = $poolManager->getAllStats();
-        expect($stats['pool1']['in_use'])->toBe(0);
-        expect($stats['pool2']['in_use'])->toBe(0);
-    });
-    
-    test('fornisce statistiche globali', function () {
-        $poolManager = PoolManager::getInstance();
-        
-        $poolManager->createPool('pool1', 'mysql', 3);
-        $poolManager->createPool('pool2', 'mysql', 5);
-        
-        $globalStats = $poolManager->getGlobalStats();
-        
-        expect($globalStats)->toHaveKeys([
-            'total_pools',
-            'total_available',
-            'total_in_use',
-            'total_max_size',
-            'global_utilization_percentage',
-            'timestamp'
-        ]);
-        
-        expect($globalStats['total_pools'])->toBe(2);
-        expect($globalStats['total_max_size'])->toBe(8);
-    });
-    
-});
+        $conn2 = $pool->acquire();
+        $this->assertSame($conn1, $conn2);
+    }
 
-describe('DatabaseService', function () {
-    
-    beforeEach(function () {
-        // Crea un pool per i test
-        $poolManager = PoolManager::getInstance();
-        $poolManager->createPool('test-pool', 'mysql', 3);
-    });
-    
-    test('può essere istanziato con un pool', function () {
-        $service = new DatabaseService('test-pool');
+    public function test_pool_status_tracking()
+    {
+        $pool = new ConnectionPool(3);
         
-        expect($service)->toBeInstanceOf(DatabaseService::class);
-    });
-    
-    test('può eseguire query di base', function () {
-        $service = new DatabaseService('test-pool');
+        $status = $pool->getPoolStatus();
+        $this->assertEquals(0, $status['total']);
+        $this->assertEquals(0, $status['available']);
+        $this->assertEquals(0, $status['in_use']);
+        $this->assertEquals(3, $status['max_size']);
         
-        // Test di una query semplice
-        $result = $service->getUsersByRole('user', 1);
+        $conn1 = $pool->acquire();
+        $conn2 = $pool->acquire();
         
-        expect($result)->toBeArray();
-    });
-    
-    test('può processare utenti in batch', function () {
-        $service = new DatabaseService('test-pool');
+        $status = $pool->getPoolStatus();
+        $this->assertEquals(2, $status['total']);
+        $this->assertEquals(0, $status['available']);
+        $this->assertEquals(2, $status['in_use']);
         
-        $result = $service->processUsers([1, 2, 3]);
+        $pool->release($conn1);
         
-        expect($result)->toHaveKeys([
-            'users',
-            'errors',
-            'total_processed',
-            'successful',
-            'failed'
-        ]);
-        
-        expect($result['total_processed'])->toBe(3);
-    });
-    
-    test('può eseguire query batch', function () {
-        $service = new DatabaseService('test-pool');
-        
-        $queries = [
-            ['sql' => 'SELECT 1 as test1', 'params' => []],
-            ['sql' => 'SELECT 2 as test2', 'params' => []],
-        ];
-        
-        $result = $service->executeBatchQueries($queries);
-        
-        expect($result)->toHaveKeys([
-            'results',
-            'errors',
-            'total_queries',
-            'successful',
-            'failed'
-        ]);
-        
-        expect($result['total_queries'])->toBe(2);
-    });
-    
-    test('fornisce statistiche del pool', function () {
-        $service = new DatabaseService('test-pool');
-        
-        $stats = $service->getPoolStats();
-        
-        expect($stats)->toHaveKey('max_size');
-        expect($stats['max_size'])->toBe(3);
-    });
-    
-    test('fornisce stato di salute del pool', function () {
-        $service = new DatabaseService('test-pool');
-        
-        $health = $service->getPoolHealth();
-        
-        expect($health)->toHaveKeys([
-            'status',
-            'stats',
-            'timestamp'
-        ]);
-    });
-    
-});
+        $status = $pool->getPoolStatus();
+        $this->assertEquals(2, $status['total']);
+        $this->assertEquals(1, $status['available']);
+        $this->assertEquals(1, $status['in_use']);
+    }
 
-describe('Performance Tests', function () {
-    
-    test('pool è più efficiente di creare connessioni ogni volta', function () {
-        $pool = new ConnectionPool('mysql', 5);
+    public function test_connection_implements_poolable_interface()
+    {
+        $connection = new DatabaseConnection();
+        $this->assertInstanceOf(\App\Models\PoolableInterface::class, $connection);
+    }
+
+    public function test_connection_reset_functionality()
+    {
+        $connection = new DatabaseConnection();
+        $connection->setInUse(true);
         
-        $iterations = 50;
+        $this->assertTrue($connection->isInUse());
         
-        // Test con pool
-        $startTime = microtime(true);
-        for ($i = 0; $i < $iterations; $i++) {
-            $connection = $pool->acquire();
-            $stmt = $connection->prepare('SELECT ? as iteration');
-            $stmt->execute([$i]);
-            $result = $stmt->fetch();
-            $pool->release($connection);
-        }
-        $poolTime = microtime(true) - $startTime;
+        $connection->reset();
         
-        // Test senza pool (simulato)
-        $startTime = microtime(true);
-        for ($i = 0; $i < $iterations; $i++) {
-            // Simula il costo di creazione connessione
-            usleep(1000); // 1ms
-            $stmt = $pool->acquire()->prepare('SELECT ? as iteration');
-            $stmt->execute([$i]);
-            $result = $stmt->fetch();
-            $pool->release($pool->acquire());
-        }
-        $noPoolTime = microtime(true) - $startTime;
+        $this->assertFalse($connection->isInUse());
+    }
+
+    public function test_connection_to_array_conversion()
+    {
+        $connection = new DatabaseConnection('localhost', 'test_db');
+        $array = $connection->toArray();
         
-        // Il pool dovrebbe essere più veloce
-        expect($poolTime)->toBeLessThan($noPoolTime);
-    });
-    
-});
+        $this->assertIsArray($array);
+        $this->assertArrayHasKey('id', $array);
+        $this->assertArrayHasKey('host', $array);
+        $this->assertArrayHasKey('database', $array);
+        $this->assertArrayHasKey('in_use', $array);
+        $this->assertArrayHasKey('created_at', $array);
+    }
+
+    public function test_pool_connections_list()
+    {
+        $pool = new ConnectionPool(2);
+        $conn1 = $pool->acquire();
+        $conn2 = $pool->acquire();
+        
+        $connections = $pool->getPoolConnections();
+        
+        $this->assertCount(2, $connections);
+        $this->assertArrayHasKey('id', $connections[0]);
+        $this->assertArrayHasKey('host', $connections[0]);
+    }
+}

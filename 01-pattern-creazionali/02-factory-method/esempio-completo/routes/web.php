@@ -5,24 +5,20 @@ use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Factory Method Pattern Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| Route per testare il pattern Factory Method.
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/factory-method', [UserController::class, 'show']);
+Route::get('/factory-method/test', [UserController::class, 'test']);
+Route::post('/factory-method/create', [UserController::class, 'createUser']);
 
-// Demo routes per testare le factory
-Route::get('/demo/factory', function () {
-    return view('factory-demo');
+// Route API
+Route::prefix('api/factory-method')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/create', [UserController::class, 'createUser']);
+    Route::get('/test', [UserController::class, 'test']);
 });
-
-Route::post('/demo/create-user', [UserController::class, 'createUser']);
-Route::post('/demo/create-admin', [UserController::class, 'createAdmin']);
-Route::post('/demo/create-guest', [UserController::class, 'createGuest']);

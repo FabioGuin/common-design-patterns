@@ -1,245 +1,117 @@
-# Logger Singleton Completo
+# Singleton Pattern - Esempio per Integrazione Laravel
 
-## Cosa fa
-Un sistema di logging personalizzato che usa il Singleton Pattern in Laravel. Il logger mantiene una sola istanza per tutta l'app, gestisce diversi livelli di log e salva tutto su file.
+## Cosa fa questo esempio
+Questo esempio dimostra il pattern Singleton in Laravel attraverso un sistema di gestione istanze uniche. L'esempio include:
 
-## Perché è utile
-- Mostra come implementare il Singleton Pattern nella pratica
-- Ti dà un sistema di logging funzionante e completo
-- Si integra perfettamente con il Service Container di Laravel
-- Include API RESTful per gestire i log
+- **Un Model Singleton** che garantisce una sola istanza per tutta l'applicazione
+- **Un Controller** che testa il pattern via browser e API
+- **Una vista interattiva** che permette di testare il comportamento del Singleton
+- **Test completi** che verificano il corretto funzionamento del pattern
 
-## Struttura del Progetto
+## Come funziona l'esempio
+Il Singleton creato gestisce:
+- **ID univoco** per ogni istanza (sempre lo stesso)
+- **Contatore accessi** per tracciare quante volte viene utilizzato
+- **Dati condivisi** che persistono tra tutte le chiamate
+- **Protezione completa** contro clonazione e deserializzazione
 
-```
-01-singleton-logger/
-├── README.md                    # Questo file
-├── app/
-│   ├── Services/
-│   │   └── Logger/
-│   │       ├── LoggerService.php    # Singleton Logger Service
-│   │       ├── LogLevel.php         # Enum per livelli di log
-│   │       └── LogEntry.php         # Classe per entry di log
-│   ├── Http/
-│   │   └── Controllers/
-│   │       └── LogController.php    # Controller per API logs
-│   └── Providers/
-│       └── LoggerServiceProvider.php # Service Provider
-├── routes/
-│   └── web.php                 # Routes per testing
-├── composer.json               # Dipendenze
-└── .env.example               # Configurazione ambiente
-```
+Quando testi l'esempio, vedrai che:
+1. Multiple chiamate a `getInstance()` restituiscono sempre la stessa istanza
+2. I dati aggiunti tramite una "istanza" sono visibili da tutte le altre
+3. Il contatore degli accessi si incrementa ad ogni operazione
+4. Tentativi di clonazione o deserializzazione vengono bloccati
 
-## Cosa include
+## Caratteristiche tecniche
+- Implementazione classica del Singleton con costruttore privato
+- Metodo getInstance() per ottenere l'istanza unica
+- Protezione contro clonazione e deserializzazione
+- Controller per testare il pattern via browser e API
+- Vista interattiva per dimostrare il comportamento
+- Test PHPUnit completi
 
-### Singleton Pattern
-- Una sola istanza del logger per tutta l'app
-- Si crea solo quando serve (lazy initialization)
-- Funziona anche in ambienti multi-threaded
-- Non può essere clonato o deserializzato
+## Prerequisiti
+- **Progetto Laravel 11+** già installato e funzionante
+- **PHP 8.2+** (requisito di Laravel 11)
 
-### Gestione dei Log
-- 5 livelli di log: DEBUG, INFO, WARNING, ERROR, CRITICAL
-- Salvataggio su file usando Storage di Laravel
-- Supporto per metadati aggiuntivi (context)
-- Timestamp automatico per ogni log
+## Integrazione nel tuo progetto Laravel
 
-### Integrazione con Laravel
-- Service Provider per registrarlo nel container
-- Integrazione con il Service Container
-- Usa Storage facade per gestire i file
-- API RESTful per consultare i log
+### 1. Copia i file (sostituisci `/path/to/your/laravel` con il percorso del tuo progetto)
 
-### Endpoint API
-- `GET /logs` - Lista tutti i log
-- `GET /logs/level/{level}` - Log per livello specifico
-- `POST /logs` - Crea nuovo log
-- `DELETE /logs` - Cancella tutti i log
-- `GET /logs/stats` - Statistiche dei log
-
-## Come installarlo e usarlo
-
-### 1. Configura l'ambiente
 ```bash
-# Copia il file di configurazione
-cp .env.example .env
+# Vai nella directory del tuo progetto Laravel
+cd /path/to/your/laravel
 
-# Installa le dipendenze (se necessario)
-composer install
+# Copia i file necessari
+cp /path/to/this/example/app/Models/SingletonModel.php app/Models/
+cp /path/to/this/example/app/Http/Controllers/SingletonController.php app/Http/Controllers/
+mkdir -p resources/views/singleton
+cp /path/to/this/example/resources/views/singleton/example.blade.php resources/views/singleton/
+cp /path/to/this/example/tests/Feature/SingletonTest.php tests/Feature/
 ```
 
-### 2. Registra il Service Provider
-Aggiungi in `config/app.php`:
+### 2. Aggiungi le route
+
+Aggiungi queste righe al tuo `routes/web.php`:
+
 ```php
-'providers' => [
-    // ... altri providers
-    App\Providers\LoggerServiceProvider::class,
-],
+use App\Http\Controllers\SingletonController;
+
+// Route per il pattern Singleton
+Route::get('/singleton', [SingletonController::class, 'show']);
+Route::get('/singleton/test', [SingletonController::class, 'test']);
+Route::get('/singleton/clone-test', [SingletonController::class, 'testClone']);
+
+// Route API
+Route::prefix('api/singleton')->group(function () {
+    Route::get('/', [SingletonController::class, 'index']);
+    Route::post('/test', [SingletonController::class, 'test']);
+    Route::get('/clone-test', [SingletonController::class, 'testClone']);
+});
 ```
 
-### 3. Usalo nel tuo codice
-```php
-use App\Services\Logger\LoggerService;
+### 3. Testa l'integrazione
 
-// Ottieni l'istanza singleton
-$logger = LoggerService::getInstance();
-
-// Log con diversi livelli
-$logger->debug('Messaggio di debug', ['user_id' => 123]);
-$logger->info('Utente loggato', ['ip' => '192.168.1.1']);
-$logger->warning('Uso memoria alto', ['memory' => '512MB']);
-$logger->error('Connessione database fallita', ['error' => 'Connection timeout']);
-$logger->critical('Errore di sistema', ['component' => 'database']);
-```
-
-### 4. Testa le API
 ```bash
-# Avvia il server
+# Avvia il server Laravel
 php artisan serve
 
-# Testa gli endpoint
-curl http://localhost:8000/logs
-curl http://localhost:8000/logs/level/error
-curl -X POST http://localhost:8000/logs -d '{"level":"info","message":"Messaggio di test"}'
+# Visita la pagina di test
+open http://localhost:8000/singleton
+
+# Testa via API
+curl http://localhost:8000/api/singleton/test
+
+# Esegui i test
+php artisan test tests/Feature/SingletonTest.php
 ```
 
-## Esempi pratici
+### 4. Verifica che tutto funzioni
 
-### Nel Controller
-```php
-<?php
+1. **Browser**: Vai su `http://localhost:8000/singleton` e clicca sui pulsanti di test
+2. **API**: Esegui `curl http://localhost:8000/api/singleton/test`
+3. **Test**: Esegui `php artisan test tests/Feature/SingletonTest.php`
 
-namespace App\Http\Controllers;
+Se tutto funziona, l'integrazione è completata! 🎉
 
-use App\Services\Logger\LoggerService;
-use Illuminate\Http\Request;
 
-class UserController extends Controller
-{
-    public function login(Request $request)
-    {
-        $logger = LoggerService::getInstance();
-        
-        try {
-            // Logica di login
-            $user = $this->authenticate($request);
-            
-            $logger->info('User login successful', [
-                'user_id' => $user->id,
-                'ip' => $request->ip(),
-                'user_agent' => $request->userAgent()
-            ]);
-            
-            return response()->json(['success' => true]);
-            
-        } catch (\Exception $e) {
-            $logger->error('Login failed', [
-                'email' => $request->email,
-                'error' => $e->getMessage(),
-                'ip' => $request->ip()
-            ]);
-            
-            return response()->json(['error' => 'Login failed'], 401);
-        }
-    }
-}
-```
+## File inclusi
 
-### Nel Middleware
-```php
-<?php
+- `app/Models/SingletonModel.php` - Implementazione del pattern Singleton
+- `app/Http/Controllers/SingletonController.php` - Controller per testare il pattern
+- `resources/views/singleton/example.blade.php` - Vista interattiva per il browser
+- `tests/Feature/SingletonTest.php` - Test PHPUnit completi
+- `routes/web.php` - Route da integrare nel tuo progetto
 
-namespace App\Http\Middleware;
+## Personalizzazione
 
-use App\Services\Logger\LoggerService;
-use Closure;
+### Configurazione
+Il Singleton non richiede configurazione specifica, ma puoi modificare il comportamento nel metodo `getInstance()`.
 
-class RequestLoggingMiddleware
-{
-    public function handle($request, Closure $next)
-    {
-        $logger = LoggerService::getInstance();
-        
-        $logger->info('Request received', [
-            'method' => $request->method(),
-            'url' => $request->fullUrl(),
-            'ip' => $request->ip(),
-            'user_agent' => $request->userAgent()
-        ]);
-        
-        $response = $next($request);
-        
-        $logger->info('Response sent', [
-            'status_code' => $response->getStatusCode(),
-            'response_time' => microtime(true) - LARAVEL_START
-        ]);
-        
-        return $response;
-    }
-}
-```
+### Estensione
+Aggiungi nuovi metodi in `SingletonModel.php` per estendere le funzionalità del Singleton.
 
-## Dettagli dell'implementazione
-
-### Come funziona il Singleton
-```php
-class LoggerService
-{
-    private static ?LoggerService $instance = null;
-    
-    private function __construct() {}
-    
-    public static function getInstance(): LoggerService
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-    
-    // Prevenzione clonazione e deserializzazione
-    private function __clone() {}
-    public function __wakeup() { 
-        throw new \Exception("Cannot unserialize singleton"); 
-    }
-}
-```
-
-### Integrazione con il Service Container
-```php
-class LoggerServiceProvider extends ServiceProvider
-{
-    public function register(): void
-    {
-        $this->app->singleton(LoggerService::class, function ($app) {
-            return LoggerService::getInstance();
-        });
-    }
-}
-```
-
-## Vantaggi del pattern
-
-1. **Risparmio memoria**: Una sola istanza per tutta l'app
-2. **Consistenza**: Stesso logger ovunque nell'app
-3. **Facilità d'uso**: Accesso globale controllato
-4. **Integrazione**: Perfetta integrazione con Laravel
-5. **Testabilità**: Puoi fare mock per i test
-
-## Cose da considerare
-
-- **Thread Safety**: In ambienti multi-threaded, considera la sincronizzazione
-- **Testing**: Usa dependency injection per i test
-- **Memoria**: I log in memoria crescono nel tempo
-- **Performance**: Scrivere su file può essere costoso
-
-## Link utili
-
-- [Documentazione Singleton Pattern](../../01-pattern-creazionali/01-singleton/singleton-pattern.md)
-- [Laravel Service Container](https://laravel.com/docs/container)
-- [Laravel Storage](https://laravel.com/docs/filesystem)
-
----
-
-*Questo esempio ti mostra come implementare il Singleton Pattern in un progetto Laravel reale, con un sistema di logging completo e funzionante.*
+## Note importanti
+- Il Singleton garantisce una sola istanza per tutta l'applicazione
+- L'istanza viene creata solo al primo accesso (lazy loading)
+- Non è possibile clonare o deserializzare l'istanza
+- I file sono pronti per essere copiati in un progetto Laravel esistente

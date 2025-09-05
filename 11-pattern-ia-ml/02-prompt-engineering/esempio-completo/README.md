@@ -1,321 +1,130 @@
-# Prompt Engineering Pattern - Esempio Completo
+# Prompt Engineering Pattern - Esempio per Integrazione Laravel
 
-## Descrizione
+## Cosa fa questo esempio
+Questo esempio dimostra il pattern Prompt Engineering in Laravel attraverso un sistema di gestione e ottimizzazione di prompt per AI. L'esempio include:
 
-Questo esempio implementa un sistema completo di Prompt Engineering per Laravel che gestisce template di prompt strutturati, variabili dinamiche, validazione dell'output e ottimizzazione automatica dei prompt per ottenere risultati consistenti e di qualità.
+- **Template di prompt** riutilizzabili e configurabili
+- **Validazione e ottimizzazione** dei prompt
+- **Un Controller** che testa il pattern via browser e API
+- **Una vista interattiva** che permette di testare i prompt
+- **Test completi** che verificano il corretto funzionamento del pattern
 
-## Funzionalità
+## Come funziona l'esempio
+Il Prompt Engineering creato gestisce:
+- **Template riutilizzabili** per diversi tipi di prompt
+- **Validazione** della struttura e contenuto dei prompt
+- **Ottimizzazione** per migliorare le performance
+- **Test A/B** per confrontare diverse versioni
+- **Metriche** per valutare l'efficacia
 
-- **Template System**: Sistema di template per prompt strutturati e riutilizzabili
-- **Variable Management**: Gestione dinamica di variabili nei prompt
-- **Output Validation**: Validazione automatica della qualità dell'output AI
-- **Prompt Optimization**: Ottimizzazione automatica basata su metriche di performance
-- **Template Library**: Libreria di template predefiniti per casi d'uso comuni
-- **A/B Testing**: Sistema per testare e confrontare diversi prompt
-- **Analytics**: Metriche dettagliate per ottimizzare i prompt
+Quando testi l'esempio, vedrai che:
+1. Puoi creare e testare diversi template di prompt
+2. Il sistema valida la struttura dei prompt
+3. Puoi confrontare le performance di diversi prompt
+4. Le metriche ti aiutano a ottimizzare
 
-## Struttura del Progetto
+## Caratteristiche tecniche
+- Template di prompt configurabili
+- Sistema di validazione robusto
+- Ottimizzazione automatica dei prompt
+- Test A/B per confronto performance
+- Metriche e analytics
+- Controller per testare il pattern via browser e API
+- Vista interattiva per dimostrare l'engineering
+- Test PHPUnit completi
 
+## Prerequisiti
+- **Progetto Laravel 11+** già installato e funzionante
+- **PHP 8.2+** (requisito di Laravel 11)
+
+## Integrazione nel tuo progetto Laravel
+
+### 1. Copia i file (sostituisci `/path/to/your/laravel` con il percorso del tuo progetto)
+
+```bash
+# Vai nella directory del tuo progetto Laravel
+cd /path/to/your/laravel
+
+# Copia i file necessari
+cp /path/to/this/example/app/Models/PromptTemplate.php app/Models/
+cp /path/to/this/example/app/Services/Prompt/PromptTemplateService.php app/Services/Prompt/
+cp /path/to/this/example/app/Services/Prompt/PromptValidationService.php app/Services/Prompt/
+cp /path/to/this/example/app/Services/Prompt/Templates/ChatTemplate.php app/Services/Prompt/Templates/
+cp /path/to/this/example/app/Services/Prompt/Templates/CodeTemplate.php app/Services/Prompt/Templates/
+cp /path/to/this/example/app/Services/Prompt/Templates/TranslationTemplate.php app/Services/Prompt/Templates/
+cp /path/to/this/example/app/Http/Controllers/PromptController.php app/Http/Controllers/
+mkdir -p resources/views/prompt-engineering
+cp /path/to/this/example/resources/views/prompt-engineering/example.blade.php resources/views/prompt-engineering/
+cp /path/to/this/example/tests/Feature/PromptEngineeringTest.php tests/Feature/
 ```
-esempio-completo/
-├── app/
-│   ├── Http/Controllers/
-│   │   └── PromptController.php
-│   ├── Services/Prompt/
-│   │   ├── PromptTemplateService.php
-│   │   ├── PromptVariableService.php
-│   │   ├── PromptValidationService.php
-│   │   ├── PromptOptimizationService.php
-│   │   └── Templates/
-│   │       ├── ProductDescriptionTemplate.php
-│   │       ├── EmailTemplate.php
-│   │       ├── TranslationTemplate.php
-│   │       └── AnalysisTemplate.php
-│   ├── Models/
-│   │   ├── PromptTemplate.php
-│   │   ├── PromptVariable.php
-│   │   └── PromptTest.php
-│   └── Providers/
-│       └── PromptServiceProvider.php
-├── config/
-│   └── prompt.php
-├── database/migrations/
-│   ├── create_prompt_templates_table.php
-│   ├── create_prompt_variables_table.php
-│   └── create_prompt_tests_table.php
-├── resources/views/
-│   └── prompt/
-│       ├── dashboard.blade.php
-│       ├── template-editor.blade.php
-│       └── test-results.blade.php
-├── routes/
-│   └── web.php
-├── composer.json
-└── README.md
-```
 
-## Installazione
+### 2. Aggiungi le route
 
-1. **Installa le dipendenze**:
-   ```bash
-   composer install
-   ```
-
-2. **Configura le variabili d'ambiente**:
-   ```bash
-   cp .env.example .env
-   ```
-
-3. **Aggiungi le API key**:
-   ```env
-   OPENAI_API_KEY=your_openai_key
-   ANTHROPIC_API_KEY=your_anthropic_key
-   GOOGLE_AI_API_KEY=your_google_key
-   ```
-
-4. **Esegui le migrazioni**:
-   ```bash
-   php artisan migrate
-   ```
-
-5. **Avvia il server**:
-   ```bash
-   php artisan serve
-   ```
-
-## Utilizzo
-
-### Dashboard Web
-
-Visita `/prompt/dashboard` per:
-- Creare e modificare template di prompt
-- Testare prompt con variabili diverse
-- Visualizzare metriche di performance
-- Confrontare versioni diverse di prompt
-
-### API Endpoints
-
-- `POST /prompt/api/generate` - Genera contenuto usando template
-- `POST /prompt/api/template` - Crea/modifica template
-- `GET /prompt/api/templates` - Lista template disponibili
-- `POST /prompt/api/test` - Testa prompt con A/B testing
-- `GET /prompt/api/analytics` - Metriche e statistiche
-
-### Esempio di Utilizzo
+Aggiungi queste righe al tuo `routes/web.php`:
 
 ```php
-use App\Services\Prompt\PromptTemplateService;
+use App\Http\Controllers\PromptController;
 
-$promptService = app(PromptTemplateService::class);
+// Route per il pattern Prompt Engineering
+Route::get('/prompt-engineering', [PromptController::class, 'show']);
+Route::get('/prompt-engineering/test', [PromptController::class, 'test']);
+Route::post('/prompt-engineering/generate', [PromptController::class, 'generatePrompt']);
 
-// Genera descrizione prodotto
-$result = $promptService->generate('product_description', [
-    'product_name' => 'iPhone 15 Pro',
-    'features' => 'A17 Pro chip, 48MP camera, Titanio',
-    'price' => '€1199',
-    'category' => 'Smartphone'
-]);
-
-// Genera email promozionale
-$email = $promptService->generate('promotional_email', [
-    'customer_name' => 'Mario Rossi',
-    'product' => 'iPhone 15 Pro',
-    'discount' => '10%',
-    'expiry_date' => '2024-12-31'
-]);
+// Route API
+Route::prefix('api/prompt-engineering')->group(function () {
+    Route::get('/', [PromptController::class, 'index']);
+    Route::post('/generate', [PromptController::class, 'generatePrompt']);
+    Route::get('/test', [PromptController::class, 'test']);
+});
 ```
 
-## Configurazione
+### 3. Testa l'integrazione
 
-### Template Configuration
+```bash
+# Avvia il server Laravel
+php artisan serve
 
-Configura i template in `config/prompt.php`:
+# Visita la pagina di test
+open http://localhost:8000/prompt-engineering
 
-```php
-'templates' => [
-    'product_description' => [
-        'class' => \App\Services\Prompt\Templates\ProductDescriptionTemplate::class,
-        'variables' => ['product_name', 'features', 'price', 'category'],
-        'validation_rules' => [
-            'min_length' => 100,
-            'max_length' => 500,
-            'required_keywords' => ['caratteristiche', 'prezzo']
-        ]
-    ]
-]
+# Testa via API
+curl http://localhost:8000/api/prompt-engineering/test
+
+# Esegui i test
+php artisan test tests/Feature/PromptEngineeringTest.php
 ```
 
-### Validation Rules
+### 4. Verifica che tutto funzioni
 
-Configura le regole di validazione:
+1. **Browser**: Vai su `http://localhost:8000/prompt-engineering` e testa i prompt
+2. **API**: Esegui `curl http://localhost:8000/api/prompt-engineering/test`
+3. **Test**: Esegui `php artisan test tests/Feature/PromptEngineeringTest.php`
 
-```php
-'validation' => [
-    'enabled' => true,
-    'rules' => [
-        'length' => ['min' => 50, 'max' => 1000],
-        'keywords' => ['required' => [], 'forbidden' => []],
-        'sentiment' => ['min_score' => 0.3],
-        'readability' => ['max_grade' => 12]
-    ]
-]
-```
+Se tutto funziona, l'integrazione è completata! 🎉
 
-## Esempi di Template
+## File inclusi
 
-### Template Descrizione Prodotto
+- `app/Models/PromptTemplate.php` - Modello per i template di prompt
+- `app/Services/Prompt/PromptTemplateService.php` - Servizio principale per i template
+- `app/Services/Prompt/PromptValidationService.php` - Servizio di validazione
+- `app/Services/Prompt/Templates/ChatTemplate.php` - Template per chat
+- `app/Services/Prompt/Templates/CodeTemplate.php` - Template per codice
+- `app/Services/Prompt/Templates/TranslationTemplate.php` - Template per traduzioni
+- `app/Http/Controllers/PromptController.php` - Controller per testare il pattern
+- `resources/views/prompt-engineering/example.blade.php` - Vista interattiva per il browser
+- `tests/Feature/PromptEngineeringTest.php` - Test PHPUnit completi
+- `routes/web.php` - Route da integrare nel tuo progetto
 
-```php
-class ProductDescriptionTemplate extends BaseTemplate
-{
-    protected string $template = <<<PROMPT
-CONTESTO: Sei un copywriter esperto per un e-commerce di elettronica.
+## Personalizzazione
 
-OBIETTIVO: Crea una descrizione prodotto accattivante e tecnica.
+### Configurazione
+Modifica i template in `app/Services/Prompt/Templates/` per personalizzare i prompt.
 
-FORMATO RICHIESTO:
-- Titolo accattivante (max 60 caratteri)
-- 3 paragrafi descrittivi (max 200 parole totali)
-- Linguaggio tecnico ma accessibile
-- Tono persuasivo e professionale
+### Estensione
+Aggiungi nuovi template creando classi che implementano l'interfaccia appropriata.
 
-PRODOTTO: {{product_name}}
-CARATTERISTICHE: {{features}}
-PREZZO: {{price}}
-CATEGORIA: {{category}}
-
-VINCOLI:
-- Evidenzia caratteristiche tecniche
-- Usa linguaggio persuasivo
-- Includi benefici per l'utente
-- Mantieni un tono positivo ma realistico
-PROMPT;
-}
-```
-
-### Template Email Promozionale
-
-```php
-class EmailTemplate extends BaseTemplate
-{
-    protected string $template = <<<PROMPT
-CONTESTO: Sei un esperto di email marketing per un e-commerce.
-
-OBIETTIVO: Crea un'email promozionale persuasiva e personalizzata.
-
-FORMATO RICHIESTO:
-- Oggetto accattivante (max 50 caratteri)
-- Corpo email in 2-3 paragrafi
-- Call-to-action chiara
-- Tono amichevole e professionale
-
-CLIENTE: {{customer_name}}
-PRODOTTO: {{product}}
-SCONTO: {{discount}}
-SCADENZA: {{expiry_date}}
-
-VINCOLI:
-- Personalizza per il cliente
-- Crea urgenza con la scadenza
-- Evidenzia il valore dello sconto
-- Mantieni un tono professionale
-PROMPT;
-}
-```
-
-## Monitoring e Analytics
-
-### Metriche Disponibili
-
-- **Template Performance**: Qualità media per template
-- **Variable Impact**: Impatto delle variabili sui risultati
-- **A/B Test Results**: Confronto tra versioni diverse
-- **Validation Success Rate**: Percentuale di output validi
-- **Cost Analysis**: Costi per template e variabile
-
-### Dashboard Analytics
-
-La dashboard mostra:
-- Grafici di performance per template
-- Confronto A/B test in tempo reale
-- Top template più utilizzati
-- Metriche di validazione
-- Analisi costi e ROI
-
-## Esempi di Test
-
-### Test Template Singolo
-
-```php
-$promptService = app(PromptTemplateService::class);
-
-$result = $promptService->testTemplate('product_description', [
-    'product_name' => 'iPhone 15 Pro',
-    'features' => 'A17 Pro chip, 48MP camera',
-    'price' => '€1199',
-    'category' => 'Smartphone'
-]);
-
-// Risultato include: output, score, validation_results, cost
-```
-
-### A/B Testing
-
-```php
-$testResults = $promptService->runABTest([
-    'template_a' => 'product_description_v1',
-    'template_b' => 'product_description_v2',
-    'variables' => $testVariables,
-    'iterations' => 10
-]);
-
-// Confronta performance, qualità e costi
-```
-
-## Troubleshooting
-
-### Template Non Funziona
-
-1. Verifica le variabili richieste
-2. Controlla la sintassi del template
-3. Testa con dati di esempio
-4. Verifica le regole di validazione
-
-### Output di Bassa Qualità
-
-1. Ottimizza il template
-2. Aggiungi esempi specifici
-3. Migliora le istruzioni
-4. Testa con A/B testing
-
-### Performance Lente
-
-1. Ottimizza le variabili
-2. Riduci la complessità del template
-3. Usa cache per template frequenti
-4. Considera template più semplici
-
-## Estensioni
-
-### Aggiungere Nuovo Template
-
-1. Crea la classe template in `app/Services/Prompt/Templates/`
-2. Estendi `BaseTemplate`
-3. Definisci il template e le variabili
-4. Aggiungi la configurazione in `config/prompt.php`
-5. Registra il template nel service provider
-
-### Personalizzare Validazione
-
-1. Crea nuove regole di validazione
-2. Implementa `ValidationRuleInterface`
-3. Aggiungi le regole al template
-4. Configura i parametri di validazione
-
-## Supporto
-
-Per problemi o domande:
-1. Controlla i log per errori
-2. Verifica la configurazione del template
-3. Testa con dati di esempio
-4. Consulta la documentazione dei template
+## Note importanti
+- Il Prompt Engineering ottimizza i prompt per migliori risultati AI
+- Include validazione e test per garantire qualità
+- I template sono riutilizzabili e configurabili
+- I file sono pronti per essere copiati in un progetto Laravel esistente

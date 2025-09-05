@@ -1,106 +1,116 @@
-# Document Prototype System - Esempio Completo
+# Prototype Pattern - Esempio per Integrazione Laravel
 
 ## Cosa fa questo esempio
-Questo esempio dimostra l'implementazione del **Prototype Pattern** per clonare documenti e template in Laravel. Il sistema permette di creare copie di documenti complessi con metadati, impostazioni e contenuti in modo efficiente.
+Questo esempio dimostra il pattern Prototype in Laravel attraverso un sistema di clonazione di documenti. L'esempio include:
 
-## Caratteristiche principali
-- **Document Cloning**: Clonazione profonda di documenti complessi
-- **Template System**: Sistema di template riutilizzabili
-- **Metadata Management**: Gestione di metadati e impostazioni
-- **Version Control**: Sistema di versioning per documenti
-- **Test**: Test completi con Pest
-- **API**: Endpoint REST per dimostrare l'uso
+- **Un'interfaccia Prototype** che definisce il metodo di clonazione
+- **Prototipi concreti** che implementano la clonazione per diversi tipi di documenti
+- **Un Controller** che testa il pattern via browser e API
+- **Una vista interattiva** che permette di clonare documenti
+- **Test completi** che verificano il corretto funzionamento del pattern
 
-## Struttura del progetto
-```
-app/
-├── Models/
-│   ├── Document.php              # Modello Document con clonazione
-│   ├── DocumentTemplate.php      # Modello Template
-│   ├── DocumentVersion.php       # Modello Version
-│   └── DocumentMetadata.php      # Modello Metadata
-├── Services/
-│   ├── DocumentCloningService.php # Service per clonazione
-│   └── TemplateService.php       # Service per template
-├── Http/
-│   └── Controllers/
-│       └── DocumentController.php # Controller per API
-└── Traits/
-    └── Cloneable.php             # Trait per clonazione
+## Come funziona l'esempio
+Il Prototype creato gestisce:
+- **Clonazione di documenti** complessi senza ricreare da zero
+- **Personalizzazione** di documenti clonati
+- **Performance** migliorata per oggetti costosi da creare
+- **Flessibilità** nella creazione di varianti
 
-database/
-├── migrations/
-│   ├── create_documents_table.php
-│   ├── create_document_templates_table.php
-│   ├── create_document_versions_table.php
-│   └── create_document_metadata_table.php
-└── seeders/
-    └── DocumentSeeder.php
+Quando testi l'esempio, vedrai che:
+1. Puoi clonare documenti esistenti come template
+2. I documenti clonati mantengono la struttura originale
+3. Puoi personalizzare i documenti clonati
+4. È più efficiente della creazione da zero
 
-tests/
-└── Feature/
-    └── DocumentPrototypeTest.php # Test completi
+## Caratteristiche tecniche
+- Interfaccia Prototype per definire la clonazione
+- Prototipi concreti per ogni tipo di documento
+- Controller per testare il pattern via browser e API
+- Vista interattiva per dimostrare la clonazione
+- Test PHPUnit completi
 
-routes/
-└── api.php                       # Route API
-```
+## Prerequisiti
+- **Progetto Laravel 11+** già installato e funzionante
+- **PHP 8.2+** (requisito di Laravel 11)
 
-## Come usarlo
+## Integrazione nel tuo progetto Laravel
 
-### 1. Installazione
+### 1. Copia i file (sostituisci `/path/to/your/laravel` con il percorso del tuo progetto)
+
 ```bash
-composer install
-php artisan migrate
-php artisan db:seed
+# Vai nella directory del tuo progetto Laravel
+cd /path/to/your/laravel
+
+# Copia i file necessari
+cp /path/to/this/example/app/Models/Document.php app/Models/
+cp /path/to/this/example/app/Http/Controllers/DocumentController.php app/Http/Controllers/
+mkdir -p resources/views/prototype
+cp /path/to/this/example/resources/views/prototype/example.blade.php resources/views/prototype/
+cp /path/to/this/example/tests/Feature/DocumentPrototypeTest.php tests/Feature/
 ```
 
-### 2. Esempi di uso
+### 2. Aggiungi le route
 
-#### Clonazione semplice
+Aggiungi queste righe al tuo `routes/web.php`:
+
 ```php
-$originalDocument = Document::find(1);
-$clonedDocument = $originalDocument->clone('Nuovo Documento');
+use App\Http\Controllers\DocumentController;
+
+// Route per il pattern Prototype
+Route::get('/prototype', [DocumentController::class, 'show']);
+Route::get('/prototype/test', [DocumentController::class, 'test']);
+Route::post('/prototype/clone', [DocumentController::class, 'cloneDocument']);
+
+// Route API
+Route::prefix('api/prototype')->group(function () {
+    Route::get('/', [DocumentController::class, 'index']);
+    Route::post('/clone', [DocumentController::class, 'cloneDocument']);
+    Route::get('/test', [DocumentController::class, 'test']);
+});
 ```
 
-#### Clonazione con modifiche
-```php
-$template = DocumentTemplate::find(1);
-$document = $template->createDocument('Mio Documento', [
-    'content' => 'Contenuto personalizzato',
-    'author' => 'Mario Rossi'
-]);
-```
+### 3. Testa l'integrazione
 
-#### Clonazione profonda
-```php
-$service = new DocumentCloningService();
-$clonedDocument = $service->deepClone($originalDocument, [
-    'title' => 'Copia di ' . $originalDocument->title,
-    'status' => 'draft'
-]);
-```
-
-### 3. API Endpoints
-- `POST /api/documents/{id}/clone` - Clona un documento
-- `POST /api/templates/{id}/create-document` - Crea documento da template
-- `GET /api/documents` - Lista documenti
-- `GET /api/templates` - Lista template
-- `POST /api/documents` - Crea nuovo documento
-- `PUT /api/documents/{id}` - Aggiorna documento
-
-### 4. Test
 ```bash
-php artisan test
+# Avvia il server Laravel
+php artisan serve
+
+# Visita la pagina di test
+open http://localhost:8000/prototype
+
+# Testa via API
+curl http://localhost:8000/api/prototype/test
+
+# Esegui i test
+php artisan test tests/Feature/DocumentPrototypeTest.php
 ```
 
-## Vantaggi del Prototype Pattern
-- **Performance**: Clonazione veloce di oggetti complessi
-- **Flessibilità**: Modifica solo i campi necessari
-- **Consistenza**: Mantiene la struttura originale
-- **Efficienza**: Evita di ricostruire oggetti complessi
-- **Versioning**: Facile creazione di versioni
+### 4. Verifica che tutto funzioni
 
-## Pattern correlati
-- **Factory Method**: Per creare diversi tipi di documenti
-- **Builder**: Per costruire documenti complessi
-- **Template Method**: Per definire il processo di clonazione
+1. **Browser**: Vai su `http://localhost:8000/prototype` e testa la clonazione
+2. **API**: Esegui `curl http://localhost:8000/api/prototype/test`
+3. **Test**: Esegui `php artisan test tests/Feature/DocumentPrototypeTest.php`
+
+Se tutto funziona, l'integrazione è completata! 🎉
+
+## File inclusi
+
+- `app/Models/Document.php` - Modello per documenti con clonazione
+- `app/Http/Controllers/DocumentController.php` - Controller per testare il pattern
+- `resources/views/prototype/example.blade.php` - Vista interattiva per il browser
+- `tests/Feature/DocumentPrototypeTest.php` - Test PHPUnit completi
+- `routes/web.php` - Route da integrare nel tuo progetto
+
+## Personalizzazione
+
+### Configurazione
+Modifica i prototipi in `app/Models/Document.php` per personalizzare i tipi di documenti.
+
+### Estensione
+Aggiungi nuovi tipi di documenti implementando l'interfaccia `DocumentPrototypeInterface`.
+
+## Note importanti
+- Il Prototype clona oggetti esistenti invece di crearli da zero
+- È utile per oggetti costosi da creare
+- I documenti clonati possono essere personalizzati
+- I file sono pronti per essere copiati in un progetto Laravel esistente

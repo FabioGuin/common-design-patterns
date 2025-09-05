@@ -2,145 +2,93 @@
 
 namespace App\Models;
 
-use App\Traits\Cloneable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Document extends Model
+interface DocumentPrototypeInterface
 {
-    use HasFactory, Cloneable;
+    public function clone(): Document;
+}
 
-    protected $fillable = [
-        'title',
-        'content',
-        'template_id',
-        'status',
-        'metadata',
-        'settings',
-        'tags',
-        'author_id',
-        'version',
-        'parent_id'
-    ];
+class Document implements DocumentPrototypeInterface
+{
+    public string $title;
+    public string $content;
+    public string $type;
+    public array $metadata;
+    public string $id;
 
-    protected $casts = [
-        'metadata' => 'array',
-        'settings' => 'array',
-        'tags' => 'array',
-        'version' => 'integer',
-    ];
-
-    public function template()
+    public function __construct(string $title = '', string $content = '', string $type = 'generic')
     {
-        return $this->belongsTo(DocumentTemplate::class);
+        $this->title = $title;
+        $this->content = $content;
+        $this->type = $type;
+        $this->metadata = [];
+        $this->id = uniqid('doc_', true);
     }
 
-    public function author()
+    public function clone(): Document
     {
-        return $this->belongsTo(User::class, 'author_id');
+        $cloned = new Document($this->title, $this->content, $this->type);
+        $cloned->metadata = $this->metadata;
+        $cloned->id = uniqid('doc_', true);
+        return $cloned;
     }
 
-    public function versions()
+    public function toArray(): array
     {
-        return $this->hasMany(DocumentVersion::class);
-    }
-
-    public function metadata()
-    {
-        return $this->hasMany(DocumentMetadata::class);
-    }
-
-    public function parent()
-    {
-        return $this->belongsTo(Document::class, 'parent_id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Document::class, 'parent_id');
-    }
-
-    public function cloneWithCustomData(array $customData = []): self
-    {
-        $clone = $this->clone();
-        
-        // Applica i dati personalizzati
-        foreach ($customData as $key => $value) {
-            if (in_array($key, $this->fillable)) {
-                $clone->$key = $value;
-            }
-        }
-        
-        return $clone;
-    }
-
-    public function createVersion(string $versionName = null): DocumentVersion
-    {
-        return $this->versions()->create([
-            'version_name' => $versionName ?? 'v' . ($this->version + 1),
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
             'content' => $this->content,
+            'type' => $this->type,
             'metadata' => $this->metadata,
-            'settings' => $this->settings,
-            'created_by' => auth()->id(),
-        ]);
+            'created_at' => now()->toDateTimeString()
+        ];
+    }
+}
+
+class ReportDocument extends Document
+{
+    public function __construct()
+    {
+        parent::__construct('Report Template', 'This is a report template...', 'report');
+        $this->metadata = ['sections' => ['introduction', 'analysis', 'conclusion']];
     }
 
-    public function getFullTitleAttribute(): string
+    public function clone(): Document
     {
-        return $this->title . ' (v' . $this->version . ')';
+        $cloned = new ReportDocument();
+        $cloned->id = uniqid('doc_', true);
+        return $cloned;
+    }
+}
+
+class ContractDocument extends Document
+{
+    public function __construct()
+    {
+        parent::__construct('Contract Template', 'This is a contract template...', 'contract');
+        $this->metadata = ['clauses' => ['terms', 'conditions', 'signatures']];
     }
 
-    public function isTemplate(): bool
+    public function clone(): Document
     {
-        return $this->template_id !== null;
+        $cloned = new ContractDocument();
+        $cloned->id = uniqid('doc_', true);
+        return $cloned;
+    }
+}
+
+class InvoiceDocument extends Document
+{
+    public function __construct()
+    {
+        parent::__construct('Invoice Template', 'This is an invoice template...', 'invoice');
+        $this->metadata = ['fields' => ['amount', 'date', 'recipient']];
     }
 
-    public function isDraft(): bool
+    public function clone(): Document
     {
-        return $this->status === 'draft';
-    }
-
-    public function isPublished(): bool
-    {
-        return $this->status === 'published';
-    }
-
-    public function isArchived(): bool
-    {
-        return $this->status === 'archived';
-    }
-
-    public function publish(): void
-    {
-        $this->update(['status' => 'published']);
-    }
-
-    public function archive(): void
-    {
-        $this->update(['status' => 'archived']);
-    }
-
-    public function getMetadataValue(string $key, $default = null)
-    {
-        return $this->metadata[$key] ?? $default;
-    }
-
-    public function setMetadataValue(string $key, $value): void
-    {
-        $metadata = $this->metadata ?? [];
-        $metadata[$key] = $value;
-        $this->update(['metadata' => $metadata]);
-    }
-
-    public function getSettingValue(string $key, $default = null)
-    {
-        return $this->settings[$key] ?? $default;
-    }
-
-    public function setSettingValue(string $key, $value): void
-    {
-        $settings = $this->settings ?? [];
-        $settings[$key] = $value;
-        $this->update(['settings' => $settings]);
+        $cloned = new InvoiceDocument();
+        $cloned->id = uniqid('doc_', true);
+        return $cloned;
     }
 }
