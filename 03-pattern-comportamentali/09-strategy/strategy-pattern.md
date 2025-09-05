@@ -55,132 +55,115 @@ Context → Strategy → ConcreteStrategyA
 ## Esempi di codice
 
 ### Interfaccia Strategy
-```php
-interface PaymentStrategyInterface
-{
-    public function pay(float $amount): PaymentResult;
-    public function getStrategyName(): string;
+```pseudocodice
+interface PaymentStrategyInterface {
+    function pay(amount: number): PaymentResult
+    function getStrategyName(): string
 }
 ```
 
 ### Strategy concrete
-```php
-class CreditCardStrategy implements PaymentStrategyInterface
-{
-    private string $cardNumber;
-    private string $cvv;
+```pseudocodice
+class CreditCardStrategy implements PaymentStrategyInterface {
+    private cardNumber: string
+    private cvv: string
     
-    public function __construct(string $cardNumber, string $cvv)
-    {
-        $this->cardNumber = $cardNumber;
-        $this->cvv = $cvv;
+    constructor(cardNumber: string, cvv: string) {
+        this.cardNumber = cardNumber
+        this.cvv = cvv
     }
     
-    public function pay(float $amount): PaymentResult
-    {
+    function pay(amount: number): PaymentResult {
         // Simula pagamento con carta di credito
-        echo "Processing credit card payment of €{$amount}\n";
+        echo "Processing credit card payment of €" + amount
         
         // Logica specifica per carta di credito
-        $success = $this->validateCard() && $this->processPayment($amount);
+        success = this.validateCard() && this.processPayment(amount)
         
-        return new PaymentResult($success, $success ? 'Payment successful' : 'Payment failed');
+        return new PaymentResult(success, success ? 'Payment successful' : 'Payment failed')
     }
     
-    public function getStrategyName(): string
-    {
-        return 'credit_card';
+    function getStrategyName(): string {
+        return 'credit_card'
     }
     
-    private function validateCard(): bool
-    {
-        return strlen($this->cardNumber) === 16 && strlen($this->cvv) === 3;
+    private function validateCard(): Boolean {
+        return this.cardNumber.length === 16 && this.cvv.length === 3
     }
     
-    private function processPayment(float $amount): bool
-    {
+    private function processPayment(amount: number): Boolean {
         // Simula chiamata API
-        return rand(0, 1) === 1;
+        return rand(0, 1) === 1
     }
 }
 
-class PayPalStrategy implements PaymentStrategyInterface
-{
-    private string $email;
-    private string $password;
+class PayPalStrategy implements PaymentStrategyInterface {
+    private email: string
+    private password: string
     
-    public function __construct(string $email, string $password)
-    {
-        $this->email = $email;
-        $this->password = $password;
+    constructor(email: string, password: string) {
+        this.email = email
+        this.password = password
     }
     
-    public function pay(float $amount): PaymentResult
-    {
+    function pay(amount: number): PaymentResult {
         // Simula pagamento con PayPal
-        echo "Processing PayPal payment of €{$amount}\n";
+        echo "Processing PayPal payment of €" + amount
         
-        $success = $this->authenticate() && $this->processPayment($amount);
+        success = this.authenticate() && this.processPayment(amount)
         
-        return new PaymentResult($success, $success ? 'Payment successful' : 'Payment failed');
+        return new PaymentResult(success, success ? 'Payment successful' : 'Payment failed')
     }
     
-    public function getStrategyName(): string
-    {
-        return 'paypal';
+    function getStrategyName(): string {
+        return 'paypal'
     }
     
-    private function authenticate(): bool
-    {
-        return !empty($this->email) && !empty($this->password);
+    private function authenticate(): Boolean {
+        return !empty(this.email) && !empty(this.password)
     }
     
-    private function processPayment(float $amount): bool
-    {
+    private function processPayment(amount: number): Boolean {
         // Simula chiamata API PayPal
-        return rand(0, 1) === 1;
+        return rand(0, 1) === 1
     }
 }
 ```
 
 ### Context
-```php
-class PaymentProcessor
-{
-    private PaymentStrategyInterface $strategy;
+```pseudocodice
+class PaymentProcessor {
+    private strategy: PaymentStrategyInterface
     
-    public function setStrategy(PaymentStrategyInterface $strategy): void
-    {
-        $this->strategy = $strategy;
+    function setStrategy(strategy: PaymentStrategyInterface): void {
+        this.strategy = strategy
     }
     
-    public function processPayment(float $amount): PaymentResult
-    {
-        if (!isset($this->strategy)) {
-            throw new NoStrategySelectedException('No payment strategy selected');
+    function processPayment(amount: number): PaymentResult {
+        if (!isset(this.strategy)) {
+            throw new NoStrategySelectedException('No payment strategy selected')
         }
         
-        return $this->strategy->pay($amount);
+        return this.strategy.pay(amount)
     }
     
-    public function getCurrentStrategy(): string
-    {
-        return $this->strategy ? $this->strategy->getStrategyName() : 'none';
+    function getCurrentStrategy(): string {
+        return this.strategy ? this.strategy.getStrategyName() : 'none'
     }
 }
 ```
 
 ### Uso
-```php
-$processor = new PaymentProcessor();
+```pseudocodice
+processor = new PaymentProcessor()
 
 // Usa carta di credito
-$processor->setStrategy(new CreditCardStrategy('1234567890123456', '123'));
-$result = $processor->processPayment(100.00);
+processor.setStrategy(new CreditCardStrategy('1234567890123456', '123'))
+result = processor.processPayment(100.00)
 
 // Cambia a PayPal
-$processor->setStrategy(new PayPalStrategy('user@example.com', 'password'));
-$result = $processor->processPayment(50.00);
+processor.setStrategy(new PayPalStrategy('user@example.com', 'password'))
+result = processor.processPayment(50.00)
 ```
 
 ## Esempi completi
@@ -209,29 +192,25 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Strategy che fa troppo**: Una strategy che gestisce troppe responsabilità
-```php
+```pseudocodice
 // SBAGLIATO
-class GodStrategy implements PaymentStrategyInterface
-{
-    public function pay(float $amount): PaymentResult
-    {
-        $this->validateData();
-        $this->processPayment();
-        $this->sendEmail();
-        $this->updateDatabase();
-        $this->logActivity();
+class GodStrategy implements PaymentStrategyInterface {
+    function pay(amount: number): PaymentResult {
+        this.validateData()
+        this.processPayment()
+        this.sendEmail()
+        this.updateDatabase()
+        this.logActivity()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Strategy focalizzata**: Una strategy per una responsabilità specifica
-```php
+```pseudocodice
 // GIUSTO
-class CreditCardStrategy implements PaymentStrategyInterface
-{
-    public function pay(float $amount): PaymentResult
-    {
+class CreditCardStrategy implements PaymentStrategyInterface {
+    function pay(amount: number): PaymentResult {
         // Solo logica per carta di credito
     }
 }

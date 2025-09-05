@@ -54,155 +54,131 @@ Originator → Memento ← Caretaker
 
 ## Esempi di codice
 
-### Memento
-```php
-class TextMemento
-{
-    private string $content;
-    private int $cursorPosition;
-    private DateTime $timestamp;
+### Pseudocodice
+```
+// Memento
+class TextMemento {
+    private content: string
+    private cursorPosition: number
+    private timestamp: DateTime
     
-    public function __construct(string $content, int $cursorPosition)
-    {
-        $this->content = $content;
-        $this->cursorPosition = $cursorPosition;
-        $this->timestamp = new DateTime();
+    constructor(content: string, cursorPosition: number) {
+        this.content = content
+        this.cursorPosition = cursorPosition
+        this.timestamp = new DateTime()
     }
     
-    public function getContent(): string
-    {
-        return $this->content;
+    getContent() returns string {
+        return this.content
     }
     
-    public function getCursorPosition(): int
-    {
-        return $this->cursorPosition;
+    getCursorPosition() returns number {
+        return this.cursorPosition
     }
     
-    public function getTimestamp(): DateTime
-    {
-        return $this->timestamp;
+    getTimestamp() returns DateTime {
+        return this.timestamp
     }
 }
-```
 
-### Originator
-```php
-class TextEditor
-{
-    private string $content = '';
-    private int $cursorPosition = 0;
+// Originator
+class TextEditor {
+    private content = ''
+    private cursorPosition = 0
     
-    public function setContent(string $content): void
-    {
-        $this->content = $content;
-        $this->cursorPosition = strlen($content);
+    setContent(content: string) {
+        this.content = content
+        this.cursorPosition = content.length
     }
     
-    public function insertText(string $text, int $position): void
-    {
-        $this->content = substr_replace($this->content, $text, $position, 0);
-        $this->cursorPosition = $position + strlen($text);
+    insertText(text: string, position: number) {
+        this.content = this.content.substring(0, position) + text + this.content.substring(position)
+        this.cursorPosition = position + text.length
     }
     
-    public function deleteText(int $start, int $length): void
-    {
-        $this->content = substr_replace($this->content, '', $start, $length);
-        $this->cursorPosition = $start;
+    deleteText(start: number, length: number) {
+        this.content = this.content.substring(0, start) + this.content.substring(start + length)
+        this.cursorPosition = start
     }
     
-    public function createMemento(): TextMemento
-    {
-        return new TextMemento($this->content, $this->cursorPosition);
+    createMemento() returns TextMemento {
+        return new TextMemento(this.content, this.cursorPosition)
     }
     
-    public function restoreFromMemento(TextMemento $memento): void
-    {
-        $this->content = $memento->getContent();
-        $this->cursorPosition = $memento->getCursorPosition();
+    restoreFromMemento(memento: TextMemento) {
+        this.content = memento.getContent()
+        this.cursorPosition = memento.getCursorPosition()
     }
     
-    public function getContent(): string
-    {
-        return $this->content;
+    getContent() returns string {
+        return this.content
     }
     
-    public function getCursorPosition(): int
-    {
-        return $this->cursorPosition;
+    getCursorPosition() returns number {
+        return this.cursorPosition
     }
 }
-```
 
-### Caretaker
-```php
-class TextEditorHistory
-{
-    private array $history = [];
-    private int $currentIndex = -1;
+// Caretaker
+class TextEditorHistory {
+    private history = []
+    private currentIndex = -1
     
-    public function saveState(TextEditor $editor): void
-    {
+    saveState(editor: TextEditor) {
         // Rimuovi stati futuri se siamo nel mezzo della history
-        $this->history = array_slice($this->history, 0, $this->currentIndex + 1);
+        this.history = this.history.slice(0, this.currentIndex + 1)
         
         // Aggiungi il nuovo stato
-        $this->history[] = $editor->createMemento();
-        $this->currentIndex++;
+        this.history.add(editor.createMemento())
+        this.currentIndex++
     }
     
-    public function undo(TextEditor $editor): bool
-    {
-        if ($this->currentIndex > 0) {
-            $this->currentIndex--;
-            $editor->restoreFromMemento($this->history[$this->currentIndex]);
-            return true;
+    undo(editor: TextEditor) returns boolean {
+        if (this.currentIndex > 0) {
+            this.currentIndex--
+            editor.restoreFromMemento(this.history[this.currentIndex])
+            return true
         }
-        return false;
+        return false
     }
     
-    public function redo(TextEditor $editor): bool
-    {
-        if ($this->currentIndex < count($this->history) - 1) {
-            $this->currentIndex++;
-            $editor->restoreFromMemento($this->history[$this->currentIndex]);
-            return true;
+    redo(editor: TextEditor) returns boolean {
+        if (this.currentIndex < this.history.length - 1) {
+            this.currentIndex++
+            editor.restoreFromMemento(this.history[this.currentIndex])
+            return true
         }
-        return false;
+        return false
     }
     
-    public function canUndo(): bool
-    {
-        return $this->currentIndex > 0;
+    canUndo() returns boolean {
+        return this.currentIndex > 0
     }
     
-    public function canRedo(): bool
-    {
-        return $this->currentIndex < count($this->history) - 1;
+    canRedo() returns boolean {
+        return this.currentIndex < this.history.length - 1
     }
 }
-```
 
-### Uso
-```php
-$editor = new TextEditor();
-$history = new TextEditorHistory();
+// Utilizzo
+editor = new TextEditor()
+history = new TextEditorHistory()
 
 // Salva stato iniziale
-$history->saveState($editor);
+history.saveState(editor)
 
 // Modifica il testo
-$editor->insertText("Hello", 0);
-$history->saveState($editor);
+editor.insertText("Hello", 0)
+history.saveState(editor)
 
-$editor->insertText(" World", 5);
-$history->saveState($editor);
+editor.insertText(" World", 5)
+history.saveState(editor)
 
 // Undo
-$history->undo($editor); // Rimuove " World"
+history.undo(editor) // Rimuove " World"
 
 // Redo
-$history->redo($editor); // Aggiunge di nuovo " World"
+history.redo(editor) // Aggiunge di nuovo " World"
 ```
 
 ## Esempi completi
@@ -231,24 +207,22 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Memento troppo grande**: Un memento che salva troppi dati
-```php
+```
 // SBAGLIATO
-class GodMemento
-{
-    private array $entireDatabase;
-    private array $allUserSessions;
-    private array $allCacheData;
+class GodMemento {
+    private entireDatabase: array
+    private allUserSessions: array
+    private allCacheData: array
     // Troppo pesante!
 }
 ```
 
 ✅ **Memento focalizzato**: Un memento che salva solo i dati necessari
-```php
+```
 // GIUSTO
-class TextMemento
-{
-    private string $content;
-    private int $cursorPosition;
+class TextMemento {
+    private content: string
+    private cursorPosition: number
     // Solo i dati essenziali
 }
 ```

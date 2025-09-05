@@ -68,88 +68,73 @@ ConcreteHandler1 → ConcreteHandler2 → ConcreteHandler3
 
 ## Esempi di codice
 
-### Interfaccia base
-```php
-interface HandlerInterface
-{
-    public function setNext(HandlerInterface $handler): HandlerInterface;
-    public function handle(Request $request): ?Response;
-}
+### Pseudocodice
 ```
+// Interfaccia base
+interface HandlerInterface {
+    setNext(handler) returns HandlerInterface
+    handle(request) returns Response
+}
 
-### Handler astratto
-```php
-abstract class AbstractHandler implements HandlerInterface
-{
-    private ?HandlerInterface $nextHandler = null;
+// Handler astratto
+abstract class AbstractHandler implements HandlerInterface {
+    private nextHandler = null
     
-    public function setNext(HandlerInterface $handler): HandlerInterface
-    {
-        $this->nextHandler = $handler;
-        return $handler;
+    setNext(handler) returns HandlerInterface {
+        this.nextHandler = handler
+        return handler
     }
     
-    public function handle(Request $request): ?Response
-    {
-        if ($this->nextHandler) {
-            return $this->nextHandler->handle($request);
+    handle(request) returns Response {
+        if (this.nextHandler != null) {
+            return this.nextHandler.handle(request)
         }
         
-        return null;
+        return null
     }
 }
-```
 
-### Gestori concreti
-```php
-class ValidationHandler extends AbstractHandler
-{
-    public function handle(Request $request): ?Response
-    {
-        if (!$this->validate($request)) {
-            return new Response('Validation failed', 400);
+// Gestori concreti
+class ValidationHandler extends AbstractHandler {
+    handle(request) returns Response {
+        if (not this.validate(request)) {
+            return new Response('Validation failed', 400)
         }
         
-        return parent::handle($request);
+        return parent.handle(request)
     }
     
-    private function validate(Request $request): bool
-    {
+    private validate(request) returns boolean {
         // Logica di validazione
-        return !empty($request->getData());
+        return not empty(request.getData())
     }
 }
 
-class AuthenticationHandler extends AbstractHandler
-{
-    public function handle(Request $request): ?Response
-    {
-        if (!$this->authenticate($request)) {
-            return new Response('Authentication failed', 401);
+class AuthenticationHandler extends AbstractHandler {
+    handle(request) returns Response {
+        if (not this.authenticate(request)) {
+            return new Response('Authentication failed', 401)
         }
         
-        return parent::handle($request);
+        return parent.handle(request)
     }
     
-    private function authenticate(Request $request): bool
-    {
+    private authenticate(request) returns boolean {
         // Logica di autenticazione
-        return $request->hasValidToken();
+        return request.hasValidToken()
     }
 }
-```
 
-### Uso
-```php
+// Utilizzo
 // Crea la catena
-$validation = new ValidationHandler();
-$auth = new AuthenticationHandler();
-$authorization = new AuthorizationHandler();
+validation = new ValidationHandler()
+auth = new AuthenticationHandler()
+authorization = new AuthorizationHandler()
 
-$validation->setNext($auth)->setNext($authorization);
+validation.setNext(auth).setNext(authorization)
 
 // Processa la richiesta
-$response = $validation->handle($request);
+response = validation.handle(request)
 ```
 
 ## Esempi completi
@@ -178,21 +163,21 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Catena troppo lunga**: Una catena con troppi gestori
-```php
+```
 // SBAGLIATO
-$handler1->setNext($handler2)
-         ->setNext($handler3)
-         ->setNext($handler4)
-         ->setNext($handler5)
-         ->setNext($handler6)
-         ->setNext($handler7)
-         ->setNext($handler8); // Troppo complesso!
+handler1.setNext(handler2)
+        .setNext(handler3)
+        .setNext(handler4)
+        .setNext(handler5)
+        .setNext(handler6)
+        .setNext(handler7)
+        .setNext(handler8) // Troppo complesso!
 ```
 
 ✅ **Catena focalizzata**: Una catena con gestori specifici e necessari
-```php
+```
 // GIUSTO
-$validation->setNext($auth)->setNext($authorization);
+validation.setNext(auth).setNext(authorization)
 ```
 
 ## Troubleshooting

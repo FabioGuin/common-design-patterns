@@ -60,158 +60,134 @@ Context → State → ConcreteStateA
 ## Esempi di codice
 
 ### Interfaccia State
-```php
-interface StateInterface
-{
-    public function handle(OrderContext $context): void;
-    public function canTransitionTo(string $state): bool;
-    public function getStateName(): string;
+```pseudocodice
+interface StateInterface {
+    function handle(context: OrderContext): void
+    function canTransitionTo(state: string): Boolean
+    function getStateName(): string
 }
 ```
 
 ### Context
-```php
-class OrderContext
-{
-    private StateInterface $state;
-    private array $data;
+```pseudocodice
+class OrderContext {
+    private state: StateInterface
+    private data: array
     
-    public function __construct()
-    {
-        $this->state = new PendingState();
-        $this->data = [];
+    constructor() {
+        this.state = new PendingState()
+        this.data = []
     }
     
-    public function setState(StateInterface $state): void
-    {
-        if ($this->state->canTransitionTo($state->getStateName())) {
-            $this->state = $state;
+    function setState(state: StateInterface): void {
+        if (this.state.canTransitionTo(state.getStateName())) {
+            this.state = state
         } else {
             throw new InvalidStateTransitionException(
-                "Cannot transition from {$this->state->getStateName()} to {$state->getStateName()}"
-            );
+                "Cannot transition from " + this.state.getStateName() + " to " + state.getStateName()
+            )
         }
     }
     
-    public function getState(): StateInterface
-    {
-        return $this->state;
+    function getState(): StateInterface {
+        return this.state
     }
     
-    public function handle(): void
-    {
-        $this->state->handle($this);
+    function handle(): void {
+        this.state.handle(this)
     }
     
-    public function getData(): array
-    {
-        return $this->data;
+    function getData(): array {
+        return this.data
     }
     
-    public function setData(array $data): void
-    {
-        $this->data = $data;
+    function setData(data: array): void {
+        this.data = data
     }
 }
 ```
 
 ### Stati concreti
-```php
-class PendingState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
-        echo "Order is pending. Waiting for confirmation.\n";
+```pseudocodice
+class PendingState implements StateInterface {
+    function handle(context: OrderContext): void {
+        echo "Order is pending. Waiting for confirmation."
         // Logica specifica per stato pending
     }
     
-    public function canTransitionTo(string $state): bool
-    {
-        return in_array($state, ['confirmed', 'cancelled']);
+    function canTransitionTo(state: string): Boolean {
+        return in_array(state, ['confirmed', 'cancelled'])
     }
     
-    public function getStateName(): string
-    {
-        return 'pending';
+    function getStateName(): string {
+        return 'pending'
     }
 }
 
-class ConfirmedState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
-        echo "Order is confirmed. Preparing for shipment.\n";
+class ConfirmedState implements StateInterface {
+    function handle(context: OrderContext): void {
+        echo "Order is confirmed. Preparing for shipment."
         // Logica specifica per stato confirmed
     }
     
-    public function canTransitionTo(string $state): bool
-    {
-        return in_array($state, ['shipped', 'cancelled']);
+    function canTransitionTo(state: string): Boolean {
+        return in_array(state, ['shipped', 'cancelled'])
     }
     
-    public function getStateName(): string
-    {
-        return 'confirmed';
+    function getStateName(): string {
+        return 'confirmed'
     }
 }
 
-class ShippedState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
-        echo "Order is shipped. In transit.\n";
+class ShippedState implements StateInterface {
+    function handle(context: OrderContext): void {
+        echo "Order is shipped. In transit."
         // Logica specifica per stato shipped
     }
     
-    public function canTransitionTo(string $state): bool
-    {
-        return $state === 'delivered';
+    function canTransitionTo(state: string): Boolean {
+        return state === 'delivered'
     }
     
-    public function getStateName(): string
-    {
-        return 'shipped';
+    function getStateName(): string {
+        return 'shipped'
     }
 }
 
-class DeliveredState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
-        echo "Order is delivered. Complete.\n";
+class DeliveredState implements StateInterface {
+    function handle(context: OrderContext): void {
+        echo "Order is delivered. Complete."
         // Logica specifica per stato delivered
     }
     
-    public function canTransitionTo(string $state): bool
-    {
-        return false; // Stato finale
+    function canTransitionTo(state: string): Boolean {
+        return false // Stato finale
     }
     
-    public function getStateName(): string
-    {
-        return 'delivered';
+    function getStateName(): string {
+        return 'delivered'
     }
 }
 ```
 
 ### Uso
-```php
-$order = new OrderContext();
+```pseudocodice
+order = new OrderContext()
 
 // Stato iniziale
-$order->handle(); // "Order is pending. Waiting for confirmation."
+order.handle() // "Order is pending. Waiting for confirmation."
 
 // Transizione a confirmed
-$order->setState(new ConfirmedState());
-$order->handle(); // "Order is confirmed. Preparing for shipment."
+order.setState(new ConfirmedState())
+order.handle() // "Order is confirmed. Preparing for shipment."
 
 // Transizione a shipped
-$order->setState(new ShippedState());
-$order->handle(); // "Order is shipped. In transit."
+order.setState(new ShippedState())
+order.handle() // "Order is shipped. In transit."
 
 // Transizione a delivered
-$order->setState(new DeliveredState());
-$order->handle(); // "Order is delivered. Complete."
+order.setState(new DeliveredState())
+order.handle() // "Order is delivered. Complete."
 ```
 
 ## Esempi completi
@@ -240,29 +216,25 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Stato che fa troppo**: Un stato che gestisce troppe responsabilità
-```php
+```pseudocodice
 // SBAGLIATO
-class GodState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
-        $this->validateData();
-        $this->processPayment();
-        $this->sendEmail();
-        $this->updateDatabase();
-        $this->logActivity();
+class GodState implements StateInterface {
+    function handle(context: OrderContext): void {
+        this.validateData()
+        this.processPayment()
+        this.sendEmail()
+        this.updateDatabase()
+        this.logActivity()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Stato focalizzato**: Un stato per una responsabilità specifica
-```php
+```pseudocodice
 // GIUSTO
-class PendingState implements StateInterface
-{
-    public function handle(OrderContext $context): void
-    {
+class PendingState implements StateInterface {
+    function handle(context: OrderContext): void {
         // Solo logica per stato pending
     }
 }

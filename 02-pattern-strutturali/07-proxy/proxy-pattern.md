@@ -68,71 +68,58 @@ Il Client chiama il Proxy, che può:
 
 ## Esempi di codice
 
-### Interfaccia base
-```php
-interface ImageInterface
-{
-    public function display(): string;
-}
+### Pseudocodice
 ```
+// Interfaccia base
+interface ImageInterface {
+    display()
+}
 
-### Oggetto reale
-```php
-class RealImage implements ImageInterface
-{
-    private string $filename;
+// Oggetto reale
+class RealImage implements ImageInterface {
+    private filename
     
-    public function __construct(string $filename)
-    {
-        $this->filename = $filename;
-        $this->loadFromDisk(); // Operazione costosa
+    constructor(filename) {
+        this.filename = filename
+        this.loadFromDisk() // Operazione costosa
     }
     
-    public function display(): string
-    {
-        return "Displaying image: {$this->filename}";
+    display() {
+        return "Displaying image: " + this.filename
     }
     
-    private function loadFromDisk(): void
-    {
+    private loadFromDisk() {
         // Simula caricamento da disco
-        sleep(1);
+        sleep(1)
     }
 }
-```
 
-### Proxy con lazy loading
-```php
-class ImageProxy implements ImageInterface
-{
-    private ?RealImage $realImage = null;
-    private string $filename;
+// Proxy con lazy loading
+class ImageProxy implements ImageInterface {
+    private realImage = null
+    private filename
     
-    public function __construct(string $filename)
-    {
-        $this->filename = $filename;
+    constructor(filename) {
+        this.filename = filename
         // Non carica l'immagine subito!
     }
     
-    public function display(): string
-    {
-        if ($this->realImage === null) {
-            $this->realImage = new RealImage($this->filename);
+    display() {
+        if (this.realImage == null) {
+            this.realImage = new RealImage(this.filename)
         }
         
-        return $this->realImage->display();
+        return this.realImage.display()
     }
 }
-```
 
-### Uso
-```php
+// Utilizzo
 // Senza proxy - carica subito
-$image1 = new RealImage('photo1.jpg'); // 1 secondo di attesa
+image1 = new RealImage('photo1.jpg') // 1 secondo di attesa
 
 // Con proxy - carica solo quando serve
-$image2 = new ImageProxy('photo2.jpg'); // istantaneo
-echo $image2->display(); // Ora carica e mostra
+image2 = new ImageProxy('photo2.jpg') // istantaneo
+image2.display() // Ora carica e mostra
 ```
 
 ## Esempi completi

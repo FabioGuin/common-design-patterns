@@ -56,159 +56,138 @@ Visitor → visit(ElementA) → ElementA
 ## Esempi di codice
 
 ### Interfaccia Visitor
-```php
-interface VisitorInterface
-{
-    public function visitFile(File $file): mixed;
-    public function visitDirectory(Directory $directory): mixed;
+```pseudocodice
+interface VisitorInterface {
+    function visitFile(file: File): mixed
+    function visitDirectory(directory: Directory): mixed
 }
 ```
 
 ### Interfaccia Element
-```php
-interface ElementInterface
-{
-    public function accept(VisitorInterface $visitor): mixed;
+```pseudocodice
+interface ElementInterface {
+    function accept(visitor: VisitorInterface): mixed
 }
 ```
 
 ### Elementi concreti
-```php
-class File implements ElementInterface
-{
-    private string $name;
-    private int $size;
+```pseudocodice
+class File implements ElementInterface {
+    private name: string
+    private size: number
     
-    public function __construct(string $name, int $size)
-    {
-        $this->name = $name;
-        $this->size = $size;
+    constructor(name: string, size: number) {
+        this.name = name
+        this.size = size
     }
     
-    public function accept(VisitorInterface $visitor): mixed
-    {
-        return $visitor->visitFile($this);
+    function accept(visitor: VisitorInterface): mixed {
+        return visitor.visitFile(this)
     }
     
-    public function getName(): string
-    {
-        return $this->name;
+    function getName(): string {
+        return this.name
     }
     
-    public function getSize(): int
-    {
-        return $this->size;
+    function getSize(): number {
+        return this.size
     }
 }
 
-class Directory implements ElementInterface
-{
-    private string $name;
-    private array $children = [];
+class Directory implements ElementInterface {
+    private name: string
+    private children: array = []
     
-    public function __construct(string $name)
-    {
-        $this->name = $name;
+    constructor(name: string) {
+        this.name = name
     }
     
-    public function addChild(ElementInterface $element): void
-    {
-        $this->children[] = $element;
+    function addChild(element: ElementInterface): void {
+        this.children[] = element
     }
     
-    public function accept(VisitorInterface $visitor): mixed
-    {
-        return $visitor->visitDirectory($this);
+    function accept(visitor: VisitorInterface): mixed {
+        return visitor.visitDirectory(this)
     }
     
-    public function getName(): string
-    {
-        return $this->name;
+    function getName(): string {
+        return this.name
     }
     
-    public function getChildren(): array
-    {
-        return $this->children;
+    function getChildren(): array {
+        return this.children
     }
 }
 ```
 
 ### Visitor concreti
-```php
-class SizeCalculatorVisitor implements VisitorInterface
-{
-    private int $totalSize = 0;
+```pseudocodice
+class SizeCalculatorVisitor implements VisitorInterface {
+    private totalSize: number = 0
     
-    public function visitFile(File $file): int
-    {
-        $this->totalSize += $file->getSize();
-        return $file->getSize();
+    function visitFile(file: File): number {
+        this.totalSize += file.getSize()
+        return file.getSize()
     }
     
-    public function visitDirectory(Directory $directory): int
-    {
-        $directorySize = 0;
-        foreach ($directory->getChildren() as $child) {
-            $directorySize += $child->accept($this);
+    function visitDirectory(directory: Directory): number {
+        directorySize = 0
+        foreach (directory.getChildren() as child) {
+            directorySize += child.accept(this)
         }
-        return $directorySize;
+        return directorySize
     }
     
-    public function getTotalSize(): int
-    {
-        return $this->totalSize;
+    function getTotalSize(): number {
+        return this.totalSize
     }
 }
 
-class FileListerVisitor implements VisitorInterface
-{
-    private array $files = [];
+class FileListerVisitor implements VisitorInterface {
+    private files: array = []
     
-    public function visitFile(File $file): array
-    {
-        $this->files[] = $file->getName();
-        return [$file->getName()];
+    function visitFile(file: File): array {
+        this.files[] = file.getName()
+        return [file.getName()]
     }
     
-    public function visitDirectory(Directory $directory): array
-    {
-        $files = [];
-        foreach ($directory->getChildren() as $child) {
-            $files = array_merge($files, $child->accept($this));
+    function visitDirectory(directory: Directory): array {
+        files = []
+        foreach (directory.getChildren() as child) {
+            files = array_merge(files, child.accept(this))
         }
-        return $files;
+        return files
     }
     
-    public function getFiles(): array
-    {
-        return $this->files;
+    function getFiles(): array {
+        return this.files
     }
 }
 ```
 
 ### Uso
-```php
+```pseudocodice
 // Crea struttura
-$root = new Directory('root');
-$documents = new Directory('documents');
-$images = new Directory('images');
+root = new Directory('root')
+documents = new Directory('documents')
+images = new Directory('images')
 
-$root->addChild($documents);
-$root->addChild($images);
+root.addChild(documents)
+root.addChild(images)
 
-$documents->addChild(new File('report.pdf', 1024));
-$documents->addChild(new File('notes.txt', 512));
-$images->addChild(new File('photo.jpg', 2048));
+documents.addChild(new File('report.pdf', 1024))
+documents.addChild(new File('notes.txt', 512))
+images.addChild(new File('photo.jpg', 2048))
 
 // Calcola dimensioni
-$sizeVisitor = new SizeCalculatorVisitor();
-$totalSize = $root->accept($sizeVisitor);
-echo "Total size: {$totalSize} bytes\n";
+sizeVisitor = new SizeCalculatorVisitor()
+totalSize = root.accept(sizeVisitor)
+echo "Total size: " + totalSize + " bytes"
 
 // Lista file
-$listVisitor = new FileListerVisitor();
-$files = $root->accept($listVisitor);
-echo "Files: " . implode(', ', $files) . "\n";
+listVisitor = new FileListerVisitor()
+files = root.accept(listVisitor)
+echo "Files: " + implode(', ', files)
 ```
 
 ## Esempi completi
@@ -237,30 +216,26 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Visitor che fa troppo**: Un visitor che gestisce troppe responsabilità
-```php
+```pseudocodice
 // SBAGLIATO
-class GodVisitor implements VisitorInterface
-{
-    public function visitFile(File $file): mixed
-    {
-        $this->calculateSize();
-        $this->validateFile();
-        $this->exportFile();
-        $this->logActivity();
-        $this->updateDatabase();
+class GodVisitor implements VisitorInterface {
+    function visitFile(file: File): mixed {
+        this.calculateSize()
+        this.validateFile()
+        this.exportFile()
+        this.logActivity()
+        this.updateDatabase()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Visitor focalizzato**: Un visitor per una responsabilità specifica
-```php
+```pseudocodice
 // GIUSTO
-class SizeCalculatorVisitor implements VisitorInterface
-{
-    public function visitFile(File $file): int
-    {
-        return $file->getSize();
+class SizeCalculatorVisitor implements VisitorInterface {
+    function visitFile(file: File): number {
+        return file.getSize()
     }
 }
 ```

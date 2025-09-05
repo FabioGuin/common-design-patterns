@@ -55,90 +55,73 @@ Colleague3 ←→ Mediator ←→ Colleague4
 
 ## Esempi di codice
 
-### Interfaccia Mediator
-```php
-interface MediatorInterface
-{
-    public function notify(ColleagueInterface $sender, string $event, array $data = []): void;
-}
+### Pseudocodice
 ```
-
-### Interfaccia Colleague
-```php
-interface ColleagueInterface
-{
-    public function setMediator(MediatorInterface $mediator): void;
-    public function notify(string $event, array $data = []): void;
+// Interfaccia Mediator
+interface MediatorInterface {
+    notify(sender: ColleagueInterface, event: string, data: array)
 }
-```
 
-### Mediatore concreto
-```php
-class FormMediator implements MediatorInterface
-{
-    private array $colleagues = [];
+// Interfaccia Colleague
+interface ColleagueInterface {
+    setMediator(mediator: MediatorInterface)
+    notify(event: string, data: array)
+}
+
+// Mediatore concreto
+class FormMediator implements MediatorInterface {
+    private colleagues = []
     
-    public function addColleague(ColleagueInterface $colleague): void
-    {
-        $this->colleagues[] = $colleague;
-        $colleague->setMediator($this);
+    addColleague(colleague: ColleagueInterface) {
+        this.colleagues.add(colleague)
+        colleague.setMediator(this)
     }
     
-    public function notify(ColleagueInterface $sender, string $event, array $data = []): void
-    {
-        foreach ($this->colleagues as $colleague) {
-            if ($colleague !== $sender) {
-                $colleague->handleEvent($event, $data);
+    notify(sender: ColleagueInterface, event: string, data: array) {
+        for colleague in this.colleagues {
+            if (colleague != sender) {
+                colleague.handleEvent(event, data)
             }
         }
     }
 }
-```
 
-### Colleague concreto
-```php
-class TextField implements ColleagueInterface
-{
-    private MediatorInterface $mediator;
-    private string $value = '';
+// Colleague concreto
+class TextField implements ColleagueInterface {
+    private mediator: MediatorInterface
+    private value = ''
     
-    public function setMediator(MediatorInterface $mediator): void
-    {
-        $this->mediator = $mediator;
+    setMediator(mediator: MediatorInterface) {
+        this.mediator = mediator
     }
     
-    public function notify(string $event, array $data = []): void
-    {
-        $this->mediator->notify($this, $event, $data);
+    notify(event: string, data: array) {
+        this.mediator.notify(this, event, data)
     }
     
-    public function setValue(string $value): void
-    {
-        $this->value = $value;
-        $this->notify('text_changed', ['value' => $value]);
+    setValue(value: string) {
+        this.value = value
+        this.notify('text_changed', ['value': value])
     }
     
-    public function handleEvent(string $event, array $data): void
-    {
-        switch ($event) {
+    handleEvent(event: string, data: array) {
+        switch (event) {
             case 'form_reset':
-                $this->value = '';
-                break;
+                this.value = ''
+                break
         }
     }
 }
-```
 
-### Uso
-```php
-$mediator = new FormMediator();
-$textField = new TextField();
-$button = new SubmitButton();
+// Utilizzo
+mediator = new FormMediator()
+textField = new TextField()
+button = new SubmitButton()
 
-$mediator->addColleague($textField);
-$mediator->addColleague($button);
+mediator.addColleague(textField)
+mediator.addColleague(button)
 
-$textField->setValue("Hello World"); // Notifica tutti gli altri componenti
+textField.setValue("Hello World") // Notifica tutti gli altri componenti
 ```
 
 ## Esempi completi
@@ -167,29 +150,25 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Mediatore che fa troppo**: Un mediatore che gestisce troppe responsabilità
-```php
+```
 // SBAGLIATO
-class GodMediator implements MediatorInterface
-{
-    public function notify(ColleagueInterface $sender, string $event, array $data = []): void
-    {
-        $this->validateData();
-        $this->processPayment();
-        $this->sendEmail();
-        $this->updateDatabase();
-        $this->logActivity();
+class GodMediator implements MediatorInterface {
+    notify(sender: ColleagueInterface, event: string, data: array) {
+        this.validateData()
+        this.processPayment()
+        this.sendEmail()
+        this.updateDatabase()
+        this.logActivity()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Mediatore focalizzato**: Un mediatore per un dominio specifico
-```php
+```
 // GIUSTO
-class FormMediator implements MediatorInterface
-{
-    public function notify(ColleagueInterface $sender, string $event, array $data = []): void
-    {
+class FormMediator implements MediatorInterface {
+    notify(sender: ColleagueInterface, event: string, data: array) {
         // Gestisce solo la logica del form
     }
 }

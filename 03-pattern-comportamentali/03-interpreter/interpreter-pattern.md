@@ -58,62 +58,50 @@ Expression: "2 + 3 * 4"
 
 ## Esempi di codice
 
-### Interfaccia base
-```php
-interface ExpressionInterface
-{
-    public function interpret(Context $context): mixed;
-}
+### Pseudocodice
 ```
+// Interfaccia base
+interface ExpressionInterface {
+    interpret(context) returns mixed
+}
 
-### Espressione terminale
-```php
-class NumberExpression implements ExpressionInterface
-{
-    private int $value;
+// Espressione terminale
+class NumberExpression implements ExpressionInterface {
+    private value: number
     
-    public function __construct(int $value)
-    {
-        $this->value = $value;
+    constructor(value: number) {
+        this.value = value
     }
     
-    public function interpret(Context $context): int
-    {
-        return $this->value;
+    interpret(context) returns number {
+        return this.value
     }
 }
-```
 
-### Espressione non terminale
-```php
-class AddExpression implements ExpressionInterface
-{
-    private ExpressionInterface $left;
-    private ExpressionInterface $right;
+// Espressione non terminale
+class AddExpression implements ExpressionInterface {
+    private left: ExpressionInterface
+    private right: ExpressionInterface
     
-    public function __construct(ExpressionInterface $left, ExpressionInterface $right)
-    {
-        $this->left = $left;
-        $this->right = $right;
+    constructor(left: ExpressionInterface, right: ExpressionInterface) {
+        this.left = left
+        this.right = right
     }
     
-    public function interpret(Context $context): int
-    {
-        return $this->left->interpret($context) + $this->right->interpret($context);
+    interpret(context) returns number {
+        return this.left.interpret(context) + this.right.interpret(context)
     }
 }
-```
 
-### Uso
-```php
+// Utilizzo
 // Crea l'espressione: 2 + 3
-$expression = new AddExpression(
+expression = new AddExpression(
     new NumberExpression(2),
     new NumberExpression(3)
-);
+)
 
-$context = new Context();
-$result = $expression->interpret($context); // 5
+context = new Context()
+result = expression.interpret(context) // 5
 ```
 
 ## Esempi completi
@@ -142,12 +130,10 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Interprete troppo complesso**: Un interprete che gestisce troppe regole
-```php
+```
 // SBAGLIATO
-class GodInterpreter implements ExpressionInterface
-{
-    public function interpret(Context $context): mixed
-    {
+class GodInterpreter implements ExpressionInterface {
+    interpret(context) returns mixed {
         // Gestisce tutto: matematica, stringhe, date, regex, etc.
         // Troppo complesso!
     }
@@ -155,7 +141,7 @@ class GodInterpreter implements ExpressionInterface
 ```
 
 ✅ **Interprete modulare**: Un interprete per ogni dominio specifico
-```php
+```
 // GIUSTO
 class MathExpression implements ExpressionInterface { }
 class StringExpression implements ExpressionInterface { }

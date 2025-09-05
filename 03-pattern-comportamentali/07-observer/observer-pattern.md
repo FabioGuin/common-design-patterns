@@ -62,123 +62,100 @@ Subject → notify() → Observer1
 
 ## Esempi di codice
 
-### Interfaccia Subject
-```php
-interface SubjectInterface
-{
-    public function attach(ObserverInterface $observer): void;
-    public function detach(ObserverInterface $observer): void;
-    public function notify(): void;
-}
+### Pseudocodice
 ```
-
-### Interfaccia Observer
-```php
-interface ObserverInterface
-{
-    public function update(SubjectInterface $subject): void;
+// Interfaccia Subject
+interface SubjectInterface {
+    attach(observer: ObserverInterface)
+    detach(observer: ObserverInterface)
+    notify()
 }
-```
 
-### Subject concreto
-```php
-class Order implements SubjectInterface
-{
-    private array $observers = [];
-    private string $status;
-    private array $data;
+// Interfaccia Observer
+interface ObserverInterface {
+    update(subject: SubjectInterface)
+}
+
+// Subject concreto
+class Order implements SubjectInterface {
+    private observers = []
+    private status: string
+    private data: array
     
-    public function __construct(string $status = 'pending')
-    {
-        $this->status = $status;
-        $this->data = [];
+    constructor(status: string = 'pending') {
+        this.status = status
+        this.data = []
     }
     
-    public function attach(ObserverInterface $observer): void
-    {
-        $this->observers[] = $observer;
+    attach(observer: ObserverInterface) {
+        this.observers.add(observer)
     }
     
-    public function detach(ObserverInterface $observer): void
-    {
-        $key = array_search($observer, $this->observers, true);
-        if ($key !== false) {
-            unset($this->observers[$key]);
+    detach(observer: ObserverInterface) {
+        key = this.observers.indexOf(observer)
+        if (key != -1) {
+            this.observers.removeAt(key)
         }
     }
     
-    public function notify(): void
-    {
-        foreach ($this->observers as $observer) {
-            $observer->update($this);
+    notify() {
+        for observer in this.observers {
+            observer.update(this)
         }
     }
     
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-        $this->notify(); // Notifica tutti gli observer
+    setStatus(status: string) {
+        this.status = status
+        this.notify() // Notifica tutti gli observer
     }
     
-    public function getStatus(): string
-    {
-        return $this->status;
+    getStatus() returns string {
+        return this.status
     }
     
-    public function getData(): array
-    {
-        return $this->data;
+    getData() returns array {
+        return this.data
     }
 }
-```
 
-### Observer concreto
-```php
-class EmailNotificationObserver implements ObserverInterface
-{
-    public function update(SubjectInterface $subject): void
-    {
-        if ($subject instanceof Order) {
-            $this->sendEmail($subject);
+// Observer concreto
+class EmailNotificationObserver implements ObserverInterface {
+    update(subject: SubjectInterface) {
+        if (subject instanceof Order) {
+            this.sendEmail(subject)
         }
     }
     
-    private function sendEmail(Order $order): void
-    {
-        echo "Sending email for order status: " . $order->getStatus() . "\n";
+    private sendEmail(order: Order) {
+        print("Sending email for order status: " + order.getStatus())
         // Logica per inviare email
     }
 }
 
-class InventoryObserver implements ObserverInterface
-{
-    public function update(SubjectInterface $subject): void
-    {
-        if ($subject instanceof Order) {
-            $this->updateInventory($subject);
+class InventoryObserver implements ObserverInterface {
+    update(subject: SubjectInterface) {
+        if (subject instanceof Order) {
+            this.updateInventory(subject)
         }
     }
     
-    private function updateInventory(Order $order): void
-    {
-        echo "Updating inventory for order status: " . $order->getStatus() . "\n";
+    private updateInventory(order: Order) {
+        print("Updating inventory for order status: " + order.getStatus())
         // Logica per aggiornare inventario
     }
 }
-```
 
-### Uso
-```php
-$order = new Order('pending');
+// Utilizzo
+order = new Order('pending')
 
 // Aggiungi observer
-$order->attach(new EmailNotificationObserver());
-$order->attach(new InventoryObserver());
+order.attach(new EmailNotificationObserver())
+order.attach(new InventoryObserver())
 
 // Cambia stato - notifica automaticamente tutti gli observer
-$order->setStatus('confirmed');
-$order->setStatus('shipped');
-$order->setStatus('delivered');
+order.setStatus('confirmed')
+order.setStatus('shipped')
+order.setStatus('delivered')
 ```
 
 ## Esempi completi
@@ -207,31 +184,27 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Observer che fa troppo**: Un observer che gestisce troppe responsabilità
-```php
+```
 // SBAGLIATO
-class GodObserver implements ObserverInterface
-{
-    public function update(SubjectInterface $subject): void
-    {
-        $this->sendEmail();
-        $this->updateDatabase();
-        $this->sendSMS();
-        $this->updateCache();
-        $this->logActivity();
-        $this->notifySlack();
+class GodObserver implements ObserverInterface {
+    update(subject: SubjectInterface) {
+        this.sendEmail()
+        this.updateDatabase()
+        this.sendSMS()
+        this.updateCache()
+        this.logActivity()
+        this.notifySlack()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Observer focalizzato**: Un observer per una responsabilità specifica
-```php
+```
 // GIUSTO
-class EmailObserver implements ObserverInterface
-{
-    public function update(SubjectInterface $subject): void
-    {
-        $this->sendEmail($subject);
+class EmailObserver implements ObserverInterface {
+    update(subject: SubjectInterface) {
+        this.sendEmail(subject)
     }
 }
 ```

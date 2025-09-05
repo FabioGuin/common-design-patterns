@@ -54,93 +54,74 @@ Client → Aggregate → Iterator → Elements
 
 ## Esempi di codice
 
-### Interfaccia Iterator
-```php
-interface IteratorInterface
-{
-    public function current(): mixed;
-    public function next(): void;
-    public function key(): mixed;
-    public function valid(): bool;
-    public function rewind(): void;
-}
+### Pseudocodice
 ```
-
-### Interfaccia Aggregate
-```php
-interface AggregateInterface
-{
-    public function createIterator(): IteratorInterface;
+// Interfaccia Iterator
+interface IteratorInterface {
+    current() returns mixed
+    next()
+    key() returns mixed
+    valid() returns boolean
+    rewind()
 }
-```
 
-### Collezione concreta
-```php
-class BookCollection implements AggregateInterface
-{
-    private array $books = [];
+// Interfaccia Aggregate
+interface AggregateInterface {
+    createIterator() returns IteratorInterface
+}
+
+// Collezione concreta
+class BookCollection implements AggregateInterface {
+    private books = []
     
-    public function addBook(Book $book): void
-    {
-        $this->books[] = $book;
+    addBook(book) {
+        this.books.add(book)
     }
     
-    public function createIterator(): IteratorInterface
-    {
-        return new BookIterator($this->books);
+    createIterator() returns IteratorInterface {
+        return new BookIterator(this.books)
     }
 }
-```
 
-### Iteratore concreto
-```php
-class BookIterator implements IteratorInterface
-{
-    private array $books;
-    private int $position = 0;
+// Iteratore concreto
+class BookIterator implements IteratorInterface {
+    private books: array
+    private position = 0
     
-    public function __construct(array $books)
-    {
-        $this->books = $books;
+    constructor(books: array) {
+        this.books = books
     }
     
-    public function current(): Book
-    {
-        return $this->books[$this->position];
+    current() returns Book {
+        return this.books[this.position]
     }
     
-    public function next(): void
-    {
-        $this->position++;
+    next() {
+        this.position++
     }
     
-    public function key(): int
-    {
-        return $this->position;
+    key() returns number {
+        return this.position
     }
     
-    public function valid(): bool
-    {
-        return isset($this->books[$this->position]);
+    valid() returns boolean {
+        return this.books[this.position] != null
     }
     
-    public function rewind(): void
-    {
-        $this->position = 0;
+    rewind() {
+        this.position = 0
     }
 }
-```
 
-### Uso
-```php
-$collection = new BookCollection();
-$collection->addBook(new Book("PHP Guide"));
-$collection->addBook(new Book("Laravel Tutorial"));
+// Utilizzo
+collection = new BookCollection()
+collection.addBook(new Book("PHP Guide"))
+collection.addBook(new Book("Laravel Tutorial"))
 
-$iterator = $collection->createIterator();
+iterator = collection.createIterator()
 
-foreach ($iterator as $book) {
-    echo $book->getTitle() . "\n";
+for book in iterator {
+    print(book.getTitle())
 }
 ```
 
@@ -170,29 +151,25 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Iteratore che fa troppo**: Un iteratore che gestisce troppe responsabilità
-```php
+```
 // SBAGLIATO
-class GodIterator implements IteratorInterface
-{
-    public function current(): mixed
-    {
-        $this->validateData();
-        $this->transformData();
-        $this->cacheData();
-        $this->logAccess();
+class GodIterator implements IteratorInterface {
+    current() returns mixed {
+        this.validateData()
+        this.transformData()
+        this.cacheData()
+        this.logAccess()
         // Troppo complesso!
     }
 }
 ```
 
 ✅ **Iteratore focalizzato**: Un iteratore per una responsabilità specifica
-```php
+```
 // GIUSTO
-class SimpleIterator implements IteratorInterface
-{
-    public function current(): mixed
-    {
-        return $this->items[$this->position];
+class SimpleIterator implements IteratorInterface {
+    current() returns mixed {
+        return this.items[this.position]
     }
 }
 ```

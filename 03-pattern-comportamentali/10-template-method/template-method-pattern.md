@@ -68,128 +68,114 @@ ConcreteClassB
 ## Esempi di codice
 
 ### Classe astratta
-```php
-abstract class ReportGenerator
-{
+```pseudocodice
+abstract class ReportGenerator {
     // Template method - definisce la struttura
-    final public function generateReport(array $data): string
-    {
-        $this->validateData($data);
-        $formattedData = $this->formatData($data);
-        $header = $this->generateHeader();
-        $body = $this->generateBody($formattedData);
-        $footer = $this->generateFooter();
+    final function generateReport(data: array): string {
+        this.validateData(data)
+        formattedData = this.formatData(data)
+        header = this.generateHeader()
+        body = this.generateBody(formattedData)
+        footer = this.generateFooter()
         
-        return $this->combineSections($header, $body, $footer);
+        return this.combineSections(header, body, footer)
     }
     
     // Metodi astratti - devono essere implementati dalle sottoclassi
-    abstract protected function formatData(array $data): array;
-    abstract protected function generateHeader(): string;
-    abstract protected function generateBody(array $data): string;
-    abstract protected function generateFooter(): string;
+    abstract protected function formatData(data: array): array
+    abstract protected function generateHeader(): string
+    abstract protected function generateBody(data: array): string
+    abstract protected function generateFooter(): string
     
     // Metodi concreti - implementazione comune
-    protected function validateData(array $data): void
-    {
-        if (empty($data)) {
-            throw new InvalidArgumentException('Data cannot be empty');
+    protected function validateData(data: array): void {
+        if (empty(data)) {
+            throw new InvalidArgumentException('Data cannot be empty')
         }
     }
     
-    protected function combineSections(string $header, string $body, string $footer): string
-    {
-        return $header . "\n" . $body . "\n" . $footer;
+    protected function combineSections(header: string, body: string, footer: string): string {
+        return header + "\n" + body + "\n" + footer
     }
 }
 ```
 
 ### Implementazioni concrete
-```php
-class PDFReportGenerator extends ReportGenerator
-{
-    protected function formatData(array $data): array
-    {
+```pseudocodice
+class PDFReportGenerator extends ReportGenerator {
+    protected function formatData(data: array): array {
         // Formatta i dati per PDF
-        return array_map(function($item) {
+        return array_map(function(item) {
             return [
-                'title' => strtoupper($item['title']),
-                'content' => wordwrap($item['content'], 80)
-            ];
-        }, $data);
+                'title' => strtoupper(item['title']),
+                'content' => wordwrap(item['content'], 80)
+            ]
+        }, data)
     }
     
-    protected function generateHeader(): string
-    {
-        return "=== PDF REPORT ===\n" . date('Y-m-d H:i:s');
+    protected function generateHeader(): string {
+        return "=== PDF REPORT ===\n" + date('Y-m-d H:i:s')
     }
     
-    protected function generateBody(array $data): string
-    {
-        $body = "";
-        foreach ($data as $item) {
-            $body .= "Title: {$item['title']}\n";
-            $body .= "Content: {$item['content']}\n\n";
+    protected function generateBody(data: array): string {
+        body = ""
+        foreach (data as item) {
+            body += "Title: " + item['title'] + "\n"
+            body += "Content: " + item['content'] + "\n\n"
         }
-        return $body;
+        return body
     }
     
-    protected function generateFooter(): string
-    {
-        return "=== END OF PDF REPORT ===";
+    protected function generateFooter(): string {
+        return "=== END OF PDF REPORT ==="
     }
 }
 
-class HTMLReportGenerator extends ReportGenerator
-{
-    protected function formatData(array $data): array
-    {
+class HTMLReportGenerator extends ReportGenerator {
+    protected function formatData(data: array): array {
         // Formatta i dati per HTML
-        return array_map(function($item) {
+        return array_map(function(item) {
             return [
-                'title' => htmlspecialchars($item['title']),
-                'content' => nl2br(htmlspecialchars($item['content']))
-            ];
-        }, $data);
+                'title' => htmlspecialchars(item['title']),
+                'content' => nl2br(htmlspecialchars(item['content']))
+            ]
+        }, data)
     }
     
-    protected function generateHeader(): string
-    {
-        return "<h1>HTML Report</h1><p>Generated: " . date('Y-m-d H:i:s') . "</p>";
+    protected function generateHeader(): string {
+        return "<h1>HTML Report</h1><p>Generated: " + date('Y-m-d H:i:s') + "</p>"
     }
     
-    protected function generateBody(array $data): string
-    {
-        $body = "<div class='report-body'>";
-        foreach ($data as $item) {
-            $body .= "<h2>{$item['title']}</h2>";
-            $body .= "<p>{$item['content']}</p>";
+    protected function generateBody(data: array): string {
+        body = "<div class='report-body'>"
+        foreach (data as item) {
+            body += "<h2>" + item['title'] + "</h2>"
+            body += "<p>" + item['content'] + "</p>"
         }
-        $body .= "</div>";
-        return $body;
+        body += "</div>"
+        return body
     }
     
-    protected function generateFooter(): string
-    {
-        return "<footer>End of HTML Report</footer>";
+    protected function generateFooter(): string {
+        return "<footer>End of HTML Report</footer>"
     }
 }
 ```
 
 ### Uso
-```php
-$data = [
+```pseudocodice
+data = [
     ['title' => 'Report 1', 'content' => 'This is the first report'],
     ['title' => 'Report 2', 'content' => 'This is the second report']
-];
+]
 
 // Genera report PDF
-$pdfGenerator = new PDFReportGenerator();
-$pdfReport = $pdfGenerator->generateReport($data);
+pdfGenerator = new PDFReportGenerator()
+pdfReport = pdfGenerator.generateReport(data)
 
 // Genera report HTML
-$htmlGenerator = new HTMLReportGenerator();
-$htmlReport = $htmlGenerator->generateReport($data);
+htmlGenerator = new HTMLReportGenerator()
+htmlReport = htmlGenerator.generateReport(data)
 ```
 
 ## Esempi completi
@@ -218,37 +204,32 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 ## Anti-pattern
 
 ❌ **Template troppo rigido**: Un template che non permette flessibilità
-```php
+```pseudocodice
 // SBAGLIATO
-abstract class RigidTemplate
-{
-    final public function process(): void
-    {
-        $this->step1(); // Sempre obbligatorio
-        $this->step2(); // Sempre obbligatorio
-        $this->step3(); // Sempre obbligatorio
+abstract class RigidTemplate {
+    final function process(): void {
+        this.step1() // Sempre obbligatorio
+        this.step2() // Sempre obbligatorio
+        this.step3() // Sempre obbligatorio
         // Nessuna flessibilità!
     }
 }
 ```
 
 ✅ **Template flessibile**: Un template che permette personalizzazioni
-```php
+```pseudocodice
 // GIUSTO
-abstract class FlexibleTemplate
-{
-    final public function process(): void
-    {
-        $this->step1();
-        if ($this->shouldExecuteStep2()) {
-            $this->step2();
+abstract class FlexibleTemplate {
+    final function process(): void {
+        this.step1()
+        if (this.shouldExecuteStep2()) {
+            this.step2()
         }
-        $this->step3();
+        this.step3()
     }
     
-    protected function shouldExecuteStep2(): bool
-    {
-        return true; // Default, può essere sovrascritto
+    protected function shouldExecuteStep2(): Boolean {
+        return true // Default, può essere sovrascritto
     }
 }
 ```
