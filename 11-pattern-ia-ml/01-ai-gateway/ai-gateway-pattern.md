@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -214,12 +214,21 @@ L'esempio include:
 - Test unitari per i provider
 - API RESTful per gestire le richieste AI
 
-## Pattern correlati
+## Correlati
 
-- **Adapter**: Se hai bisogno di adattare interfacce diverse
-- **Facade**: Se hai bisogno di semplificare un'interfaccia complessa
-- **Strategy**: Se hai bisogno di cambiare algoritmo di selezione provider
-- **Circuit Breaker**: Spesso usato insieme all'AI Gateway per gestire i fallimenti
+### Pattern
+
+- **[Adapter Pattern](../02-pattern-strutturali/01-adapter/adapter-pattern.md)** - Se hai bisogno di adattare interfacce diverse
+- **[Facade Pattern](../02-pattern-strutturali/05-facade/facade-pattern.md)** - Se hai bisogno di semplificare un'interfaccia complessa
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Se hai bisogno di cambiare algoritmo di selezione provider
+- **[AI Fallback Pattern](./05-ai-fallback/ai-fallback-pattern.md)** - Spesso usato insieme all'AI Gateway per gestire i fallimenti
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

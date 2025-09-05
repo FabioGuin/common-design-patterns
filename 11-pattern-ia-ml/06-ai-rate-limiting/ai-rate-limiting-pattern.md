@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -159,13 +159,21 @@ L'esempio include:
 - API per controllare i limiti
 - Logging e analytics dell'uso
 
-## Pattern correlati
+## Correlati
 
-- **AI Gateway**: Il rate limiting spesso si integra con un gateway AI
-- **AI Fallback**: Quando i limiti sono raggiunti, puoi usare servizi alternativi
-- **AI Caching**: Riduce le richieste duplicate e aiuta con i limiti
-- **Circuit Breaker**: Per gestire i fallimenti dei servizi AI
-- **Token Bucket**: Algoritmo alternativo per il rate limiting
+### Pattern
+
+- **[AI Gateway](./01-ai-gateway/ai-gateway-pattern.md)** - Il rate limiting spesso si integra con un gateway AI
+- **[AI Fallback](./05-ai-fallback/ai-fallback-pattern.md)** - Quando i limiti sono raggiunti, puoi usare servizi alternativi
+- **[AI Response Caching](./04-ai-response-caching/ai-response-caching-pattern.md)** - Riduce le richieste duplicate e aiuta con i limiti
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Per implementare diverse strategie di rate limiting
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

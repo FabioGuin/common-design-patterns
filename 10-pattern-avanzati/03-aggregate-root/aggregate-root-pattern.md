@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -208,13 +208,22 @@ L'esempio include:
 
 **Nota per l'implementazione**: L'esempio completo segue il [template semplificato](../TEMPLATE-ESEMPIO-COMPLETO.md) con focus sulla dimostrazione del pattern, non su un'applicazione completa.
 
-## Pattern correlati
+## Correlati
 
-- **Domain Events**: Spesso usato insieme per notificare cambiamenti
-- **Repository Pattern**: Per gestire la persistenza degli aggregate
-- **Value Object**: Spesso usato all'interno degli aggregate
-- **Factory Pattern**: Per creare aggregate complessi
-- **Unit of Work**: Per gestire le transazioni sugli aggregate
+### Pattern
+
+- **[Domain Events](./04-domain-event/domain-event-pattern.md)** - Spesso usato insieme per notificare cambiamenti
+- **[Repository Pattern](../04-pattern-architetturali/02-repository/repository-pattern.md)** - Per gestire la persistenza degli aggregate
+- **[Value Object](./02-value-object/value-object-pattern.md)** - Spesso usato all'interno degli aggregate
+- **[Factory Method](../01-pattern-creazionali/02-factory-method/factory-method-pattern.md)** - Per creare aggregate complessi
+- **[Unit of Work](../04-pattern-architetturali/05-unit-of-work/unit-of-work-pattern.md)** - Per gestire le transazioni sugli aggregate
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

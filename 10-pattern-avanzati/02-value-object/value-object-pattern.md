@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -189,12 +189,21 @@ L'esempio include:
 
 **Nota per l'implementazione**: L'esempio completo segue il [template semplificato](../TEMPLATE-ESEMPIO-COMPLETO.md) con focus sulla dimostrazione del pattern, non su un'applicazione completa.
 
-## Pattern correlati
+## Correlati
 
-- **Builder Pattern**: Spesso usato per creare Value Object complessi
-- **Factory Method**: Per creare Value Object con logica di creazione complessa
-- **Strategy Pattern**: Per implementare diverse strategie di validazione
-- **Template Method**: Per definire il template di creazione di Value Object
+### Pattern
+
+- **[Builder Pattern](../01-pattern-creazionali/04-builder/builder-pattern.md)** - Spesso usato per creare Value Object complessi
+- **[Factory Method](../01-pattern-creazionali/02-factory-method/factory-method-pattern.md)** - Per creare Value Object con logica di creazione complessa
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Per implementare diverse strategie di validazione
+- **[Template Method](../03-pattern-comportamentali/10-template-method/template-method-pattern.md)** - Per definire il template di creazione di Value Object
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

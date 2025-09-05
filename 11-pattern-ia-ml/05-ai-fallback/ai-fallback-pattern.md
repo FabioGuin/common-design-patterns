@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -287,12 +287,21 @@ L'esempio include:
 - Test unitari per il fallback
 - API RESTful per gestire il fallback
 
-## Pattern correlati
+## Correlati
 
-- **Circuit Breaker**: Se hai bisogno di gestire fallimenti temporanei
-- **Retry**: Se hai bisogno di riprovare automaticamente le operazioni fallite
-- **Health Check**: Se hai bisogno di monitorare la salute dei servizi
-- **Graceful Degradation**: Spesso usato insieme all'AI Fallback per gestire la degradazione
+### Pattern
+
+- **[AI Gateway](./01-ai-gateway/ai-gateway-pattern.md)** - Spesso usato insieme per gestire i provider AI
+- **[AI Response Caching](./04-ai-response-caching/ai-response-caching-pattern.md)** - Spesso usato insieme per gestire le risposte AI
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Per implementare diverse strategie di fallback
+- **[Template Method](../03-pattern-comportamentali/10-template-method/template-method-pattern.md)** - Per definire il template di fallback
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

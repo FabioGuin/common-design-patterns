@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -223,12 +223,21 @@ L'esempio include:
 - Test unitari per i template
 - API RESTful per gestire i prompt
 
-## Pattern correlati
+## Correlati
 
-- **Template Method**: Se hai bisogno di definire algoritmi con passi variabili
-- **Builder**: Se hai bisogno di costruire oggetti complessi passo dopo passo
-- **Strategy**: Se hai bisogno di cambiare algoritmo di ottimizzazione
-- **Factory Method**: Se hai bisogno di creare diversi tipi di template
+### Pattern
+
+- **[Template Method](../03-pattern-comportamentali/10-template-method/template-method-pattern.md)** - Se hai bisogno di definire algoritmi con passi variabili
+- **[Builder Pattern](../01-pattern-creazionali/04-builder/builder-pattern.md)** - Se hai bisogno di costruire oggetti complessi passo dopo passo
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Se hai bisogno di cambiare algoritmo di ottimizzazione
+- **[Factory Method](../01-pattern-creazionali/02-factory-method/factory-method-pattern.md)** - Se hai bisogno di creare diversi tipi di template
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

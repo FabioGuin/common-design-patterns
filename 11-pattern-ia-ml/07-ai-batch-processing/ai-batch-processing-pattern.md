@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -152,12 +152,21 @@ L'esempio include:
 
 **Nota per l'implementazione**: L'esempio completo segue il [template semplificato](../TEMPLATE-ESEMPIO-COMPLETO.md) con focus sulla dimostrazione del pattern, non su un'applicazione completa.
 
-## Pattern correlati
+## Correlati
 
-- **AI Gateway Pattern**: Per l'integrazione con i provider AI
-- **AI Rate Limiting Pattern**: Per gestire i limiti di rate
-- **Queue Pattern**: Per l'elaborazione asincrona dei batch
-- **Circuit Breaker Pattern**: Per gestire i fallimenti dei provider
+### Pattern
+
+- **[AI Gateway Pattern](./01-ai-gateway/ai-gateway-pattern.md)** - Per l'integrazione con i provider AI
+- **[AI Rate Limiting Pattern](./06-ai-rate-limiting/ai-rate-limiting-pattern.md)** - Per gestire i limiti di rate
+- **[AI Fallback Pattern](./05-ai-fallback/ai-fallback-pattern.md)** - Per gestire i fallimenti dei provider
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Per implementare diverse strategie di batch processing
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

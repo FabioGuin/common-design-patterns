@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -206,12 +206,21 @@ L'esempio include:
 - Test unitari per il pool
 - API RESTful per monitorare il pool
 
-## Pattern correlati
+## Correlati
 
-- **Singleton**: Se hai bisogno di una sola istanza del pool
-- **Factory Method**: Se hai bisogno di creare oggetti diversi nel pool
-- **Prototype**: Se hai bisogno di clonare oggetti esistenti nel pool
-- **Flyweight**: Spesso usato insieme all'Object Pool per oggetti leggeri
+### Pattern
+
+- **[Singleton](./01-singleton/singleton-pattern.md)** - Se hai bisogno di una sola istanza del pool
+- **[Factory Method](./02-factory-method/factory-method-pattern.md)** - Se hai bisogno di creare oggetti diversi nel pool
+- **[Prototype](./05-prototype/prototype-pattern.md)** - Se hai bisogno di clonare oggetti esistenti nel pool
+- **[Builder](./04-builder/builder-pattern.md)** - Per costruire oggetti complessi nel pool
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

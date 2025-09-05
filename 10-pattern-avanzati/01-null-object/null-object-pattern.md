@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -164,12 +164,21 @@ L'esempio include:
 
 **Nota per l'implementazione**: L'esempio completo segue il [template semplificato](../TEMPLATE-ESEMPIO-COMPLETO.md) con focus sulla dimostrazione del pattern, non su un'applicazione completa.
 
-## Pattern correlati
+## Correlati
 
-- **Strategy Pattern**: Il Null Object è spesso usato come strategia di fallback
-- **Factory Pattern**: Spesso usato insieme per creare l'oggetto appropriato
-- **Template Method**: I null object implementano lo stesso template degli oggetti reali
-- **Command Pattern**: I null object possono essere comandi che non fanno nulla
+### Pattern
+
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Il Null Object è spesso usato come strategia di fallback
+- **[Factory Method](../01-pattern-creazionali/02-factory-method/factory-method-pattern.md)** - Spesso usato insieme per creare l'oggetto appropriato
+- **[Template Method](../03-pattern-comportamentali/10-template-method/template-method-pattern.md)** - I null object implementano lo stesso template degli oggetti reali
+- **[Command Pattern](../03-pattern-comportamentali/02-command/command-pattern.md)** - I null object possono essere comandi che non fanno nulla
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

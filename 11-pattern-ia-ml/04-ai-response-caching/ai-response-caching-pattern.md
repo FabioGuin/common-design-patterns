@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -226,12 +226,21 @@ L'esempio include:
 - Test unitari per la cache
 - API RESTful per gestire la cache
 
-## Pattern correlati
+## Correlati
 
-- **Cache-Aside**: Se hai bisogno di gestire manualmente la cache
-- **Write-Through**: Se hai bisogno di sincronizzare cache e storage
-- **Write-Behind**: Se hai bisogno di aggiornare la cache in background
-- **Circuit Breaker**: Spesso usato insieme all'AI Response Caching per gestire i fallimenti
+### Pattern
+
+- **[AI Gateway](./01-ai-gateway/ai-gateway-pattern.md)** - Spesso usato insieme per gestire le richieste AI
+- **[AI Fallback](./05-ai-fallback/ai-fallback-pattern.md)** - Spesso usato insieme per gestire i fallimenti
+- **[Strategy Pattern](../03-pattern-comportamentali/09-strategy/strategy-pattern.md)** - Per implementare diverse strategie di caching
+- **[Template Method](../03-pattern-comportamentali/10-template-method/template-method-pattern.md)** - Per definire il template di caching
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

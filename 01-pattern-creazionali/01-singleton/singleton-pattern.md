@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -153,12 +153,21 @@ L'esempio include:
 - Livelli di log (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 - API per leggere e gestire i log
 
-## Pattern correlati
+## Correlati
 
-- **Factory Method**: Se hai bisogno di creare istanze diverse ma sempre una per tipo
-- **Object Pool**: Per riutilizzare oggetti costosi invece di crearne sempre uno solo
-- **Service Locator**: Alternativa al Singleton per l'accesso globale, ma più flessibile
-- **Dependency Injection**: Approccio moderno che evita i problemi del Singleton
+### Pattern
+
+- **[Factory Method](./02-factory-method/factory-method-pattern.md)** - Se hai bisogno di creare istanze diverse ma sempre una per tipo
+- **[Object Pool](./06-object-pool/object-pool-pattern.md)** - Per riutilizzare oggetti costosi invece di crearne sempre uno solo
+- **[Service Locator](../05-pattern-laravel-specifici/01-service-container/service-container-pattern.md)** - Alternativa al Singleton per l'accesso globale, ma più flessibile
+- **[Dependency Injection](../05-pattern-laravel-specifici/01-service-container/service-container-pattern.md)** - Approccio moderno che evita i problemi del Singleton
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

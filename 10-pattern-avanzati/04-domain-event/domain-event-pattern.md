@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -232,13 +232,21 @@ L'esempio include:
 
 **Nota per l'implementazione**: L'esempio completo segue il [template semplificato](../TEMPLATE-ESEMPIO-COMPLETO.md) con focus sulla dimostrazione del pattern, non su un'applicazione completa.
 
-## Pattern correlati
+## Correlati
 
-- **Aggregate Root**: Spesso usato insieme per emettere eventi
-- **Event Sourcing**: Per tracciare tutti gli eventi nel tempo
-- **CQRS**: Per separare comandi e query
-- **Observer Pattern**: Pattern base per la gestione degli eventi
-- **Mediator Pattern**: Per coordinare le comunicazioni tra oggetti
+### Pattern
+
+- **[Aggregate Root](./03-aggregate-root/aggregate-root-pattern.md)** - Spesso usato insieme per emettere eventi
+- **[Observer Pattern](../03-pattern-comportamentali/07-observer/observer-pattern.md)** - Pattern base per la gestione degli eventi
+- **[Mediator Pattern](../03-pattern-comportamentali/05-mediator/mediator-pattern.md)** - Per coordinare le comunicazioni tra oggetti
+- **[Command Pattern](../03-pattern-comportamentali/02-command/command-pattern.md)** - Per gestire i comandi che generano eventi
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 

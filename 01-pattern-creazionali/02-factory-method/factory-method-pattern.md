@@ -11,7 +11,7 @@
 ### Valutazione e Contesto
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Pattern correlati](#pattern-correlati)
+- [Correlati](#correlati)
 - [Esempi di uso reale](#esempi-di-uso-reale)
 
 ### Cosa Evitare
@@ -172,12 +172,21 @@ L'esempio include:
 - Test unitari per i factory methods
 - API RESTful per gestire gli utenti
 
-## Pattern correlati
+## Correlati
 
-- **Abstract Factory**: Se hai bisogno di creare famiglie di oggetti correlati
-- **Builder**: Per costruire oggetti complessi passo dopo passo
-- **Prototype**: Per clonare oggetti esistenti invece di crearli da zero
-- **Simple Factory**: Versione semplificata senza ereditarietà
+### Pattern
+
+- **[Abstract Factory](./03-abstract-factory/abstract-factory-pattern.md)** - Se hai bisogno di creare famiglie di oggetti correlati
+- **[Builder](./04-builder/builder-pattern.md)** - Per costruire oggetti complessi passo dopo passo
+- **[Prototype](./05-prototype/prototype-pattern.md)** - Per clonare oggetti esistenti invece di crearli da zero
+- **[Singleton](./01-singleton/singleton-pattern.md)** - Per garantire una sola istanza di factory
+
+### Principi e Metodologie
+
+- **[DRY Pattern](../12-pattern-metodologie-concettuali/01-dry-pattern/dry-pattern.md)** - Evita duplicazione del codice
+- **[SOLID Principles](../12-pattern-metodologie-concettuali/04-solid-principles/solid-principles.md)** - Principi fondamentali di design
+- **[Clean Code](../12-pattern-metodologie-concettuali/05-clean-code/clean-code.md)** - Scrittura di codice pulito
+- **[TDD](../12-pattern-metodologie-concettuali/09-tdd/tdd.md)** - Test-Driven Development
 
 ## Esempi di uso reale
 
