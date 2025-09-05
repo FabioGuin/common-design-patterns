@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -181,14 +181,23 @@ Usa Knowledge Management quando:
 - **Può essere** costoso
 - **Richiede** manutenzione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione del team
-- **Remote Work** - [40-remote-work](./40-remote-work/remote-work.md): Lavoro remoto
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
+### Pattern
+
+- **[Team Management](./39-team-management/team-management.md)** - Gestione del team
+- **[Remote Work](./40-remote-work/remote-work.md)** - Lavoro remoto
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+
+### Principi e Metodologie
+
+- **[Knowledge Management](https://en.wikipedia.org/wiki/Knowledge_management)** - Metodologia originale di knowledge management
+- **[Documentation](https://en.wikipedia.org/wiki/Documentation)** - Documentazione
+- **[Information Architecture](https://en.wikipedia.org/wiki/Information_architecture)** - Architettura dell'informazione
+
 
 ## Risorse utili
 

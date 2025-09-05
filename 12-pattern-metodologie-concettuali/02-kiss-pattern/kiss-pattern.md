@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -72,12 +72,21 @@ Usa KISS quando:
 - Richiede disciplina per non complicare
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DRY Pattern** - [01-dry-pattern](./01-dry-pattern/dry-pattern.md): Mantieni semplice l'astrazione
-- **YAGNI Pattern** - [03-yagni-pattern](./03-yagni-pattern/yagni-pattern.md): Non aggiungere complessità inutile
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): KISS si integra con tutti i principi SOLID
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e semplice
+### Pattern
+
+- **[DRY Pattern](./01-dry-pattern/dry-pattern.md)** - Mantieni semplice l'astrazione
+- **[YAGNI Pattern](./03-yagni-pattern/yagni-pattern.md)** - Non aggiungere complessità inutile
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - KISS si integra con tutti i principi SOLID
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e semplice
+- **[TDD](./09-tdd/tdd.md)** - Test-Driven Development per mantenere semplicità
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Keep It Simple, Stupid](https://en.wikipedia.org/wiki/KISS_principle)** - Principio originale KISS
+- **[Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor)** - La soluzione più semplice è spesso la migliore
 
 ## Risorse utili
 

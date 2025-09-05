@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -211,14 +211,23 @@ Usa Integration Testing quando:
 - **Richiede** manutenzione
 - **Può causare** problemi di ambiente
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Unit Testing** - [57-unit-testing](./57-unit-testing/unit-testing.md): Test unitari
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **BDD** - [10-bdd](./10-bdd/bdd.md): Behavior-driven development
-- **ATDD** - [11-atdd](./11-atdd/atdd.md): Acceptance test-driven development
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Architettura microservizi
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Progettazione API
+### Pattern
+
+- **[Unit Testing](./57-unit-testing/unit-testing.md)** - Test unitari
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[BDD](./10-bdd/bdd.md)** - Behavior-driven development
+- **[ATDD](./11-atdd/atdd.md)** - Acceptance test-driven development
+- **[Microservices](./26-microservices/microservices.md)** - Architettura microservizi
+- **[API Design](./46-api-design/api-design.md)** - Progettazione API
+
+### Principi e Metodologie
+
+- **[Integration Testing](https://en.wikipedia.org/wiki/Integration_testing)** - Metodologia originale di integration testing
+- **[System Testing](https://en.wikipedia.org/wiki/System_testing)** - Test di sistema
+- **[Interface Testing](https://en.wikipedia.org/wiki/Interface_testing)** - Test delle interfacce
+
 
 ## Risorse utili
 

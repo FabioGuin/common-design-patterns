@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -204,14 +204,23 @@ Usa End-to-End Testing quando:
 - **Manutenzione** complessa
 - **Può essere** instabile
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Integration Testing** - [58-integration-testing](./58-integration-testing/integration-testing.md): Test di integrazione
-- **Unit Testing** - [57-unit-testing](./57-unit-testing/unit-testing.md): Test unitari
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **BDD** - [10-bdd](./10-bdd/bdd.md): Behavior-driven development
-- **ATDD** - [11-atdd](./11-atdd/atdd.md): Acceptance test-driven development
-- **User Experience Design** - [48-user-experience-design](./48-user-experience-design/user-experience-design.md): Progettazione esperienza utente
+### Pattern
+
+- **[Integration Testing](./58-integration-testing/integration-testing.md)** - Test di integrazione
+- **[Unit Testing](./57-unit-testing/unit-testing.md)** - Test unitari
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[BDD](./10-bdd/bdd.md)** - Behavior-driven development
+- **[ATDD](./11-atdd/atdd.md)** - Acceptance test-driven development
+- **[User Experience Design](./48-user-experience-design/user-experience-design.md)** - Progettazione esperienza utente
+
+### Principi e Metodologie
+
+- **[End-to-End Testing](https://en.wikipedia.org/wiki/End-to-end_testing)** - Metodologia originale di E2E testing
+- **[User Acceptance Testing](https://en.wikipedia.org/wiki/Acceptance_testing)** - Test di accettazione utente
+- **[Smoke Testing](https://en.wikipedia.org/wiki/Smoke_testing_(software))** - Test di fumo
+
 
 ## Risorse utili
 

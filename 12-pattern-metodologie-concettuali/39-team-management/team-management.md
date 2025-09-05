@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -167,14 +167,23 @@ Usa Team Management quando:
 - **Può essere** costoso
 - **Richiede** supporto organizzativo
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologia agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework per team
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
-- **Mob Programming** - [15-mob-programming](./15-mob-programming/mob-programming.md): Sviluppo in gruppo
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Metodologia agile
+- **[Scrum](./16-scrum/scrum.md)** - Framework per team
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+- **[Mob Programming](./15-mob-programming/mob-programming.md)** - Sviluppo in gruppo
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+
+### Principi e Metodologie
+
+- **[Team Management](https://en.wikipedia.org/wiki/Team_management)** - Metodologia originale di team management
+- **[Leadership](https://en.wikipedia.org/wiki/Leadership)** - Leadership
+- **[Project Management](https://en.wikipedia.org/wiki/Project_management)** - Gestione dei progetti
+
 
 ## Risorse utili
 

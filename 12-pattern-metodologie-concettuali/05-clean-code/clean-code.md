@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -73,14 +73,22 @@ Usa Clean Code quando:
 - Richiede disciplina costante
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DRY Pattern** - [01-dry-pattern](./01-dry-pattern/dry-pattern.md): Evita duplicazione nel codice pulito
-- **KISS Pattern** - [02-kiss-pattern](./02-kiss-pattern/kiss-pattern.md): Mantieni il codice semplice
-- **YAGNI Pattern** - [03-yagni-pattern](./03-yagni-pattern/yagni-pattern.md): Non over-engineer il codice
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Base per codice pulito e ben strutturato
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test guidano la scrittura di codice pulito
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
+### Pattern
+
+- **[DRY Pattern](./01-dry-pattern/dry-pattern.md)** - Evita duplicazione nel codice pulito
+- **[KISS Pattern](./02-kiss-pattern/kiss-pattern.md)** - Mantieni il codice semplice
+- **[YAGNI Pattern](./03-yagni-pattern/yagni-pattern.md)** - Non over-engineer il codice
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Base per codice pulito e ben strutturato
+- **[TDD](./09-tdd/tdd.md)** - Test guidano la scrittura di codice pulito
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Clean Code Principles](https://en.wikipedia.org/wiki/Clean_Code)** - Principi originali di Robert Martin
+- **[Code Smells](https://en.wikipedia.org/wiki/Code_smell)** - Segnali di codice problematico
+- **[Technical Debt](https://en.wikipedia.org/wiki/Technical_debt)** - Debito tecnico da evitare
 
 ## Risorse utili
 

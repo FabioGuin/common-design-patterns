@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -200,14 +200,23 @@ Usa Threat Modeling quando:
 - **Può essere** costoso
 - **Richiede** tempo per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Security by Design** - [49-security-by-design](./49-security-by-design/security-by-design.md): Sicurezza fin dall'inizio
-- **Security Best Practices** - [33-security-best-practices](./33-security-best-practices/security-best-practices.md): Pratiche di sicurezza
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e sicuro
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
+### Pattern
+
+- **[Security by Design](./49-security-by-design/security-by-design.md)** - Sicurezza fin dall'inizio
+- **[Security Best Practices](./33-security-best-practices/security-best-practices.md)** - Pratiche di sicurezza
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e sicuro
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+
+### Principi e Metodologie
+
+- **[Threat Modeling](https://en.wikipedia.org/wiki/Threat_model)** - Metodologia originale di threat modeling
+- **[STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security))** - Metodologia STRIDE
+- **[Attack Tree](https://en.wikipedia.org/wiki/Attack_tree)** - Albero degli attacchi
+
 
 ## Risorse utili
 

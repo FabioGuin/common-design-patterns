@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -159,14 +159,23 @@ Usa Design Patterns quando:
 - **Può essere** overhead per progetti semplici
 - **Richiede** tempo per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Architecture Patterns** - [45-architecture-patterns](./45-architecture-patterns/architecture-patterns.md): Pattern architetturali
+### Pattern
+
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Architecture Patterns](./45-architecture-patterns/architecture-patterns.md)** - Pattern architetturali
+
+### Principi e Metodologie
+
+- **[Design Patterns](https://en.wikipedia.org/wiki/Software_design_pattern)** - Metodologia originale di Gang of Four
+- **[Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns)** - Gang of Four patterns
+- **[Object-Oriented Design](https://en.wikipedia.org/wiki/Object-oriented_design)** - Design orientato agli oggetti
+
 
 ## Risorse utili
 

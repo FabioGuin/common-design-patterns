@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -237,14 +237,23 @@ Usa Change Management quando:
 - **Richiede** tempo e risorse
 - **Può causare** overhead
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Project Management** - [66-project-management](./66-project-management/project-management.md): Gestione progetti
-- **Risk Management** - [67-risk-management](./67-risk-management/risk-management.md): Gestione rischi
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione team
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologie agili
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework Scrum
+### Pattern
+
+- **[Project Management](./66-project-management/project-management.md)** - Gestione progetti
+- **[Risk Management](./67-risk-management/risk-management.md)** - Gestione rischi
+- **[Team Management](./39-team-management/team-management.md)** - Gestione team
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+- **[Agile](./17-agile/agile.md)** - Metodologie agili
+- **[Scrum](./16-scrum/scrum.md)** - Framework Scrum
+
+### Principi e Metodologie
+
+- **[Change Management](https://en.wikipedia.org/wiki/Change_management)** - Metodologia originale di change management
+- **[Organizational Change](https://en.wikipedia.org/wiki/Organizational_change)** - Cambiamento organizzativo
+- **[Change Control](https://en.wikipedia.org/wiki/Change_control)** - Controllo del cambiamento
+
 
 ## Risorse utili
 

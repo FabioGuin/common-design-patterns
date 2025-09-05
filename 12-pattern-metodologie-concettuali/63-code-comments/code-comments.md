@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -213,14 +213,23 @@ Usa Code Comments quando:
 - **Può essere** ridondante
 - **Richiede** competenze scrittura
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **Technical Documentation** - [62-technical-documentation](./62-technical-documentation/technical-documentation.md): Documentazione tecnica
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Progettazione API
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Progettazione database
+### Pattern
+
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[Technical Documentation](./62-technical-documentation/technical-documentation.md)** - Documentazione tecnica
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+- **[API Design](./46-api-design/api-design.md)** - Progettazione API
+- **[Database Design](./47-database-design/database-design.md)** - Progettazione database
+
+### Principi e Metodologie
+
+- **[Code Comments](https://en.wikipedia.org/wiki/Comment_(computer_programming))** - Metodologia originale di code comments
+- **[Self-documenting Code](https://en.wikipedia.org/wiki/Self-documenting_code)** - Codice auto-documentante
+- **[Code Documentation](https://en.wikipedia.org/wiki/Code_documentation)** - Documentazione del codice
+
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -213,14 +213,22 @@ Usa Mutation Testing quando:
 - **Può essere** costoso
 - **Richiede** manutenzione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Unit Testing** - [57-unit-testing](./57-unit-testing/unit-testing.md): Test unitari
-- **Property-Based Testing** - [60-property-based-testing](./60-property-based-testing/property-based-testing.md): Test basati su proprietà
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **Performance Testing** - [53-performance-testing](./53-performance-testing/performance-testing.md): Test di performance
+### Pattern
+
+- **[Unit Testing](./57-unit-testing/unit-testing.md)** - Test unitari
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[Performance Testing](./53-performance-testing/performance-testing.md)** - Test di performance
+- **[Property-Based Testing](./60-property-based-testing/property-based-testing.md)** - Test basati su proprietà
+
+### Principi e Metodologie
+
+- **[Mutation Testing](https://en.wikipedia.org/wiki/Mutation_testing)** - Metodologia originale di mutation testing
+- **[Test Quality](https://en.wikipedia.org/wiki/Software_testing)** - Qualità dei test
+- **[Code Coverage](https://en.wikipedia.org/wiki/Code_coverage)** - Copertura del codice
 
 ## Risorse utili
 

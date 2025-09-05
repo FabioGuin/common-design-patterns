@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -139,14 +139,23 @@ Usa DDD quando:
 - **Può essere** over-engineering
 - **Tempo iniziale** per la modellazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura complementare a DDD
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design del dominio
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità del dominio
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del modello
-- **Event Sourcing** - [24-event-sourcing](./24-event-sourcing/event-sourcing.md): Pattern per la persistenza degli eventi
+### Pattern
+
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura complementare a DDD
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design del dominio
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità
+- **[TDD](./09-tdd/tdd.md)** - Testabilità del dominio
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del modello
+- **[Event Sourcing](./24-event-sourcing/event-sourcing.md)** - Pattern per la persistenza degli eventi
+
+### Principi e Metodologie
+
+- **[Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)** - Metodologia originale di Eric Evans
+- **[Ubiquitous Language](https://en.wikipedia.org/wiki/Ubiquitous_language)** - Linguaggio onnipresente
+- **[Bounded Context](https://en.wikipedia.org/wiki/Bounded_context)** - Contesto delimitato
+
 
 ## Risorse utili
 

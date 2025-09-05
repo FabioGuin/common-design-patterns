@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -167,14 +167,23 @@ Usa Technical Debt quando:
 - **Può essere** difficile da quantificare
 - **Richiede** esperienza del team
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Code Quality** - [29-code-quality](./29-code-quality/code-quality.md): Qualità del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Principi per codice pulito
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
+### Pattern
+
+- **[Code Quality](./29-code-quality/code-quality.md)** - Qualità del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Principi per codice pulito
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+
+### Principi e Metodologie
+
+- **[Technical Debt](https://en.wikipedia.org/wiki/Technical_debt)** - Metodologia originale di Ward Cunningham
+- **[Code Smells](https://en.wikipedia.org/wiki/Code_smell)** - Segnali di codice problematico
+- **[Legacy Code](https://en.wikipedia.org/wiki/Legacy_code)** - Codice legacy
+
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -177,14 +177,23 @@ Usa CI/CD quando:
 - **Può essere** costoso
 - **Richiede** competenze tecniche
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologia agile
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Metodologia agile
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+
+### Principi e Metodologie
+
+- **[Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration)** - Metodologia originale di CI
+- **[Continuous Deployment](https://en.wikipedia.org/wiki/Continuous_deployment)** - Deployment continuo
+- **[Build Automation](https://en.wikipedia.org/wiki/Build_automation)** - Automazione del build
+
 
 ## Risorse utili
 

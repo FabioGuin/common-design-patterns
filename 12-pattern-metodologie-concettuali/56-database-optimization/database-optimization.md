@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -204,14 +204,23 @@ Usa Database Optimization quando:
 - **Richiede** monitoraggio continuo
 - **Può causare** problemi di compatibilità
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Caching Strategies** - [55-caching-strategies](./55-caching-strategies/caching-strategies.md): Strategie di caching
-- **Load Balancing** - [54-load-balancing](./54-load-balancing/load-balancing.md): Bilanciamento carico
-- **Performance Testing** - [53-performance-testing](./53-performance-testing/performance-testing.md): Test di performance
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Progettazione database
-- **Security Monitoring** - [52-security-monitoring](./52-security-monitoring/security-monitoring.md): Monitoraggio sicurezza
+### Pattern
+
+- **[Caching Strategies](./55-caching-strategies/caching-strategies.md)** - Strategie di caching
+- **[Load Balancing](./54-load-balancing/load-balancing.md)** - Bilanciamento carico
+- **[Performance Testing](./53-performance-testing/performance-testing.md)** - Test di performance
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+- **[Database Design](./47-database-design/database-design.md)** - Progettazione database
+- **[Security Monitoring](./52-security-monitoring/security-monitoring.md)** - Monitoraggio sicurezza
+
+### Principi e Metodologie
+
+- **[Database Optimization](https://en.wikipedia.org/wiki/Database_tuning)** - Metodologia originale di database optimization
+- **[Query Optimization](https://en.wikipedia.org/wiki/Query_optimization)** - Ottimizzazione query
+- **[Index Optimization](https://en.wikipedia.org/wiki/Database_index)** - Ottimizzazione indici
+
 
 ## Risorse utili
 

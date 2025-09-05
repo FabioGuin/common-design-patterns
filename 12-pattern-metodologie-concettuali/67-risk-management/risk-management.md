@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -227,14 +227,23 @@ Usa Risk Management quando:
 - **Richiede** tempo e risorse
 - **Può causare** overhead
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Project Management** - [66-project-management](./66-project-management/project-management.md): Gestione progetti
-- **Security Best Practices** - [33-security-best-practices](./33-security-best-practices/security-best-practices.md): Best practices sicurezza
-- **Security by Design** - [49-security-by-design](./49-security-by-design/security-by-design.md): Sicurezza by design
-- **Threat Modeling** - [50-threat-modeling](./50-threat-modeling/threat-modeling.md): Modellazione minacce
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione team
-- **Quality Management** - [29-code-quality](./29-code-quality/code-quality.md): Gestione qualità
+### Pattern
+
+- **[Project Management](./66-project-management/project-management.md)** - Gestione progetti
+- **[Security Best Practices](./33-security-best-practices/security-best-practices.md)** - Best practices sicurezza
+- **[Security by Design](./49-security-by-design/security-by-design.md)** - Sicurezza by design
+- **[Threat Modeling](./50-threat-modeling/threat-modeling.md)** - Modellazione minacce
+- **[Team Management](./39-team-management/team-management.md)** - Gestione team
+- **[Quality Management](./29-code-quality/code-quality.md)** - Gestione qualità
+
+### Principi e Metodologie
+
+- **[Risk Management](https://en.wikipedia.org/wiki/Risk_management)** - Metodologia originale di risk management
+- **[Risk Assessment](https://en.wikipedia.org/wiki/Risk_assessment)** - Valutazione del rischio
+- **[Risk Mitigation](https://en.wikipedia.org/wiki/Risk_mitigation)** - Mitigazione del rischio
+
 
 ## Risorse utili
 

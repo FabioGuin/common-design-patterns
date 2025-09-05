@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -74,14 +74,20 @@ Usa SoC quando:
 
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): SoC si integra con Single Responsibility Principle
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e ben organizzato
-- **Clean Architecture** - [26-clean-architecture](./26-clean-architecture/clean-architecture.md): Architettura basata su SoC
-- **MVC Pattern**: Separazione tra Model, View, Controller
-- **Repository Pattern**: Separazione dell'accesso ai dati
-- **Service Layer Pattern**: Separazione della logica business
+### Pattern
+
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - SoC si integra con Single Responsibility Principle
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e ben organizzato
+- **[Clean Architecture](./26-clean-architecture/clean-architecture.md)** - Architettura basata su SoC
+
+### Principi e Metodologie
+
+- **[Separation of Concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)** - Principio originale di separazione
+- **[Modular Programming](https://en.wikipedia.org/wiki/Modular_programming)** - Programmazione modulare
+- **[Layered Architecture](https://en.wikipedia.org/wiki/Multitier_architecture)** - Architettura a strati
+
 
 ## Risorse utili
 

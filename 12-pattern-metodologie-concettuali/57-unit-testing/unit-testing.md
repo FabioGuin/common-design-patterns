@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -227,14 +227,23 @@ Usa Unit Testing quando:
 - **Overhead** sviluppo
 - **Può essere** costoso
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **BDD** - [10-bdd](./10-bdd/bdd.md): Behavior-driven development
-- **ATDD** - [11-atdd](./11-atdd/atdd.md): Acceptance test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Refactoring del codice
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[BDD](./10-bdd/bdd.md)** - Behavior-driven development
+- **[ATDD](./11-atdd/atdd.md)** - Acceptance test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[Refactoring](./12-refactoring/refactoring.md)** - Refactoring del codice
+
+### Principi e Metodologie
+
+- **[Unit Testing](https://en.wikipedia.org/wiki/Unit_testing)** - Metodologia originale di unit testing
+- **[Test Automation](https://en.wikipedia.org/wiki/Test_automation)** - Automazione dei test
+- **[Test Coverage](https://en.wikipedia.org/wiki/Code_coverage)** - Copertura dei test
+
 
 ## Risorse utili
 

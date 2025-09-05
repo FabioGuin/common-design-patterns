@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -202,14 +202,23 @@ Usa GitOps quando:
 - **Può essere** costoso
 - **Richiede** competenze tecniche
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **CI/CD** - [34-cicd](./34-cicd/cicd.md): Integrazione e deployment continui
-- **Infrastructure as Code** - [37-infrastructure-as-code](./37-infrastructure-as-code/infrastructure-as-code.md): Infrastruttura come codice
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
+### Pattern
+
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[CI/CD](./34-cicd/cicd.md)** - Integrazione e deployment continui
+- **[Infrastructure as Code](./37-infrastructure-as-code/infrastructure-as-code.md)** - Infrastruttura come codice
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+
+### Principi e Metodologie
+
+- **[GitOps](https://en.wikipedia.org/wiki/GitOps)** - Metodologia originale di GitOps
+- **[Git](https://en.wikipedia.org/wiki/Git)** - Sistema di controllo versione
+- **[Version Control](https://en.wikipedia.org/wiki/Version_control)** - Controllo delle versioni
+
 
 ## Risorse utili
 

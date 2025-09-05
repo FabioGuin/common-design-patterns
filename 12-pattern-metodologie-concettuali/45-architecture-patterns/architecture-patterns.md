@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -174,14 +174,23 @@ Usa Architecture Patterns quando:
 - **Può essere** over-engineering
 - **Richiede** tempo per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Design Patterns** - [44-design-patterns](./44-design-patterns/design-patterns.md): Pattern di design
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura pulita
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Architettura microservizi
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
+### Pattern
+
+- **[Design Patterns](./44-design-patterns/design-patterns.md)** - Pattern di design
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura pulita
+- **[Microservices](./26-microservices/microservices.md)** - Architettura microservizi
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+
+### Principi e Metodologie
+
+- **[Architecture Patterns](https://en.wikipedia.org/wiki/Architectural_pattern)** - Metodologia originale di pattern architetturali
+- **[Software Architecture](https://en.wikipedia.org/wiki/Software_architecture)** - Architettura del software
+- **[System Design](https://en.wikipedia.org/wiki/System_design)** - Design del sistema
+
 
 ## Risorse utili
 

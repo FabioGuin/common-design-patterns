@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -159,14 +159,23 @@ Usa Security Best Practices quando:
 - **Richiede** monitoraggio continuo
 - **Può essere** overhead per progetti semplici
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Code Quality** - [29-code-quality](./29-code-quality/code-quality.md): Qualità del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e sicuro
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test per validare la sicurezza
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Technical Debt** - [30-technical-debt](./30-technical-debt/technical-debt.md): Gestione del debito tecnico
+### Pattern
+
+- **[Code Quality](./29-code-quality/code-quality.md)** - Qualità del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e sicuro
+- **[TDD](./09-tdd/tdd.md)** - Test per validare la sicurezza
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Technical Debt](./30-technical-debt/technical-debt.md)** - Gestione del debito tecnico
+
+### Principi e Metodologie
+
+- **[Secure Coding](https://en.wikipedia.org/wiki/Secure_coding)** - Metodologia originale di secure coding
+- **[OWASP](https://en.wikipedia.org/wiki/OWASP)** - Open Web Application Security Project
+- **[Security by Design](https://en.wikipedia.org/wiki/Security_by_design)** - Sicurezza by design
+
 
 ## Risorse utili
 

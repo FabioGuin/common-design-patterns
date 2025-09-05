@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -72,12 +72,21 @@ Usa YAGNI quando:
 - Potrebbe sembrare "incompleto" ad alcuni
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **KISS Pattern** - [02-kiss-pattern](./02-kiss-pattern/kiss-pattern.md): Mantieni semplice ciò che implementi
-- **DRY Pattern** - [01-dry-pattern](./01-dry-pattern/dry-pattern.md): Non duplicare, ma non aggiungere inutile
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): YAGNI si integra con tutti i principi SOLID
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e necessario
+### Pattern
+
+- **[KISS Pattern](./02-kiss-pattern/kiss-pattern.md)** - Mantieni semplice ciò che implementi
+- **[DRY Pattern](./01-dry-pattern/dry-pattern.md)** - Non duplicare, ma non aggiungere inutile
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - YAGNI si integra con tutti i principi SOLID
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e necessario
+- **[TDD](./09-tdd/tdd.md)** - Test-Driven Development per implementare solo ciò che serve
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[You Aren't Gonna Need It](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)** - Principio originale YAGNI
+- **[Lean Development](https://en.wikipedia.org/wiki/Lean_software_development)** - Eliminazione degli sprechi
 
 ## Risorse utili
 

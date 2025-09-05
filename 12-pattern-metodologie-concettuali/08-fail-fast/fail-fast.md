@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -75,15 +75,19 @@ Usa Fail Fast quando:
 
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e robusto
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per codice robusto
-- **Defensive Programming**: Programmazione difensiva
-- **Input Validation**: Validazione degli input
-- **Exception Handling**: Gestione delle eccezioni
-- **Type Safety**: Sicurezza dei tipi
-- **Error Handling**: Gestione degli errori
+### Pattern
+
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e robusto
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per codice robusto
+
+### Principi e Metodologie
+
+- **[Fail Fast](https://en.wikipedia.org/wiki/Fail-fast)** - Principio originale di fallimento rapido
+- **[Defensive Programming](https://en.wikipedia.org/wiki/Defensive_programming)** - Programmazione difensiva
+- **[Error Handling](https://en.wikipedia.org/wiki/Exception_handling)** - Gestione degli errori
+
 
 ## Risorse utili
 

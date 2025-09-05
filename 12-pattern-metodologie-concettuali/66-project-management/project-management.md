@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -204,14 +204,23 @@ Usa Project Management quando:
 - **Richiede** tempo e risorse
 - **Può causare** overhead
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologie agili
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework Scrum
-- **Kanban** - [18-kanban](./18-kanban/kanban.md): Metodologia Kanban
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione team
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
-- **Risk Management** - [67-risk-management](./67-risk-management/risk-management.md): Gestione rischi
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Metodologie agili
+- **[Scrum](./16-scrum/scrum.md)** - Framework Scrum
+- **[Kanban](./18-kanban/kanban.md)** - Metodologia Kanban
+- **[Team Management](./39-team-management/team-management.md)** - Gestione team
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+- **[Risk Management](./67-risk-management/risk-management.md)** - Gestione rischi
+
+### Principi e Metodologie
+
+- **[Project Management](https://en.wikipedia.org/wiki/Project_management)** - Metodologia originale di project management
+- **[PMI](https://en.wikipedia.org/wiki/Project_Management_Institute)** - Project Management Institute
+- **[PRINCE2](https://en.wikipedia.org/wiki/PRINCE2)** - PRINCE2
+
 
 ## Risorse utili
 

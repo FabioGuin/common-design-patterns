@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -378,14 +378,22 @@ class UserController extends Controller
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **BDD**: Behavior-Driven Development, evoluzione di TDD
-- **ATDD**: Acceptance Test-Driven Development
-- **Clean Code**: TDD produce codice più pulito
-- **SOLID Principles**: TDD favorisce l'applicazione di SOLID
-- **Refactoring**: Parte integrante del ciclo TDD
-- **Unit Testing**: Base per TDD
+### Pattern
+
+- **[BDD](./10-bdd/bdd.md)** - Behavior-Driven Development, evoluzione di TDD
+- **[ATDD](./11-atdd/atdd.md)** - Acceptance Test-Driven Development
+- **[Clean Code](./05-clean-code/clean-code.md)** - TDD produce codice più pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - TDD favorisce l'applicazione di SOLID
+- **[Refactoring](./12-refactoring/refactoring.md)** - Parte integrante del ciclo TDD
+- **[Unit Testing](./57-unit-testing/unit-testing.md)** - Base per TDD
+
+### Principi e Metodologie
+
+- **[Test-Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)** - Metodologia originale TDD
+- **[Red-Green-Refactor](https://en.wikipedia.org/wiki/Test-driven_development#Test-driven_development_cycle)** - Ciclo TDD
+- **[Kent Beck](https://en.wikipedia.org/wiki/Kent_Beck)** - Inventore di TDD
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -197,14 +197,23 @@ Usa Technical Documentation quando:
 - **Richiede** aggiornamenti regolari
 - **Può essere** costoso
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Progettazione API
-- **User Experience Design** - [48-user-experience-design](./48-user-experience-design/user-experience-design.md): Progettazione esperienza utente
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Progettazione database
+### Pattern
+
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+- **[API Design](./46-api-design/api-design.md)** - Progettazione API
+- **[User Experience Design](./48-user-experience-design/user-experience-design.md)** - Progettazione esperienza utente
+- **[Database Design](./47-database-design/database-design.md)** - Progettazione database
+
+### Principi e Metodologie
+
+- **[Technical Writing](https://en.wikipedia.org/wiki/Technical_writing)** - Metodologia originale di technical writing
+- **[Documentation](https://en.wikipedia.org/wiki/Documentation)** - Documentazione
+- **[Information Architecture](https://en.wikipedia.org/wiki/Information_architecture)** - Architettura dell'informazione
+
 
 ## Risorse utili
 

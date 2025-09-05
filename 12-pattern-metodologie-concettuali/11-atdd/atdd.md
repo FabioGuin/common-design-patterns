@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -411,14 +411,20 @@ class ReportingSystemTest extends TestCase
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Base per ATDD, ATDD estende TDD
-- **BDD** - [10-bdd](./10-bdd/bdd.md): Behavior-Driven Development, complementare ad ATDD
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): ATDD produce codice più pulito
-- **DDD**: Domain-Driven Development
-- **Agile**: ATDD si integra con metodologie agili
-- **User Stories**: Base per test di accettazione
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Base per ATDD, ATDD estende TDD
+- **[BDD](./10-bdd/bdd.md)** - Behavior-Driven Development, complementare ad ATDD
+- **[Clean Code](./05-clean-code/clean-code.md)** - ATDD produce codice più pulito
+
+### Principi e Metodologie
+
+- **[Acceptance Test-Driven Development](https://en.wikipedia.org/wiki/Acceptance_test%E2%80%93driven_development)** - Metodologia originale ATDD
+- **[User Story](https://en.wikipedia.org/wiki/User_story)** - Storie utente per definire requisiti
+- **[Acceptance Criteria](https://en.wikipedia.org/wiki/Acceptance_criteria)** - Criteri di accettazione
+
 
 ## Risorse utili
 

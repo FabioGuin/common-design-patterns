@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -414,14 +414,23 @@ public function test_user_cannot_login_with_invalid_credentials()
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pair programming si integra bene con TDD
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Alternativa al pair programming
-- **Mob Programming** - [15-mob-programming](./15-mob-programming/mob-programming.md): Estensione del pair programming
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Obiettivo del pair programming
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi da applicare insieme
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Pair programming si integra bene con TDD
+- **[Code Review](./13-code-review/code-review.md)** - Alternativa al pair programming
+- **[Mob Programming](./15-mob-programming/mob-programming.md)** - Estensione del pair programming
+- **[Clean Code](./05-clean-code/clean-code.md)** - Obiettivo del pair programming
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi da applicare insieme
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Pair Programming](https://en.wikipedia.org/wiki/Pair_programming)** - Metodologia originale di programmazione in coppia
+- **[Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming)** - Metodologia che include pair programming
+- **[Collaborative Programming](https://en.wikipedia.org/wiki/Collaborative_software)** - Programmazione collaborativa
+
 
 ## Risorse utili
 

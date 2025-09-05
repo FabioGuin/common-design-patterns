@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -466,14 +466,20 @@ class ApiUserEndpointsTest extends TestCase
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Base per BDD, BDD estende TDD
-- **ATDD** - [11-atdd](./11-atdd/atdd.md): Acceptance Test-Driven Development
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): BDD produce codice più pulito
-- **DDD**: Domain-Driven Development
-- **User Stories**: Base per scenari BDD
-- **Agile**: BDD si integra con metodologie agili
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Base per BDD, BDD estende TDD
+- **[ATDD](./11-atdd/atdd.md)** - Acceptance Test-Driven Development
+- **[Clean Code](./05-clean-code/clean-code.md)** - BDD produce codice più pulito
+
+### Principi e Metodologie
+
+- **[Behavior-Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development)** - Metodologia originale BDD
+- **[Given-When-Then](https://en.wikipedia.org/wiki/Given-When-Then)** - Formato per scenari BDD
+- **[Domain-Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)** - Linguaggio specifico del dominio
+
 
 ## Risorse utili
 

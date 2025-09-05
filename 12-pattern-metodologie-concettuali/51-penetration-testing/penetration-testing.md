@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -199,14 +199,23 @@ Usa Penetration Testing quando:
 - **Richiede** autorizzazione
 - **Può causare** interruzioni
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Threat Modeling** - [50-threat-modeling](./50-threat-modeling/threat-modeling.md): Modellazione minacce
-- **Security by Design** - [49-security-by-design](./49-security-by-design/security-by-design.md): Sicurezza fin dall'inizio
-- **Security Best Practices** - [33-security-best-practices](./33-security-best-practices/security-best-practices.md): Pratiche di sicurezza
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
+### Pattern
+
+- **[Threat Modeling](./50-threat-modeling/threat-modeling.md)** - Modellazione minacce
+- **[Security by Design](./49-security-by-design/security-by-design.md)** - Sicurezza fin dall'inizio
+- **[Security Best Practices](./33-security-best-practices/security-best-practices.md)** - Pratiche di sicurezza
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+
+### Principi e Metodologie
+
+- **[Penetration Testing](https://en.wikipedia.org/wiki/Penetration_test)** - Metodologia originale di penetration testing
+- **[Vulnerability Assessment](https://en.wikipedia.org/wiki/Vulnerability_assessment)** - Valutazione delle vulnerabilità
+- **[Ethical Hacking](https://en.wikipedia.org/wiki/White_hat_(computer_security))** - Hacking etico
+
 
 ## Risorse utili
 

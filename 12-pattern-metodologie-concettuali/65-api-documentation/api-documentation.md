@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -213,14 +213,23 @@ Usa API Documentation quando:
 - **Richiede** aggiornamenti regolari
 - **Può essere** costoso
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Progettazione API
-- **Technical Documentation** - [62-technical-documentation](./62-technical-documentation/technical-documentation.md): Documentazione tecnica
-- **Code Comments** - [63-code-comments](./63-code-comments/code-comments.md): Commenti codice
-- **User Experience Design** - [48-user-experience-design](./48-user-experience-design/user-experience-design.md): Progettazione esperienza utente
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Progettazione database
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
+### Pattern
+
+- **[API Design](./46-api-design/api-design.md)** - Progettazione API
+- **[Technical Documentation](./62-technical-documentation/technical-documentation.md)** - Documentazione tecnica
+- **[Code Comments](./63-code-comments/code-comments.md)** - Commenti codice
+- **[User Experience Design](./48-user-experience-design/user-experience-design.md)** - Progettazione esperienza utente
+- **[Database Design](./47-database-design/database-design.md)** - Progettazione database
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+
+### Principi e Metodologie
+
+- **[API Documentation](https://en.wikipedia.org/wiki/API_documentation)** - Metodologia originale di API documentation
+- **[OpenAPI](https://en.wikipedia.org/wiki/OpenAPI_Specification)** - Specifica OpenAPI
+- **[Swagger](https://en.wikipedia.org/wiki/Swagger_(software))** - Swagger
+
 
 ## Risorse utili
 

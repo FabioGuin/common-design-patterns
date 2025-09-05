@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -147,14 +147,23 @@ Usa CQRS quando:
 - **Può essere** over-engineering
 - **Tempo iniziale** per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Event Sourcing** - [24-event-sourcing](./24-event-sourcing/event-sourcing.md): Pattern complementare a CQRS
-- **Domain-Driven Design** - [23-domain-driven-design](./23-domain-driven-design/domain-driven-design.md): Modellazione del dominio
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura per CQRS
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per la separazione
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità dei modelli
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo dell'architettura
+### Pattern
+
+- **[Event Sourcing](./24-event-sourcing/event-sourcing.md)** - Pattern complementare a CQRS
+- **[Domain-Driven Design](./23-domain-driven-design/domain-driven-design.md)** - Modellazione del dominio
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura per CQRS
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per la separazione
+- **[TDD](./09-tdd/tdd.md)** - Testabilità dei modelli
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo dell'architettura
+
+### Principi e Metodologie
+
+- **[Command Query Responsibility Segregation](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)** - Metodologia originale CQRS
+- **[Command Pattern](https://en.wikipedia.org/wiki/Command_pattern)** - Pattern comando
+- **[Query Object](https://en.wikipedia.org/wiki/Query_object)** - Oggetto query
+
 
 ## Risorse utili
 

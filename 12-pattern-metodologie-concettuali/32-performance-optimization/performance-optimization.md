@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -137,14 +137,23 @@ Usa Performance Optimization quando:
 - **Richiede** monitoraggio continuo
 - **Può essere** costoso
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Code Quality** - [29-code-quality](./29-code-quality/code-quality.md): Qualità del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e efficiente
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test per validare le ottimizzazioni
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Technical Debt** - [30-technical-debt](./30-technical-debt/technical-debt.md): Gestione del debito tecnico
+### Pattern
+
+- **[Code Quality](./29-code-quality/code-quality.md)** - Qualità del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e efficiente
+- **[TDD](./09-tdd/tdd.md)** - Test per validare le ottimizzazioni
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Technical Debt](./30-technical-debt/technical-debt.md)** - Gestione del debito tecnico
+
+### Principi e Metodologie
+
+- **[Performance Engineering](https://en.wikipedia.org/wiki/Performance_engineering)** - Metodologia originale di performance engineering
+- **[Profiling](https://en.wikipedia.org/wiki/Profiling_(computer_programming))** - Profiling del codice
+- **[Benchmarking](https://en.wikipedia.org/wiki/Benchmark_(computing))** - Benchmarking delle performance
+
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -139,14 +139,23 @@ Usa Event Sourcing quando:
 - **Può essere** over-engineering
 - **Tempo iniziale** per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Domain-Driven Design** - [23-domain-driven-design](./23-domain-driven-design/domain-driven-design.md): Eventi come parte del dominio
-- **CQRS** - [25-cqrs](./25-cqrs/cqrs.md): Separazione comandi e query
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura per event sourcing
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità degli eventi
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del modello
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Comunicazione tramite eventi
+### Pattern
+
+- **[Domain-Driven Design](./23-domain-driven-design/domain-driven-design.md)** - Eventi come parte del dominio
+- **[CQRS](./25-cqrs/cqrs.md)** - Separazione comandi e query
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura per event sourcing
+- **[TDD](./09-tdd/tdd.md)** - Testabilità degli eventi
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del modello
+- **[Microservices](./26-microservices/microservices.md)** - Comunicazione tramite eventi
+
+### Principi e Metodologie
+
+- **[Event Sourcing](https://en.wikipedia.org/wiki/Event_sourcing)** - Metodologia originale di event sourcing
+- **[Event Store](https://en.wikipedia.org/wiki/Event_store)** - Store per eventi
+- **[Eventual Consistency](https://en.wikipedia.org/wiki/Eventual_consistency)** - Consistenza finale
+
 
 ## Risorse utili
 

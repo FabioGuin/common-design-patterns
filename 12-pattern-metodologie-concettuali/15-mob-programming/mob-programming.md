@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -554,14 +554,23 @@ class PushNotificationChannel implements NotificationChannel
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Base per mob programming
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Mob programming si integra bene con TDD
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Obiettivo del mob programming
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi da applicare insieme
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Alternativa al mob programming
+### Pattern
+
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Base per mob programming
+- **[TDD](./09-tdd/tdd.md)** - Mob programming si integra bene con TDD
+- **[Clean Code](./05-clean-code/clean-code.md)** - Obiettivo del mob programming
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi da applicare insieme
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+- **[Code Review](./13-code-review/code-review.md)** - Alternativa al mob programming
+
+### Principi e Metodologie
+
+- **[Mob Programming](https://en.wikipedia.org/wiki/Mob_programming)** - Metodologia originale di programmazione in gruppo
+- **[Collective Code Ownership](https://en.wikipedia.org/wiki/Collective_code_ownership)** - Proprietà collettiva del codice
+- **[Collaborative Development](https://en.wikipedia.org/wiki/Collaborative_software)** - Sviluppo collaborativo
+
 
 ## Risorse utili
 

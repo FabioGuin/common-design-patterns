@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -110,14 +110,21 @@ Usa refactoring quando:
 
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test guidano il refactoring sicuro
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Obiettivo del refactoring
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi da applicare durante il refactoring
-- **Code Smells**: Identificano quando fare refactoring
-- **Technical Debt**: Refactoring riduce il debito tecnico
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Collaborazione durante il refactoring
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Test guidano il refactoring sicuro
+- **[Clean Code](./05-clean-code/clean-code.md)** - Obiettivo del refactoring
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi da applicare durante il refactoring
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Collaborazione durante il refactoring
+
+### Principi e Metodologie
+
+- **[Refactoring](https://en.wikipedia.org/wiki/Code_refactoring)** - Metodologia originale di Martin Fowler
+- **[Code Smells](https://en.wikipedia.org/wiki/Code_smell)** - Segnali di codice che necessita refactoring
+- **[Technical Debt](https://en.wikipedia.org/wiki/Technical_debt)** - Debito tecnico da risolvere
+
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -132,14 +132,23 @@ Usa XP quando:
 - **Richiede supporto** per pair programming
 - **Può essere difficile** con team distribuiti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): XP è una metodologia Agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Complementare a XP
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica fondamentale di XP
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Pratica centrale di XP
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Pratica continua in XP
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Obiettivo di XP
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - XP è una metodologia Agile
+- **[Scrum](./16-scrum/scrum.md)** - Complementare a XP
+- **[TDD](./09-tdd/tdd.md)** - Pratica fondamentale di XP
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Pratica centrale di XP
+- **[Refactoring](./12-refactoring/refactoring.md)** - Pratica continua in XP
+- **[Clean Code](./05-clean-code/clean-code.md)** - Obiettivo di XP
+
+### Principi e Metodologie
+
+- **[Extreme Programming](https://en.wikipedia.org/wiki/Extreme_programming)** - Metodologia originale XP
+- **[Kent Beck](https://en.wikipedia.org/wiki/Kent_Beck)** - Inventore di XP
+- **[Continuous Integration](https://en.wikipedia.org/wiki/Continuous_integration)** - Integrazione continua
+
 
 ## Risorse utili
 

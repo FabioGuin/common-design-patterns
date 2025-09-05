@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -137,14 +137,23 @@ Usa Code Smells quando:
 - **Richiede** strumenti appropriati
 - **Può essere** overwhelming per principianti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Code Quality** - [29-code-quality](./29-code-quality/code-quality.md): Qualità del codice
-- **Technical Debt** - [30-technical-debt](./30-technical-debt/technical-debt.md): Gestione del debito tecnico
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Principi per codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
+### Pattern
+
+- **[Code Quality](./29-code-quality/code-quality.md)** - Qualità del codice
+- **[Technical Debt](./30-technical-debt/technical-debt.md)** - Gestione del debito tecnico
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+- **[Clean Code](./05-clean-code/clean-code.md)** - Principi per codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+
+### Principi e Metodologie
+
+- **[Code Smells](https://en.wikipedia.org/wiki/Code_smell)** - Metodologia originale di Kent Beck
+- **[Anti-patterns](https://en.wikipedia.org/wiki/Anti-pattern)** - Pattern negativi
+- **[Code Metrics](https://en.wikipedia.org/wiki/Software_metric)** - Metriche del codice
+
 
 ## Risorse utili
 

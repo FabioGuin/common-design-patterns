@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -212,14 +212,23 @@ Usa Caching Strategies quando:
 - **Debugging** difficile
 - **Richiede** manutenzione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Load Balancing** - [54-load-balancing](./54-load-balancing/load-balancing.md): Bilanciamento carico
-- **Performance Testing** - [53-performance-testing](./53-performance-testing/performance-testing.md): Test di performance
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Architettura microservizi
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **Security Monitoring** - [52-security-monitoring](./52-security-monitoring/security-monitoring.md): Monitoraggio sicurezza
+### Pattern
+
+- **[Load Balancing](./54-load-balancing/load-balancing.md)** - Bilanciamento carico
+- **[Performance Testing](./53-performance-testing/performance-testing.md)** - Test di performance
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+- **[Microservices](./26-microservices/microservices.md)** - Architettura microservizi
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[Security Monitoring](./52-security-monitoring/security-monitoring.md)** - Monitoraggio sicurezza
+
+### Principi e Metodologie
+
+- **[Caching](https://en.wikipedia.org/wiki/Cache_(computing))** - Metodologia originale di caching
+- **[Cache Replacement Policies](https://en.wikipedia.org/wiki/Cache_replacement_policies)** - Politiche di sostituzione cache
+- **[Distributed Caching](https://en.wikipedia.org/wiki/Distributed_cache)** - Cache distribuita
+
 
 ## Risorse utili
 

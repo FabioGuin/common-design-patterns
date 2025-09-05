@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -188,14 +188,23 @@ Usa Security by Design quando:
 - **Può essere** costoso
 - **Richiede** tempo per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Security Best Practices** - [33-security-best-practices](./33-security-best-practices/security-best-practices.md): Pratiche di sicurezza
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e sicuro
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
+### Pattern
+
+- **[Security Best Practices](./33-security-best-practices/security-best-practices.md)** - Pratiche di sicurezza
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e sicuro
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+
+### Principi e Metodologie
+
+- **[Security by Design](https://en.wikipedia.org/wiki/Security_by_design)** - Metodologia originale di security by design
+- **[Defense in Depth](https://en.wikipedia.org/wiki/Defense_in_depth_(computing))** - Difesa in profondità
+- **[Zero Trust](https://en.wikipedia.org/wiki/Zero_trust_security_model)** - Modello zero trust
+
 
 ## Risorse utili
 

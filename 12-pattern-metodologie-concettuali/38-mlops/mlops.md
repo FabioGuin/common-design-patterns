@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -181,14 +181,23 @@ Usa MLOps quando:
 - **Può essere** costoso
 - **Richiede** infrastruttura appropriata
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **CI/CD** - [34-cicd](./34-cicd/cicd.md): Integrazione e deployment continui
-- **GitOps** - [36-gitops](./36-gitops/gitops.md): Gestione tramite Git
-- **Infrastructure as Code** - [37-infrastructure-as-code](./37-infrastructure-as-code/infrastructure-as-code.md): Infrastruttura come codice
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
+### Pattern
+
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[CI/CD](./34-cicd/cicd.md)** - Integrazione e deployment continui
+- **[GitOps](./36-gitops/gitops.md)** - Gestione tramite Git
+- **[Infrastructure as Code](./37-infrastructure-as-code/infrastructure-as-code.md)** - Infrastruttura come codice
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+
+### Principi e Metodologie
+
+- **[MLOps](https://en.wikipedia.org/wiki/MLOps)** - Metodologia originale di MLOps
+- **[Machine Learning](https://en.wikipedia.org/wiki/Machine_learning)** - Machine learning
+- **[Data Science](https://en.wikipedia.org/wiki/Data_science)** - Scienza dei dati
+
 
 ## Risorse utili
 

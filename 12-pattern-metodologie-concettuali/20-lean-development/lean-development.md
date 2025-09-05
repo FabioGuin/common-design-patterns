@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -166,14 +166,23 @@ Usa Lean Development quando:
 - **Dipende dalla qualità** del team
 - **Può essere difficile** con team distribuiti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Lean si integra con Agile
-- **Kanban** - [18-kanban](./18-kanban/kanban.md): Visualizzazione del flusso di valore
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica per eliminare sprechi di qualità
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Eliminazione di sprechi di codice
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Condivisione della conoscenza
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Qualità integrata nel processo
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Lean si integra con Agile
+- **[Kanban](./18-kanban/kanban.md)** - Visualizzazione del flusso di valore
+- **[TDD](./09-tdd/tdd.md)** - Pratica per eliminare sprechi di qualità
+- **[Refactoring](./12-refactoring/refactoring.md)** - Eliminazione di sprechi di codice
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Condivisione della conoscenza
+- **[Clean Code](./05-clean-code/clean-code.md)** - Qualità integrata nel processo
+
+### Principi e Metodologie
+
+- **[Lean Software Development](https://en.wikipedia.org/wiki/Lean_software_development)** - Metodologia originale Lean
+- **[Toyota Production System](https://en.wikipedia.org/wiki/Toyota_Production_System)** - Sistema di produzione Toyota
+- **[Waste Elimination](https://en.wikipedia.org/wiki/Muda_(Japanese_term))** - Eliminazione degli sprechi
+
 
 ## Risorse utili
 

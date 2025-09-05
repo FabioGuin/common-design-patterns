@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -80,15 +80,20 @@ Usa la Law of Demeter quando:
 
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Si integra con Dependency Inversion Principle
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e ben organizzato
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità
-- **Facade Pattern**: Per semplificare l'accesso a sottosistemi complessi
-- **Adapter Pattern**: Per adattare interfacce esistenti
-- **DTO Pattern**: Per trasferire dati senza violare l'incapsulamento
-- **Encapsulation**: Principio base dell'incapsulamento
+### Pattern
+
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Si integra con Dependency Inversion Principle
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e ben organizzato
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità
+
+### Principi e Metodologie
+
+- **[Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter)** - Principio originale "Don't talk to strangers"
+- **[Encapsulation](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming))** - Incapsulamento dei dati
+- **[Information Hiding](https://en.wikipedia.org/wiki/Information_hiding)** - Nascondere i dettagli di implementazione
+
 
 ## Risorse utili
 

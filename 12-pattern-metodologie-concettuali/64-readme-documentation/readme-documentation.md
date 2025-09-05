@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -234,14 +234,23 @@ Usa README Documentation quando:
 - **Richiede** aggiornamenti regolari
 - **Può essere** costoso
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Technical Documentation** - [62-technical-documentation](./62-technical-documentation/technical-documentation.md): Documentazione tecnica
-- **Code Comments** - [63-code-comments](./63-code-comments/code-comments.md): Commenti codice
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione conoscenza
-- **User Experience Design** - [48-user-experience-design](./48-user-experience-design/user-experience-design.md): Progettazione esperienza utente
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Progettazione API
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Progettazione database
+### Pattern
+
+- **[Technical Documentation](./62-technical-documentation/technical-documentation.md)** - Documentazione tecnica
+- **[Code Comments](./63-code-comments/code-comments.md)** - Commenti codice
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione conoscenza
+- **[User Experience Design](./48-user-experience-design/user-experience-design.md)** - Progettazione esperienza utente
+- **[API Design](./46-api-design/api-design.md)** - Progettazione API
+- **[Database Design](./47-database-design/database-design.md)** - Progettazione database
+
+### Principi e Metodologie
+
+- **[README](https://en.wikipedia.org/wiki/README)** - Metodologia originale di README
+- **[Markdown](https://en.wikipedia.org/wiki/Markdown)** - Linguaggio Markdown
+- **[Documentation](https://en.wikipedia.org/wiki/Documentation)** - Documentazione
+
 
 ## Risorse utili
 

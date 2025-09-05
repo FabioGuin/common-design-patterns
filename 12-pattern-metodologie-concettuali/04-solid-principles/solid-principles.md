@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -610,14 +610,25 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DRY Pattern** - [01-dry-pattern](./01-dry-pattern/dry-pattern.md): Evita duplicazione nel codice SOLID
-- **KISS Pattern** - [02-kiss-pattern](./02-kiss-pattern/kiss-pattern.md): Mantieni il codice semplice e SOLID
-- **YAGNI Pattern** - [03-yagni-pattern](./03-yagni-pattern/yagni-pattern.md): Non over-engineer con SOLID
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Scrittura di codice pulito che rispetta SOLID
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità (SRP)
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test guidano la scrittura di codice SOLID
+### Pattern
+
+- **[DRY Pattern](./01-dry-pattern/dry-pattern.md)** - Evita duplicazione nel codice SOLID
+- **[KISS Pattern](./02-kiss-pattern/kiss-pattern.md)** - Mantieni il codice semplice e SOLID
+- **[YAGNI Pattern](./03-yagni-pattern/yagni-pattern.md)** - Non over-engineer con SOLID
+- **[Clean Code](./05-clean-code/clean-code.md)** - Scrittura di codice pulito che rispetta SOLID
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità (SRP)
+- **[TDD](./09-tdd/tdd.md)** - Test guidano la scrittura di codice SOLID
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)** - Una classe, una responsabilità
+- **[Open/Closed Principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)** - Aperto per estensione, chiuso per modifica
+- **[Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)** - Sostituibilità delle sottoclassi
+- **[Interface Segregation Principle](https://en.wikipedia.org/wiki/Interface_segregation_principle)** - Interfacce specifiche e coese
+- **[Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** - Dipendenza da astrazioni
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -227,14 +227,23 @@ Usa Resource Management quando:
 - **Richiede** tempo e risorse
 - **Può causare** overhead
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Project Management** - [66-project-management](./66-project-management/project-management.md): Gestione progetti
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione team
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologie agili
-- **Quality Management** - [69-quality-management](./69-quality-management/quality-management.md): Gestione qualità
+### Pattern
+
+- **[Project Management](./66-project-management/project-management.md)** - Gestione progetti
+- **[Team Management](./39-team-management/team-management.md)** - Gestione team
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[Agile](./17-agile/agile.md)** - Metodologie agili
+- **[Quality Management](./69-quality-management/quality-management.md)** - Gestione qualità
+
+### Principi e Metodologie
+
+- **[Resource Management](https://en.wikipedia.org/wiki/Resource_management)** - Metodologia originale di resource management
+- **[Capacity Planning](https://en.wikipedia.org/wiki/Capacity_planning)** - Pianificazione della capacità
+- **[Resource Allocation](https://en.wikipedia.org/wiki/Resource_allocation)** - Allocazione delle risorse
+
 
 ## Risorse utili
 

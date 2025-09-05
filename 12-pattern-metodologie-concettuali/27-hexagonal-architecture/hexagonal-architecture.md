@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -147,14 +147,23 @@ Usa Hexagonal Architecture quando:
 - **Può essere** over-engineering
 - **Tempo iniziale** per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura complementare
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità del business logic
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo dell'architettura
-- **Domain-Driven Design** - [23-domain-driven-design](./23-domain-driven-design/domain-driven-design.md): Modellazione del dominio
+### Pattern
+
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura complementare
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità
+- **[TDD](./09-tdd/tdd.md)** - Testabilità del business logic
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo dell'architettura
+- **[Domain-Driven Design](./23-domain-driven-design/domain-driven-design.md)** - Modellazione del dominio
+
+### Principi e Metodologie
+
+- **[Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))** - Metodologia originale di Alistair Cockburn
+- **[Ports and Adapters](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))** - Porte e adattatori
+- **[Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** - Inversione delle dipendenze
+
 
 ## Risorse utili
 

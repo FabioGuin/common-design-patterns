@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -192,14 +192,23 @@ Usa Cross-functional Teams quando:
 - **Può essere** costoso
 - **Richiede** gestione esperta
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione del team
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologia agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework per team
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
-- **Mob Programming** - [15-mob-programming](./15-mob-programming/mob-programming.md): Sviluppo in gruppo
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
+### Pattern
+
+- **[Team Management](./39-team-management/team-management.md)** - Gestione del team
+- **[Agile](./17-agile/agile.md)** - Metodologia agile
+- **[Scrum](./16-scrum/scrum.md)** - Framework per team
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+- **[Mob Programming](./15-mob-programming/mob-programming.md)** - Sviluppo in gruppo
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+
+### Principi e Metodologie
+
+- **[Cross-functional Team](https://en.wikipedia.org/wiki/Cross-functional_team)** - Metodologia originale di team cross-funzionali
+- **[Multidisciplinary Team](https://en.wikipedia.org/wiki/Multidisciplinary_team)** - Team multidisciplinari
+- **[Collaborative Team](https://en.wikipedia.org/wiki/Collaborative_team)** - Team collaborativi
+
 
 ## Risorse utili
 

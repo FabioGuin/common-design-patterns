@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -159,14 +159,23 @@ Usa Serverless quando:
 - **Testing** distribuito
 - **Controllo** limitato
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Architettura complementare
-- **Event Sourcing** - [24-event-sourcing](./24-event-sourcing/event-sourcing.md): Pattern per eventi
-- **CQRS** - [25-cqrs](./25-cqrs/cqrs.md): Separazione comandi e query
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura per serverless
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità delle funzioni
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
+### Pattern
+
+- **[Microservices](./26-microservices/microservices.md)** - Architettura complementare
+- **[Event Sourcing](./24-event-sourcing/event-sourcing.md)** - Pattern per eventi
+- **[CQRS](./25-cqrs/cqrs.md)** - Separazione comandi e query
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura per serverless
+- **[TDD](./09-tdd/tdd.md)** - Testabilità delle funzioni
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Serverless Computing](https://en.wikipedia.org/wiki/Serverless_computing)** - Metodologia originale serverless
+- **[Function as a Service](https://en.wikipedia.org/wiki/Function_as_a_service)** - Funzioni come servizio
+- **[Event-Driven Architecture](https://en.wikipedia.org/wiki/Event-driven_architecture)** - Architettura guidata da eventi
+
 
 ## Risorse utili
 

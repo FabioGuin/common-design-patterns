@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -193,14 +193,23 @@ Usa DevOps quando:
 - **Può essere** costoso
 - **Richiede** competenze tecniche
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologia agile
-- **CI/CD** - [34-cicd](./34-cicd/cicd.md): Integrazione e deployment continui
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Metodologia agile
+- **[CI/CD](./34-cicd/cicd.md)** - Integrazione e deployment continui
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+
+### Principi e Metodologie
+
+- **[DevOps](https://en.wikipedia.org/wiki/DevOps)** - Metodologia originale di DevOps
+- **[Site Reliability Engineering](https://en.wikipedia.org/wiki/Site_reliability_engineering)** - Ingegneria dell'affidabilità
+- **[Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code)** - Infrastruttura come codice
+
 
 ## Risorse utili
 

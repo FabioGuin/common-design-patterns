@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -197,14 +197,23 @@ Usa Database Design quando:
 - **Può essere** costoso
 - **Richiede** tempo per la progettazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Architecture Patterns** - [45-architecture-patterns](./45-architecture-patterns/architecture-patterns.md): Pattern architetturali
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Design delle API
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
+### Pattern
+
+- **[Architecture Patterns](./45-architecture-patterns/architecture-patterns.md)** - Pattern architetturali
+- **[API Design](./46-api-design/api-design.md)** - Design delle API
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+
+### Principi e Metodologie
+
+- **[Database Design](https://en.wikipedia.org/wiki/Database_design)** - Metodologia originale di database design
+- **[Normalization](https://en.wikipedia.org/wiki/Database_normalization)** - Normalizzazione del database
+- **[Entity-Relationship Model](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)** - Modello entità-relazione
+
 
 ## Risorse utili
 

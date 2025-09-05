@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -174,14 +174,23 @@ Usa Remote Work quando:
 - **Problemi** di sicurezza
 - **Difficoltà** nel team building
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione del team
-- **Agile** - [17-agile](./17-agile/agile.md): Metodologia agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework per team
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
+### Pattern
+
+- **[Team Management](./39-team-management/team-management.md)** - Gestione del team
+- **[Agile](./17-agile/agile.md)** - Metodologia agile
+- **[Scrum](./16-scrum/scrum.md)** - Framework per team
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+
+### Principi e Metodologie
+
+- **[Remote Work](https://en.wikipedia.org/wiki/Remote_work)** - Metodologia originale di remote work
+- **[Distributed Teams](https://en.wikipedia.org/wiki/Distributed_team)** - Team distribuiti
+- **[Virtual Collaboration](https://en.wikipedia.org/wiki/Virtual_collaboration)** - Collaborazione virtuale
+
 
 ## Risorse utili
 

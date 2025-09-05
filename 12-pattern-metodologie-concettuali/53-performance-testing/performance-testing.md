@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -230,14 +230,23 @@ Usa Performance Testing quando:
 - **Richiede** strumenti appropriati
 - **Può causare** interruzioni
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **Security Monitoring** - [52-security-monitoring](./52-security-monitoring/security-monitoring.md): Monitoraggio sicurezza
+### Pattern
+
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[Security Monitoring](./52-security-monitoring/security-monitoring.md)** - Monitoraggio sicurezza
+
+### Principi e Metodologie
+
+- **[Performance Testing](https://en.wikipedia.org/wiki/Software_performance_testing)** - Metodologia originale di performance testing
+- **[Load Testing](https://en.wikipedia.org/wiki/Load_testing)** - Test di carico
+- **[Stress Testing](https://en.wikipedia.org/wiki/Stress_testing_(software))** - Test di stress
+
 
 ## Risorse utili
 

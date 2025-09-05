@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -121,14 +121,23 @@ Usa Clean Architecture quando:
 - **Può essere** over-engineering
 - **Tempo iniziale** per l'implementazione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Base per Clean Architecture
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito e ben organizzato
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità del codice business
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo dell'architettura
-- **Domain-Driven Design** - [23-domain-driven-design](./23-domain-driven-design/domain-driven-design.md): Approccio complementare
+### Pattern
+
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Base per Clean Architecture
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito e ben organizzato
+- **[TDD](./09-tdd/tdd.md)** - Testabilità del codice business
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo dell'architettura
+- **[Domain-Driven Design](./23-domain-driven-design/domain-driven-design.md)** - Approccio complementare
+
+### Principi e Metodologie
+
+- **[Clean Architecture](https://en.wikipedia.org/wiki/Clean_Architecture)** - Metodologia originale di Robert Martin
+- **[Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))** - Architettura esagonale
+- **[Onion Architecture](https://en.wikipedia.org/wiki/Onion_architecture)** - Architettura a cipolla
+
 
 ## Risorse utili
 

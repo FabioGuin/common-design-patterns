@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -120,14 +120,22 @@ Usa Agile quando:
 - **Richiede supporto** degli stakeholder
 - **Può essere difficile** con team distribuiti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Framework Agile più popolare
-- **Kanban** - [18-kanban](./18-kanban/kanban.md): Metodologia Agile per visualizzazione
-- **XP** - [19-extreme-programming](./19-extreme-programming/extreme-programming.md): Pratiche tecniche Agile
-- **Lean** - [20-lean-development](./20-lean-development/lean-development.md): Principi di eliminazione sprechi
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica tecnica Agile
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Pratica di collaborazione Agile
+### Pattern
+
+- **[Scrum](./16-scrum/scrum.md)** - Framework Agile più popolare
+- **[Kanban](./18-kanban/kanban.md)** - Metodologia Agile per visualizzazione
+- **[TDD](./09-tdd/tdd.md)** - Pratica tecnica Agile
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Pratica di collaborazione Agile
+- **[XP](./19-extreme-programming/extreme-programming.md)** - Pratiche tecniche Agile
+- **[Lean](./20-lean-development/lean-development.md)** - Principi di eliminazione sprechi
+
+### Principi e Metodologie
+
+- **[Agile Software Development](https://en.wikipedia.org/wiki/Agile_software_development)** - Metodologia originale Agile
+- **[Agile Manifesto](https://en.wikipedia.org/wiki/Agile_manifesto)** - Manifesto originale Agile
+- **[Iterative Development](https://en.wikipedia.org/wiki/Iterative_and_incremental_development)** - Sviluppo iterativo
 
 ## Risorse utili
 

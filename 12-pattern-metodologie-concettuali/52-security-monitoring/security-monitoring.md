@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -198,14 +198,23 @@ Usa Security Monitoring quando:
 - **Richiede** manutenzione
 - **Può causare** alert fatigue
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Penetration Testing** - [51-penetration-testing](./51-penetration-testing/penetration-testing.md): Testing sicurezza
-- **Threat Modeling** - [50-threat-modeling](./50-threat-modeling/threat-modeling.md): Modellazione minacce
-- **Security by Design** - [49-security-by-design](./49-security-by-design/security-by-design.md): Sicurezza fin dall'inizio
-- **Security Best Practices** - [33-security-best-practices](./33-security-best-practices/security-best-practices.md): Pratiche di sicurezza
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
+### Pattern
+
+- **[Penetration Testing](./51-penetration-testing/penetration-testing.md)** - Testing sicurezza
+- **[Threat Modeling](./50-threat-modeling/threat-modeling.md)** - Modellazione minacce
+- **[Security by Design](./49-security-by-design/security-by-design.md)** - Sicurezza fin dall'inizio
+- **[Security Best Practices](./33-security-best-practices/security-best-practices.md)** - Pratiche di sicurezza
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+
+### Principi e Metodologie
+
+- **[Security Monitoring](https://en.wikipedia.org/wiki/Security_monitoring)** - Metodologia originale di security monitoring
+- **[SIEM](https://en.wikipedia.org/wiki/Security_information_and_event_management)** - Security Information and Event Management
+- **[SOC](https://en.wikipedia.org/wiki/Security_operations_center)** - Security Operations Center
+
 
 ## Risorse utili
 

@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -119,14 +119,22 @@ Usa Scrum quando:
 - **Richiede team** auto-organizzato
 - **Può essere difficile** con team distribuiti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Scrum è basato sui principi Agile
-- **Kanban** - [18-kanban](./18-kanban/kanban.md): Metodologia complementare a Scrum
-- **XP** - [19-extreme-programming](./19-extreme-programming/extreme-programming.md): Pratiche tecniche che si integrano con Scrum
-- **Lean** - [20-lean-development](./20-lean-development/lean-development.md): Principi di eliminazione degli sprechi
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica tecnica che si integra bene con Scrum
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Pratica di sviluppo in coppia
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Scrum è basato sui principi Agile
+- **[Kanban](./18-kanban/kanban.md)** - Metodologia complementare a Scrum
+- **[TDD](./09-tdd/tdd.md)** - Pratica tecnica che si integra bene con Scrum
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Pratica di sviluppo in coppia
+- **[XP](./19-extreme-programming/extreme-programming.md)** - Pratiche tecniche che si integrano con Scrum
+- **[Lean](./20-lean-development/lean-development.md)** - Principi di eliminazione degli sprechi
+
+### Principi e Metodologie
+
+- **[Scrum](https://en.wikipedia.org/wiki/Scrum_(software_development))** - Metodologia originale Scrum
+- **[Sprint](https://en.wikipedia.org/wiki/Sprint_(software_development))** - Iterazioni di sviluppo
+- **[Daily Standup](https://en.wikipedia.org/wiki/Stand-up_meeting)** - Riunioni giornaliere
 
 ## Risorse utili
 

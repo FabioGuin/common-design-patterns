@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -204,14 +204,23 @@ Usa UX Design quando:
 - **Può essere** costoso
 - **Richiede** accesso agli utenti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **API Design** - [46-api-design](./46-api-design/api-design.md): Design delle API
-- **Database Design** - [47-database-design](./47-database-design/database-design.md): Design del database
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
+### Pattern
+
+- **[API Design](./46-api-design/api-design.md)** - Design delle API
+- **[Database Design](./47-database-design/database-design.md)** - Design del database
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+
+### Principi e Metodologie
+
+- **[User Experience Design](https://en.wikipedia.org/wiki/User_experience_design)** - Metodologia originale di UX design
+- **[User Interface Design](https://en.wikipedia.org/wiki/User_interface_design)** - Design dell'interfaccia utente
+- **[Human-Computer Interaction](https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction)** - Interazione uomo-computer
+
 
 ## Risorse utili
 

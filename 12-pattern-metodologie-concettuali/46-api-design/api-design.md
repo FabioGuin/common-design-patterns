@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -182,14 +182,23 @@ Usa API Design quando:
 - **Può essere** costoso
 - **Richiede** manutenzione continua
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Design Patterns** - [44-design-patterns](./44-design-patterns/design-patterns.md): Pattern di design
-- **Architecture Patterns** - [45-architecture-patterns](./45-architecture-patterns/architecture-patterns.md): Pattern architetturali
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
+### Pattern
+
+- **[Design Patterns](./44-design-patterns/design-patterns.md)** - Pattern di design
+- **[Architecture Patterns](./45-architecture-patterns/architecture-patterns.md)** - Pattern architetturali
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+
+### Principi e Metodologie
+
+- **[API Design](https://en.wikipedia.org/wiki/API_design)** - Metodologia originale di API design
+- **[REST](https://en.wikipedia.org/wiki/Representational_state_transfer)** - Representational State Transfer
+- **[GraphQL](https://en.wikipedia.org/wiki/GraphQL)** - GraphQL
+
 
 ## Risorse utili
 

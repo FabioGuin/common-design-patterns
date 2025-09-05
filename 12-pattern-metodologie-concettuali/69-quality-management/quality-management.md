@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -227,14 +227,23 @@ Usa Quality Management quando:
 - **Richiede** tempo e risorse
 - **Può causare** overhead
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Code Quality** - [29-code-quality](./29-code-quality/code-quality.md): Qualità del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Performance Testing** - [53-performance-testing](./53-performance-testing/performance-testing.md): Test di performance
-- **Project Management** - [66-project-management](./66-project-management/project-management.md): Gestione progetti
+### Pattern
+
+- **[Code Quality](./29-code-quality/code-quality.md)** - Qualità del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Performance Testing](./53-performance-testing/performance-testing.md)** - Test di performance
+- **[Project Management](./66-project-management/project-management.md)** - Gestione progetti
+
+### Principi e Metodologie
+
+- **[Quality Management](https://en.wikipedia.org/wiki/Quality_management)** - Metodologia originale di quality management
+- **[ISO 9001](https://en.wikipedia.org/wiki/ISO_9001)** - ISO 9001
+- **[Total Quality Management](https://en.wikipedia.org/wiki/Total_quality_management)** - Total Quality Management
+
 
 ## Risorse utili
 

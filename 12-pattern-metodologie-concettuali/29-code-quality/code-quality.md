@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -165,14 +165,23 @@ Usa Code Quality quando:
 - **Può essere** overhead per piccoli team
 - **Richiede** disciplina e impegno
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Principi per codice pulito
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development per qualità
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
+### Pattern
+
+- **[Clean Code](./05-clean-code/clean-code.md)** - Principi per codice pulito
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development per qualità
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+
+### Principi e Metodologie
+
+- **[Software Quality](https://en.wikipedia.org/wiki/Software_quality)** - Metodologia originale di qualità del software
+- **[Code Metrics](https://en.wikipedia.org/wiki/Software_metric)** - Metriche del codice
+- **[Static Analysis](https://en.wikipedia.org/wiki/Static_program_analysis)** - Analisi statica
+
 
 ## Risorse utili
 

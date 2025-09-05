@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -174,14 +174,23 @@ Usa Mentoring quando:
 - **Può essere** costoso
 - **Richiede** impegno a lungo termine
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Team Management** - [39-team-management](./39-team-management/team-management.md): Gestione del team
-- **Knowledge Management** - [41-knowledge-management](./41-knowledge-management/knowledge-management.md): Gestione della conoscenza
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Sviluppo in coppia
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
+### Pattern
+
+- **[Team Management](./39-team-management/team-management.md)** - Gestione del team
+- **[Knowledge Management](./41-knowledge-management/knowledge-management.md)** - Gestione della conoscenza
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Sviluppo in coppia
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+
+### Principi e Metodologie
+
+- **[Mentoring](https://en.wikipedia.org/wiki/Mentoring)** - Metodologia originale di mentoring
+- **[Coaching](https://en.wikipedia.org/wiki/Coaching)** - Coaching
+- **[Professional Development](https://en.wikipedia.org/wiki/Professional_development)** - Sviluppo professionale
+
 
 ## Risorse utili
 

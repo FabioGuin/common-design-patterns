@@ -7,7 +7,7 @@
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
 - [Esempi di codice](#esempi-di-codice)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -465,14 +465,22 @@ class User extends Model
 }
 ```
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test guidano il code review
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Obiettivo del code review
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi da verificare durante la review
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Alternativa al code review
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento del codice dopo la review
-- **Code Smells**: Identificazione di problemi nel codice
+### Pattern
+
+- **[TDD](./09-tdd/tdd.md)** - Test guidano il code review
+- **[Clean Code](./05-clean-code/clean-code.md)** - Obiettivo del code review
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi da verificare durante la review
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Alternativa al code review
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento del codice dopo la review
+
+### Principi e Metodologie
+
+- **[Code Review](https://en.wikipedia.org/wiki/Code_review)** - Metodologia originale di revisione del codice
+- **[Peer Review](https://en.wikipedia.org/wiki/Peer_review)** - Revisione tra pari
+- **[Quality Assurance](https://en.wikipedia.org/wiki/Software_quality_assurance)** - Assicurazione della qualità
+
 
 ## Risorse utili
 

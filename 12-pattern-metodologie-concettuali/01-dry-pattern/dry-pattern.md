@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -60,13 +60,22 @@ Usa DRY quando:
 - Possibile complessità eccessiva
 
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **KISS Pattern** - [02-kiss-pattern](./02-kiss-pattern/kiss-pattern.md): Mantieni semplice l'astrazione DRY
-- **YAGNI Pattern** - [03-yagni-pattern](./03-yagni-pattern/yagni-pattern.md): Non over-engineer con DRY
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): DRY si integra con Single Responsibility
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): DRY è parte del clean code
-- **Separation of Concerns** - [06-separation-of-concerns](./06-separation-of-concerns/separation-of-concerns.md): Separazione delle responsabilità
+### Pattern
+
+- **[KISS Pattern](./02-kiss-pattern/kiss-pattern.md)** - Mantieni semplice l'astrazione DRY
+- **[YAGNI Pattern](./03-yagni-pattern/yagni-pattern.md)** - Non over-engineer con DRY
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - DRY si integra con Single Responsibility
+- **[Clean Code](./05-clean-code/clean-code.md)** - DRY è parte del clean code
+- **[Separation of Concerns](./06-separation-of-concerns/separation-of-concerns.md)** - Separazione delle responsabilità
+- **[TDD](./09-tdd/tdd.md)** - Test-Driven Development per evitare duplicazione
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+
+### Principi e Metodologie
+
+- **[Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)** - Un modulo, una responsabilità
+- **[Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)** - Principio originale DRY
 
 ## Risorse utili
 

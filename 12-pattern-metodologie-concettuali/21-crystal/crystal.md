@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -137,14 +137,22 @@ Usa Crystal quando:
 - **Dipende dalla qualità** del team
 - **Può essere difficile** con team distribuiti
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Crystal è una metodologia Agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Complementare a Crystal
-- **XP** - [19-extreme-programming](./19-extreme-programming/extreme-programming.md): Pratiche tecniche che si integrano con Crystal
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica opzionale in Crystal
-- **Pair Programming** - [14-pair-programming](./14-pair-programming/pair-programming.md): Pratica opzionale in Crystal
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Crystal è una metodologia Agile
+- **[Scrum](./16-scrum/scrum.md)** - Complementare a Crystal
+- **[TDD](./09-tdd/tdd.md)** - Pratica opzionale in Crystal
+- **[Pair Programming](./14-pair-programming/pair-programming.md)** - Pratica opzionale in Crystal
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+- **[XP](./19-extreme-programming/extreme-programming.md)** - Pratiche tecniche che si integrano con Crystal
+
+### Principi e Metodologie
+
+- **[Crystal Methods](https://en.wikipedia.org/wiki/Crystal_Methods)** - Metodologia originale Crystal
+- **[Alistair Cockburn](https://en.wikipedia.org/wiki/Alistair_Cockburn)** - Inventore di Crystal
+- **[Adaptive Software Development](https://en.wikipedia.org/wiki/Adaptive_software_development)** - Sviluppo adattivo
 
 ## Risorse utili
 

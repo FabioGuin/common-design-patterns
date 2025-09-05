@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -214,14 +214,23 @@ Usa Load Balancing quando:
 - **Richiede** manutenzione
 - **Può causare** problemi di sessione
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Performance Testing** - [53-performance-testing](./53-performance-testing/performance-testing.md): Test di performance
-- **Performance Optimization** - [32-performance-optimization](./32-performance-optimization/performance-optimization.md): Ottimizzazione performance
-- **Microservices** - [26-microservices](./26-microservices/microservices.md): Architettura microservizi
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **CI/CD** - [34-cicd](./34-cicd/cicd.md): Integrazione e deployment continui
-- **Security Monitoring** - [52-security-monitoring](./52-security-monitoring/security-monitoring.md): Monitoraggio sicurezza
+### Pattern
+
+- **[Performance Testing](./53-performance-testing/performance-testing.md)** - Test di performance
+- **[Performance Optimization](./32-performance-optimization/performance-optimization.md)** - Ottimizzazione performance
+- **[Microservices](./26-microservices/microservices.md)** - Architettura microservizi
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[CI/CD](./34-cicd/cicd.md)** - Integrazione e deployment continui
+- **[Security Monitoring](./52-security-monitoring/security-monitoring.md)** - Monitoraggio sicurezza
+
+### Principi e Metodologie
+
+- **[Load Balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing))** - Metodologia originale di load balancing
+- **[High Availability](https://en.wikipedia.org/wiki/High_availability)** - Alta disponibilità
+- **[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)** - Tolleranza ai guasti
+
 
 ## Risorse utili
 

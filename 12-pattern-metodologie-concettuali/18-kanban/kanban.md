@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -128,14 +128,22 @@ Usa Kanban quando:
 - **Dipende dalla qualità** della visualizzazione
 - **Richiede formazione** del team
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Agile** - [17-agile](./17-agile/agile.md): Kanban è una metodologia Agile
-- **Scrum** - [16-scrum](./16-scrum/scrum.md): Complementare a Kanban
-- **Lean** - [20-lean-development](./20-lean-development/lean-development.md): Principi di eliminazione sprechi
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Pratica tecnica che si integra con Kanban
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Fase del flusso Kanban
-- **Refactoring** - [12-refactoring](./12-refactoring/refactoring.md): Miglioramento continuo del codice
+### Pattern
+
+- **[Agile](./17-agile/agile.md)** - Kanban è una metodologia Agile
+- **[Scrum](./16-scrum/scrum.md)** - Complementare a Kanban
+- **[TDD](./09-tdd/tdd.md)** - Pratica tecnica che si integra con Kanban
+- **[Code Review](./13-code-review/code-review.md)** - Fase del flusso Kanban
+- **[Refactoring](./12-refactoring/refactoring.md)** - Miglioramento continuo del codice
+- **[Lean](./20-lean-development/lean-development.md)** - Principi di eliminazione sprechi
+
+### Principi e Metodologie
+
+- **[Kanban](https://en.wikipedia.org/wiki/Kanban)** - Metodologia originale Kanban
+- **[Just-in-Time](https://en.wikipedia.org/wiki/Just-in-time_manufacturing)** - Produzione just-in-time
+- **[Pull System](https://en.wikipedia.org/wiki/Pull_system)** - Sistema di trazione
 
 ## Risorse utili
 

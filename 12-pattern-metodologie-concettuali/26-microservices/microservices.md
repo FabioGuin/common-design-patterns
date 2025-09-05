@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -133,14 +133,23 @@ Usa Microservices quando:
 - **Monitoring** e debugging
 - **Data** consistency
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **Domain-Driven Design** - [23-domain-driven-design](./23-domain-driven-design/domain-driven-design.md): Bounded contexts per microservices
-- **Event Sourcing** - [24-event-sourcing](./24-event-sourcing/event-sourcing.md): Comunicazione tramite eventi
-- **CQRS** - [25-cqrs](./25-cqrs/cqrs.md): Separazione read/write per servizi
-- **Clean Architecture** - [22-clean-architecture](./22-clean-architecture/clean-architecture.md): Architettura per microservices
-- **SOLID Principles** - [04-solid-principles](./04-solid-principles/solid-principles.md): Principi per il design
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Testabilità dei microservices
+### Pattern
+
+- **[Domain-Driven Design](./23-domain-driven-design/domain-driven-design.md)** - Bounded contexts per microservices
+- **[Event Sourcing](./24-event-sourcing/event-sourcing.md)** - Comunicazione tramite eventi
+- **[CQRS](./25-cqrs/cqrs.md)** - Separazione read/write per servizi
+- **[Clean Architecture](./22-clean-architecture/clean-architecture.md)** - Architettura per microservices
+- **[SOLID Principles](./04-solid-principles/solid-principles.md)** - Principi per il design
+- **[TDD](./09-tdd/tdd.md)** - Testabilità dei microservices
+
+### Principi e Metodologie
+
+- **[Microservices](https://en.wikipedia.org/wiki/Microservices)** - Metodologia originale di microservizi
+- **[Service-Oriented Architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)** - Architettura orientata ai servizi
+- **[API Gateway](https://en.wikipedia.org/wiki/API_gateway)** - Gateway per API
+
 
 ## Risorse utili
 

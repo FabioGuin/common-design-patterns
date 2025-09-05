@@ -6,7 +6,7 @@
 - [Come funziona](#come-funziona)
 - [Quando usarlo](#quando-usarlo)
 - [Pro e contro](#pro-e-contro)
-- [Principi/Metodologie correlate](#principi-metodologie-correlate)
+- [Correlati](#correlati)
 - [Risorse utili](#risorse-utili)
 
 ## Cosa fa
@@ -197,14 +197,23 @@ Usa IaC quando:
 - **Può essere** costoso
 - **Richiede** strumenti appropriati
 
-## Principi/Metodologie correlate
+## Correlati
 
-- **DevOps** - [35-devops](./35-devops/devops.md): Pratiche DevOps
-- **GitOps** - [36-gitops](./36-gitops/gitops.md): Gestione tramite Git
-- **CI/CD** - [34-cicd](./34-cicd/cicd.md): Integrazione e deployment continui
-- **TDD** - [09-tdd](./09-tdd/tdd.md): Test-driven development
-- **Code Review** - [13-code-review](./13-code-review/code-review.md): Revisione del codice
-- **Clean Code** - [05-clean-code](./05-clean-code/clean-code.md): Codice pulito
+### Pattern
+
+- **[DevOps](./35-devops/devops.md)** - Pratiche DevOps
+- **[GitOps](./36-gitops/gitops.md)** - Gestione tramite Git
+- **[CI/CD](./34-cicd/cicd.md)** - Integrazione e deployment continui
+- **[TDD](./09-tdd/tdd.md)** - Test-driven development
+- **[Code Review](./13-code-review/code-review.md)** - Revisione del codice
+- **[Clean Code](./05-clean-code/clean-code.md)** - Codice pulito
+
+### Principi e Metodologie
+
+- **[Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code)** - Metodologia originale di IaC
+- **[Configuration Management](https://en.wikipedia.org/wiki/Configuration_management)** - Gestione della configurazione
+- **[Automation](https://en.wikipedia.org/wiki/Automation)** - Automazione
+
 
 ## Risorse utili
 
