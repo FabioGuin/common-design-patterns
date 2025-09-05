@@ -61,3 +61,8 @@ esempi-completi/*/storage/
 esempi-completi/*/bootstrap/cache/
 esempi-completi/*/public/hot
 esempi-completi/*/public/storage
+
+# Project management
+TODO.md
+README-THEMATIC.md
+PATTERN-MAPPING.md
