@@ -6,7 +6,6 @@
 - [**Cheat Sheet**](CHEAT-SHEET.md) - Panoramica rapida di tutti i pattern
 - [**Principi Fondamentali**](12-pattern-metodologie-concettuali/README.md) - DRY, KISS, SOLID e altri principi base
 - [**Pattern Creazionali**](01-pattern-creazionali/README.md) - Come creare oggetti in modo intelligente
-- [**Esempi Pratici**](ESEMPI-INDEX.md) - Codice funzionante che puoi copiare e usare
 
 ### Per Sviluppatori Intermedi
 - [**Pattern Strutturali**](02-pattern-strutturali/) - Come organizzare classi e oggetti
