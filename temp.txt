@@ -1,0 +1,5 @@
+#### 1.1 Singleton
+- **Implementazione**: Service Container di Laravel
+- **Utilizzo**: Database connections, Cache, Log
+- **Esempi pratici**: Configurazione app, Singleton services
+- **Dettagli**: [Singleton Pattern](01-pattern-creazionali/01-singleton/singleton-pattern.md)
