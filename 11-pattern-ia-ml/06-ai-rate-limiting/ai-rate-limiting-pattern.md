@@ -144,37 +144,6 @@ class AIRateLimiter {
 }
 ```
 
-### Esempio Laravel
-```php
-class AIRateLimiter
-{
-    public function checkLimit(string $userId, string $plan): bool
-    {
-        $key = "ai_rate_limit:{$userId}:" . now()->format('Y-m-d-H');
-        $currentCount = Cache::get($key, 0);
-        $limit = $this->getLimitForPlan($plan);
-        
-        if ($currentCount >= $limit) {
-            return false;
-        }
-        
-        Cache::increment($key);
-        Cache::expire($key, 3600);
-        
-        return true;
-    }
-    
-    private function getLimitForPlan(string $plan): int
-    {
-        return match($plan) {
-            'free' => 100,
-            'premium' => 1000,
-            'enterprise' => 10000,
-            default => 10
-        };
-    }
-}
-```
 
 ## Esempi completi
 
@@ -254,21 +223,18 @@ L'esempio include:
 ## Risorse utili
 
 ### Documentazione ufficiale
-- [Redis Rate Limiting](https://redis.io/docs/manual/patterns/distributed-locks/) - Pattern per rate limiting
-- [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) - Rate limiting nativo Laravel
-- [OpenAI Rate Limits](https://platform.openai.com/docs/guides/rate-limits) - Esempi reali
+- [GoF Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) - Il libro originale
+- [Refactoring.Guru](https://refactoring.guru/design-patterns) - Spiegazioni visuali
 
 ### Laravel specifico
-- [Laravel Cache](https://laravel.com/docs/cache) - Sistema di cache per contatori
-- [Laravel Middleware](https://laravel.com/docs/middleware) - Per implementare rate limiting
-- [Laravel Throttle](https://laravel.com/docs/routing#rate-limiting) - Rate limiting built-in
+- [Laravel Documentation](https://laravel.com/docs) - Framework specifico
+- [Laravel Rate Limiting](https://laravel.com/docs/rate-limiting) - Rate limiting nativo Laravel
 
 ### Esempi e tutorial
-- [Rate Limiting Patterns](https://github.com/redis/redis-om-spring) - Esempi Redis
+- [Pattern Repository](https://github.com/design-patterns) - Esempi di codice
+- [Redis Rate Limiting](https://redis.io/docs/manual/patterns/distributed-locks/) - Pattern per rate limiting
+- [OpenAI Rate Limits](https://platform.openai.com/docs/guides/rate-limits) - Esempi reali
 - [AI API Best Practices](https://platform.openai.com/docs/guides/production-best-practices) - Pratiche OpenAI
-- [Distributed Rate Limiting](https://www.alibabacloud.com/blog/distributed-rate-limiting) - Pattern avanzati
 
 ### Strumenti di supporto
 - [Checklist di Implementazione](../12-pattern-metodologie-concettuali/checklist-implementazione-pattern.md) - Guida step-by-step
-- [Redis Commander](https://github.com/joeferner/redis-commander) - UI per monitorare Redis
-- [Grafana Redis Dashboard](https://grafana.com/grafana/dashboards/763) - Monitoring avanzato
