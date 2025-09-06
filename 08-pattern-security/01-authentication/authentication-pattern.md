@@ -76,7 +76,7 @@ L'Authentication utilizza diverse strategie per verificare l'identità:
 ## Anti-Pattern
 
 ```php
-// ❌ Autenticazione non sicura
+//  Autenticazione non sicura
 public function login(Request $request)
 {
     $user = User::where('email', $request->email)
@@ -89,7 +89,7 @@ public function login(Request $request)
     }
 }
 
-// ✅ Autenticazione sicura
+//  Autenticazione sicura
 public function login(Request $request)
 {
     $credentials = $request->validate([

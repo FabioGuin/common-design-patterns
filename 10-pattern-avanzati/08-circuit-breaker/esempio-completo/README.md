@@ -38,28 +38,28 @@ app/
 ## Funzionalità Implementate
 
 ### Circuit Breaker Core
-- ✅ Gestione stati: Closed, Open, Half-Open
-- ✅ Configurazione per ogni servizio
-- ✅ Monitoring e metriche
-- ✅ Auto-recovery quando i servizi tornano online
+-  Gestione stati: Closed, Open, Half-Open
+-  Configurazione per ogni servizio
+-  Monitoring e metriche
+-  Auto-recovery quando i servizi tornano online
 
 ### Servizi Protetti
-- ✅ PaymentService con circuit breaker
-- ✅ InventoryService con circuit breaker
-- ✅ NotificationService con circuit breaker
-- ✅ ShippingService con circuit breaker
+-  PaymentService con circuit breaker
+-  InventoryService con circuit breaker
+-  NotificationService con circuit breaker
+-  ShippingService con circuit breaker
 
 ### Fallback Strategies
-- ✅ Fallback per pagamenti (modalità offline)
-- ✅ Fallback per inventario (stima disponibilità)
-- ✅ Fallback per notifiche (coda locale)
-- ✅ Fallback per spedizioni (costi fissi)
+-  Fallback per pagamenti (modalità offline)
+-  Fallback per inventario (stima disponibilità)
+-  Fallback per notifiche (coda locale)
+-  Fallback per spedizioni (costi fissi)
 
 ### Monitoring
-- ✅ Dashboard per stato circuit breaker
-- ✅ Metriche di performance
-- ✅ Logging dettagliato
-- ✅ Alert per circuit aperti
+-  Dashboard per stato circuit breaker
+-  Metriche di performance
+-  Logging dettagliato
+-  Alert per circuit aperti
 
 ## Come Testare
 

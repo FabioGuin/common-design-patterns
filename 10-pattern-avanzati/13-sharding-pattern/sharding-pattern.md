@@ -115,7 +115,7 @@ Il Sharding Pattern implementa diverse strategie di partizionamento:
 
 ```
 Sistema senza Sharding:
-Client → Load Balancer → Single Database → Performance Issues ❌
+Client → Load Balancer → Single Database → Performance Issues 
 
 Sistema con Sharding:
 Client → Load Balancer → Shard Router → Shard 1 (Users 1-1M)

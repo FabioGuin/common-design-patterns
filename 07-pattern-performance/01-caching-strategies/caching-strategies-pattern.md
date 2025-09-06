@@ -76,7 +76,7 @@ Le strategie di caching utilizzano diversi livelli e tipi di cache per memorizza
 ## Anti-Pattern
 
 ```php
-// ❌ Cache senza strategia
+//  Cache senza strategia
 public function getExpensiveData()
 {
     $cacheKey = 'expensive_data';
@@ -90,7 +90,7 @@ public function getExpensiveData()
     return $data;
 }
 
-// ✅ Cache con strategia
+//  Cache con strategia
 public function getExpensiveData()
 {
     return Cache::remember('expensive_data', function () {

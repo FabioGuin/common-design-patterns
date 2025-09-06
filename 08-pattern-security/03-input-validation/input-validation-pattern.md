@@ -76,7 +76,7 @@ L'Input Validation utilizza diverse strategie per validare gli input:
 ## Anti-Pattern
 
 ```php
-// ❌ Validazione insufficiente
+//  Validazione insufficiente
 public function createUser(Request $request)
 {
     $user = User::create([
@@ -88,7 +88,7 @@ public function createUser(Request $request)
     return response()->json(['success' => true]);
 }
 
-// ✅ Validazione robusta
+//  Validazione robusta
 public function createUser(CreateUserRequest $request)
 {
     $user = User::create($request->validated());

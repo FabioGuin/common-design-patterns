@@ -54,26 +54,26 @@ app/
 ## Funzionalità Implementate
 
 ### Post Management
-- ✅ Lista post con paginazione
-- ✅ Creazione nuovo post
-- ✅ Visualizzazione post singolo
-- ✅ Modifica post esistente
-- ✅ Eliminazione post
-- ✅ Ricerca e filtri
+-  Lista post con paginazione
+-  Creazione nuovo post
+-  Visualizzazione post singolo
+-  Modifica post esistente
+-  Eliminazione post
+-  Ricerca e filtri
 
 ### Comment Management
-- ✅ Lista commenti per post
-- ✅ Creazione nuovo commento
-- ✅ Modifica commento
-- ✅ Eliminazione commento
-- ✅ Approvazione commenti
+-  Lista commenti per post
+-  Creazione nuovo commento
+-  Modifica commento
+-  Eliminazione commento
+-  Approvazione commenti
 
 ### Category Management
-- ✅ Lista categorie
-- ✅ Creazione nuova categoria
-- ✅ Modifica categoria
-- ✅ Eliminazione categoria
-- ✅ Post per categoria
+-  Lista categorie
+-  Creazione nuova categoria
+-  Modifica categoria
+-  Eliminazione categoria
+-  Post per categoria
 
 ## Come Testare
 

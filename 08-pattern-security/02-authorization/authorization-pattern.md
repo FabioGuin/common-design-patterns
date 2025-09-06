@@ -76,7 +76,7 @@ L'Authorization utilizza diverse strategie per controllare l'accesso:
 ## Anti-Pattern
 
 ```php
-// ❌ Controllo di autorizzazione non sicuro
+//  Controllo di autorizzazione non sicuro
 public function updatePost(Request $request, $id)
 {
     $post = Post::find($id);
@@ -89,7 +89,7 @@ public function updatePost(Request $request, $id)
     return response()->json(['error' => 'Unauthorized'], 403);
 }
 
-// ✅ Controllo di autorizzazione robusto
+//  Controllo di autorizzazione robusto
 public function updatePost(UpdatePostRequest $request, Post $post)
 {
     $this->authorize('update', $post);

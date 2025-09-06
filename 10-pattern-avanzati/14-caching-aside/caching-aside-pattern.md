@@ -116,12 +116,12 @@ Il Caching Aside Pattern implementa diverse strategie di cache:
 
 ```
 Sistema senza Cache:
-Request → Database → Response (Slow) ❌
+Request → Database → Response (Slow) 
 
 Sistema con Caching Aside:
-Request → Cache → Hit? → Yes → Response (Fast) ✅
+Request → Cache → Hit? → Yes → Response (Fast) 
    ↓ No
-Request → Database → Save to Cache → Response (Fast) ✅
+Request → Database → Save to Cache → Response (Fast) 
 
 Strategie di Cache:
 Read-Through:    Cache → Database → Cache → Response

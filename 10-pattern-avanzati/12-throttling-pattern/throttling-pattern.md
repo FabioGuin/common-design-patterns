@@ -104,12 +104,12 @@ Il Throttling Pattern implementa diverse strategie di limitazione:
 
 ```
 Sistema senza Throttling:
-Client A → 1000 req/min → Server → Overload ❌
-Client B → 10 req/min → Server → Slow Response ❌
+Client A → 1000 req/min → Server → Overload 
+Client B → 10 req/min → Server → Slow Response 
 
 Sistema con Throttling:
-Client A → 1000 req/min → Throttler → 10 req/min → Server ✅
-Client B → 10 req/min → Throttler → 10 req/min → Server ✅
+Client A → 1000 req/min → Throttler → 10 req/min → Server 
+Client B → 10 req/min → Throttler → 10 req/min → Server 
 
 Strategie di Throttling:
 Fixed Window:    [0-60s] 100 req, [60-120s] 100 req

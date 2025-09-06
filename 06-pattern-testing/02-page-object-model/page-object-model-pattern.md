@@ -69,7 +69,7 @@ Il Page Object Model crea una classe per ogni pagina o componente web, contenent
 ## Anti-Pattern
 
 ```php
-// ❌ Test con logica di pagina inline
+//  Test con logica di pagina inline
 public function test_user_login()
 {
     $this->visit('/login');
@@ -79,7 +79,7 @@ public function test_user_login()
     $this->see('Welcome, John!');
 }
 
-// ✅ Test con Page Object Model
+//  Test con Page Object Model
 public function test_user_login()
 {
     $loginPage = new LoginPage($this);

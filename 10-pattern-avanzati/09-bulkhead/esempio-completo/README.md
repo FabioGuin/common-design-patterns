@@ -39,28 +39,28 @@ app/
 ## Funzionalità Implementate
 
 ### Bulkhead Core
-- ✅ Gestione compartimenti isolati
-- ✅ Pool di thread separati per ogni servizio
-- ✅ Connessioni database dedicate
-- ✅ Limiti di memoria per compartimento
+-  Gestione compartimenti isolati
+-  Pool di thread separati per ogni servizio
+-  Connessioni database dedicate
+-  Limiti di memoria per compartimento
 
 ### Servizi Isolati
-- ✅ PaymentService con bulkhead dedicato
-- ✅ InventoryService con bulkhead dedicato
-- ✅ NotificationService con bulkhead dedicato
-- ✅ ReportService con bulkhead dedicato
+-  PaymentService con bulkhead dedicato
+-  InventoryService con bulkhead dedicato
+-  NotificationService con bulkhead dedicato
+-  ReportService con bulkhead dedicato
 
 ### Gestione Priorità
-- ✅ Priorità alta per servizi critici
-- ✅ Priorità media per servizi importanti
-- ✅ Priorità bassa per servizi non critici
-- ✅ Gestione code per priorità
+-  Priorità alta per servizi critici
+-  Priorità media per servizi importanti
+-  Priorità bassa per servizi non critici
+-  Gestione code per priorità
 
 ### Monitoring
-- ✅ Dashboard per stato bulkhead
-- ✅ Metriche di utilizzo risorse
-- ✅ Logging dettagliato per compartimento
-- ✅ Alert per sovraccarico risorse
+-  Dashboard per stato bulkhead
+-  Metriche di utilizzo risorse
+-  Logging dettagliato per compartimento
+-  Alert per sovraccarico risorse
 
 ## Come Testare
 

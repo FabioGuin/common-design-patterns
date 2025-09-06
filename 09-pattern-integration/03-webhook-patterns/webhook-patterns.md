@@ -76,7 +76,7 @@ I Webhook Patterns utilizzano diverse strategie per la gestione delle notifiche:
 ## Anti-Pattern
 
 ```php
-// ❌ Webhook non sicuro
+//  Webhook non sicuro
 Route::post('/webhook/payment', function (Request $request) {
     $data = $request->all();
     
@@ -88,7 +88,7 @@ Route::post('/webhook/payment', function (Request $request) {
     return response()->json(['success' => true]);
 });
 
-// ✅ Webhook sicuro e robusto
+//  Webhook sicuro e robusto
 Route::post('/webhook/payment', function (PaymentWebhookRequest $request) {
     // Verifica signature
     if (!$this->verifySignature($request)) {

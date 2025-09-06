@@ -206,7 +206,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Memento troppo grande**: Un memento che salva troppi dati
+ **Memento troppo grande**: Un memento che salva troppi dati
 ```
 // SBAGLIATO
 class GodMemento {
@@ -217,7 +217,7 @@ class GodMemento {
 }
 ```
 
-✅ **Memento focalizzato**: Un memento che salva solo i dati necessari
+ **Memento focalizzato**: Un memento che salva solo i dati necessari
 ```
 // GIUSTO
 class TextMemento {

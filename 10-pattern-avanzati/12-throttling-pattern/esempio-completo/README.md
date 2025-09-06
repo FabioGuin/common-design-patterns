@@ -39,28 +39,28 @@ app/
 ## Funzionalità Implementate
 
 ### Throttling Core
-- ✅ Gestione rate limiting per ogni servizio
-- ✅ Throttling per tipo di utente
-- ✅ Throttling per endpoint specifici
-- ✅ Monitoring e metriche di throttling
+-  Gestione rate limiting per ogni servizio
+-  Throttling per tipo di utente
+-  Throttling per endpoint specifici
+-  Monitoring e metriche di throttling
 
 ### Servizi con Throttling
-- ✅ PaymentService con throttling critico (5 req/min)
-- ✅ InventoryService con throttling importante (20 req/min)
-- ✅ NotificationService con throttling non critico (100 req/min)
-- ✅ ApiService con throttling generico (1000 req/hour)
+-  PaymentService con throttling critico (5 req/min)
+-  InventoryService con throttling importante (20 req/min)
+-  NotificationService con throttling non critico (100 req/min)
+-  ApiService con throttling generico (1000 req/hour)
 
 ### Strategie di Throttling
-- ✅ Fixed Window con limite fisso
-- ✅ Sliding Window con finestra scorrevole
-- ✅ Token Bucket con bucket di token
-- ✅ Leaky Bucket con coda costante
+-  Fixed Window con limite fisso
+-  Sliding Window con finestra scorrevole
+-  Token Bucket con bucket di token
+-  Leaky Bucket con coda costante
 
 ### Monitoring
-- ✅ Dashboard per stato throttling
-- ✅ Metriche di rate limiting e blocchi
-- ✅ Logging dettagliato per ogni throttling
-- ✅ Alert per throttling eccessivi
+-  Dashboard per stato throttling
+-  Metriche di rate limiting e blocchi
+-  Logging dettagliato per ogni throttling
+-  Alert per throttling eccessivi
 
 ## Come Testare
 

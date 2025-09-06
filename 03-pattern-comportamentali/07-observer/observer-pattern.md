@@ -183,7 +183,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Observer che fa troppo**: Un observer che gestisce troppe responsabilità
+ **Observer che fa troppo**: Un observer che gestisce troppe responsabilità
 ```
 // SBAGLIATO
 class GodObserver implements ObserverInterface {
@@ -199,7 +199,7 @@ class GodObserver implements ObserverInterface {
 }
 ```
 
-✅ **Observer focalizzato**: Un observer per una responsabilità specifica
+ **Observer focalizzato**: Un observer per una responsabilità specifica
 ```
 // GIUSTO
 class EmailObserver implements ObserverInterface {

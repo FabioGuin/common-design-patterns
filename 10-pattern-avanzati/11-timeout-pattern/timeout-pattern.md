@@ -98,16 +98,16 @@ Il Timeout Pattern implementa diverse strategie di timeout:
 
 ```
 Operazione con Timeout:
-Request → Start Timer → Execute → Success ✅
+Request → Start Timer → Execute → Success 
    ↓
-Request → Start Timer → Execute → Timeout ❌
+Request → Start Timer → Execute → Timeout 
    ↓
-Request → Start Timer → Execute → Retry → Success ✅
+Request → Start Timer → Execute → Retry → Success 
 
 Operazione senza Timeout:
-Request → Execute → Success ✅
+Request → Execute → Success 
    ↓
-Request → Execute → Hangs Forever ❌
+Request → Execute → Hangs Forever 
 
 Strategie di Timeout:
 Simple:     30s per tutte le operazioni

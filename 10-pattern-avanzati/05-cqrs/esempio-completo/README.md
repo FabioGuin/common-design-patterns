@@ -38,21 +38,21 @@ app/
 ## Funzionalità Implementate
 
 ### Command Side
-- ✅ Creazione prodotti con validazione
-- ✅ Aggiornamento prodotti
-- ✅ Creazione ordini con gestione inventario
-- ✅ Pubblicazione eventi per sincronizzazione
+-  Creazione prodotti con validazione
+-  Aggiornamento prodotti
+-  Creazione ordini con gestione inventario
+-  Pubblicazione eventi per sincronizzazione
 
 ### Query Side
-- ✅ Ricerca prodotti con filtri avanzati
-- ✅ Visualizzazione ordini utente
-- ✅ Statistiche prodotti
-- ✅ Query ottimizzate per performance
+-  Ricerca prodotti con filtri avanzati
+-  Visualizzazione ordini utente
+-  Statistiche prodotti
+-  Query ottimizzate per performance
 
 ### Event Bus
-- ✅ Sincronizzazione automatica tra command e query
-- ✅ Proiezioni per aggiornare modelli di lettura
-- ✅ Gestione errori e retry logic
+-  Sincronizzazione automatica tra command e query
+-  Proiezioni per aggiornare modelli di lettura
+-  Gestione errori e retry logic
 
 ## Come Testare
 

@@ -39,29 +39,29 @@ app/
 ## Funzionalità Implementate
 
 ### Saga Orchestrator
-- ✅ Gestione stato della saga
-- ✅ Esecuzione sequenziale delle operazioni
-- ✅ Compensazioni automatiche in caso di fallimento
-- ✅ Retry logic per operazioni fallite
-- ✅ Timeout per evitare saghe bloccate
+-  Gestione stato della saga
+-  Esecuzione sequenziale delle operazioni
+-  Compensazioni automatiche in caso di fallimento
+-  Retry logic per operazioni fallite
+-  Timeout per evitare saghe bloccate
 
 ### Servizi Distribuiti
-- ✅ InventoryService con riserva/rilascio
-- ✅ PaymentService con pagamento/rimborso
-- ✅ NotificationService con invio/cancellazione
-- ✅ OrderService con aggiornamento/revert
+-  InventoryService con riserva/rilascio
+-  PaymentService con pagamento/rimborso
+-  NotificationService con invio/cancellazione
+-  OrderService con aggiornamento/revert
 
 ### Gestione Errori
-- ✅ Compensazioni automatiche
-- ✅ Retry logic con backoff esponenziale
-- ✅ Dead letter queue per operazioni fallite
-- ✅ Logging dettagliato per debugging
+-  Compensazioni automatiche
+-  Retry logic con backoff esponenziale
+-  Dead letter queue per operazioni fallite
+-  Logging dettagliato per debugging
 
 ### Interfaccia
-- ✅ Visualizzazione stato saghe
-- ✅ Test operazioni e compensazioni
-- ✅ Monitoraggio performance
-- ✅ Debug tools per troubleshooting
+-  Visualizzazione stato saghe
+-  Test operazioni e compensazioni
+-  Monitoraggio performance
+-  Debug tools per troubleshooting
 
 ## Come Testare
 

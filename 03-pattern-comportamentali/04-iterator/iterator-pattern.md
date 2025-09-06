@@ -150,7 +150,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Iteratore che fa troppo**: Un iteratore che gestisce troppe responsabilità
+ **Iteratore che fa troppo**: Un iteratore che gestisce troppe responsabilità
 ```
 // SBAGLIATO
 class GodIterator implements IteratorInterface {
@@ -164,7 +164,7 @@ class GodIterator implements IteratorInterface {
 }
 ```
 
-✅ **Iteratore focalizzato**: Un iteratore per una responsabilità specifica
+ **Iteratore focalizzato**: Un iteratore per una responsabilità specifica
 ```
 // GIUSTO
 class SimpleIterator implements IteratorInterface {

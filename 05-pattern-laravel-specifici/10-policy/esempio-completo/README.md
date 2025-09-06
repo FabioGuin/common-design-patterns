@@ -53,31 +53,31 @@ app/
 ## Funzionalità Implementate
 
 ### Post Authorization
-- ✅ Visualizzazione post (pubblici vs privati)
-- ✅ Creazione post (utenti autenticati)
-- ✅ Modifica post (autore o admin)
-- ✅ Eliminazione post (admin o autore)
-- ✅ Pubblicazione post (admin o moderatore)
+-  Visualizzazione post (pubblici vs privati)
+-  Creazione post (utenti autenticati)
+-  Modifica post (autore o admin)
+-  Eliminazione post (admin o autore)
+-  Pubblicazione post (admin o moderatore)
 
 ### Comment Authorization
-- ✅ Visualizzazione commenti (pubblici)
-- ✅ Creazione commenti (utenti autenticati)
-- ✅ Modifica commenti (autore o admin)
-- ✅ Eliminazione commenti (autore, admin o moderatore)
-- ✅ Approvazione commenti (admin o moderatore)
+-  Visualizzazione commenti (pubblici)
+-  Creazione commenti (utenti autenticati)
+-  Modifica commenti (autore o admin)
+-  Eliminazione commenti (autore, admin o moderatore)
+-  Approvazione commenti (admin o moderatore)
 
 ### User Authorization
-- ✅ Visualizzazione profili (pubblici)
-- ✅ Modifica profili (proprio profilo o admin)
-- ✅ Eliminazione utenti (admin)
-- ✅ Gestione ruoli (admin)
-- ✅ Gestione permessi (admin)
+-  Visualizzazione profili (pubblici)
+-  Modifica profili (proprio profilo o admin)
+-  Eliminazione utenti (admin)
+-  Gestione ruoli (admin)
+-  Gestione permessi (admin)
 
 ### Category Authorization
-- ✅ Visualizzazione categorie (pubbliche)
-- ✅ Creazione categorie (admin o moderatore)
-- ✅ Modifica categorie (admin o moderatore)
-- ✅ Eliminazione categorie (admin)
+-  Visualizzazione categorie (pubbliche)
+-  Creazione categorie (admin o moderatore)
+-  Modifica categorie (admin o moderatore)
+-  Eliminazione categorie (admin)
 
 ## Come Testare
 

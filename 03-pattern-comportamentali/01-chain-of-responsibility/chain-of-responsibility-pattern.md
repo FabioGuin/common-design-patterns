@@ -162,7 +162,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Catena troppo lunga**: Una catena con troppi gestori
+ **Catena troppo lunga**: Una catena con troppi gestori
 ```
 // SBAGLIATO
 handler1.setNext(handler2)
@@ -174,7 +174,7 @@ handler1.setNext(handler2)
         .setNext(handler8) // Troppo complesso!
 ```
 
-✅ **Catena focalizzata**: Una catena con gestori specifici e necessari
+ **Catena focalizzata**: Una catena con gestori specifici e necessari
 ```
 // GIUSTO
 validation.setNext(auth).setNext(authorization)

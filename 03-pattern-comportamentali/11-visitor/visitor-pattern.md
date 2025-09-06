@@ -215,7 +215,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Visitor che fa troppo**: Un visitor che gestisce troppe responsabilità
+ **Visitor che fa troppo**: Un visitor che gestisce troppe responsabilità
 ```pseudocodice
 // SBAGLIATO
 class GodVisitor implements VisitorInterface {
@@ -230,7 +230,7 @@ class GodVisitor implements VisitorInterface {
 }
 ```
 
-✅ **Visitor focalizzato**: Un visitor per una responsabilità specifica
+ **Visitor focalizzato**: Un visitor per una responsabilità specifica
 ```pseudocodice
 // GIUSTO
 class SizeCalculatorVisitor implements VisitorInterface {

@@ -75,7 +75,7 @@ L'Eager Loading utilizza tecniche di ottimizzazione per caricare i dati correlat
 ## Anti-Pattern
 
 ```php
-// ❌ N+1 query problem
+//  N+1 query problem
 public function getPostsWithAuthors()
 {
     $posts = Post::all();
@@ -86,7 +86,7 @@ public function getPostsWithAuthors()
     }
 }
 
-// ✅ Eager loading
+//  Eager loading
 public function getPostsWithAuthors()
 {
     $posts = Post::with(['author', 'category'])->get();

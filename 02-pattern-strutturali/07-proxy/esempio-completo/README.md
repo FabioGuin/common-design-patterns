@@ -63,8 +63,8 @@ $data = $cachingProxy->getUserData(123); // Seconda chiamata - dalla cache
 ### Access Control Proxy
 ```php
 $accessProxy = new AccessControlDataProxy(new ExternalDataService());
-$data = $accessProxy->getUserData(123, 'admin'); // ✅ Accesso consentito
-$data = $accessProxy->getUserData(123, 'user');  // ❌ Accesso negato
+$data = $accessProxy->getUserData(123, 'admin'); //  Accesso consentito
+$data = $accessProxy->getUserData(123, 'user');  //  Accesso negato
 ```
 
 ### Logging Proxy

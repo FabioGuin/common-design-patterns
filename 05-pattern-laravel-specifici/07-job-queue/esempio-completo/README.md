@@ -44,22 +44,22 @@ app/
 ## Funzionalità Implementate
 
 ### Job Management
-- ✅ Creazione e dispatch di job
-- ✅ Gestione errori e retry
-- ✅ Monitoring dello stato
-- ✅ Gestione job falliti
+-  Creazione e dispatch di job
+-  Gestione errori e retry
+-  Monitoring dello stato
+-  Gestione job falliti
 
 ### Email Types
-- ✅ Email di benvenuto personalizzate
-- ✅ Newsletter con template
-- ✅ Notifiche push e email
-- ✅ Invii massivi ottimizzati
+-  Email di benvenuto personalizzate
+-  Newsletter con template
+-  Notifiche push e email
+-  Invii massivi ottimizzati
 
 ### Queue Features
-- ✅ Configurazione database queue
-- ✅ Gestione failed jobs
-- ✅ Retry automatico
-- ✅ Timeout e limiti
+-  Configurazione database queue
+-  Gestione failed jobs
+-  Retry automatico
+-  Timeout e limiti
 
 ## Come Testare
 

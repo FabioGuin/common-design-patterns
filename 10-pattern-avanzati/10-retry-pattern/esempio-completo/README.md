@@ -39,28 +39,28 @@ app/
 ## Funzionalità Implementate
 
 ### Retry Core
-- ✅ Gestione retry automatico
-- ✅ Strategie di backoff multiple
-- ✅ Retry selettivo per errori specifici
-- ✅ Circuit breaker integrato
+-  Gestione retry automatico
+-  Strategie di backoff multiple
+-  Retry selettivo per errori specifici
+-  Circuit breaker integrato
 
 ### Servizi con Retry
-- ✅ PaymentService con retry critico
-- ✅ InventoryService con retry importante
-- ✅ NotificationService con retry non critico
-- ✅ ExternalApiService con retry generico
+-  PaymentService con retry critico
+-  InventoryService con retry importante
+-  NotificationService con retry non critico
+-  ExternalApiService con retry generico
 
 ### Strategie di Backoff
-- ✅ Simple Retry con intervalli fissi
-- ✅ Exponential Backoff con intervalli crescenti
-- ✅ Linear Backoff con intervalli lineari
-- ✅ Jitter Backoff con intervalli randomizzati
+-  Simple Retry con intervalli fissi
+-  Exponential Backoff con intervalli crescenti
+-  Linear Backoff con intervalli lineari
+-  Jitter Backoff con intervalli randomizzati
 
 ### Monitoring
-- ✅ Dashboard per stato retry
-- ✅ Metriche di tentativi e successi
-- ✅ Logging dettagliato per ogni retry
-- ✅ Alert per retry eccessivi
+-  Dashboard per stato retry
+-  Metriche di tentativi e successi
+-  Logging dettagliato per ogni retry
+-  Alert per retry eccessivi
 
 ## Come Testare
 

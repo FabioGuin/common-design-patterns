@@ -215,7 +215,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Stato che fa troppo**: Un stato che gestisce troppe responsabilità
+ **Stato che fa troppo**: Un stato che gestisce troppe responsabilità
 ```pseudocodice
 // SBAGLIATO
 class GodState implements StateInterface {
@@ -230,7 +230,7 @@ class GodState implements StateInterface {
 }
 ```
 
-✅ **Stato focalizzato**: Un stato per una responsabilità specifica
+ **Stato focalizzato**: Un stato per una responsabilità specifica
 ```pseudocodice
 // GIUSTO
 class PendingState implements StateInterface {

@@ -40,28 +40,28 @@ app/
 ## Funzionalità Implementate
 
 ### Event Store
-- ✅ Memorizzazione eventi immutabili
-- ✅ Controllo di concorrenza con versioning
-- ✅ Ricostruzione stato da eventi
-- ✅ Query eventi per aggregato
+-  Memorizzazione eventi immutabili
+-  Controllo di concorrenza con versioning
+-  Ricostruzione stato da eventi
+-  Query eventi per aggregato
 
 ### Aggregate Root
-- ✅ Gestione logica business
-- ✅ Generazione eventi
-- ✅ Validazione invarianti
-- ✅ Ricostruzione da eventi
+-  Gestione logica business
+-  Generazione eventi
+-  Validazione invarianti
+-  Ricostruzione da eventi
 
 ### Proiezioni
-- ✅ Stato attuale ordini
-- ✅ Cronologia completa
-- ✅ Statistiche in tempo reale
-- ✅ Audit trail
+-  Stato attuale ordini
+-  Cronologia completa
+-  Statistiche in tempo reale
+-  Audit trail
 
 ### Interfaccia
-- ✅ Visualizzazione eventi
-- ✅ Ricostruzione stato
-- ✅ Timeline ordini
-- ✅ Debugging tools
+-  Visualizzazione eventi
+-  Ricostruzione stato
+-  Timeline ordini
+-  Debugging tools
 
 ## Come Testare
 

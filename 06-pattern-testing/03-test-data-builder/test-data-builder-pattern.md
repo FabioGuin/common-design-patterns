@@ -69,7 +69,7 @@ Il Test Data Builder crea oggetti di test attraverso un'interfaccia fluente che 
 ## Anti-Pattern
 
 ```php
-// ❌ Creazione diretta con molti parametri
+//  Creazione diretta con molti parametri
 public function test_user_registration()
 {
     $user = new User([
@@ -92,7 +92,7 @@ public function test_user_registration()
     $this->assertTrue($user->save());
 }
 
-// ✅ Uso del Test Data Builder
+//  Uso del Test Data Builder
 public function test_user_registration()
 {
     $user = UserBuilder::new()

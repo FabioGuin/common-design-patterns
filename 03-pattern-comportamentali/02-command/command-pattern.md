@@ -179,7 +179,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Comando che fa troppo**: Un comando che gestisce troppe responsabilità
+**Comando che fa troppo**: Un comando che gestisce troppe responsabilità
 ```php
 // SBAGLIATO
 class GodCommand implements CommandInterface
@@ -197,7 +197,7 @@ class GodCommand implements CommandInterface
 }
 ```
 
-✅ **Comando focalizzato**: Un comando per ogni responsabilità specifica
+**Comando focalizzato**: Un comando per ogni responsabilità specifica
 ```php
 // GIUSTO
 class ProcessPaymentCommand implements CommandInterface

@@ -129,7 +129,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Interprete troppo complesso**: Un interprete che gestisce troppe regole
+ **Interprete troppo complesso**: Un interprete che gestisce troppe regole
 ```
 // SBAGLIATO
 class GodInterpreter implements ExpressionInterface {
@@ -140,7 +140,7 @@ class GodInterpreter implements ExpressionInterface {
 }
 ```
 
-✅ **Interprete modulare**: Un interprete per ogni dominio specifico
+ **Interprete modulare**: Un interprete per ogni dominio specifico
 ```
 // GIUSTO
 class MathExpression implements ExpressionInterface { }

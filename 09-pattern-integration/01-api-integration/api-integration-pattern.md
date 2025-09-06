@@ -76,7 +76,7 @@ L'API Integration utilizza diverse strategie per comunicare con servizi esterni:
 ## Anti-Pattern
 
 ```php
-// ❌ Integrazione API non robusta
+//  Integrazione API non robusta
 public function sendPayment($amount, $cardToken)
 {
     $response = Http::post('https://payment-api.com/charge', [
@@ -91,7 +91,7 @@ public function sendPayment($amount, $cardToken)
     return null; // Gestione errori insufficiente
 }
 
-// ✅ Integrazione API robusta
+//  Integrazione API robusta
 public function sendPayment($amount, $cardToken)
 {
     try {

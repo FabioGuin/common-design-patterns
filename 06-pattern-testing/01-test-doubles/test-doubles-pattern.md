@@ -72,7 +72,7 @@ I Test Doubles sono oggetti che simulano il comportamento di oggetti reali in un
 ## Anti-Pattern
 
 ```php
-// ❌ Test troppo accoppiato all'implementazione
+//  Test troppo accoppiato all'implementazione
 public function test_user_creation()
 {
     $mock = $this->createMock(UserRepository::class);
@@ -86,7 +86,7 @@ public function test_user_creation()
     $service->createUser('John', 'john@example.com');
 }
 
-// ✅ Test focalizzato sul comportamento
+//  Test focalizzato sul comportamento
 public function test_user_creation()
 {
     $mock = $this->createMock(UserRepository::class);

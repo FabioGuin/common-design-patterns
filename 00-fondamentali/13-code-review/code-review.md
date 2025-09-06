@@ -115,7 +115,7 @@ Usa code review quando:
 ### Esempio 1: Review di un Controller
 
 ```php
-// ❌ Codice da revieware - Controller con problemi
+//  Codice da revieware - Controller con problemi
 class UserController extends Controller
 {
     public function store(Request $request)
@@ -150,7 +150,7 @@ class UserController extends Controller
     }
 }
 
-// ✅ Dopo la review - Controller migliorato
+//  Dopo la review - Controller migliorato
 class UserController extends Controller
 {
     public function __construct(
@@ -214,7 +214,7 @@ class UserTransformer
 ### Esempio 2: Review di un Service
 
 ```php
-// ❌ Codice da revieware - Service con problemi
+//  Codice da revieware - Service con problemi
 class OrderService
 {
     public function createOrder($data)
@@ -240,7 +240,7 @@ class OrderService
     }
 }
 
-// ✅ Dopo la review - Service migliorato
+//  Dopo la review - Service migliorato
 class OrderService
 {
     public function __construct(
@@ -312,7 +312,7 @@ class OrderNotifier
 ### Esempio 3: Review di un Test
 
 ```php
-// ❌ Test da revieware - Test con problemi
+//  Test da revieware - Test con problemi
 class UserTest extends TestCase
 {
     public function test_can_create_user()
@@ -330,7 +330,7 @@ class UserTest extends TestCase
     }
 }
 
-// ✅ Dopo la review - Test migliorato
+//  Dopo la review - Test migliorato
 class UserTest extends TestCase
 {
     use RefreshDatabase;
@@ -393,7 +393,7 @@ class UserTest extends TestCase
 ### Esempio 4: Review di un Model
 
 ```php
-// ❌ Model da revieware - Model con problemi
+//  Model da revieware - Model con problemi
 class User extends Model
 {
     // Problema: Nessuna protezione dei campi
@@ -416,7 +416,7 @@ class User extends Model
     }
 }
 
-// ✅ Dopo la review - Model migliorato
+//  Dopo la review - Model migliorato
 class User extends Model
 {
     protected $fillable = [

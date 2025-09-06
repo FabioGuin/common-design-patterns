@@ -110,7 +110,7 @@ Usa i principi SOLID quando:
 ### Single Responsibility Principle (SRP)
 
 ```php
-// ❌ Violazione SRP - Controller con troppe responsabilità
+//  Violazione SRP - Controller con troppe responsabilità
 class UserController extends Controller
 {
     public function store(Request $request)
@@ -145,7 +145,7 @@ class UserController extends Controller
     }
 }
 
-// ✅ Rispetto SRP - Responsabilità separate
+//  Rispetto SRP - Responsabilità separate
 class UserController extends Controller
 {
     public function __construct(
@@ -222,7 +222,7 @@ class UserTransformer
 ### Open/Closed Principle (OCP)
 
 ```php
-// ❌ Violazione OCP - Modifica per aggiungere funzionalità
+//  Violazione OCP - Modifica per aggiungere funzionalità
 class PaymentProcessor
 {
     public function process(Payment $payment): PaymentResult
@@ -255,7 +255,7 @@ class PaymentProcessor
     }
 }
 
-// ✅ Rispetto OCP - Estensione senza modifica
+//  Rispetto OCP - Estensione senza modifica
 interface PaymentMethod
 {
     public function process(Payment $payment): PaymentResult;
@@ -310,7 +310,7 @@ class BankTransferPayment implements PaymentMethod
 ### Liskov Substitution Principle (LSP)
 
 ```php
-// ❌ Violazione LSP - Sottoclasse non sostituibile
+//  Violazione LSP - Sottoclasse non sostituibile
 abstract class Bird
 {
     abstract public function fly(): string;
@@ -343,7 +343,7 @@ class Penguin extends Bird
     }
 }
 
-// ✅ Rispetto LSP - Sottoclassi sostituibili
+//  Rispetto LSP - Sottoclassi sostituibili
 abstract class Bird
 {
     abstract public function move(): string;
@@ -405,7 +405,7 @@ class BirdWatcher
 ### Interface Segregation Principle (ISP)
 
 ```php
-// ❌ Violazione ISP - Interfaccia troppo grande
+//  Violazione ISP - Interfaccia troppo grande
 interface Worker
 {
     public function work(): string;
@@ -436,7 +436,7 @@ class Designer implements Worker
     public function test(): string { throw new Exception("I don't test"); }
 }
 
-// ✅ Rispetto ISP - Interfacce specifiche
+//  Rispetto ISP - Interfacce specifiche
 interface Workable
 {
     public function work(): string;
@@ -496,7 +496,7 @@ class Tester implements Workable, Eatable, Sleepable, Testable
 ### Dependency Inversion Principle (DIP)
 
 ```php
-// ❌ Violazione DIP - Dipendenza da concrezioni
+//  Violazione DIP - Dipendenza da concrezioni
 class EmailService
 {
     public function send(string $to, string $subject, string $body): void
@@ -538,7 +538,7 @@ class UserService
     }
 }
 
-// ✅ Rispetto DIP - Dipendenza da astrazioni
+//  Rispetto DIP - Dipendenza da astrazioni
 interface NotificationService
 {
     public function send(string $to, string $message): void;

@@ -39,28 +39,28 @@ app/
 ## Funzionalità Implementate
 
 ### Sharding Core
-- ✅ Gestione sharding per ogni entità
-- ✅ Strategie multiple di partizionamento
-- ✅ Routing automatico verso shard corretto
-- ✅ Monitoring e metriche di sharding
+-  Gestione sharding per ogni entità
+-  Strategie multiple di partizionamento
+-  Routing automatico verso shard corretto
+-  Monitoring e metriche di sharding
 
 ### Entità con Sharding
-- ✅ Users con sharding key-based (3 shard)
-- ✅ Products con sharding range-based (per categoria)
-- ✅ Orders con sharding hash-based (per data)
-- ✅ Categories con sharding directory-based
+-  Users con sharding key-based (3 shard)
+-  Products con sharding range-based (per categoria)
+-  Orders con sharding hash-based (per data)
+-  Categories con sharding directory-based
 
 ### Strategie di Sharding
-- ✅ Key-based per distribuzione uniforme
-- ✅ Range-based per dati correlati
-- ✅ Hash-based per distribuzione prevedibile
-- ✅ Directory-based per flessibilità
+-  Key-based per distribuzione uniforme
+-  Range-based per dati correlati
+-  Hash-based per distribuzione prevedibile
+-  Directory-based per flessibilità
 
 ### Monitoring
-- ✅ Dashboard per stato sharding
-- ✅ Metriche di distribuzione dati
-- ✅ Logging dettagliato per ogni shard
-- ✅ Alert per shard problematici
+-  Dashboard per stato sharding
+-  Metriche di distribuzione dati
+-  Logging dettagliato per ogni shard
+-  Alert per shard problematici
 
 ## Come Testare
 

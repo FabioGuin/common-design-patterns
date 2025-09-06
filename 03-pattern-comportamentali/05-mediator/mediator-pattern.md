@@ -149,7 +149,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Mediatore che fa troppo**: Un mediatore che gestisce troppe responsabilità
+ **Mediatore che fa troppo**: Un mediatore che gestisce troppe responsabilità
 ```
 // SBAGLIATO
 class GodMediator implements MediatorInterface {
@@ -164,7 +164,7 @@ class GodMediator implements MediatorInterface {
 }
 ```
 
-✅ **Mediatore focalizzato**: Un mediatore per un dominio specifico
+ **Mediatore focalizzato**: Un mediatore per un dominio specifico
 ```
 // GIUSTO
 class FormMediator implements MediatorInterface {

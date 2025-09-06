@@ -75,7 +75,7 @@ Il Lazy Loading utilizza diverse tecniche per caricare i dati solo quando necess
 ## Anti-Pattern
 
 ```php
-// ❌ Eager loading di tutto
+//  Eager loading di tutto
 public function getUserProfile($userId)
 {
     $user = User::with([
@@ -89,7 +89,7 @@ public function getUserProfile($userId)
     return $user;
 }
 
-// ✅ Lazy loading selettivo
+//  Lazy loading selettivo
 public function getUserProfile($userId)
 {
     $user = User::find($userId);

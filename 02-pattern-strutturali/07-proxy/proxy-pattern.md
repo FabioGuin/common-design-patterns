@@ -147,7 +147,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Proxy che fa troppo**: Un proxy che gestisce troppe responsabilità diverse
+ **Proxy che fa troppo**: Un proxy che gestisce troppe responsabilità diverse
 ```php
 // SBAGLIATO
 class GodProxy implements ImageInterface
@@ -165,7 +165,7 @@ class GodProxy implements ImageInterface
 }
 ```
 
-✅ **Proxy focalizzato**: Un proxy per ogni responsabilità specifica
+ **Proxy focalizzato**: Un proxy per ogni responsabilità specifica
 ```php
 // GIUSTO
 class CachingImageProxy implements ImageInterface

@@ -98,14 +98,14 @@ Il Retry Pattern implementa diverse strategie di retry:
 
 ```
 Operazione con Retry:
-Request → Execute → Success ✅
+Request → Execute → Success 
    ↓
-Request → Execute → Failure ❌
+Request → Execute → Failure 
    ↓
-Wait (Backoff) → Retry → Success ✅
+Wait (Backoff) → Retry → Success 
 
 Operazione senza Retry:
-Request → Execute → Failure ❌ → Give Up
+Request → Execute → Failure  → Give Up
 
 Strategie di Backoff:
 Linear:    1000ms → 2000ms → 3000ms → 4000ms

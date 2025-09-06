@@ -191,7 +191,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Strategy che fa troppo**: Una strategy che gestisce troppe responsabilità
+ **Strategy che fa troppo**: Una strategy che gestisce troppe responsabilità
 ```pseudocodice
 // SBAGLIATO
 class GodStrategy implements PaymentStrategyInterface {
@@ -206,7 +206,7 @@ class GodStrategy implements PaymentStrategyInterface {
 }
 ```
 
-✅ **Strategy focalizzata**: Una strategy per una responsabilità specifica
+ **Strategy focalizzata**: Una strategy per una responsabilità specifica
 ```pseudocodice
 // GIUSTO
 class CreditCardStrategy implements PaymentStrategyInterface {

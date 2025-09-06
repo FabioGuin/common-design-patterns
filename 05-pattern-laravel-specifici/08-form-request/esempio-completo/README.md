@@ -47,23 +47,23 @@ app/
 ## Funzionalità Implementate
 
 ### User Management
-- ✅ Registrazione utenti con validazione completa
-- ✅ Aggiornamento profilo con validazione condizionale
-- ✅ Autorizzazione basata su ruoli
-- ✅ Messaggi di errore personalizzati
+-  Registrazione utenti con validazione completa
+-  Aggiornamento profilo con validazione condizionale
+-  Autorizzazione basata su ruoli
+-  Messaggi di errore personalizzati
 
 ### Post Management
-- ✅ Creazione post con validazione
-- ✅ Aggiornamento post con autorizzazione
-- ✅ Validazione condizionale per contenuto
-- ✅ Controlli di permessi integrati
+-  Creazione post con validazione
+-  Aggiornamento post con autorizzazione
+-  Validazione condizionale per contenuto
+-  Controlli di permessi integrati
 
 ### Validation Features
-- ✅ Regole standard Laravel
-- ✅ Regole personalizzate
-- ✅ Validazione condizionale
-- ✅ Messaggi personalizzati
-- ✅ Autorizzazione integrata
+-  Regole standard Laravel
+-  Regole personalizzate
+-  Validazione condizionale
+-  Messaggi personalizzati
+-  Autorizzazione integrata
 
 ## Come Testare
 

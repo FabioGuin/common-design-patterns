@@ -39,28 +39,28 @@ app/
 ## Funzionalità Implementate
 
 ### Timeout Core
-- ✅ Gestione timeout dinamici per ogni servizio
-- ✅ Timeout con retry integrato
-- ✅ Circuit breaker con timeout
-- ✅ Monitoring e metriche di timeout
+-  Gestione timeout dinamici per ogni servizio
+-  Timeout con retry integrato
+-  Circuit breaker con timeout
+-  Monitoring e metriche di timeout
 
 ### Servizi con Timeout
-- ✅ PaymentService con timeout critico (15s)
-- ✅ InventoryService con timeout importante (10s)
-- ✅ NotificationService con timeout non critico (5s)
-- ✅ ExternalApiService con timeout generico (30s)
+-  PaymentService con timeout critico (15s)
+-  InventoryService con timeout importante (10s)
+-  NotificationService con timeout non critico (5s)
+-  ExternalApiService con timeout generico (30s)
 
 ### Strategie di Timeout
-- ✅ Simple Timeout con limite fisso
-- ✅ Dynamic Timeout basato sul servizio
-- ✅ Retry Timeout per ogni tentativo
-- ✅ Circuit Timeout per prevenire timeout eccessivi
+-  Simple Timeout con limite fisso
+-  Dynamic Timeout basato sul servizio
+-  Retry Timeout per ogni tentativo
+-  Circuit Timeout per prevenire timeout eccessivi
 
 ### Monitoring
-- ✅ Dashboard per stato timeout
-- ✅ Metriche di timeout e successi
-- ✅ Logging dettagliato per ogni timeout
-- ✅ Alert per timeout eccessivi
+-  Dashboard per stato timeout
+-  Metriche di timeout e successi
+-  Logging dettagliato per ogni timeout
+-  Alert per timeout eccessivi
 
 ## Come Testare
 

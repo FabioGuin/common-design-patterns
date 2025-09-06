@@ -76,7 +76,7 @@ Il Message Queue utilizza diverse strategie per la gestione dei messaggi:
 ## Anti-Pattern
 
 ```php
-// ❌ Elaborazione sincrona pesante
+//  Elaborazione sincrona pesante
 public function processOrder($orderId)
 {
     $order = Order::find($orderId);
@@ -91,7 +91,7 @@ public function processOrder($orderId)
     return response()->json(['success' => true]);
 }
 
-// ✅ Elaborazione asincrona con message queue
+//  Elaborazione asincrona con message queue
 public function processOrder($orderId)
 {
     $order = Order::find($orderId);

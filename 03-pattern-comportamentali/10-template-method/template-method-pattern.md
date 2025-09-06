@@ -203,7 +203,7 @@ Vedi la cartella `esempio-completo` per un'implementazione completa in Laravel c
 
 ## Anti-pattern
 
-❌ **Template troppo rigido**: Un template che non permette flessibilità
+ **Template troppo rigido**: Un template che non permette flessibilità
 ```pseudocodice
 // SBAGLIATO
 abstract class RigidTemplate {
@@ -216,7 +216,7 @@ abstract class RigidTemplate {
 }
 ```
 
-✅ **Template flessibile**: Un template che permette personalizzazioni
+ **Template flessibile**: Un template che permette personalizzazioni
 ```pseudocodice
 // GIUSTO
 abstract class FlexibleTemplate {
