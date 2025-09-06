@@ -29,7 +29,7 @@
 
 ## Indice Generale per Tematica
 
-### 📚 **Fondamenti e Principi**
+### **Fondamenti e Principi**
 - [0. Principi e Metodologie Fondamentali](00-fondamentali/README.md) - Base teorica e metodologica per tutti i pattern
   - [0.1 Principi Fondamentali](00-fondamentali/README.md#principi-fondamentali) - DRY, KISS, YAGNI, SOLID, Clean Code, Separation of Concerns, Law of Demeter, Fail Fast
   - [0.2 Metodologie di Sviluppo](00-fondamentali/README.md#metodologie-di-sviluppo) - TDD, BDD, ATDD, Refactoring, Code Review, Pair Programming, Mob Programming
